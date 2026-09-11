@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; connect-src https: http://127.0.0.1:* http://localhost:*; object-src 'none'; base-uri 'none'; form-action 'none'"><meta name="viewport" content="width=device-width,initial-scale=1"><title>무색 0.12.0 오프라인 — 종유석 미궁과 붉은 철갑 거인</title>
+<html lang="ko"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; connect-src https: http://127.0.0.1:* http://localhost:*; object-src 'none'; base-uri 'none'; form-action 'none'"><meta name="viewport" content="width=device-width,initial-scale=1"><title>무색 0.12.6 오프라인 — 퍼즐·전투·이동 안정화</title>
 <style>
 :root{color-scheme:dark;--ink:#edeae1;--dim:#adb5b1;--line:#ffffff24;--red:#d8675a;--paper:#c7b790}*{box-sizing:border-box}body,html{margin:0;overflow:hidden;width:100%;height:100%;background:#222b2b;color:var(--ink);font:14px/1.65 "Noto Sans CJK KR","Malgun Gothic","Apple SD Gothic Neo",system-ui,sans-serif}button{font:inherit;cursor:pointer;border:1px solid #ffffff50;padding:11px 21px;background:#e4e1d7;color:#172224;border-radius:2px;transition:background .15s}button:hover{background:white}button.secondary{background:#1c272bcb;color:var(--ink);border-color:#ffffff30}button.secondary:hover{background:#354145}button.small{font-size:11px;padding:4px 9px}kbd{font:11px system-ui,sans-serif;border:1px solid #ffffff45;padding:2px 5px;border-radius:3px;white-space:nowrap;color:#f1ede2}.hidden{display:none!important}canvas#game{display:block;width:100vw;height:100vh;outline:none;cursor:crosshair}.vignette{position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,transparent 55%,#07121688)}#hud{position:fixed;inset:0;pointer-events:none;padding:26px 30px}.eyebrow{font-size:10px;letter-spacing:2.6px;color:#acb8b3}.location{font:600 27px/1.6 inherit;letter-spacing:3px;margin:3px 0;font-size:27px}.tag{font-size:11px;color:#b1bbb5}.quest{margin-top:25px;padding:12px 15px;border-left:2px solid var(--paper);max-width:260px;background:linear-gradient(90deg,#132123d9,#13212320)}.quest h3{font-size:13px;margin:0 0 7px;font-weight:600}.quest p{font-size:12px;margin:5px 0;color:#c6cfca}.quest .gold{color:#f1dfac}.right{position:absolute;top:27px;right:30px;text-align:right}#map{display:block;width:170px;height:170px;margin:10px 0 4px;border:1px solid #a8b3a13b;background:#132025b3}.mapHint{font-size:10px;letter-spacing:1px;color:#bcc7bf}#nav{position:absolute;top:25px;left:50%;transform:translateX(-50%);font-size:11px;color:#d1d3c8;letter-spacing:1px;text-align:center;white-space:nowrap}#nav b{display:block;font-size:13px;margin-top:3px;color:#e8debf}#boss{position:absolute;top:76px;left:50%;transform:translateX(-50%);width:390px;text-align:center}.boss-name{font-size:16px;letter-spacing:3px;margin-bottom:8px}.bar{height:6px;background:#091416d1;border:1px solid #ffffff1a}.bar i{display:block;background:#e1dfd4;height:100%;width:100%}#bossFill{background:var(--red)}#bossPhase{font-size:11px;margin-top:6px;color:#c5c9bd}.bottom{position:absolute;left:30px;bottom:28px;width:230px;padding:12px 14px;background:#152226b5}.health-label{display:flex;justify-content:space-between;font-size:11px;margin-bottom:7px}.stamina{height:3px;border:0;margin-top:7px}.stamina i{background:#c3af80}.supplies{font-size:11px;margin-top:8px;color:#c8cfc3}.controls{position:absolute;bottom:26px;right:30px;text-align:right;font-size:11px;line-height:2.3;color:#c6cfc4;background:linear-gradient(270deg,#142125c4,#14212500);padding:8px}.controls kbd{margin-left:7px}#tutorial{position:absolute;left:50%;bottom:143px;transform:translateX(-50%);width:390px;background:#142126ed;border:1px solid #b8b9a342;padding:14px 18px;pointer-events:auto;box-shadow:0 10px 30px #0002}#tutorial .step{color:var(--paper);letter-spacing:2px;font-size:10px}.tutorial-head{display:flex;justify-content:space-between;align-items:center}#tutorial h3{font-size:16px;margin:7px 0 3px}#tutorial p{font-size:12px;color:#c5cec7;margin:0}#guideBar{height:2px;margin-top:12px;background:#414b48}#guideBar i{display:block;height:100%;background:#ccbb8e;transition:width .2s}.prompt{position:absolute;left:50%;bottom:102px;transform:translateX(-50%);background:#152127ed;border:1px solid #b9bfac5c;padding:9px 18px;white-space:nowrap;font-size:12px}#toast{position:absolute;top:205px;left:50%;transform:translateX(-50%);max-width:570px;background:#142226e8;border:1px solid var(--line);padding:11px 21px;text-align:center;font-size:13px;opacity:0;transition:opacity .15s;pointer-events:none}#lock{position:fixed;display:none;width:25px;height:25px;border:1px solid #e6d8b5;transform:translate(-50%,-50%) rotate(45deg);pointer-events:none}#damage{position:fixed;inset:0;pointer-events:none;box-shadow:inset 0 0 140px #b331376a;opacity:0}#labels{position:fixed;inset:0;pointer-events:none}.world-label{position:absolute;transform:translate(-50%,-100%);font-size:11px;white-space:nowrap;text-shadow:0 2px 4px #000;background:#132025a8;padding:2px 7px;border-radius:2px;color:#e6e3d3}.world-label.npc{color:#eddcb4;border-bottom:1px solid #e0ce9855}.overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#081419ba;backdrop-filter:blur(3px);z-index:15}#overlay{justify-content:flex-start;background:linear-gradient(90deg,#0c191bf5,#0c191bbb 47%,#0c191b10);backdrop-filter:none}.titlepanel{margin-left:8vw;max-width:520px}.brand{font-family:serif;font-size:104px;line-height:1.2;letter-spacing:17px;font-weight:500;margin:17px 0}.subtitle{font-size:12px;letter-spacing:7px;color:#bfcbc3}.divider{width:42px;height:2px;background:var(--red);margin:28px 0}.intro{font-size:15px;line-height:2;color:#c7d0c7}.intro small{display:block;font-size:12px;color:#97a8a1;margin-top:16px}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:24px}.fine{font-size:11px;color:#93a59d;margin-top:18px}.overlay-foot{position:absolute;left:8vw;bottom:25px;font-size:10px;letter-spacing:2px;color:#96a79f}.modal{max-height:90vh;overflow:auto;background:#152326f5;border:1px solid #bbc2ab40;box-shadow:0 20px 80px #0005;width:min(800px,90vw);padding:25px 30px}.modal h2{font-size:23px;letter-spacing:2px;margin:0 0 15px}.modal p{color:#c7d0c7}.modal .topline{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}.help-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 26px;margin:20px 0}.help-item{border-bottom:1px solid var(--line);padding:9px 0;font-size:13px;display:flex;justify-content:space-between}.help-note{background:#0b171a77;padding:12px 16px;font-size:12px;color:#bdc7be}#dialog{background:#09141950;backdrop-filter:none;align-items:flex-end;padding-bottom:105px}#dialog .modal{width:min(700px,90vw);border-left:3px solid var(--paper);padding:21px 26px}#dialogTitle{font-size:17px;margin:0 0 13px;color:#ebdcaf}#dialogText{font-size:15px;line-height:1.9;color:#d9dfd3}#dialogText small{display:block;font-size:12px;color:#a4b3a9;margin-top:14px}.dialog-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.dialog-actions button{font-size:13px}.map-modal{width:min(900px,94vw);padding:20px 25px}#fullmap{display:block;width:100%;height:min(60vh,560px);background:#0c191d;border:1px solid var(--line)}.legend{font-size:11px;line-height:1.8;color:#b8c5ba;margin-top:10px}.journal-text{line-height:1.9;font-size:14px}.journal-text h3{font-size:15px;color:#e1d5b6;margin:20px 0 8px}#error{position:fixed;inset:0;background:#1c2a2e;z-index:100;padding:10vw;font-size:18px}.save-status{font-size:10px;color:#9eaea4;margin-top:5px}@media(max-width:1050px){#hud{padding:18px}.right{right:18px;top:18px}#map{width:130px;height:130px}.quest{max-width:220px;padding:8px 10px}.location{font-size:22px}#tutorial{width:330px;bottom:160px}.controls{right:18px;max-width:480px;font-size:10px}.bottom{left:18px;width:200px}#boss{top:78px;width:300px}#nav{top:20px}.titlepanel{margin-left:7vw}.brand{font-size:86px}}@media(max-height:650px){#tutorial{bottom:127px;padding:9px 14px}#toast{top:148px}#dialog{padding-bottom:50px}.titlepanel .divider{margin:16px 0}.brand{font-size:70px}.intro{font-size:13px}.quest{margin-top:12px}.modal{max-height:94vh}}
 
@@ -254,7 +254,7 @@ button:focus-visible,select:focus-visible{outline:2px solid #e0bf82;outline-offs
 <canvas id="game" tabindex="0" aria-label="무색 3D 게임"></canvas><div class="vignette"></div><div id="labels"></div>
 <div id="hud"><div class="eyebrow">CHAPTER 01 / A RUMOR IN THE WOODS</div><div class="location" id="regionName">새벽마을</div><div class="tag" id="regionTag">안전 구역 · 사냥꾼의 첫걸음</div>
 <div class="quest"><h3 id="questTitle">첫 번째 발걸음</h3><div id="questLines"></div><div id="boarQuestHUD" class="hidden"><span id="boarQuestText"></span><button id="boarQuestTrack" class="small secondary">추적</button></div><div id="rioQuestHUD" class="hidden"><span id="rioQuestText"></span><button id="rioQuestTrack" class="small secondary">제작 의뢰 추적</button></div></div>
-<div class="right"><div class="eyebrow">MUSAEK / OFFLINE 0.12.0</div><canvas id="map" width="240" height="240" aria-label="주변 지도"></canvas><div class="mapHint">N ↑　E →　<kbd>Tab</kbd> 전체 지도</div><div class="tag" id="cameraInfo">60° 내려다보기</div><div class="save-status" id="saveStatus"></div></div>
+<div class="right"><div class="eyebrow">MUSAEK / OFFLINE 0.12.6</div><canvas id="map" width="240" height="240" aria-label="주변 지도"></canvas><div class="mapHint">N ↑　E →　<kbd>Tab</kbd> 전체 지도</div><div class="tag" id="cameraInfo">60° 내려다보기</div><div class="save-status" id="saveStatus"></div></div>
 <button id="statAlert" class="hidden" type="button" aria-label="미분배 능력치">!</button><div id="nav"></div><div id="boss" class="hidden"><div class="boss-overline">MID BOSS / THE CRIMSON BEAST</div><div class="boss-name">제보당의 붉은 괴수</div><div class="bar"><i id="bossFill"></i></div><div id="bossHP"></div><div id="bossPhase"></div></div>
 <div class="bottom">
 <div class="health-label"><span><span id="heroLevel">Lv.1</span> · 사냥꾼</span><span id="healthText">HP 100 / 100</span></div>
@@ -269,7 +269,7 @@ button:focus-visible,select:focus-visible{outline:2px solid #e0bf82;outline-offs
 <div id="hotbar" aria-label="장착 스킬 4칸"><div class="skill-slot" id="skill0"><div class="cooldown-shade"></div><kbd>1</kbd><span class="skill-icon">╱</span><span class="skill-name">베기</span><span class="skill-cd"></span></div><div class="skill-slot" id="skill1"><div class="cooldown-shade"></div><kbd>2</kbd><span class="skill-icon">▧</span><span class="skill-name">잠김</span><span class="skill-cd"></span></div><div class="skill-slot" id="skill2"><div class="cooldown-shade"></div><kbd>3</kbd><span class="skill-icon">▧</span><span class="skill-name">잠김</span><span class="skill-cd"></span></div><div class="skill-slot" id="skill3"><div class="cooldown-shade"></div><kbd>4</kbd><span class="skill-icon">▧</span><span class="skill-name">잠김</span><span class="skill-cd"></span></div><div class="hotbar-caption">1 – 4 · 스킬　/　F · 대시　/　Space · 점프</div></div>
 <div id="tutorial"><div class="tutorial-head"><span class="step" id="guideStep">조작 01 / 07</span><button id="skipGuide" class="secondary small">접기</button></div><h3 id="guideTitle"></h3><p id="guideText"></p><div id="guideBar"><i></i></div></div>
 <div id="commissionHUD" class="hidden"></div><div id="prompt" class="prompt hidden"></div><div id="toast" role="status"></div></div><div id="lock"></div><div id="damage"></div>
-<div id="overlay" class="overlay"><section class="menu-identity"><div class="menu-kicker" id="overline">A WORLD WITHOUT COLOR</div><h1 class="brand" id="title">무색</h1><div class="subtitle" id="subtitle">THE STOLEN COLORS</div><div class="menu-story"><strong>세상이 잊어도,<br>당신의 여정은 남는다.</strong>잿빛 늪과 오래된 숲.<br>아직 꺼지지 않은 마을의 불빛.<br>멈춰 둔 모험으로 돌아오세요.</div><div class="menu-chapter">CHAPTER 01　/　제보당의 붉은 괴수<br><div class="menu-divider"></div>OFFLINE FILE EDITION　—　PROTOTYPE 0.12.0</div><button id="sound" class="secondary menu-sound">소리 설정 · 클릭해서 켜기</button><button id="openClock" class="secondary menu-sound">시계 설정 · 로컬 / 서버</button></section><section class="menu-shell"><div id="connectionBadge" class="menu-status"><i class="status-light"></i><span>로컬 저장 확인 중</span></div><div id="menuContent"></div><div id="menuMessage" class="menu-message" role="status" aria-live="polite"></div></section></div>
+<div id="overlay" class="overlay"><section class="menu-identity"><div class="menu-kicker" id="overline">A WORLD WITHOUT COLOR</div><h1 class="brand" id="title">무색</h1><div class="subtitle" id="subtitle">THE STOLEN COLORS</div><div class="menu-story"><strong>세상이 잊어도,<br>당신의 여정은 남는다.</strong>잿빛 늪과 오래된 숲.<br>아직 꺼지지 않은 마을의 불빛.<br>멈춰 둔 모험으로 돌아오세요.</div><div class="menu-chapter">CHAPTER 01　/　제보당의 붉은 괴수<br><div class="menu-divider"></div>OFFLINE FILE EDITION　—　PROTOTYPE 0.12.6</div><button id="sound" class="secondary menu-sound">소리 설정 · 클릭해서 켜기</button><button id="openClock" class="secondary menu-sound">시계 설정 · 로컬 / 서버</button></section><section class="menu-shell"><div id="connectionBadge" class="menu-status"><i class="status-light"></i><span>로컬 저장 확인 중</span></div><div id="menuContent"></div><div id="menuMessage" class="menu-message" role="status" aria-live="polite"></div></section></div>
 <input id="accountBackupFile" type="file" accept=".json,.musaek,application/json" class="hidden">
 <div id="storagePanel" class="overlay hidden"><section class="modal storage-modal"><div class="topline"><div><div class="eyebrow">THE HUNTER'S ARCHIVE</div><h2 id="storageTitle">여정의 기록</h2></div><button id="closeStorage" class="secondary small">Esc · 닫기</button></div><p class="storage-topnote" id="storageHint"></p><div id="saveCards" class="save-cards"></div><div class="storage-tools"><button id="storageExport" class="secondary">현재 진행 파일로 내보내기</button><button id="storageImport" class="secondary">기존 저장 파일 가져오기</button><button id="storageAccountExport" class="secondary">계정 전체 백업</button><button id="storageRefresh" class="secondary">목록 새로고침</button></div><div id="storageMessage" class="storage-note" role="status" aria-live="polite"></div></section></div>
 
@@ -279,7 +279,7 @@ button:focus-visible,select:focus-visible{outline:2px solid #e0bf82;outline-offs
 
 <div id="dialog" class="overlay hidden"><section class="modal"><h2 id="dialogTitle"></h2><div id="dialogText"></div><div id="dialogActions" class="dialog-actions"></div></section></div>
 <div id="help" class="overlay hidden"><section class="modal"><div class="topline"><h2>사냥꾼의 조작 안내</h2><button id="closeHelp" class="secondary small">H · 닫기</button></div><div class="help-resource"><b>마나 MP ≠ 기력</b><p>마나: 공격·스킬·달리기의 연료. 기력: 일반·강공격·대시의 여력.<br>일반·강공격은 두 자원을 함께 쓰고, 스킬은 마나만, F 대시는 기력만 씁니다.<br>Q 하급 회복약은 HP만 회복합니다. 자세한 설명은 이 도움말 아래의 생존 수첩에서 다시 읽으세요.</p></div><div class="help-grid"><div class="help-item"><span>제작한 방패로 1회 방어</span><kbd>G 누르기</kbd></div>
-<div class="help-item"><span>이동</span><kbd>W A S D</kbd></div><div class="help-item"><span>상호작용 · 대화</span><kbd>R</kbd></div><div class="help-item"><span>점프</span><kbd>Space</kbd></div><div class="help-item"><span>달리기 · MP 초당 0.1</span><kbd>Shift</kbd></div><div class="help-item"><span>대시 · 공격 중 사용 가능</span><kbd>F</kbd></div><div class="help-item"><span>약공격 · 3연타</span><kbd>좌클릭</kbd></div><div class="help-item"><span>강공격</span><kbd>우클릭</kbd></div><div class="help-item"><span>가까운 적 조준 고정</span><kbd>마우스 가운데</kbd></div><div class="help-item"><span>시야 이동</span><kbd>마우스 이동</kbd></div><div class="help-item"><span>카메라 거리</span><kbd>휠</kbd></div><div class="help-item"><span>하급 회복약 · HP +30 (고정) / 8초</span><kbd>Q</kbd></div><div class="help-item"><span>탐험 지도 · 모험 기록</span><kbd>Tab / J</kbd></div><div class="help-item"><span>메뉴 · 저장 · 불러오기</span><kbd>Esc / P</kbd></div><div class="help-item"><span>소리 설정 / 음소거</span><kbd>B / M</kbd></div></div><div class="help-item"><span>상태 · 능력치 · 스킬 장착</span><kbd>E</kbd></div><div class="help-item"><span>스킬 (누르고 있으면 재사용)</span><kbd>1 / 2 / 3 / 4</kbd></div><div class="help-note">베기: MP 3.5 / 재사용 1초. 일반 공격 MP 0.5, 강공격 MP 1.0. 기력 소모는 아래 현재 무기 기준을 확인하세요. 피해 숫자는 실제 감소한 HP입니다.<br>F5: 슬롯 1에 빠른 저장 · F9: 불러오기 목록. 로컬 계정은 이 브라우저에 저장됩니다. 파일 이동 전에 계정 백업을 보관하세요. 달리는 동안 MP 자연 회복은 멈춥니다. MP가 바닥나면 걷기로 전환되며, 회복 후 Shift를 떼었다가 다시 누르세요. 카메라는 60도 각도를 유지합니다. 마을은 안전 구역입니다. 먼저 길잡이 세라에게 마나·기력과 상태창을 배우고 미분배 포인트를 모두 사용한 뒤, 슬라임 5마리·판매·휴식의 입문 의뢰를 완료하세요. 마을 서쪽 대장간에서는 무기·방어구·아티팩트·미궁 입장권을 제작하고, 모루에서 무기를 강화·복구·전승할 수 있습니다. 이후 로안의 슬라임 25마리 메인 의뢰를 받고 완료 보고하면 미궁 입장 자격을 얻습니다. 외부에서 미궁에 들어갈 때마다 입장권 1개를 사용합니다.</div><div id="actualStaminaHelp" class="help-note"></div><div id="survivalNotes"></div><div class="actions"><button id="showGuide" class="secondary">단계별 가이드 다시 보기</button></div></section></div>
+<div class="help-item"><span>이동</span><kbd>W A S D</kbd></div><div class="help-item"><span>상호작용 · 대화</span><kbd>R</kbd></div><div class="help-item"><span>점프</span><kbd>Space</kbd></div><div class="help-item"><span>달리기 · MP 초당 0.1</span><kbd>Shift</kbd></div><div class="help-item"><span>대시 · 공격 중 사용 가능</span><kbd>F</kbd></div><div class="help-item"><span>약공격 · 3연타</span><kbd>좌클릭</kbd></div><div class="help-item"><span>강공격</span><kbd>우클릭</kbd></div><div class="help-item"><span>가까운 적 조준 고정</span><kbd>마우스 가운데</kbd></div><div class="help-item"><span>시야 이동</span><kbd>마우스 이동</kbd></div><div class="help-item"><span>카메라 거리</span><kbd>휠</kbd></div><div class="help-item"><span>하급 회복약 · HP +30 (고정) / 8초</span><kbd>Q</kbd></div><div class="help-item"><span>탐험 지도 · 모험 기록(숲의 미궁 내부)</span><kbd>Tab / J</kbd></div><div class="help-item"><span>메뉴 · 저장 · 불러오기</span><kbd>Esc / P</kbd></div><div class="help-item"><span>소리 설정 / 음소거</span><kbd>B / M</kbd></div></div><div class="help-item"><span>상태 · 능력치 · 스킬 장착</span><kbd>E</kbd></div><div class="help-item"><span>스킬 (누르고 있으면 재사용)</span><kbd>1 / 2 / 3 / 4</kbd></div><div class="help-note">베기: MP 3.5 / 재사용 1초. 일반 공격 MP 0.5, 강공격 MP 1.0. 기력 소모는 아래 현재 무기 기준을 확인하세요. 피해 숫자는 실제 감소한 HP입니다.<br>F5: 슬롯 1에 빠른 저장 · F9: 불러오기 목록. 로컬 계정은 이 브라우저에 저장됩니다. 파일 이동 전에 계정 백업을 보관하세요. 달리는 동안 MP 자연 회복은 멈춥니다. MP가 바닥나면 걷기로 전환되며, 회복 후 Shift를 떼었다가 다시 누르세요. 카메라는 60도 각도를 유지합니다. 마을은 안전 구역입니다. 먼저 길잡이 세라에게 마나·기력과 상태창을 배우고 미분배 포인트를 모두 사용한 뒤, 슬라임 5마리·판매·회복약 구매·수습 장검 제작·휴식의 입문 의뢰를 완료하세요. 마을 서쪽 대장간에서는 무기·방어구·아티팩트·미궁 입장권을 제작하고, 모루에서 무기를 강화·복구·전승할 수 있습니다. 이후 로안의 슬라임 25마리 메인 의뢰를 받고 완료 보고하면 미궁 입장 자격을 얻습니다. 외부에서 미궁에 들어갈 때마다 입장권 1개를 사용합니다.</div><div id="actualStaminaHelp" class="help-note"></div><div id="survivalNotes"></div><div class="actions"><button id="showGuide" class="secondary">단계별 가이드 다시 보기</button></div></section></div>
 <div id="mapOverlay" class="overlay hidden"><section class="modal map-modal"><div class="topline"><div><div class="eyebrow">FIELD NOTES / EXPLORATION</div><h2 id="mapTitle">색을 잃은 대지</h2></div><div class="map-top-actions"><button id="townMapToggle" class="secondary small">마을 확대</button> <button id="mapExtent" class="secondary small hidden">미궁 전체 범위</button> <button id="closeMap" class="secondary small">Tab · 닫기</button></div></div>
 <div class="map-layout"><div class="map-sheet"><canvas id="fullmap" width="1000" height="660" aria-label="탐험 지도"></canvas><div class="legend" id="mapLegend"></div></div><aside class="map-sidebar"><div class="map-objective"><div class="eyebrow">목적지</div><strong id="mapObjective"></strong><p id="mapObjectiveNote"></p><small id="mapDistance"></small><button id="mapResetTarget" class="secondary small">의뢰 목적지로</button></div><div id="mapTravel" class="map-travel hidden"></div><div id="mapPlaces"></div><div class="map-note" id="mapHintText"></div></aside></div></section></div>
 <div id="journal" class="overlay hidden"><section class="modal"><div class="topline"><h2>모험 기록</h2><button id="closeJournal" class="secondary small">J · 닫기</button></div><div id="journalText" class="journal-text"></div></section></div>
@@ -306,12 +306,13 @@ button:focus-visible,select:focus-visible{outline:2px solid #e0bf82;outline-offs
 <script>
 'use strict';
 (()=>{
-/* MUSAEK 0.12.0 — progression, dungeon and field-balance expansion.
+/* MUSAEK 0.12.6 — puzzle integrity, repeat-boss reset, transition input continuity, and balance polish.
  * All probabilities below are independent Bernoulli rolls, at Luck 5.
  * Skill power is not HP damage: strength and magic can modify it.
  */
 
-const PATCH_REVISION=25;
+const PATCH_REVISION=31;
+const DUNGEON_PUZZLE_REVISION=2;
 const RESPEC_GRANT_REVISION=1;
 const WORLD_LAYOUT_VERSION=2;
 const ABRAM_RELOCATION=Object.freeze({dx:-188,dz:-250});
@@ -322,6 +323,7 @@ const COMBAT_BUFFER_SECONDS=.10;
 const NAV_CONFIG=Object.freeze({cell:1.5,sector:8,maxSectorNodes:128,maxNodes:2200,requestsPerTick:2,retrySeconds:1.25});
 const NAV_RUNTIME={layers:new Map(),requests:0,calls:0,expanded:0,sectorExpanded:0,cacheHits:0,failures:0};
 const PRE_PATCH_HP=Object.freeze({townThug:90,roadSlime:15,swampSlime:20,forestWolf:68,forestBoar:104,mazeWolf:114,elderWolf:186,werewolf:2400});
+const PRE_V0124_HP=Object.freeze({werewolf:2500});
 // Optional UTC authority. No network request unless the player configures a URL.
 // A server sample improves clock consistency; it does NOT make an editable offline
 // client/save authoritative or prevent cheating. Paused crafting/board clocks stay separate.
@@ -383,8 +385,8 @@ const WEAPON_PROFILES=Object.freeze({
 let shopTab='loot',dialogueReturn='play';
 
 const BALANCE=Object.freeze({
- version:7,balanceRevision:16,statGrowthRevision:2,progressionRevision:1,contactAttackSpeed:1.25,hitAttackSpeed:.75,hitSlowDuration:1,maxLevel:50,initialStat:5,initialPoints:5,pointsPerLevel:1,
- slotLevels:[1,5,10,15],xpGapZero:6,playerScale:.84*1.2,bossScale:1.5,
+ version:8,balanceRevision:19,statGrowthRevision:2,progressionRevision:1,contactAttackSpeed:1.25,hitAttackSpeed:.75,hitSlowDuration:1,maxLevel:50,initialStat:5,initialPoints:5,pointsPerLevel:1,
+ slotLevels:[1,5,10,15],xpGapZero:11,playerScale:.84*1.2,bossScale:1.5,
  basicMinPower:3,basicMaxPower:3,heavyPower:8,basicMana:.5,heavyMana:1.0,
  criticalChance:.025,criticalMinMultiplier:1.5,criticalMaxMultiplier:2.5,potionName:'하급 회복약',potionHealMin:30,potionHealMax:30,potionCooldown:8,potionPrice:18,
  maxPotions:30,restPotionMinimum:1,sprintManaPerSecond:.1,xpBase:32,xpExponent:1.60,bossRespawnMs:3*60*60*1000
@@ -438,10 +440,10 @@ const MONSTERS=Object.freeze({
  forestBoar:{name:'잿빛 엄니 멧돼지',type:'boar',rarity:'uncommon',level:7,hp:110,xp:100,attack:29,respawn:80,scale:1,drops:[['boarHide',.55],['boarTusk',.12],['forestBoarCore',.01,true]]},
  mazeWolf:{name:'미궁 늑대',type:'wolf',rarity:'common',level:8,hp:120,xp:115,attack:27,respawn:60,scale:1.12,drops:[['darkFur',.65],['moonClaw',.18],['mazeWolfCore',.01,true]]},
  elderWolf:{name:'미궁의 고참 늑대',type:'wolf',rarity:'rare',level:10,hp:195,xp:190,attack:35,respawn:60,scale:1.3,drops:[['darkFur',.80],['moonClaw',.30],['elderFang',.08],['elderWolfCore',.01,true]]},
- werewolf:{name:'제보당의 붉은 괴수',type:'boss',rarity:'boss',level:12,hp:2500,xp:1200,attack:36,claw:36,rush:48,slam:56,enrage:1.3,respawn:10800,scale:1.5,drops:[['redGem',1],['beastFang',.35],['werewolfCore',.10,true]]},
+ werewolf:{name:'제보당의 붉은 괴수',type:'boss',rarity:'boss',level:12,hp:2400,xp:1200,attack:36,claw:36,rush:48,slam:56,enrage:1.3,respawn:10800,scale:1.5,drops:[['redGem',1],['beastFang',.35],['werewolfCore',.10,true]]},
  greyGoat:{name:'회백 산양',type:'goat',rarity:'common',level:13,hp:165,xp:220,attack:35,respawn:75,scale:1.02,drops:[['greyHorn',.58],['greyGoatCore',.01,true]]},
  ashCat:{name:'잿가루 살쾡이',type:'cat',rarity:'common',level:14,hp:140,xp:250,attack:38,respawn:70,scale:.95,drops:[['ashClaw',.52],['ashCatCore',.01,true]]},
- cliffCrow:{name:'큰부리 까마귀',type:'crow',rarity:'uncommon',level:15,hp:38,xp:230,attack:33,respawn:55,scale:.92,drops:[['crowFeather',.68],['cliffCrowCore',.01,true]]},
+ cliffCrow:{name:'큰부리 까마귀',type:'crow',rarity:'uncommon',level:15,hp:38,xp:200,attack:33,respawn:55,scale:.92,drops:[['crowFeather',.68],['cliffCrowCore',.01,true]]},
  blackBeetle:{name:'검은 갑각충',type:'beetle',rarity:'uncommon',level:17,hp:235,xp:340,attack:41,respawn:85,scale:1.02,drops:[['blackShell',.58],['blackBeetleCore',.01,true]]},
  stoneGolem:{name:'석분 골렘',type:'golem',rarity:'rare',level:19,hp:355,xp:480,attack:50,slam:61,respawn:105,scale:1.18,drops:[['stoneHeart',.52],['stoneGolemCore',.01,true]]},
  mistWraith:{name:'안개 망령',type:'wraith',rarity:'elite',level:21,hp:265,xp:620,attack:47,respawn:[100,120],scale:1.08,drops:[['mistThread',.48],['mistWraithCore',.01,true]]},
@@ -803,8 +805,20 @@ function showTicketRequirement(){
  const r=MISC_RECIPES.dungeonTicket;
  openDialogue('미궁의 문 · 입장권 필요',`<h3>봉인을 통과할 입장권이 필요하다.</h3><p>새벽마을 <b>브란의 대장간 → 기타</b>에서 제작하세요.<br>${recipeMaterialsText(r)}<br>제작 ${r.craft}초 · 입장할 때 1개 사용</p><small>첫 클리어 이후에도 새로 입장할 때는 필요합니다.<br>미궁 내부 저장을 이어 하거나 밖으로 나올 때는 쓰지 않습니다.</small>`);return false;
 }
+function dungeonBossStatus(kind='forest'){
+ if(kind==='abram'){
+  const g=ironGiantBoss();
+  if(!abramCaveCleared())return `첫 목표 · 붉은 철갑 거인 Lv.${MONSTERS.ironGiant.level}`;
+  if(g?.hp>0)return `붉은 철갑 거인 재등장 중 · Lv.${g.level}`;
+  return state.ironGiantRespawnAt?`붉은 철갑 거인 다음 출현 ${seoulClockLabel(state.ironGiantRespawnAt)}`:'붉은 철갑 거인 재등장 대기';
+ }
+ const b=boss();
+ if(!state.cleared)return `첫 목표 · 제보당의 붉은 괴수 Lv.${b?.level||MONSTERS.boss.level}`;
+ if(b?.hp>0)return `제보당의 붉은 괴수 재등장 중 · Lv.${b.level}`;
+ return state.bossRespawnAt?`제보당의 붉은 괴수 다음 출현 ${seoulClockLabel(state.bossRespawnAt)}`:'제보당의 붉은 괴수 재등장 대기';
+}
 function confirmDungeonEntry(){
- openDialogue('숲의 미궁',`<p>미궁 입장권 <b>1개</b>를 사용합니다. 보유 ${hero.inventory.dungeonTicket||0}개.</p><small>최소 입장 Lv.${DUNGEON_ACCESS.forest.minLevel} · 권장 ${DUNGEON_ACCESS.forest.recommended} · 해방된 미궁의 출구는 계속 열려 있습니다.</small>`,[
+ openDialogue('숲의 미궁',`<p>미궁 입장권 <b>1개</b>를 사용합니다. 보유 ${hero.inventory.dungeonTicket||0}개.</p><p><b>${escapeText(dungeonBossStatus('forest'))}</b></p><small>최소 입장 Lv.${DUNGEON_ACCESS.forest.minLevel} · 권장 ${DUNGEON_ACCESS.forest.recommended} · 보스가 재등장 대기 중이어도 일반 늑대 탐사는 가능합니다.</small>`,[
   {label:'아직 들어가지 않는다',run:()=>{}},{label:'입장권 사용 · 들어가기',run:enterDungeon}
  ]);
 }
@@ -812,6 +826,13 @@ function confirmDungeonEntry(){
 // Seconds of vulnerability after an attack. Wind-up warnings remain unchanged.
 const DUNGEON_RULES=Object.freeze({population:21,respawnWarning:2,safeSpawnRadius:5});
 const ENEMY_RECOVERY=Object.freeze({slime:.90,wolf:.82,boar:.87,bossRush:1.20,bossMelee:1.35,bossEnraged:.90});
+const WEREWOLF_GIMMICKS=Object.freeze([
+ {bit:1,ratio:.875,code:1,name:'붉은 파동'},
+ {bit:2,ratio:.75,code:2,name:'사냥의 2연속 돌진'},
+ {bit:4,ratio:.50,code:3,name:'2페이즈 · 붉은 광폭화'},
+ {bit:8,ratio:.25,code:4,name:'균열 강타 · 3연속 내려찍기'},
+ {bit:16,ratio:.125,code:5,name:'최후의 발악'}
+]);
 // Display-only rounding: never feed this formatter back into HP, MP or timers.
 const NUMBER_DISPLAY=new Intl.NumberFormat('ko-KR',{minimumFractionDigits:0,maximumFractionDigits:1});
 function fmt(value){
@@ -828,7 +849,9 @@ function currencyRuleText(){return '1 G = 10 S · G는 골드, S는 실버';}
 // Precise mechanics with legible labels: 1.25x is shown as +25%, not rounded to 1.3x.
 function contactSpeedText(){return '접촉 공속 +'+fmt((BALANCE.contactAttackSpeed-1)*100)+'%';}
 function xpRequired(level){return Math.ceil(BALANCE.xpBase*Math.pow(level,BALANCE.xpExponent));}
-function xpGapMultiplier(playerLevel,monsterLevel){const d=playerLevel-monsterLevel;return d>=6?0:d===5?.2:d>=3?.5:1;}
+function xpGapMultiplier(playerLevel,monsterLevel){const d=playerLevel-monsterLevel;if(d<=2)return 1;if(d<=4)return .5;if(d<=6)return .2;if(d<=8)return .1;if(d<=10)return .05;return 0;}
+function repeatBossXP(e){if(!e||!(e.type==='boss'||e.boss||e.rarity==='boss'))return false;if(e.archetype==='ironGiant')return !!state.town?.abramCaveCleared;return e.type==='boss'||e.archetype==='werewolf'?!!state.cleared:false;}
+function bossXPMultiplier(e){return repeatBossXP(e)?.5:1;}
 function rollSkillPower(skill,rng=Math.random){
  if(skill!=='cleave')return SKILLS[skill]?.power||5;
  const r=rng(),v=rng();return r<.8?6+1.5*v:r<.9?5+v:7.5+2.5*v;
@@ -1227,7 +1250,26 @@ function buildField(){
  buildTern();
 }
 // Deterministic 25 x 25 maze: 12 x 12 connected rooms with dead ends and loops.
+const TRACK_MARKS=Object.freeze([
+ {id:0,key:'wolf',name:'늑대 발자국',short:'네 발의 흔적'},
+ {id:1,key:'biped',name:'두 발의 흔적',short:'일어선 흔적'},
+ {id:2,key:'claw',name:'세 갈래 발톱 자국',short:'발톱 자국'}
+]);
+const FLOOR_TRACK_ORDER=Object.freeze([0,1,2]);
 const MAZE={size:25,cell:4,grid:[],entry:{c:1,r:23},exit:{c:23,r:1},runes:[],pages:[],plates:[{x:24,z:-57,id:0},{x:36,z:-57,id:1},{x:48,z:-57,id:2}]};
+function trackMark(id){return TRACK_MARKS[id]||TRACK_MARKS[0];}
+function buildTrackPlate(s){
+ prop(cylinder,s.x,.035,s.z,2.6,.07,2.6,C.dark);
+ if(s.id===0){
+  prop(cylinder,s.x,.081,s.z+.18,.72,.035,.58,C.white);
+  for(const [dx,dz,r] of [[-.54,-.34,.22],[-.18,-.50,.22],[.18,-.50,.22],[.54,-.34,.22]])prop(cylinder,s.x+dx,.082,s.z+dz,r*2,.035,r*2,C.white);
+ }else if(s.id===1){
+  prop(cube,s.x-.34,.081,s.z+.38,.42,.035,1.05,C.white,0,-.10,0);
+  prop(cube,s.x+.34,.081,s.z-.38,.42,.035,1.05,C.white,0,.10,0);
+ }else{
+  for(const [dx,ry] of [[-.42,-.13],[0,0],[.42,.13]])prop(cube,s.x+dx,.081,s.z,.13,.035,1.45,C.white,0,ry,0);
+ }
+}
 function cellPos(c,r){return {x:(c-12)*4,z:(r-12)*4};}
 function mazeCell(x,z){return {c:Math.round(x/4+12),r:Math.round(z/4+12)};}
 function mazeDistances(c,r){const out=new Map([[`${c},${r}`,0]]),q=[[c,r]];for(let i=0;i<q.length;i++){const [x,y]=q[i],d=out.get(`${x},${y}`);for(const [dx,dz]of [[1,0],[-1,0],[0,1],[0,-1]]){const nx=x+dx,nz=y+dz,k=`${nx},${nz}`;if(nx>=0&&nx<25&&nz>=0&&nz<25&&!MAZE.grid[nz][nx]&&!out.has(k)){out.set(k,d+1);q.push([nx,nz]);}}}return out;}
@@ -1264,7 +1306,7 @@ function buildDungeon(){
  prop(cube,36,1.6,-94,46,3.2,2,C.stone);rect(36,-94,23,1,9);
  prop(cube,28,1.6,-50,28,3.2,2,C.stone);rect(28,-50,14,1,9);
  prop(cube,53,1.6,-50,12,3.2,2,C.stone);rect(53,-50,6,1,9);
- for(const s of MAZE.plates){prop(cylinder,s.x,.035,s.z,2.6,.07,2.6,C.dark);for(let j=0;j<=s.id;j++)prop(cube,s.x+(j-s.id/2)*.33,.081,s.z,.16,.03,.8,C.white);}
+ for(const s of MAZE.plates)buildTrackPlate(s);
  prop(cube,36,.85,-52,.9,1.7,.7,C.stone);circle(36,-52,.55,2);
  prop(cube,-44,.8,41,.7,1.6,.7,C.stone);circle(-44,41,.45,2);
  for(const [x,z]of [[18,-70],[54,-70],[18,-89],[54,-89]]){prop(cylinder,x,1.4,z,.9,2.8,.9,C.dark);prop(cone,x,3,z,.6,.7,.6,C.light);circle(x,z,.5,5);}
@@ -1474,7 +1516,7 @@ function equipSkill(slot,id){
  if(id&&hero.slots.some((s,i)=>s===id&&i!==slot))return false;
  hero.slots[slot]=id;saveGame();return true;
 }
-function xpFor(e){const m=xpGapMultiplier(hero.level,e.level);return m===0?0:Math.round(e.xp*m*(1+xpBonus()));}
+function xpFor(e){const gap=xpGapMultiplier(hero.level,e.level),bossScale=bossXPMultiplier(e);return gap===0?0:Math.round(e.xp*gap*bossScale*(1+xpBonus()));}
 function addXP(amount){
  if(!Number.isFinite(amount)||amount<=0||hero.level>=BALANCE.maxLevel)return 0;
  hero.xp+=Math.floor(amount);let ups=0;
@@ -1499,7 +1541,7 @@ function rewardEnemy(e){
  if(firstSlime)hero.firstSlimeRewarded=true;
  const xp=xpFor(e),drops=[];addXP(xp);
  for(const [id,p,exact=false] of e.drops){const chance=exact?p:dropChance(p);if(firstSlime&&id==='slimeGel'||Math.random()<chance){hero.inventory[id]=(hero.inventory[id]||0)+1;drops.push(ITEMS[id].name);}}
- lastReward=`${e.name} · ${xp>0?'경험치 +'+xp:'경험치 0 (레벨 차이 '+Math.abs(hero.level-e.level)+')'}${drops.length?' · '+drops.join(', '):''}`;
+ lastReward=`${e.name} · ${xp>0?'경험치 +'+xp:'경험치 0 (레벨 차이 '+Math.abs(hero.level-e.level)+')'}${repeatBossXP(e)?' · 재토벌 EXP 50%':''}${drops.length?' · '+drops.join(', '):''}`;
  floatText(e.x,e.z,xp>0?'EXP +'+xp:'EXP 0',xp>0?'xp':'muted',2.2);
  if(drops.length)toast(lastReward,2.5);
  saveGame();
@@ -1607,7 +1649,7 @@ function applyHero(saved){
  if(hero.respecGrantRevision<RESPEC_GRANT_REVISION){hero.inventory.statResetTicket=(hero.inventory.statResetTicket||0)+1;hero.respecGrantRevision=RESPEC_GRANT_REVISION;}
  hero.equipment={};for(const id of Object.keys(GEAR)){if(id==='starterSword')continue;const n=num(saved.equipment?.[id],0,0,99);if(n)hero.equipment[id]=n;}
  hero.gear={weapon:'starterSword',artifact:null,armor:null,shield:null};for(const slot of GEAR_SLOTS){const id=saved.gear?.[slot];if(id==='starterSword'&&slot==='weapon'||GEAR[id]?.slot===slot&&((hero.equipment[id]||0)>0))hero.gear[slot]=id;}
- hero.craft=saved.craft&&craftRecipe(saved.craft.gearId)&&Number.isFinite(saved.craft.finishAt)?{gearId:saved.craft.gearId,startedAt:Number(saved.craft.startedAt)||gameNow(),finishAt:Number(saved.craft.finishAt),goldPaid:Number.isFinite(saved.craft.goldPaid)?goldAmount(saved.craft.goldPaid):null,commission:saved.craft.gearId===RIO_QUEST_RULES.gearId&&saved.craft.commission===RIO_QUEST_RULES.id?RIO_QUEST_RULES.id:null}:null;
+ hero.craft=saved.craft&&craftRecipe(saved.craft.gearId)&&Number.isFinite(saved.craft.finishAt)?{gearId:saved.craft.gearId,startedAt:Number(saved.craft.startedAt)||gameNow(),finishAt:Number(saved.craft.finishAt),goldPaid:Number.isFinite(saved.craft.goldPaid)?goldAmount(saved.craft.goldPaid):null,commission:saved.craft.gearId===RIO_QUEST_RULES.gearId&&saved.craft.commission===RIO_QUEST_RULES.id?RIO_QUEST_RULES.id:null,smithId:validCraftSmithId(saved.craft.smithId)?saved.craft.smithId:inferCraftSmithId(saved.craft),forgeId:typeof saved.craft.forgeId==='string'?saved.craft.forgeId:inferCraftForgeId(saved.craft),readyNotified:saved.craft.readyNotified===true,introCommission:saved.craft.introCommission===true}:null;
  hero.mp=Number.isFinite(saved.mp)?Math.max(0,Math.min(maxMP(),saved.mp)):maxMP();
  syncGearInstances();updateCrafting(false);
  hero.specialCompleted=Array.isArray(saved.specialCompleted)?saved.specialCompleted.filter(id=>Object.values(SKILLS).some(s=>s.questId===id)):[];
@@ -1665,34 +1707,60 @@ function gearEffectText(g){
  return a.join(' · ')||'추가 효과 없음';
 }
 function recipeMaterialsText(g,html=false){return Object.entries(g.materials||{}).map(([id,n])=>{const own=hero.inventory[id]||0,t=`${ITEMS[id]?.name||id} ${own}/${n}`;return html?`<span class="${own<n?'lack':''}">${escapeText(t)}</span>`:t;}).join(html?' · ':' / ');}
+function validCraftSmithId(id){return [BLACKSMITH.id,ABRAM_SMITH.id,TERN_SMITH.id].includes(id);}
+function inferCraftSmithId(job){
+ const g=craftRecipe(job?.gearId);if(job?.commission===RIO_QUEST_RULES.id||g?.forge==='abram')return ABRAM_SMITH.id;
+ if(g?.forge==='tern')return TERN_SMITH.id;return BLACKSMITH.id;
+}
+function inferCraftForgeId(job){const id=validCraftSmithId(job?.smithId)?job.smithId:inferCraftSmithId(job);return id===ABRAM_SMITH.id?'abram_forge':id===TERN_SMITH.id?'tern_forge':'forge';}
+function craftSmith(job=hero.craft){const id=validCraftSmithId(job?.smithId)?job.smithId:inferCraftSmithId(job);return id===ABRAM_SMITH.id?ABRAM_SMITH:id===TERN_SMITH.id?TERN_SMITH:BLACKSMITH;}
+function craftReady(job=hero.craft){return !!job&&gameNow()+5>=job.finishAt;}
+function craftReadyHere(){return !!hero.craft&&craftReady(hero.craft)&&craftSmith(hero.craft).id===activeBlacksmith().id&&currentInterior()?.id===(hero.craft.forgeId||inferCraftForgeId(hero.craft));}
+function introCraftSupport(g){return !!g&&g.id==='apprenticeSword'&&state.introQuest?.stage==='craft'&&activeBlacksmith().id===BLACKSMITH.id&&currentInterior()?.id==='forge'&&!state.introQuest.craftSupportUsed;}
+function craftCharge(g){return introCraftSupport(g)?0:weaponCraftGold(g);}
+function finishCraftToInventory(job){
+ const g=craftRecipe(job?.gearId);if(!g)return false;
+ if(g.slot==='misc')hero.inventory[g.result]=(hero.inventory[g.result]||0)+(g.quantity||1);
+ else{
+  const prior=new Set(hero.gearInstances.map(x=>x.uid));hero.equipment[g.id]=(hero.equipment[g.id]||0)+1;syncGearInstances();
+  const created=hero.gearInstances.find(x=>x.gearId===g.id&&!prior.has(x.uid));if(created&&g.id===RIO_QUEST_RULES.gearId&&job.commission===RIO_QUEST_RULES.id)created.commission=RIO_QUEST_RULES.id;
+ }
+ return true;
+}
+function claimCraft(){
+ const job=hero.craft,g=craftRecipe(job?.gearId);if(!job||!g||!craftReadyHere()||!['play','dialogue'].includes(state.mode))return false;
+ if(!finishCraftToInventory(job))return false;hero.craft=null;
+ if(job.introCommission&&state.introQuest.stage==='craft'){state.introQuest.craftedSword=true;state.introQuest.stage='rest';mapChoice='quest';toast(`${g.name} 수령 완료 · 이제 돌샘 온천에서 쉬자`,5);}
+ else toast(`${g.name} 수령 완료 · ${g.slot==='misc'?'가방에 보관됨':'E → 장비에서 확인'}`,5);
+ saveGame();return true;
+}
+function openCraftClaimDialogue(){
+ if(!craftReadyHere())return false;const g=craftRecipe(hero.craft.gearId),smith=activeBlacksmith();
+ openDialogue(smith.name+' · 제작 완료',`<h3>${escapeText(g.name)} 완성</h3><p>맡긴 제작품이 준비됐어. 여기서 직접 받아 가.</p><small>제작 완료품은 자동으로 가방에 들어가지 않습니다. 수령하면 새 제작을 맡길 수 있습니다.</small>`,[{label:g.name+' 수령',run:claimCraft},{label:'나중에 받을게',run:()=>{}}]);return true;
+}
 function canCraft(id){
  if(!forgeAccessUnlocked())return false;const g=craftRecipe(id);
  const count=g?.slot==='misc'?(hero.inventory[g.result]||0):gearCount(id);
- return forgeAccessUnlocked()&&craftRecipeAvailableHere(g)&&!!g&&id!=='starterSword'&&count<99&&!hero.craft&&hero.gold>=weaponCraftGold(g)&&Object.entries(g.materials||{}).every(([mat,n])=>(hero.inventory[mat]||0)>=n);
+ return forgeAccessUnlocked()&&craftRecipeAvailableHere(g)&&!!g&&id!=='starterSword'&&count<99&&!hero.craft&&hero.gold>=craftCharge(g)&&Object.entries(g.materials||{}).every(([mat,n])=>(hero.inventory[mat]||0)>=n);
 }
 function startCraft(id){
  const g=craftRecipe(id);if(state.mode!=='forge'||state.scene!=='field'||dist(player,activeBlacksmith())>4||!inTownBuilding('forge')||!canCraft(id))return false;
  const advice=g.slot==='misc'?{quote:'숲의 봉인은 이것으로 통과할 수 있지. 입장권을 만들 건가?',old:null}:craftAdvice(g);
  $('forgePanel').classList.add('hidden');
- openDialogue(activeBlacksmith().name+' · 제작 확인',`${advice.quote}<br><br><b>${escapeText(g.name)}</b><br>${g.slot==='misc'?escapeText(g.description):escapeText(gearEffectText(g))}<br><b>${weaponLevelText(g)}</b>${weaponProgressionHTML(g)}<br><small>현재 장비: ${escapeText(advice.old?.name||'없음')}<br>${escapeText(g.slot==='weapon'?weaponProfileText(g.id):'')}<br>재료: ${recipeMaterialsText(g)}<br>제작비: <b>${moneyText(weaponCraftGold(g))}</b><br>제작 ${fmt(g.craft)}초. 확인 전에는 골드·재료를 소모하지 않습니다.</small>`,[
+ openDialogue(activeBlacksmith().name+' · 제작 확인',`${advice.quote}<br><br><b>${escapeText(g.name)}</b><br>${g.slot==='misc'?escapeText(g.description):escapeText(gearEffectText(g))}<br><b>${weaponLevelText(g)}</b>${weaponProgressionHTML(g)}<br><small>현재 장비: ${escapeText(advice.old?.name||'없음')}<br>${escapeText(g.slot==='weapon'?weaponProfileText(g.id):'')}<br>재료: ${recipeMaterialsText(g)}<br>제작비: <b>${introCraftSupport(g)?'세라 실습 지원 · 0 G':moneyText(weaponCraftGold(g))}</b><br>제작 ${fmt(g.craft)}초. 확인 전에는 골드·재료를 소모하지 않습니다.</small>`,[
   {label:'취소 · 다시 살펴보기',run:returnToForge},
   {label:g.slot==='armor'?g.name+'을 만듭니다':g.name+' 제작',run:()=>{returnToForge();commitCraft(id);}}
  ]);return true;
 }
 function updateCrafting(notify=true){
- if(!hero.craft||notify&&state.mode!=='play'||gameNow()+5<hero.craft.finishAt)return false;
- const job=hero.craft,g=craftRecipe(job.gearId);hero.craft=null;
- if(g){
-  if(g.slot==='misc')hero.inventory[g.result]=(hero.inventory[g.result]||0)+(g.quantity||1);
-  else{
-   const prior=new Set(hero.gearInstances.map(x=>x.uid));
-   hero.equipment[g.id]=(hero.equipment[g.id]||0)+1;syncGearInstances();
-   const created=hero.gearInstances.find(x=>x.gearId===g.id&&!prior.has(x.uid));
-   if(created&&g.id===RIO_QUEST_RULES.gearId&&job.commission===RIO_QUEST_RULES.id)created.commission=RIO_QUEST_RULES.id;
-  }
-  if(notify)toast(`${g.name} 제작 완료 · ${g.slot==='misc'?'가방에 보관됨':'대장간/상태창에서 장착 가능'}`,5);
+ if(!hero.craft||!craftReady(hero.craft))return false;
+ // Loading and panels must not silently consume the one-shot alert. Deliver it
+ // when normal play resumes; the smith's ! marker remains until collection.
+ if(!hero.craft.readyNotified&&notify&&state.mode==='play'){
+  hero.craft.readyNotified=true;const g=craftRecipe(hero.craft.gearId),smith=craftSmith(hero.craft);
+  toast(`제작 완료! ${g?.name||'제작품'} · ${smith.name}에게 돌아가 R로 수령`,7);SOUND.effect('craftReady');saveGame();
  }
- saveGame();return true;
+ return true;
 }
 function equipGear(id,instanceId=null){
  const g=GEAR[id];if(!g||!['status','forge','play'].includes(state.mode)||slotLocked(g.slot)||id!=='starterSword'&&gearCount(id)<1)return false;
@@ -1722,13 +1790,13 @@ function sellGear(id,instanceId=null){
 }
 function craftRemaining(){return hero.craft?Math.max(0,(hero.craft.finishAt-gameNow())/1000):0;}
 let forgeTab='weapon';
-function openForge(){if(!forgeAccessUnlocked())return false;if(state.mode!=='play'||state.scene!=='field'||dist(player,activeBlacksmith())>4||!inTownBuilding('forge'))return false;updateCrafting();togglePanel('forgePanel','forge');renderForge();return true;}
+function openForge(){if(!forgeAccessUnlocked())return false;if(state.mode!=='play'||state.scene!=='field'||dist(player,activeBlacksmith())>4||!inTownBuilding('forge'))return false;updateCrafting();if(craftReadyHere())return openCraftClaimDialogue();togglePanel('forgePanel','forge');renderForge();return true;}
 function renderForge(){
  if(!$('forgePanel'))return;updateCrafting();$('forgePanel').querySelector('h2').textContent=activeBlacksmith().name+' · '+townName();
  $('forgeGold').textContent=`보유 ${moneyText(hero.gold)} · ${currencyRuleText()}`;
  for(const b of $('forgeTabs').children)b.classList.toggle('selected',b.dataset.forgeTab===forgeTab);
  const job=$('forgeJob');
- if(hero.craft){const g=craftRecipe(hero.craft.gearId);job.className='forge-job';job.innerHTML=`<span class="forge-scene-tag">제작 중</span><br><strong>${escapeText(g?.name||'장비')}</strong> · 남은 시간 <b>${fmt(craftRemaining())}초</b><br><small>창을 닫으면 제작 시간이 흐릅니다. 파일을 종료한 시간도 반영됩니다.</small>`;}
+ if(hero.craft){const g=craftRecipe(hero.craft.gearId),ready=craftReady(hero.craft),smith=craftSmith(hero.craft);job.className='forge-job '+(ready?'ready':'');job.innerHTML=ready?`<span class="forge-scene-tag">제작 완료 · 수령 대기</span><br><strong>${escapeText(g?.name||'장비')}</strong><br><small>${escapeText(smith.name)}에게 R로 말 걸어 직접 수령하세요.</small>`:`<span class="forge-scene-tag">제작 중</span><br><strong>${escapeText(g?.name||'장비')}</strong> · 남은 시간 <b>${fmt(craftRemaining())}초</b><br><small>완료 후 ${escapeText(smith.name)}에게 다시 말 걸어 수령 · 파일을 종료한 시간도 반영</small>`;}
  else{job.className='forge-job';job.innerHTML='<span class="forge-scene-tag">'+escapeText(activeBlacksmith().name)+'의 제작대</span><br><small>제작은 한 번에 하나 · 무기 강화/복구/전승은 방 안의 모루에 R</small>';}
  let out='';
  if(forgeTab==='owned')out=equippedSlotsHTML()+'<div class="forge-sale-note"><b>사용하지 않는 장비 판매</b><br>현재 장착 중인 장비와 잠근 장비는 판매할 수 없습니다. <b>보스가 떨어뜨린 재료를 사용한 장비도 판매 불가</b>입니다. 장착 변경은 <b>E → 장비 장착</b>에서 하세요.</div>'+gearRowsHTML(true);
@@ -1756,7 +1824,7 @@ function initialPlayer(){return {x:WORLD.spawnX,y:0,z:WORLD.spawnZ,yaw:0,hp:100,
  inv:0,dodge:0,dodgeCD:0,dodgeDir:v3(),attack:null,combo:0,comboUntil:0,queue:null,
  moving:0,gait:0,moveBlend:0,runBlend:0,dashBlend:0,airBlend:0,lean:0,armSwing:-.18,bodyTwist:0,attackBlend:0,heavyBlend:0,guardBlend:0,healCD:0,regenDelay:0};}
 let actualMode=state.mode;Object.defineProperty(state,'mode',{enumerable:true,get(){return actualMode;},set(v){suspendClock(v!=='play');actualMode=v;}});
-const player=initialPlayer(),keys=new Set(),pointer={nx:0,ny:0,x:innerWidth/2,y:innerHeight/2,active:false};
+const player=initialPlayer(),keys=new Set(),physicalShift=new Set(),physicalMove=new Set(),pointer={nx:0,ny:0,x:innerWidth/2,y:innerHeight/2,active:false};
 const camera={focus:v3(player.x,.65,player.z),lead:v3(),distance:25,zoom:25};
 let enemies=[],particles=[],eye=v3(),vp=ident(),lockId=null,toastLast='',lastNow=performance.now(),simAccumulator=0;
 let audio=null,soundOn=true,testFrozen=false,dialogueChoices=[],helpReturn='play',hasSave=false,saveOK=true;
@@ -1771,7 +1839,7 @@ function freshEnemy(type,x,z,id,scene,archetype=null){
  const y=spec.type==='crow'?ground+3.15*spec.scale:spec.type==='wraith'?ground+.48*spec.scale:ground;
  return {id,type:spec.type,archetype:key,name:spec.name,rarity:spec.rarity||'common',level:spec.level,xp:spec.xp,drops:spec.drops,scene,x,y,z,home:v3(x,ground,z),yaw:Math.PI,boss:!!spec.boss,unique:!!spec.unique,
  hp:spec.hp,maxHP:spec.hp,r:enemyRadius(spec.type,spec.scale),scale:spec.scale,
- contact:false,attackSpeed:1,hitSlow:0,rewarded:false,mode:'idle',timer:.3,flash:0,attackDir:v3(),hit:false,deadTime:0,respawnDelay:rollRespawnDelay(spec),respawnCue:0,phase:1,gait:0,moveBlend:0,armPose:0,cycle:0,attackKind:'claw',windupTime:.8};
+ contact:false,attackSpeed:1,hitSlow:0,rewarded:false,mode:'idle',timer:.3,flash:0,attackDir:v3(),hit:false,deadTime:0,respawnDelay:rollRespawnDelay(spec),respawnCue:0,phase:1,gait:0,moveBlend:0,armPose:0,cycle:0,attackKind:'claw',windupTime:.8,gimmickMask:0,gimmickCode:0,gimmickRushes:0,gimmickSlams:0};
 }
 function makeEnemies(){
  seed=42712; // Stable spawn homes across fresh start and save restore.
@@ -1859,7 +1927,9 @@ function isBossEncounter(){
  const b=boss();
  if(!b||b.hp<=0||state.dead||state.scene!=='dungeon'||currentInterior()||!state.floorOpen)return false;
  const distance=dist(player,b);
- return b.mode!=='home'&&((player.z<-63&&distance<28)||distance<22&&lineOfSight(player,b)||state.bossEngaged&&distance<36);
+ // The room only seals after the player crosses into the chamber, or once combat
+ // has already been committed by dealing/taking boss damage.
+ return b.mode!=='home'&&((player.z<-64&&distance<28)||state.bossEngaged&&distance<38);
 }
 function isIronGiantEncounter(){
  const b=ironGiantBoss();
@@ -1867,7 +1937,13 @@ function isIronGiantEncounter(){
  const distance=dist(player,b);
  return b.mode!=='home'&&(distance<30||distance<24&&lineOfSight(player,b));
 }
-function refreshBossEncounter(){state.bossEngaged=isBossEncounter()||isIronGiantEncounter();return state.bossEngaged;}
+function bossRoomSealed(){const b=boss();return !!b&&state.scene==='dungeon'&&state.floorOpen&&state.bossEngaged&&!state.dead&&b.hp>0;}
+function refreshBossEncounter(){
+ const was=state.bossEngaged,active=isBossEncounter()||isIronGiantEncounter();state.bossEngaged=active;
+ if(!was&&active&&state.scene==='dungeon'&&boss()?.hp>0){toast('붉은 봉인이 닫혔다. 제보당의 붉은 괴수를 쓰러뜨리기 전에는 봉인실을 나갈 수 없다.',4.5);tone(115,.42,'triangle',.02,65);NAV_RUNTIME.layers.clear();}
+ if(was&&!active)NAV_RUNTIME.layers.clear();
+ return state.bossEngaged;
+}
 
 function boss(){return enemies.find(e=>e.type==='boss');}
 function dynamicBlocks(scene){
@@ -1881,7 +1957,7 @@ function dynamicBlocks(scene){
   return a;
  }
  if(scene!=='dungeon')return [];const a=[];
- if(!state.gate)a.push({x:44,z:-49.5,hx:2,hz:1.5,h:9});if(!state.floorOpen)a.push({x:36,z:-63,hx:22,hz:.6,h:9});return a;
+ if(!state.gate)a.push({x:44,z:-49.5,hx:2,hz:1.5,h:9});if(!state.floorOpen||bossRoomSealed())a.push({x:36,z:-63,hx:22,hz:.6,h:9});return a;
 }
 function moveBody(b,dx,dz,r){
  const scene=b===player?playerSceneKey():(b.scene||state.scene),s=scenes[scene];
@@ -1970,6 +2046,15 @@ function resetDungeon(){
 function resetAbramDungeon(){
  enemies=enemies.map(e=>e.scene!=='abramDungeon'?e:e.archetype==='ironGiant'&&state.town.abramCaveCleared?e:freshEnemy(e.type,e.home.x,e.home.z,e.id,'abramDungeon',e.archetype));
 }
+function resetLivingDungeonCombat(scene){
+ // A death ends the current attempt. Living enemies may not keep chip damage across retries.
+ let changed=false;
+ enemies=enemies.map(e=>{
+  if(e.scene!==scene||e.hp<=0)return e;
+  changed=true;return freshEnemy(e.type,e.home.x,e.home.z,e.id,scene,e.archetype);
+ });
+ if(changed)NAV_RUNTIME.layers.clear();state.bossEngaged=false;return changed;
+}
 function consumeDungeonTicket(){if((hero.inventory.dungeonTicket||0)<1){showTicketRequirement();return false;}hero.inventory.dungeonTicket--;if(!hero.inventory.dungeonTicket)delete hero.inventory.dungeonTicket;return true;}
 function enterDungeon(){
  if(currentInterior()||state.scene!=='field'||state.mode!=='play'||!player.grounded||dist(player,ENTRANCE)>6.5)return false;
@@ -1984,7 +2069,7 @@ function enterDungeon(){
 }
 function exitDungeon(){
  if(state.scene!=='dungeon')return false;if(!state.cleared){toast('입구의 봉인이 반응하지 않는다. 보스를 처치해야 열 수 있다.',4);return false;}
- state.scene='field';clearMotion();Object.assign(player,{x:ENTRANCE.x,z:ENTRANCE.z+5,y:0,vy:0,grounded:true});snapCamera();saveGame();toast('숲으로 돌아왔다. 출구는 해방됐다. 다시 들어올 때는 입장권이 필요하다.',4);return true;
+ closeDungeonJournalOnLeave();state.scene='field';clearMotion();Object.assign(player,{x:ENTRANCE.x,z:ENTRANCE.z+5,y:0,vy:0,grounded:true});snapCamera();saveGame();toast('숲으로 돌아왔다. 출구는 해방됐다. 다시 들어올 때는 입장권이 필요하다.',4);return true;
 }
 function abramCaveCleared(){return !!state.town.abramCaveCleared;}
 function enterAbramDungeon(){
@@ -2003,9 +2088,11 @@ function exitAbramDungeon(){
 }
 function respawn(){
  cancelDoorTransition();state.interior=null;
- const kept={heals:player.heals,healCD:player.healCD,guardCD:player.guardCD};
- state.town.thugActive=false;state.bossEngaged=false;state.dead=false;state.runActive=false;if(state.scene==='dungeon'&&!state.cleared)resetDungeon();if(state.scene==='abramDungeon'&&!abramCaveCleared())resetAbramDungeon();
- state.scene='field';Object.assign(player,initialPlayer(),kept);player.hp=maxHP();hero.mp=maxMP();player.stamina=maxStamina();hero.cooldowns.fill(0);
+ const deathScene=state.scene,kept={heals:player.heals,healCD:player.healCD,guardCD:player.guardCD};
+ state.town.thugActive=false;state.bossEngaged=false;state.dead=false;state.runActive=false;
+ if(deathScene==='dungeon'){if(!state.cleared)resetDungeon();else resetLivingDungeonCombat('dungeon');}
+ if(deathScene==='abramDungeon'){if(!abramCaveCleared())resetAbramDungeon();else resetLivingDungeonCombat('abramDungeon');}
+ closeDungeonJournalOnLeave();state.scene='field';Object.assign(player,initialPlayer(),kept);player.hp=maxHP();hero.mp=maxMP();player.stamina=maxStamina();hero.cooldowns.fill(0);
  skillEffects=[];combatTexts=[];clearMotion();state.mode='play';hideDialog();snapCamera();saveGame();
  toast('새벽마을에서 깨어났다. 보유 물품·골드·장비·의뢰는 유지된다. 약은 추가 지급되지 않는다.',5);
 }
@@ -2027,7 +2114,7 @@ function hideDialog(){
 function talkNPC(){
  state.guideFlags.talk=true;
  if(needsIntroGate()){
-  openDialogue(NPC.name,'숲에 나가려면 먼저 살아 돌아오는 법부터 배워야 하네.<br><br>광장의 <b>길잡이 세라</b>에게 <b>「사냥꾼의 첫걸음」</b>을 배우고 오게. 마나와 기력, 슬라임 사냥, 전리품 판매와 휴식을 알려줄 거야.<small>입문 의뢰 완료 보고 후, 내 슬라임 25마리 의뢰를 받을 수 있다.</small>',[{label:'지도에 세라 표시',run:()=>{selectMapTarget('guide');toast('광장의 길잡이 세라에게 R키로 대화하자.',4);}},{label:'알겠어',run:()=>{}}]);return;
+  openDialogue(NPC.name,'숲에 나가려면 먼저 살아 돌아오는 법부터 배워야 하네.<br><br>광장의 <b>길잡이 세라</b>에게 <b>「사냥꾼의 첫걸음」</b>을 배우고 오게. 마나와 기력, 슬라임 사냥, 전리품 판매, 첫 장비 제작과 휴식을 알려줄 거야.<small>입문 의뢰 완료 보고 후, 내 슬라임 25마리 의뢰를 받을 수 있다.</small>',[{label:'지도에 세라 표시',run:()=>{selectMapTarget('guide');toast('광장의 길잡이 세라에게 R키로 대화하자.',4);}},{label:'알겠어',run:()=>{}}]);return;
  }
  if(state.quest==='none')openDialogue(NPC.name,'이곳은 <b>새벽마을</b>이야. 처음이라면 안전한 광장에서 몸을 풀어 봐.<br><br>동쪽 길을 쭉 따라가면 <b>잿빛 늪</b>이 나온다. 그 길과 늪에 슬라임이 늘었어. <b>25마리</b>를 처리하고 나에게 돌아와 줄 수 있겠나?<small>수락한 이후의 처치만 집계된다. R키로 수락하고, 완료 보고도 반드시 나에게 해 줘.</small>',[{label:'슬라임 25마리 퇴치 의뢰 수락',run:()=>{state.quest='active';state.kills=0;saveGame();toast('의뢰 수락 · 동쪽 길과 잿빛 늪의 슬라임 25마리',5);}},{label:'아직 준비가 필요해',run:()=>{}}]);
  else if(state.quest==='active')openDialogue(NPC.name,`현재 <b>${state.kills} / 25마리</b>야. 동쪽 길을 따라가면 늪에 더 많이 있을 거야.<br><br>체력이 부족하면 서쪽 돌샘 온천에서 R키로 쉬어 가게.<small>슬라임은 시간이 지나면 다시 나타난다.</small>`);
@@ -2082,7 +2169,7 @@ function interactionTarget(){
   if(Math.hypot(player.x+44,player.z-41)<2.5)return {kind:'clue',label:'입구의 비문 읽기'};
   const rune=MAZE.runes.find(s=>dist(s,player)<2.3);if(rune)return {kind:'rune',rune,label:`${rune.id+1}번 룬 기둥 회전 · 현재 ${GLYPHS[state.rune[rune.id]]}`};
   if(Math.hypot(player.x-44,player.z+46)<3.1&&!state.gate)return {kind:'gate',label:'룬 봉인의 정렬 확인'};
-  if(Math.hypot(player.x-36,player.z+52)<3)return {kind:'floorClue',label:'발자국의 비문 읽기'};
+  if(Math.hypot(player.x-36,player.z+52)<3)return {kind:'floorClue',label:'변이 흔적의 비문 읽기'};
   if(state.cleared&&Math.hypot(player.x-36,player.z+80)<5)return {kind:'return',label:'해방된 출구로 돌아가기'};
  }else if(state.scene==='abramDungeon'){
   if(dist(player,ABRAM_CAVE.entry)<3.7)return {kind:'abramCaveExit',label:abramCaveCleared()?'종유석 미궁에서 나가기':'봉인된 동굴 입구 · 붉은 철갑 거인 처치 필요'};
@@ -2099,7 +2186,7 @@ function interact(){
  case 'abramCaveEntrance':
   if(hero.level<DUNGEON_ACCESS.abram.minLevel)openDialogue('아브람 종유석 미궁 · 입장 제한',`동굴 안쪽에서 낮은 진동과 금속성 울림이 들린다.<br><br><b>최소 입장 레벨 Lv.${DUNGEON_ACCESS.abram.minLevel}</b><br>현재 레벨 Lv.${hero.level}<small>권장 ${DUNGEON_ACCESS.abram.recommended} · 부서진 능선에서 경험을 쌓은 뒤 돌아오자.</small>`);
   else if((hero.inventory.dungeonTicket||0)<1)showTicketRequirement();
-  else openDialogue('아브람 종유석 미궁','<b>입장권 1개를 사용한다.</b><br>천장에서 종유석이 내려오고 바닥에는 석순과 광물 웅덩이가 이어지는 깊은 동굴이다.<br><br>첫 해방 전에는 입구가 봉인되며 심층의 <b>붉은 철갑 거인</b>을 쓰러뜨려야 나갈 수 있다.<small>최소 Lv.22 · 권장 Lv.24~28 · 일반 몬스터 Lv.22→24→26 · 붉은 철갑 거인 Lv.28. 첫 처치 시 테른이 영구 해금되며 붉은 보석 파편 1개를 확정 획득한다.</small>',[{label:'입장권 1개 사용 · 종유석 미궁에 들어간다',run:enterAbramDungeon},{label:'아직 들어가지 않는다',run:()=>{}}]);break;
+  else openDialogue('아브람 종유석 미궁',`<b>입장권 1개를 사용한다.</b><br>천장에서 종유석이 내려오고 바닥에는 석순과 광물 웅덩이가 이어지는 깊은 동굴이다.<br><br><b>${escapeText(dungeonBossStatus('abram'))}</b><small>최소 Lv.22 · 권장 Lv.24~28 · 일반 몬스터 Lv.22→24→26. 첫 처치 시 테른이 영구 해금되며 붉은 보석 파편 1개를 확정 획득한다. 보스가 재등장 대기 중이어도 일반 몬스터 탐사는 가능합니다.</small>`,[{label:'입장권 1개 사용 · 종유석 미궁에 들어간다',run:enterAbramDungeon},{label:'아직 들어가지 않는다',run:()=>{}}]);break;
  case 'abramCaveExit':
   if(abramCaveCleared())exitAbramDungeon();else openDialogue('봉인된 종유석 입구','뒤쪽의 암벽이 굳게 닫혀 있다.<br><br><b>심층의 붉은 철갑 거인을 쓰러뜨려야 동굴이 해방된다.</b><small>쓰러지면 새벽마을에서 깨어난다. 내부 저장과 일시정지는 가능하다.</small>');break;
  case 'roomEnter':requestRoomTransition(t.room.id);break;
@@ -2127,12 +2214,20 @@ function interact(){
   else if(!state.exploration.accepted&&!state.cleared)openDialogue('붉은 빛이 새어 나오는 틈','교역로에서 벗어난 숲 안쪽에서 낯선 유적을 발견했다.<br><br>동쪽 숲 안쪽 길에 있는 <b>길손 이안</b>이 무언가 알고 있을지도 모른다.<small>이안에게 R로 소문을 들으면 메인 퀘스트 「미궁 탐사」를 얻는다.</small>');
   else if((hero.inventory.dungeonTicket||0)<1)showTicketRequirement();
    else if(state.cleared)confirmDungeonEntry();
-  else openDialogue('숲의 미궁 · 첫 번째 도전','<b>입장권 1개를 사용한다. 들어가면 입구가 봉인된다.</b><br>보스를 처치하거나, 쓰러져 마을에서 깨어나기 전까지 나올 수 없다.<br><br>내부에는 거대한 미로, 두 단계의 퍼즐, 늑대 무리와 <b>등에 붉은 보석이 박힌 늑대인간</b>이 기다린다.<small>제보당의 붉은 괴수: Lv.12 / HP 2,500. 최소 입장 Lv.8 · 권장 Lv.10~12. 레벨 조건을 충족한 뒤 E에서 능력치를 분배하고 하급 회복약을 준비하자. 일시정지 및 내부 저장 가능.</small>',[{label:'입장권 1개 사용 · 미궁에 들어간다',run:enterDungeon},{label:'아직 들어가지 않는다',run:()=>{}}]);break;
+  else openDialogue('숲의 미궁 · 첫 번째 도전','<b>입장권 1개를 사용한다. 들어가면 입구가 봉인된다.</b><br>보스를 처치하거나, 쓰러져 마을에서 깨어나기 전까지 나올 수 없다.<br><br>내부에는 거대한 미로, 두 단계의 퍼즐, 늑대 무리와 <b>등에 붉은 보석이 박힌 늑대인간</b>이 기다린다.<small>제보당의 붉은 괴수: Lv.12 / HP 2,400. 최소 입장 Lv.8 · 권장 Lv.10~12. 레벨 조건을 충족한 뒤 E에서 능력치를 분배하고 하급 회복약을 준비하자. 일시정지 및 내부 저장 가능.</small>',[{label:'입장권 1개 사용 · 미궁에 들어간다',run:enterDungeon},{label:'아직 들어가지 않는다',run:()=>{}}]);break;
  case 'exit':if(state.cleared)exitDungeon();else openDialogue('봉인된 입구','문은 안쪽에서 열리지 않는다.<br><br><b>늑대인간을 쓰러뜨려야 미궁이 해방된다.</b><small>찢어진 기록 2장을 모으면 J키 모험 기록이 열린다. 비문은 현장에서 R로 읽을 수 있다.</small>');break;
  case 'clue':openDialogue('해와 달과 별의 비문','<b>첫째, 하루를 비추던 빛이 저문다.<br>둘째, 밤의 둥근 눈이 떠오른다.<br>셋째, 작은 빛들이 하늘에 남는다.</b><br><br>세 룬 기둥의 문양을 맞춘 뒤, 북동쪽 끝의 문에서 R키로 확인하라.<small>기둥은 R키를 누를 때마다 달 → 별 → 해 순서로 회전한다.</small>');break;
  case 'rune':if(state.gate){toast('이미 룬 봉인이 해제되었다.',2);break;}state.rune[t.rune.id]=(state.rune[t.rune.id]+1)%3;tone(330+state.rune[t.rune.id]*140,.16,'sine',.02);toast(`${t.rune.id+1}번 기둥 · ${GLYPHS[state.rune[t.rune.id]]}`,2);saveGame();break;
- case 'gate':if(state.rune.every((v,i)=>v===[2,0,1][i])){state.gate=true;toast('세 문양이 맞물렸다. 문 너머의 발자국 퍼즐을 확인하자.',4);saveGame();}else openDialogue('맞물리지 않는 봉인','아직 세 기둥의 문양이 올바르게 정렬되지 않았다.<br><br>첫째는 낮을 비추던 빛, 둘째는 밤의 둥근 눈, 셋째는 하늘에 남은 작은 빛들.<small>현재 정렬: '+state.rune.map((v,i)=>`${i+1}번 ${GLYPHS[v]}`).join(' / ')+'</small>');break;
- case 'floorClue':openDialogue('세 발자국의 비문','<b>가장 큰 발자국이 앞장서고,<br>가장 작은 발자국이 뒤따르며,<br>남은 발자국이 길을 완성한다.</b><br><br>세 발판을 올바른 순서로 <b>밟아라</b>.<small>잘못 밟으면 순서만 초기화된다. 같은 발판은 벗어났다가 다시 밟아야 한다.</small>');break;
+ case 'gate':
+  if(state.rune.every((v,i)=>v===[2,0,1][i])){state.gate=true;toast('세 문양이 맞물렸다. 문 너머의 변이 흔적을 조사하자.',4);saveGame();}
+  else{
+   const current=state.rune.map((v,i)=>`${i+1}번 ${GLYPHS[v]}`).join(' / ');
+   openDialogue('맞물리지 않는 봉인',journalUnlocked()?`세 기둥의 문양이 아직 맞물리지 않는다.<br><br>복원한 <b>모험 기록</b>이나 미궁의 비문을 다시 확인해 보자.<small>J: 모험 기록 · 현재 정렬: ${current}</small>`:`세 기둥의 문양이 아직 맞물리지 않는다.<br><br>봉인문은 올바른 순서를 알려 주지 않는다. 미궁에 흩어진 <b>찢어진 기록과 비문</b>에서 단서를 찾아야 한다.<small>현재 정렬: ${current}</small>`);
+  }break;
+ case 'floorClue':
+  if(!journalUnlocked())openDialogue('변이 흔적의 비문','세 개의 석판에는 서로 다른 흔적이 새겨져 있다. 하나는 짐승의 발, 하나는 두 발로 선 자의 흔적, 하나는 돌을 긁은 발톱 자국처럼 보인다.<br><br><b>하지만 어느 것이 먼저였는지는 이 비문만으로 알 수 없다.</b><small>미궁에 흩어진 찢어진 모험 기록 2장을 복원하면 이 흔적이 생긴 순서를 추리할 수 있다.</small>');
+  else openDialogue('변이 흔적의 비문','돌에 남은 짧은 문장이 복원된 기록과 이어진다.<br><br><b>“네 발로 들어온 사냥꾼은 안쪽에서 일어섰고,<br>봉인실 앞에는 세 갈래 상처만 남겼다.”</b><br><br>세 흔적 발판을 <b>변이가 진행된 순서</b>대로 밟아라.<small>발판의 무늬를 보고 모험 기록의 이동 흔적과 비교하자. 잘못 밟으면 진행만 초기화된다.</small>');
+  break;
  case 'return':exitDungeon();break;
  }
 }
@@ -2141,8 +2236,14 @@ function updateDungeonProgress(dt){
  if(state.gate&&!state.floorOpen&&player.grounded){
   const hit=MAZE.plates.find(p=>dist(p,player)<1.3),id=hit?hit.id:-1;
   if(id!==state.lastPlate&&id>=0){
-   if(id===[2,0,1][state.floorStep]){state.floorStep++;tone(350+state.floorStep*130,.20,'sine',.025);toast(`발자국 ${state.floorStep} / 3`,1.4);if(state.floorStep===3){state.floorOpen=true;toast('마지막 문이 열렸다. 붉은 보석을 품은 늑대인간이 깨어난다.',5);saveGame();}}
-   else{state.floorStep=0;toast('순서가 다르다. 큰 발자국 → 작은 발자국 → 남은 발자국.',3);tone(90,.18,'triangle',.018);}
+   if(!journalUnlocked()){
+    const changed=state.floorStep!==0;state.floorStep=0;toast('흔적의 순서를 해독할 단서가 부족하다. 찢어진 모험 기록 2장을 먼저 복원하자.',3.2);tone(105,.14,'triangle',.012);if(changed)saveGame();
+   }
+   else if(id===FLOOR_TRACK_ORDER[state.floorStep]){
+    state.floorStep++;const mark=trackMark(id);tone(350+state.floorStep*130,.20,'sine',.025);toast(`변이 흔적 ${state.floorStep} / 3 · ${mark.name}`,1.8);
+    if(state.floorStep===FLOOR_TRACK_ORDER.length){state.floorOpen=true;toast('세 흔적이 하나의 변이 과정으로 이어졌다. 봉인실의 문이 열린다.',5);tone(740,.34,'sine',.03,980);}
+    saveGame();
+   }else{state.floorStep=0;toast('흔적의 흐름이 끊겼다 · 진행 0 / 3. 모험 기록에서 괴수의 변이 과정을 다시 확인하자.',3);tone(90,.18,'triangle',.018);saveGame();}
   }
   state.lastPlate=id;
  }
@@ -2153,7 +2254,7 @@ function updateWorld(dt){
  state.saveTimer+=dt;state.mapTimer+=dt;
  if(state.saveTimer>20){state.saveTimer=0;saveGame();}
  if(state.mapTimer>.25){state.mapTimer=0;if(state.scene==='dungeon'){const {c,r}=mazeCell(player.x,player.z);for(let dz=-3;dz<=3;dz++)for(let dx=-3;dx<=3;dx++){const nc=c+dx,nr=r+dz;if(nc>=0&&nc<25&&nr>=0&&nr<25)state.visited[nr*25+nc]=true;}}}
- const region=state.scene==='dungeon'?(player.z<-64?'제보당의 붉은 괴수 · 봉인실':player.z<-50?'발자국의 전실':'숲의 미궁'):state.scene==='abramDungeon'?(player.z<-60?'붉은 철갑 거인 · 종유석 심층':'아브람 종유석 미궁'):inTern()?'테른':inFogValley()?'안개 골짜기':inBrokenRidge()?'부서진 능선':inAbram()?'아브람':inVillage(player.x,player.z)?'새벽마을':inSwamp(player.x,player.z)?'잿빛 늪':Math.abs(player.z-55)<8?'동쪽 길':'회색 숲';
+ const region=state.scene==='dungeon'?(player.z<-64?'제보당의 붉은 괴수 · 봉인실':player.z<-50?'변이 흔적의 전실':'숲의 미궁'):state.scene==='abramDungeon'?(player.z<-60?'붉은 철갑 거인 · 종유석 심층':'아브람 종유석 미궁'):inTern()?'테른':inFogValley()?'안개 골짜기':inBrokenRidge()?'부서진 능선':inAbram()?'아브람':inVillage(player.x,player.z)?'새벽마을':inSwamp(player.x,player.z)?'잿빛 늪':Math.abs(player.z-55)<8?'동쪽 길':'회색 숲';
  if(region!==state.region){state.region=region;$('regionName').textContent=region;$('regionTag').textContent=['새벽마을','아브람','테른'].includes(region)?'안전 구역 · 마을':state.scene==='dungeon'?(state.cleared?'해방됨 · 자유 출입':'봉인됨 · 보스 처치 전 귀환 불가'):state.scene==='abramDungeon'?(abramCaveCleared()?'해방됨 · 자유 출입':'봉인됨 · 붉은 철갑 거인 처치 전 귀환 불가'):'색을 잃은 대지';}
 }
 // Body contact, not merely aggro or the attack's hit range. Recomputed every tick;
@@ -2169,7 +2270,8 @@ function monsterContact(e){
 // Combined rate of the waiting/preparation clock, not movement velocity.
 function monsterAttackRate(e){return (monsterContact(e)?BALANCE.contactAttackSpeed:1)*((e.hitSlow||0)>0?BALANCE.hitAttackSpeed:1);}
 function enemyRateLabel(e){
- return [monsterContact(e)?contactSpeedText():'',(e.hitSlow||0)>0?'피격 공속 -25%':''].filter(Boolean).join(' · ');
+ // Attack-speed telemetry is combat-internal information. Do not expose it in enemy/boss labels.
+ return '';
 }
 function ridgeGround(x,z,fallback=0){const h=ridgeRawHeight(x,z);return h==null?fallback:h;}
 function ridgeMove(e,dx,dz,r=e.r){
@@ -2273,6 +2375,32 @@ function updateRidgeEnemy(e,dt){
  }
  if(e.mode==='recover'&&e.timer<=0){e.mode='chase';e.timer=.35;}
 }
+
+function werewolfMaskForRatio(ratio){let mask=0;for(const g of WEREWOLF_GIMMICKS)if(ratio<=g.ratio+1e-9)mask|=g.bit;return mask;}
+function beginForcedBossAttack(e,kind,windup){
+ e.attackKind=kind;e.windupTime=windup;e.mode='windup';e.timer=windup;e.hit=false;e.attackDir=norm(v3(player.x-e.x,0,player.z-e.z));e.yaw=angle(e,player);
+}
+function triggerWerewolfGimmick(e){
+ if(e?.archetype!=='werewolf'||e.hp<=0||!state.bossEngaged)return false;
+ const ratio=e.hp/Math.max(1,e.maxHP);
+ for(const g of WEREWOLF_GIMMICKS){
+  if(ratio>g.ratio+1e-9||(e.gimmickMask&g.bit))continue;
+  e.gimmickMask|=g.bit;e.gimmickCode=g.code;e.hit=false;e.mode='roar';e.timer=g.code===3?1.35:.82;
+  if(g.code===3)e.phase=2;
+  toast(g.code===1?'붉은 파동! 포효 뒤 퍼지는 충격파는 점프로 넘을 수 있다.':g.code===2?'사냥의 돌진! 괴수가 두 번 연속 돌진한다.':g.code===3?'2페이즈 · 붉은 광폭화! 공격 템포가 빨라졌다.':g.code===4?'균열 강타! 세 번의 내려찍기를 점프로 피하자.':'최후의 발악! 돌진과 강타의 간격이 더욱 짧아진다.',4.5);
+  SOUND.effect('roar',e);return true;
+ }
+ return false;
+}
+function finishWerewolfRoar(e){
+ const code=e.gimmickCode||0;e.gimmickCode=0;
+ if(code===1){e.mode='wave';e.timer=.72;e.hit=false;return true;}
+ if(code===2){e.gimmickRushes=2;beginForcedBossAttack(e,'rush',.58);return true;}
+ if(code===3){e.mode='chase';e.timer=.18;return true;}
+ if(code===4){e.gimmickSlams=3;beginForcedBossAttack(e,'slam',.62);return true;}
+ if(code===5){e.mode='chase';e.timer=.04;return true;}
+ return false;
+}
 function updateEnemy(e,dt){
  if(currentInterior()&&e.scene==='field'){if(e.hp<=0)updateRespawn(e,dt);return;}
  if(e.type==='thug'){updateThug(e,dt);return;}
@@ -2294,9 +2422,14 @@ function updateEnemy(e,dt){
  // Exact integration even when the one-second slow expires part-way through dt.
  // Active lunges/strikes keep their original travel duration; slowing must not extend their range.
  e.timer-=attackClock?contactRate*(waitingClock?dt-slowedTime*(1-BALANCE.hitAttackSpeed):dt):dt;
- const d=dist(e,player),isBoss=e.type==='boss',slime=e.type==='slime',boar=e.type==='boar',spec=MONSTERS[e.archetype],enraged=isBoss&&e.hp<e.maxHP*.5;
- if(enraged&&e.phase===1){e.phase=2;e.mode='roar';e.timer=1.5;toast('늑대인간이 광폭화했다. 돌진 뒤의 빈틈과 등 보석을 노리자.',4);SOUND.effect('roar',e);return;}
- if(e.mode==='roar'){if(e.timer<=0)e.mode='chase';return;}
+ const d=dist(e,player),isBoss=e.type==='boss',slime=e.type==='slime',boar=e.type==='boar',spec=MONSTERS[e.archetype],enraged=isBoss&&e.hp<=e.maxHP*.5,lastStand=isBoss&&!!(e.gimmickMask&16);
+ if(isBoss&&triggerWerewolfGimmick(e))return;
+ if(e.mode==='roar'){if(e.timer<=0&&!finishWerewolfRoar(e))e.mode='chase';return;}
+ if(e.mode==='wave'){
+  // Expanding floor shockwave. Jumping above the wave avoids it.
+  if(!e.hit&&e.timer<=.34){e.hit=true;SOUND.effect('slam',e);if(d<8.4&&player.y<.82&&lineOfSight(e,player))damagePlayer(spec.slam*.58,e);}
+  if(e.timer<=0){e.mode='recover';e.timer=lastStand?.42:.68;}return;
+ }
  if(e.mode==='idle'){
   if(d<(isBoss?16:slime?6.7:9.3)&&!(e.scene==='field'&&inVillage(player.x,player.z))&&lineOfSight(e,player)){e.mode='chase';e.timer=.25;}
   else if(slime){const p=state.time*.65+e.id;const tx=e.home.x+Math.sin(p)*.8,tz=e.home.z+Math.cos(p*.9)*.6;moveBody(e,(tx-e.x)*dt*.8,(tz-e.z)*dt*.8,e.r);}
@@ -2308,10 +2441,10 @@ function updateEnemy(e,dt){
   const sight=lineOfSight(e,player);
   e.yaw=dampAngle(e.yaw,angle(e,player),dt*7);
   const range=isBoss?4.4:slime?1.7:boar?2.3:1.8;
-  if(d>range||!sight){const speed=isBoss?(enraged?4.5:3.5):slime?1.8:boar?2.7:3.5;pursue(e,player,speed,dt);}
+  if(d>range||!sight){const speed=isBoss?(lastStand?5.15:enraged?4.5:3.5):slime?1.8:boar?2.7:3.5;pursue(e,player,speed,dt);}
   if(sight&&e.timer<=0&&(d<=range||isBoss&&d<11&&e.cycle%3===1)){
-   e.attackKind=isBoss?['claw','rush','slam'][e.cycle++%3]:slime?'hop':'lunge';
-   e.windupTime=isBoss?(e.attackKind==='rush'?1.05:e.attackKind==='slam'?1.1:enraged?.62:.86):slime?.78:.65;
+   e.attackKind=isBoss?(lastStand?['rush','slam','claw','rush'][e.cycle++%4]:['claw','rush','slam'][e.cycle++%3]):slime?'hop':'lunge';
+   e.windupTime=isBoss?(e.attackKind==='rush'?(lastStand?.66:1.05):e.attackKind==='slam'?(lastStand?.74:1.1):enraged?.62:.86):slime?.78:.65;
    e.mode='windup';e.timer=e.windupTime;e.hit=false;e.attackDir=norm(v3(player.x-e.x,0,player.z-e.z));e.yaw=angle(e,player);
   }return;
  }
@@ -2324,15 +2457,22 @@ function updateEnemy(e,dt){
   if(e.mode==='hop')e.y=Math.sin(clamp((.4-e.timer)/.4,0,1)*Math.PI)*.7;
   const range=isBoss?2.9:boar?2:1.5;
   if(!e.hit&&dist(e,player)<range&&player.y<(isBoss?1.8:1)&&lineOfSight(e,player)){e.hit=true;damagePlayer(isBoss?spec.rush*(enraged?spec.enrage:1):spec.attack,e);}
-  if(e.timer<=0){e.y=0;e.mode='recover';e.timer=isBoss?ENEMY_RECOVERY.bossRush:slime?ENEMY_RECOVERY.slime:boar?ENEMY_RECOVERY.boar:ENEMY_RECOVERY.wolf;}return;
+  if(e.timer<=0){
+   e.y=0;
+   if(isBoss&&e.mode==='rush'&&e.gimmickRushes>0){e.gimmickRushes--;if(e.gimmickRushes>0){beginForcedBossAttack(e,'rush',.44);return;}}
+   e.mode='recover';e.timer=isBoss?(lastStand?ENEMY_RECOVERY.bossRush*.62:ENEMY_RECOVERY.bossRush):slime?ENEMY_RECOVERY.slime:boar?ENEMY_RECOVERY.boar:ENEMY_RECOVERY.wolf;
+  }return;
  }
  if(e.mode==='claw'||e.mode==='slam'){
   const range=e.mode==='slam'?(enraged?7.4:6.2):5.4;
   const front=dot(forward(e.yaw),norm(v3(player.x-e.x,0,player.z-e.z)));
   if(!e.hit&&d<range&&(e.mode==='slam'||front>-.05)&&player.y<(e.mode==='slam'?.75:2.1)&&lineOfSight(e,player)){e.hit=true;damagePlayer((e.mode==='slam'?spec.slam:spec.claw)*(enraged?spec.enrage:1),e);}
-  if(e.timer<=0){e.mode='recover';e.timer=enraged?ENEMY_RECOVERY.bossEnraged:ENEMY_RECOVERY.bossMelee;}return;
+  if(e.timer<=0){
+   if(isBoss&&e.mode==='slam'&&e.gimmickSlams>0){e.gimmickSlams--;if(e.gimmickSlams>0){beginForcedBossAttack(e,'slam',.46);return;}}
+   e.mode='recover';e.timer=lastStand?ENEMY_RECOVERY.bossEnraged*.62:enraged?ENEMY_RECOVERY.bossEnraged:ENEMY_RECOVERY.bossMelee;
+  }return;
  }
- if(e.mode==='recover'&&e.timer<=0){e.mode='chase';e.timer=.25;}
+ if(e.mode==='recover'&&e.timer<=0){e.mode='chase';e.timer=lastStand?.10:.25;}
 }
 // Saved progress never converts an active dungeon run into an outdoor spawn.
 function packV4Save(){return {version:4,hero:packHero(),quest:state.quest,kills:state.kills,cleared:state.cleared,scene:state.scene,runActive:state.runActive,dead:state.dead,
@@ -2396,10 +2536,10 @@ function readGuestSlots(){
 const deepCopy=v=>JSON.parse(JSON.stringify(v));
 const plainObject=v=>v!==null&&typeof v==='object'&&!Array.isArray(v);
 const PS_NUM=['y','yaw','vx','vz','vy','coyote','jumpBuffer','land','inv','dodge','dodgeCD','combo','comboUntil','moving','gait','moveBlend','runBlend','dashBlend','airBlend','lean','armSwing','bodyTwist','regenDelay','guardCD','attackBlend','heavyBlend','guardBlend'];
-const ES_NUM=['y','yaw','timer','flash','deadTime','respawnDelay','phase','gait','moveBlend','armPose','cycle','windupTime','hitSlow','respawnCue','aiQuiet','aiReturnTime'];
-const ENEMY_MODES=['idle','chase','windup','claw','rush','slam','hop','lunge','recover','roar','stagger','dead','home'];
+const ES_NUM=['y','yaw','timer','flash','deadTime','respawnDelay','phase','gait','moveBlend','armPose','cycle','windupTime','hitSlow','respawnCue','aiQuiet','aiReturnTime','gimmickMask','gimmickCode','gimmickRushes','gimmickSlams'];
+const ENEMY_MODES=['idle','chase','windup','claw','rush','slam','wave','hop','lunge','recover','roar','stagger','dead','home'];
 function packSave(){
- const data=packV4Save();data.worldLayoutVersion=WORLD_LAYOUT_VERSION;data.staminaRevision=1;data.player.staminaMax=maxStamina();data.interior=state.scene==='field'?(state.interior||null):null;data.interiorVersion=1;data.gameClock=packClock();data.town=deepCopy(state.town);data.introQuest={...state.introQuest};data.version=5;data.balanceRevision=BALANCE.balanceRevision;data.playTime=state.time;data.exploration=packExploration();
+ const data=packV4Save();data.worldLayoutVersion=WORLD_LAYOUT_VERSION;data.dungeonPuzzleRevision=DUNGEON_PUZZLE_REVISION;data.staminaRevision=1;data.player.staminaMax=maxStamina();data.interior=state.scene==='field'?(state.interior||null):null;data.interiorVersion=1;data.gameClock=packClock();data.town=deepCopy(state.town);data.introQuest={...state.introQuest};data.version=5;data.balanceRevision=BALANCE.balanceRevision;data.playTime=state.time;data.exploration=packExploration();
  data.runtime={bossScheduleVersion:1,bossLastDefeatedAt:state.bossLastDefeatedAt||0,ironGiantLastDefeatedAt:state.ironGiantLastDefeatedAt||0,time:state.time,lastPlate:state.lastPlate,guideMove:state.guideMove,guideRun:state.guideRun,guideLook:state.guideLook,restored:state.restored,wave:state.wave,guardChats:{...state.guardChats},bossRespawnAt:state.bossRespawnAt,ironGiantRespawnAt:state.ironGiantRespawnAt};
  for(const k of PS_NUM)data.player[k]=player[k];
  for(const k of ['grounded','airDashUsed','guardActive'])data.player[k]=player[k];
@@ -2421,6 +2561,7 @@ function applySave(data){
  validateClientSave(data);guideStatusPreview=false;transferProposal=null;data=migrateWorldLayout(data);NAV_RUNTIME.layers.clear();NAV_RUNTIME.requests=0;cancelDoorTransition();state.interior=null;restoreClock(data.gameClock);applyV4Save(data);
  if(!data.staminaRevision)player.stamina=clamp((Number(data.player.stamina)||0)/100*maxStamina(),0,maxStamina());
  state.town=restoreTown(data.town);repairOutstandingContracts();
+ if((Number(data.dungeonPuzzleRevision)||0)<DUNGEON_PUZZLE_REVISION&&!state.floorOpen){state.floorStep=0;state.lastPlate=-1;}
  if((Number(data.balanceRevision)||0)<9){
   const saved=new Map(data.enemies.map(e=>[e.id,e]));
   for(const e of enemies)if(PREVIOUS_MONSTER_HP[e.archetype]&&saved.get(e.id)?.hp>0)e.hp=Math.min(e.maxHP,saved.get(e.id).hp/PREVIOUS_MONSTER_HP[e.archetype]*e.maxHP);
@@ -2477,7 +2618,7 @@ function applySave(data){
   }
   const saved=new Map(data.enemies.map(e=>[e.id,e]));
   for(const e of enemies){const s=saved.get(e.id);if(!s)continue;
-   for(const k of ES_NUM)e[k]=n(s[k],e[k]);e.phase=clamp(Math.floor(e.phase),1,2);e.timer=clamp(e.timer,-1,10);e.deadTime=clamp(e.deadTime,0,3600);e.hitSlow=clamp(e.hitSlow,0,BALANCE.hitSlowDuration);e.respawnCue=clamp(e.respawnCue,0,DUNGEON_RULES.respawnWarning);
+   for(const k of ES_NUM)e[k]=n(s[k],e[k]);e.phase=clamp(Math.floor(e.phase),1,2);e.gimmickMask=clamp(Math.floor(e.gimmickMask||0),0,31);e.gimmickCode=clamp(Math.floor(e.gimmickCode||0),0,5);e.gimmickRushes=clamp(Math.floor(e.gimmickRushes||0),0,3);e.gimmickSlams=clamp(Math.floor(e.gimmickSlams||0),0,4);e.timer=clamp(e.timer,-1,10);e.deadTime=clamp(e.deadTime,0,3600);e.hitSlow=clamp(e.hitSlow,0,BALANCE.hitSlowDuration);e.respawnCue=clamp(e.respawnCue,0,DUNGEON_RULES.respawnWarning);
    if(ENEMY_MODES.includes(s.mode))e.mode=s.mode;if(e.hp<=0)e.mode='dead';
    e.hit=!!s.hit;e.attackDir=vec(s.attackDir);if(['claw','rush','slam','hop','lunge'].includes(s.attackKind))e.attackKind=s.attackKind;
   }
@@ -2511,6 +2652,14 @@ function applySave(data){
    const old=(Number(data.balanceRevision)||0)<9?(PREVIOUS_MONSTER_HP[e.archetype]||PRE_PATCH_HP[e.archetype]):PRE_PATCH_HP[e.archetype];
    if(old)e.hp=clamp(v.hp/old*e.maxHP,0,e.maxHP);
   }
+ }
+ // v0.12.4 lowers the werewolf HP from 2500 to 2400. Preserve the current
+ // HP percentage of an in-progress v0.12.3 fight. Older saves had no milestone
+ // state, so already-crossed gimmicks are marked consumed instead of replayed.
+ if((Number(data.balanceRevision)||0)<18){
+  const records=new Map(data.enemies.map(x=>[x.id,x]));
+  const wb=boss(),savedBoss=wb&&records.get(wb.id);
+  if(wb&&savedBoss?.hp>0){wb.hp=clamp(savedBoss.hp/PRE_V0124_HP.werewolf*wb.maxHP,0,wb.maxHP);wb.gimmickMask=werewolfMaskForRatio(wb.hp/Math.max(1,wb.maxHP));wb.gimmickCode=0;wb.gimmickRushes=0;wb.gimmickSlams=0;wb.phase=wb.hp<=wb.maxHP*.5?2:1;}
  }
  resetSprintInput();keys.clear();pointer.active=false;pointer.nx=pointer.ny=0;player.queue=restoreCombatBuffer(data.player.queuedAction);lockId=null;
  player.guardCD=n(data.player.guardCD,0,0,600);player.guardActive=!!data.player.guardActive&&!!equippedGear('shield')&&player.guardCD===0;
@@ -2916,6 +3065,8 @@ function createSoundSynth(ctx,destination=ctx.destination){
    case 'rush':n(.40,.30,540);o(115,.32,.13,'triangle',43);break;
    case 'claw':n(.26,.34,1700);o(125,.18,.11,'triangle',51);break;
    case 'slam':o(110,.60,.28,'sine',29);n(.48,.37,300);break;
+   case 'hammer':for(const off of [0,.16,.32]){n(.075,.22,1250,off);o(185,.095,.12,'triangle',115,off);o(1320,.07,.045,'sine',720,off+.01);}break;
+   case 'craftReady':bell(fx,79,t,.38,.085*k,pan);bell(fx,86,t+.12,.48,.075*k,pan);o(980,.10,.035,'triangle',620,.02);break;
    case 'ui':bell(fx,74,t,.12,.035*k,0);break;
    case 'test':[69,72,76].forEach((x,i)=>bell(fx,x,t+i*.2,.6,.15*k,0));n(.11,.20,1500,.75);break;
    default:bell(fx,69,t,.3,.07*k,pan);
@@ -3040,17 +3191,17 @@ function installAudioControls(){
  * main quest is never revoked. No reward or item is awarded on load/review.
  */
 const INTRO_RULES=Object.freeze({slimes:5,rewardGold:18});
-const INTRO_HUNT_STAGES=Object.freeze(['hunt','return','sell','buy','forge','rest','report','done']);
+const INTRO_HUNT_STAGES=Object.freeze(['hunt','return','sell','buy','forge','craft','rest','report','done']);
 const INTRO_STAGES=Object.freeze(['none','stats',...INTRO_HUNT_STAGES]);
-function initialIntroQuest(){return {version:5,statsCompleted:false,statsWaived:false,forgeRead:false,stage:'none',kills:0,sold:0,bought:0,purchaseWaived:false,rested:false,resourceRead:false,uiRead:false,sampleGranted:false,rewardClaimed:false,huntRewardClaimed:false,controlsComplete:false,huntReported:false};}
+function initialIntroQuest(){return {version:6,statsCompleted:false,statsWaived:false,forgeRead:false,stage:'none',kills:0,sold:0,bought:0,purchaseWaived:false,rested:false,resourceRead:false,uiRead:false,sampleGranted:false,rewardClaimed:false,huntRewardClaimed:false,controlsComplete:false,huntReported:false,craftMaterialsGranted:false,craftedSword:false,craftSupportUsed:false};}
 function restoreIntroQuest(raw){
  const q=initialIntroQuest();if(!raw||typeof raw!=='object'||Array.isArray(raw))return q;
  if(INTRO_STAGES.includes(raw.stage))q.stage=raw.stage;
- q.forgeRead=raw.forgeRead===true||['rest','report','done'].includes(raw.stage);
+ q.forgeRead=raw.forgeRead===true||['craft','rest','report','done'].includes(raw.stage);
  q.kills=Number.isFinite(raw.kills)?clamp(Math.floor(raw.kills),0,INTRO_RULES.slimes):0;
  q.sold=Number.isFinite(raw.sold)?clamp(Math.floor(raw.sold),0,99999):0;
  q.bought=Number.isFinite(raw.bought)?clamp(Math.floor(raw.bought),0,1):0;
- for(const k of ['rested','resourceRead','uiRead','sampleGranted','rewardClaimed','huntRewardClaimed','controlsComplete','huntReported','statsCompleted'])q[k]=raw[k]===true;
+ for(const k of ['rested','resourceRead','uiRead','sampleGranted','rewardClaimed','huntRewardClaimed','controlsComplete','huntReported','statsCompleted','craftMaterialsGranted','craftedSword','craftSupportUsed'])q[k]=raw[k]===true;
  // Existing accepted hunts are grandfathered, never re-locked or auto-allocated.
  q.statsWaived=raw.statsWaived===true||((Number(raw.version)||0)<5&&INTRO_HUNT_STAGES.includes(raw.stage));
  if(q.statsWaived)q.statsCompleted=true;
@@ -3065,13 +3216,15 @@ function restoreIntroQuest(raw){
  }
  if(q.kills<INTRO_RULES.slimes)q.stage='hunt';
  else if(q.stage==='hunt')q.stage='return';
- if(['buy','forge','rest','report','done'].includes(q.stage)&&q.sold<1)q.stage='sell';
- if(['forge','rest','report','done'].includes(q.stage)&&!introPurchaseSatisfied(q))q.stage='buy';
- if(q.stage==='buy'&&introPurchaseSatisfied(q))q.stage=q.forgeRead?'rest':'forge';
+ if(['buy','forge','craft','rest','report','done'].includes(q.stage)&&q.sold<1)q.stage='sell';
+ if(['forge','craft','rest','report','done'].includes(q.stage)&&!introPurchaseSatisfied(q))q.stage='buy';
+ if(q.stage==='buy'&&introPurchaseSatisfied(q))q.stage=q.forgeRead?'craft':'forge';
+ // v0.12.0 saves that had already reached rest/report/done are not pushed backward.
+ if(q.stage==='craft'&&q.craftedSword)q.stage='rest';
  if(['report','done'].includes(q.stage)&&!q.rested)q.stage='rest';
  if(q.stage==='done'){q.rewardClaimed=true;q.huntRewardClaimed=true;}
- if(['sell','buy','forge','rest','report','done'].includes(q.stage))q.huntReported=true;
- if(q.kills>0||['return','sell','buy','forge','rest','report','done'].includes(q.stage))q.controlsComplete=true;
+ if(['sell','buy','forge','craft','rest','report','done'].includes(q.stage))q.huntReported=true;
+ if(q.kills>0||['return','sell','buy','forge','craft','rest','report','done'].includes(q.stage))q.controlsComplete=true;
  return q;
 }
 function introPurchaseSatisfied(q=state.introQuest){return q.bought>=1||q.purchaseWaived===true;}
@@ -3095,7 +3248,7 @@ function roomAccessAllowed(id){
  if(b.town==='abram'&&!abramGateOpen())return false;
  if(b.kind==='forge')return forgeAccessUnlocked();if(b.kind==='shop')return beginnerServicesUnlocked();return true;
 }
-function serviceLockMessage(){return '상점은 슬라임 5마리 보고 후, 대장간은 회복약 구매 실습과 세라의 대장간 안내 후 열립니다.';}
+function serviceLockMessage(){return '상점은 슬라임 5마리 보고 후, 대장간은 회복약 구매 실습과 세라의 수습 장검 제작 안내 후 열립니다.';}
 function refreshIntroMilestones(){
  if(state.guideStep>=GUIDE.length)state.introQuest.controlsComplete=true;
  refreshIntroStatTask();
@@ -3195,7 +3348,7 @@ function uiLessonHTML(){return `
  <p class="sera-tip">대화를 마친 뒤 눌러 봐. <b>같은 키로 닫을 수 있어.</b><br>창이 열린 동안 게임은 멈춰.</p>
  <details class="sera-details"><summary>다른 화면과 메뉴</summary>
  <p>왼쪽 위는 현재 의뢰, 아래 중앙은 스킬과 남은 쿨타임이야. EXP는 경험치, G는 골드, S는 실버야. <b>1 G = 10 S</b>.<br>지도 오른쪽에서 목적지를 선택하고, 마을 확대·전체 지역으로 범위를 바꿔. 자동 이동은 아니야.</p>
- <p>E에서 스킬·장비·전리품·사냥 도감도 볼 수 있어.<br>Esc는 저장 메뉴, B는 소리 설정, K는 게시판 의뢰야. J 모험 기록은 미궁의 찢어진 기록 2장을 모으면 열려.</p></details>`;}
+ <p>E에서 스킬·장비·전리품·사냥 도감도 볼 수 있어.<br>Esc는 저장 메뉴, B는 소리 설정, K는 게시판 의뢰야. J 모험 기록은 숲의 미궁 안에서만 보이고, 찢어진 기록 2장을 모으면 복원돼.</p></details>`;}
 function huntLessonHTML(){return `
  <div class="lesson-kicker">첫걸음 4 / 4 · 첫 사냥</div>
  <h3 class="lesson-title">슬라임 ${INTRO_RULES.slimes}마리를 잡아 와.</h3>
@@ -3298,8 +3451,9 @@ function talkGuide(){
  if(q.stage==='hunt')guideDialogue(GUIDE_NPC.name,`<div class="lesson-kicker">진행 중 · 슬라임 사냥</div><h3 class="lesson-title">${q.kills} / ${INTRO_RULES.slimes}마리</h3><p class="sera-tip"><b>동쪽 길·잿빛 늪</b>에서 사냥해.<br>${INTRO_RULES.slimes}마리를 잡으면 내게 돌아와.</p>`,[{label:'사냥 계속하기',run:()=>{mapChoice='quest';}},review]);
  else if(q.stage==='return')guideDialogue(GUIDE_NPC.name,'<div class="lesson-kicker">사냥 완료 · 5 / 5</div><h3 class="lesson-title">잘했어. 사냥 보상 18 G를 받으렴.</h3><p class="sera-tip">보고하면 상점이 열려. 전리품 판매와 회복약 구매를 마친 뒤 대장간을 소개할게.</p>',[{label:'보고 · 판매 배우기',run:prepareIntroSale},review]);
  else if(q.stage==='sell'||q.stage==='buy')showTradeLesson();
+ else if(q.stage==='craft')guideDialogue(GUIDE_NPC.name,`<div class="lesson-kicker">진행 중 · 첫 장비 제작</div><h3 class="lesson-title">수습 장검을 브란에게 맡기고 수령해.</h3><p class="sera-tip">서쪽 브란의 대장간에서 <b>수습 장검</b>을 제작해. 시간이 끝나면 브란 머리 위에 <b>!</b>가 떠.<br>완성품은 자동 지급되지 않으니 브란에게 다시 R로 말을 걸어 받아야 해.</p>`,[{label:'브란의 대장간으로',run:()=>{mapChoice='quest';}},review]);
  else if(q.stage==='rest')guideDialogue(GUIDE_NPC.name,restLessonHTML(),[{label:'온천으로 가기',run:()=>{mapChoice='quest';}},review]);
- else if(q.stage==='report')guideDialogue(GUIDE_NPC.name,`<div class="lesson-kicker">첫걸음 · 완료 보고</div><h3 class="lesson-title">사냥부터 회복약 준비까지 끝났네.</h3><div class="sera-checks"><span>✓ 슬라임 5마리</span><span>✓ 전리품 판매</span>${q.purchaseWaived?'':'<span>✓ 회복약 구매</span>'}<span>✓ 온천 휴식</span></div><p class="sera-tip">사냥 보상 18 G는 이미 받았지? 이제 로안에게 소개해 줄게.</p>`,[{label:'최종 보고 · 로안 만나기',run:finishIntroQuest},review]);
+ else if(q.stage==='report')guideDialogue(GUIDE_NPC.name,`<div class="lesson-kicker">첫걸음 · 완료 보고</div><h3 class="lesson-title">사냥부터 첫 장비 제작과 휴식까지 끝났네.</h3><div class="sera-checks"><span>✓ 슬라임 5마리</span><span>✓ 전리품 판매</span>${q.purchaseWaived?'':'<span>✓ 회복약 구매</span>'}<span>✓ 수습 장검 제작·수령</span><span>✓ 온천 휴식</span></div><p class="sera-tip">사냥 보상 18 G는 이미 받았지? 이제 로안에게 소개해 줄게.</p>`,[{label:'최종 보고 · 로안 만나기',run:finishIntroQuest},review]);
  else guideDialogue(GUIDE_NPC.name,'<div class="lesson-kicker">길잡이 세라</div><h3 class="lesson-title">돌아왔구나. 궁금한 게 있어?</h3><p class="sera-tip">기본 설명은 <kbd>H</kbd>에서도 다시 볼 수 있어.</p>',[{label:'설명 다시 보기',run:()=>showGuideLesson(0,true)},{label:'다음에 올게',run:()=>{}}]);
  return true;
 }
@@ -3308,7 +3462,8 @@ function introHUD(){
  if(s==='stats')return {title:'미분배 스탯 모두 사용하기',lines:hero.points>0?
   [`<span class="gold">남은 포인트 ${hero.points}개</span>`,'<kbd>E</kbd> 상태창 → 능력치 옆 <b>+</b>','모두 쓰고 세라에게 <kbd>R</kbd>로 확인']:
   ['<span class="gold">미분배 0개 · 준비 완료</span>','세라에게 <kbd>R</kbd> → 슬라임 사냥 의뢰']};
- if(s==='forge')return {title:'세라의 대장간 안내',lines:['구매 실습 완료 · 세라에게 R','대장간 안내를 들으면 제작 가능']};
+ if(s==='forge')return {title:'세라의 대장간 안내',lines:['구매 실습 완료 · 세라에게 R','수습 장검 제작 실습을 시작하자']};
+ if(s==='craft')return {title:'첫 장비 제작 · 수습 장검',lines:hero.craft?.introCommission?[craftReady(hero.craft)?'<span class="gold">제작 완료 · 브란에게 R로 수령</span>':`브란 제작 중 · ${fmt(craftRemaining())}초`, '수령해야 온천 실습으로 진행']:['브란의 대장간 → 무기 → 수습 장검','첫 제작비 8 G는 세라 실습 지원']};
  const lines=s==='none'?['광장의 길잡이 세라에게 <kbd>R</kbd>','상태창 설명 후 미분배 포인트 모두 사용','조작 연습·사냥 의뢰 수락 후 외출']:
  s==='hunt'?[`<span class="gold">슬라임 ${q.kills} / ${INTRO_RULES.slimes}</span>`,'동쪽 길 · 잿빛 늪 → 세라에게 보고']:
  s==='return'?['<span class="gold">슬라임 5 / 5 · 사냥 보고</span>','세라에게 R · 판매와 구매 배우기']:
@@ -3320,8 +3475,8 @@ function introHUD(){
 }
 function introJournalHTML(){
  const q=state.introQuest;
- const label={none:'세라의 설명 듣기',stats:hero.points>0?`능력치 분배 · 남은 ${hero.points}개`:'능력치 분배 완료 · 세라에게 확인',hunt:`사냥 중 ${q.kills}/5`,return:'사냥 완료 · 세라에게 보고',sell:'전리품 판매 실습',buy:'하급 회복약 구매 실습',forge:'세라의 대장간 안내',rest:'온천 휴식 실습',report:'세라에게 최종 완료 보고',done:'완료'}[q.stage];
- return `<h3>입문 의뢰 · 사냥꾼의 첫걸음</h3><p><b>${label}</b><br>세라의 설명 → E에서 미분배 스탯 모두 사용 → 세라에게 확인 → 슬라임 5마리 → 사냥 보고 / 18 G → 전리품 1개 판매 → 하급 회복약 1개 구매 → 세라의 대장간 안내 → 온천 휴식 → 최종 보고.<br>사냥 보상은 한 번만 지급해. 로안의 25마리와는 별도 집계.${q.purchaseWaived?'<br>이전 저장에서 판매를 마쳐 새 구매 실습은 생략됐어.':''}</p><details class="resource-notes"><summary>자원·메뉴 / 판매·구매·휴식 다시 읽기</summary>${resourceLessonHTML()}${uiLessonHTML()}${stateLessonHTML()}<h3>판매·구매·휴식</h3><p>E → 전리품: 가방 확인. 모르에게 R → 부산물 판매 → 하급 회복약 1개 구매. 가진 약과 온천 보급은 구매 실적으로 세지 않아.<br>온천 R: HP·MP·기력 전부 회복. 회복약이 전혀 없을 때만 하급 1개 지원.<br>Q 하급 회복약: HP 30 고정 회복 / 재사용 ${BALANCE.potionCooldown}초. 마나와 기력은 회복하지 않아.</p></details>`;
+ const label={none:'세라의 설명 듣기',stats:hero.points>0?`능력치 분배 · 남은 ${hero.points}개`:'능력치 분배 완료 · 세라에게 확인',hunt:`사냥 중 ${q.kills}/5`,return:'사냥 완료 · 세라에게 보고',sell:'전리품 판매 실습',buy:'하급 회복약 구매 실습',forge:'세라의 대장간 안내',craft:hero.craft?.introCommission?(craftReady(hero.craft)?'수습 장검 완성 · 브란에게 수령':'수습 장검 제작 중'):'수습 장검 제작',rest:'온천 휴식 실습',report:'세라에게 최종 완료 보고',done:'완료'}[q.stage];
+ return `<h3>입문 의뢰 · 사냥꾼의 첫걸음</h3><p><b>${label}</b><br>세라의 설명 → E에서 미분배 스탯 모두 사용 → 세라에게 확인 → 슬라임 5마리 → 사냥 보고 / 18 G → 전리품 1개 판매 → 하급 회복약 1개 구매 → 세라의 대장간 안내 → 수습 장검 제작·브란에게 수령 → 온천 휴식 → 최종 보고.<br>사냥 보상은 한 번만 지급해. 로안의 25마리와는 별도 집계.${q.purchaseWaived?'<br>이전 저장에서 판매를 마쳐 새 구매 실습은 생략됐어.':''}</p><details class="resource-notes"><summary>자원·메뉴 / 판매·구매·휴식 다시 읽기</summary>${resourceLessonHTML()}${uiLessonHTML()}${stateLessonHTML()}<h3>판매·구매·휴식</h3><p>E → 전리품: 가방 확인. 모르에게 R → 부산물 판매 → 하급 회복약 1개 구매. 가진 약과 온천 보급은 구매 실적으로 세지 않아.<br>온천 R: HP·MP·기력 전부 회복. 회복약이 전혀 없을 때만 하급 1개 지원.<br>Q 하급 회복약: HP 30 고정 회복 / 재사용 ${BALANCE.potionCooldown}초. 마나와 기력은 회복하지 않아.</p></details>`;
 }
 
 
@@ -3333,6 +3488,11 @@ function introJournalHTML(){
 function initialExploration(){return {version:1,accepted:false,discovered:false,entered:false,pages:[],seenPages:[],completed:false};}
 function hasJournalPage(id){return state.exploration.pages.includes(id);}
 function journalUnlocked(){return MAZE.pages.length===2&&MAZE.pages.every(p=>hasJournalPage(p.id));}
+function dungeonJournalVisible(){return state.scene==='dungeon';}
+function closeDungeonJournalOnLeave(){
+ if(state.mode==='journal'){ $('journal').classList.add('hidden');state.mode='play';helpReturn='play';pauseInput(); }
+ return true;
+}
 function entranceKnown(){return state.exploration.discovered;}
 function entranceHinted(){return state.exploration.accepted&&state.quest==='unlocked'&&!entranceKnown();}
 function entranceMapVisible(){return entranceKnown()||entranceHinted();}
@@ -3342,6 +3502,11 @@ function mapPlacePresentation(p){
   if(!abramCaveCleared())return {...p,note:`최소 Lv.${DUNGEON_ACCESS.abram.minLevel} · 권장 ${DUNGEON_ACCESS.abram.recommended} · 붉은 철갑 거인 Lv.${MONSTERS.ironGiant.level} 처치 시 테른 해금`};
   if(g?.hp>0)return {...p,note:`해방된 미궁 · 붉은 철갑 거인 Lv.${g.level} 재등장 · 서울 시각 3시간 슬롯`};
   if(state.ironGiantRespawnAt)return {...p,note:`해방된 미궁 · 붉은 철갑 거인 다음 출현 ${seoulClockLabel(state.ironGiantRespawnAt)}`};
+ }
+ if(p.id==='entrance'&&entranceKnown()&&state.cleared){
+  const b=boss();
+  if(b?.hp>0)return {...p,note:`해방된 미궁 · 제보당의 붉은 괴수 Lv.${b.level} 재등장 · 서울 시각 3시간 슬롯`};
+  if(state.bossRespawnAt)return {...p,note:`해방된 미궁 · 제보당의 붉은 괴수 다음 출현 ${seoulClockLabel(state.bossRespawnAt)}`};
  }
  if(p.id!=='entrance'||entranceKnown())return p;
  return {...p,label:'? 미확인 유적',short:'미확인 유적',kind:'unknown',
@@ -3404,17 +3569,18 @@ function collectJournalPage(id){
 function explorationHUD(){
  const q=state.exploration,count=q.pages.length;
  if(!q.accepted)return {title:'새로운 소문',lines:['동쪽 숲 안쪽 길의 길손 이안에게 <kbd>R</kbd>','로안의 표식은 입장 자격일 뿐','붉은 빛에 관한 이야기를 들어 보자']};
- if(q.completed)return {title:'미궁 탐사 · 완료',lines:['<span class="gold">기록 복원 · 괴수 처치 완료</span>','미궁 자유 출입 · <kbd>J</kbd> 모험 기록','일반 늑대는 일정 시간이 지나면 다시 출현']};
- if(state.scene==='field')return {title:'메인 · 미궁 탐사',lines:q.discovered?['<span class="gold">숲속 미궁 발견</span>',q.entered?`찢어진 기록 ${count} / 2 · 다시 탐사하기`:'미궁 입구에서 R · 내부 탐사',state.cleared?'보스 처치 완료 · 기록을 마저 찾자':'입장 후에는 보스 처치 전 귀환 불가']:['<span class="gold">깊은 숲의 붉은 빛을 찾아라</span>','교역로 옆 숲에서 붉은 빛 탐색',state.quest==='unlocked'?'Tab 지도 · ? 미확인 유적 조사':'로안에게 완료 보고 후 지도 ? 표시']};
- return {title:'메인 · 미궁 탐사',lines:[journalUnlocked()?'✓ 모험 기록 복원 · <kbd>J</kbd>':`<span class="gold">찢어진 모험 기록 ${count} / 2</span>`,state.gate?'✓ 룬 봉인 해제':'세 룬 기둥을 맞추고 문에서 확인',state.floorOpen?'✓ 발자국 퍼즐 해제':'두 번째 비문과 발판의 순서 확인',state.cleared?'괴수 처치 완료 · 기록도 모두 모으자':'제보당의 붉은 괴수 처치']};
+ if(q.completed)return {title:'미궁 탐사 · 완료',lines:state.scene==='dungeon'?['<span class="gold">기록 복원 · 괴수 처치 완료</span>','미궁 자유 출입 · <kbd>J</kbd> 모험 기록','일반 늑대는 일정 시간이 지나면 다시 출현']:['<span class="gold">괴수 처치 · 미궁 탐사 완료</span>','미궁은 자유롭게 다시 입장할 수 있다','모험 기록과 퍼즐 힌트는 미궁 안에서만 표시']};
+ if(state.scene==='field')return {title:'메인 · 미궁 탐사',lines:q.discovered?['<span class="gold">숲속 미궁 발견</span>',q.entered?'미궁 입구로 돌아가 내부 탐사 계속':'미궁 입구에서 R · 내부 탐사',state.cleared?'보스 처치 완료 · 기록을 마저 찾자':'입장 후에는 보스 처치 전 귀환 불가']:['<span class="gold">깊은 숲의 붉은 빛을 찾아라</span>','교역로 옆 숲에서 붉은 빛 탐색',state.quest==='unlocked'?'Tab 지도 · ? 미확인 유적 조사':'로안에게 완료 보고 후 지도 ? 표시']};
+ return {title:'메인 · 미궁 탐사',lines:[journalUnlocked()?'✓ 모험 기록 복원 · <kbd>J</kbd>':`<span class="gold">찢어진 모험 기록 ${count} / 2</span>`,state.gate?'✓ 룬 봉인 해제':'세 룬 기둥을 맞추고 문에서 확인',state.floorOpen?'✓ 변이 흔적 퍼즐 해제':journalUnlocked()?`변이 흔적 진행 ${state.floorStep} / 3 · 틀리면 0 / 3 초기화`:'기록 2장을 복원해 변이 흔적의 순서를 해독',state.cleared?'괴수 처치 완료 · 기록도 모두 모으자':'제보당의 붉은 괴수 처치']};
 }
 function journalHTML(){
+ if(!dungeonJournalVisible())return '';
  const q=state.exploration;
  const pieces='<div class="torn-slots">'+MAZE.pages.map(p=>`<div class="torn-slot ${hasJournalPage(p.id)?'found':''}"><b>${hasJournalPage(p.id)?'▤':'?'}</b>찢어진 기록 ${p.number}<br>${hasJournalPage(p.id)?'수집 완료':'미수집'}</div>`).join('')+'</div>';
  if(!journalUnlocked())return `<div class="journal-seal"><div class="eyebrow">A JOURNAL TORN APART</div><h3>아직 읽을 수 없는 기록</h3><p>미궁에 흩어진 <b>서로 다른 두 장</b>을 모두 모으면<br>하나의 모험 기록으로 복원할 수 있다.</p>${pieces}<p>수집 ${q.pages.length} / 2 · 조각 가까이에서 <kbd>R</kbd><br>비문은 현장에서 R로 읽고, 마나·기력 설명은 <kbd>H</kbd>에서 확인.</p></div>`;
- return `<div class="lesson-kicker">RESTORED JOURNAL · 2 / 2</div><h3>이름 없는 모험가의 마지막 기록</h3><p class="panel-note">서로 다른 구석에서 발견한 두 장의 글이 이어진다. 가장자리는 젖고 그을렸지만, 글은 아직 남아 있다.</p><article class="restored-entry"><h3>첫 번째 장 · 색이 사라진 숲</h3><p>“용이 모든 색을 가져갔다고 들었다. 그런데 길이 끊긴 숲에서 붉은 빛을 보았다. 나무 사이를 헤치자 돌문이 나타났다. 지도에는 없는 곳이었다.”</p><p>“입구는 들어오는 자에게만 열린다. 벽 사이의 늑대들은 죽어도 다시 일어났다. 쓰러뜨렸다고 그 길이 영원히 안전해지는 것은 아니다.”</p><h3>해와 달과 별의 비문</h3><p>첫째, 하루를 비추던 빛이 저문다.<br>둘째, 밤의 둥근 눈이 떠오른다.<br>셋째, 작은 빛들이 하늘에 남는다.</p><small>세 룬 기둥을 맞춘 뒤 북동쪽 봉인문에서 R로 정렬을 확인한다.</small></article><article class="restored-entry"><h3>두 번째 장 · 붉은 등의 그림자</h3><p>“보통 늑대의 몸에는 보석이 없다. 두 발로 선 그 괴수만 등에 붉은 보석을 품고 있었다. 돌진을 피하고 돌아섰을 때, 그 등에 틈이 보였다.”</p><h3>세 발자국의 비문</h3><p>가장 큰 발자국이 앞장서고,<br>가장 작은 발자국이 뒤따르며,<br>남은 발자국이 길을 완성한다.</p><small>발판은 직접 밟는다. 지면을 울리는 충격파는 점프로 넘을 수 있다.</small></article><p class="panel-note">메인 · 미궁 탐사: ${q.completed?'완료':state.cleared?'괴수 처치 완료':'붉은 빛의 정체를 확인할 것'}<br>수집한 기록은 사망해도 남으며, 전리품으로 판매되지 않는다. 생존 안내는 H.</p>`;
+ return `<div class="lesson-kicker">RESTORED JOURNAL · 2 / 2</div><h3>이름 없는 모험가의 마지막 기록</h3><p class="panel-note">서로 다른 구석에서 발견한 두 장의 글이 이어진다. 가장자리는 젖고 그을렸지만, 글은 아직 남아 있다.</p><article class="restored-entry"><h3>첫 번째 장 · 색이 사라진 숲</h3><p>“용이 모든 색을 가져갔다고 들었다. 그런데 길이 끊긴 숲에서 붉은 빛을 보았다. 나무 사이를 헤치자 돌문이 나타났다. 지도에는 없는 곳이었다.”</p><p>“입구는 들어오는 자에게만 열린다. 벽 사이의 늑대들은 죽어도 다시 일어났다. 쓰러뜨렸다고 그 길이 영원히 안전해지는 것은 아니다.”</p><h3>해와 달과 별의 비문</h3><p>첫째, 하루를 비추던 빛이 저문다.<br>둘째, 밤의 둥근 눈이 떠오른다.<br>셋째, 작은 빛들이 하늘에 남는다.</p><small>세 룬 기둥을 맞춘 뒤 북동쪽 봉인문에서 R로 정렬을 확인한다.</small></article><article class="restored-entry"><h3>두 번째 장 · 붉은 등의 그림자</h3><p>“보통 늑대의 몸에는 보석이 없다. 두 발로 선 그 괴수만 등에 붉은 보석을 품고 있었다. 돌진을 피하고 돌아섰을 때, 그 등에 틈이 보였다.”</p><p>“룬 봉인 너머부터 녀석의 흔적이 이상하게 변했다. 처음에는 네 발로 달린 늑대의 발자국이었다. 더 안쪽에서는 앞발 흔적이 사라지고, 사람처럼 길쭉한 두 발자국만 깊게 남았다. 봉인실 문 앞에서는 발자국이 끊기고 돌바닥에 세 갈래 발톱 자국이 패여 있었다.”</p><h3>변이의 흔적</h3><p>전실의 세 석판은 <b>늑대 발자국</b>, <b>두 발로 선 흔적</b>, <b>세 갈래 발톱 자국</b>을 본떠 만든 듯하다. 비문은 ‘흔적이 남겨진 흐름을 거슬러 섞지 말라’고 경고한다.</p><small>세 발판의 무늬를 실제 흔적이 변해 간 순서와 연결하자. 지면을 울리는 충격파는 점프로 넘을 수 있다.</small></article><p class="panel-note">메인 · 미궁 탐사: ${q.completed?'완료':state.cleared?'괴수 처치 완료':'붉은 빛의 정체를 확인할 것'}<br>수집한 기록은 사망해도 남으며, 전리품으로 판매되지 않는다. 생존 안내는 H.</p>`;
 }
-function journalInventoryHTML(){return `<div class="journal-quest-item"><b>${journalUnlocked()?'복원된 모험 기록':'찢어진 모험 기록'} · ${state.exploration.pages.length} / 2</b><small>퀘스트 수집품 · 판매 불가 · ${journalUnlocked()?'J로 읽기':'서로 다른 두 장을 모으면 J 기록 해금'}</small></div>`;}
+function journalInventoryHTML(){if(!dungeonJournalVisible())return '';return `<div class="journal-quest-item"><b>${journalUnlocked()?'복원된 모험 기록':'찢어진 모험 기록'} · ${state.exploration.pages.length} / 2</b><small>미궁 안에서만 보이는 탐사 기록 · 판매 불가 · ${journalUnlocked()?'J로 읽기':'서로 다른 두 장을 모으면 J 기록 해금'}</small></div>`;}
 function dungeonPopulation(){
  const list=enemies.filter(e=>e.scene==='dungeon'&&e.type!=='boss');
  return {capacity:DUNGEON_RULES.population,alive:list.filter(e=>e.hp>0).length,waiting:list.filter(e=>e.hp<=0).length,total:list.length};
@@ -3508,7 +3674,8 @@ function renderRedGlimmer(){
  * Checking the real MP before regeneration prevents an empty-mana sprint from
  * silently restarting every frame. No persistent running-status label is used.
  */
-function shiftHeld(){return keys.has('ShiftLeft')||keys.has('ShiftRight');}
+function resumePhysicalMovementKeys(){for(const code of physicalMove)if(['KeyW','KeyA','KeyS','KeyD'].includes(code))keys.add(code);return physicalMove.size;}
+function shiftHeld(){return physicalShift.size>0||keys.has('ShiftLeft')||keys.has('ShiftRight');}
 function resetSprintInput(){player.sprinting=false;player.sprintExhausted=false;player.sprintDebit=0;}
 function exhaustSprint(){
  if(!player.sprintExhausted)toast('MP가 바닥났다. 회복 후 Shift를 떼었다가 다시 누르자.',2.5);
@@ -3895,9 +4062,11 @@ function render(){
   for(const p of MAZE.pages)if(!hasJournalPage(p.id)&&dist(player,p)<40)renderJournalPage(p);
   for(const r of MAZE.runes)if(dist(player,r)<48){drawGlyph(r.x,1.75,r.z+.38,state.rune[r.id]);ring(r.x,r.z,1.0,state.gate?C.white:C.light);}
   if(!state.gate)drawBars(44,-49.3,4.0);
-  if(!state.floorOpen)drawBars(36,-63,44);
+  if(!state.floorOpen||bossRoomSealed())drawBars(36,-63,44);
+  if(bossRoomSealed()){for(const x of [18,27,36,45,54])draw(gem,trs(x,.65+Math.sin(state.time*5+x)*.08,-62.6,.12,.30,.12,0,state.time,0),C.red,1,1);}
+  const wb=boss();if(wb?.hp>0&&wb.mode==='wave'){const progress=clamp(1-wb.timer/.72,0,1);ring(wb.x,wb.z,1.2+progress*8.0,C.red,.82,.10);}
   if(!state.cleared)drawBars(-44,46.7,3.8,2.7);else ring(-44,44,1.8,C.white);
-  for(const s of MAZE.plates)if(state.floorOpen||[2,0,1].slice(0,state.floorStep).includes(s.id))ring(s.x,s.z,1.3,C.white);
+  for(const s of MAZE.plates)if(state.floorOpen||FLOOR_TRACK_ORDER.slice(0,state.floorStep).includes(s.id))ring(s.x,s.z,1.3,C.white);
   if(state.cleared&&dist(player,{x:36,z:-80})<45){ring(36,-80,2.1,C.white);draw(gem,trs(36,1.1+Math.sin(state.time*2)*.14,-80,.28,.4,.28,0,state.time,0),C.red,1,1);}
  }else if(state.scene==='abramDungeon'){
   if(!abramCaveCleared())drawBars(ABRAM_CAVE.entry.x,ABRAM_CAVE.entry.z+3.5,5.2,3.2);else ring(ABRAM_CAVE.entry.x,ABRAM_CAVE.entry.z,1.8,C.white);
@@ -4053,7 +4222,7 @@ function rawMapObjective(){
  }
  if(state.cleared)return {x:-44,z:44,label:'해방된 출구',short:'출구',kind:'portal',note:'R키 · 자유롭게 출입 가능'};
  if(state.floorOpen)return {x:36,z:-80,label:'괴수의 봉인실',short:'중간 보스',kind:'boss',note:'제보당의 붉은 괴수 · 처치 전 귀환 불가'};
- if(state.gate)return {x:36,z:-57,label:'발자국의 전실',short:'발판 퍼즐',kind:'rune',note:'세 발판의 순서는 J키 비문에서 확인'};
+ if(state.gate)return {x:36,z:-57,label:'변이 흔적의 전실',short:'흔적 퍼즐',kind:'rune',note:journalUnlocked()?'세 흔적의 변이 순서는 J 모험 기록과 현장 비문에서 추리':'찢어진 모험 기록 2장을 먼저 복원'};
  const discovered=MAZE.runes.filter(runeKnown).length;
  if(discovered===3&&mapGateKnown())return {x:44,z:-48,label:'북동쪽 룬 봉인문',short:'봉인문',kind:'portal',note:'룬을 맞춘 뒤 문 앞에서 R로 확인'};
  return {x:null,z:null,label:'미궁의 룬을 찾아라',short:'미발견 구역 탐험',kind:'rune',note:`룬 ${discovered} / 3 발견 · J키로 비문 확인`};
@@ -4300,7 +4469,7 @@ function drawFullMap(){
   const population=dungeonPopulation();
   cards=`<div class="map-stage"><b>찢어진 기록 ${state.exploration.pages.length} / 2</b><small>${journalUnlocked()?'복원 완료 · J로 열기':'직접 발견한 조각만 지도에 표시'}</small></div><div class="map-stage"><b>일반 몬스터 ${population.alive} / ${population.capacity}</b><small>재생성 대기 ${population.waiting} · 보스는 별도 1마리</small></div><div class="map-stage"><b>${state.cleared?'미궁 해방':'출구 봉인'}</b><small>${state.cleared?'출구에서 R · 자유 출입':'죽거나 보스를 처치해야 귀환'}</small></div>`;
   for(const r of MAZE.runes)cards+=`<div class="map-stage"><b>${r.id+1}번 룬 ${runeKnown(r)?'· '+GLYPHS[state.rune[r.id]]:'· 미발견'}</b><small>${runeKnown(r)?'현재 문양 · R로 회전':'탐험 후 지도에 표시'}</small></div>`;
-  cards+=`<div class="map-stage"><b>봉인문 ${state.gate?'해제':'잠김'} / 발판 ${state.floorOpen?'완료':'대기'}</b><small>비문은 현장에서 R · 기록 2장 복원 후 J</small></div>`;
+  cards+=`<div class="map-stage"><b>룬 봉인 ${state.gate?'해제':'잠김'} / 변이 흔적 ${state.floorOpen?'완료':'대기'}</b><small>흔적 퍼즐은 기록 2장 복원 후 J와 전실 비문을 함께 확인</small></div>`;
  }
  if($('mapPlaces').innerHTML!==cards)$('mapPlaces').innerHTML=cards;
  const legend=m.field?'◎ 내 위치　? 미확인 유적　… 이안·소문　▤ 세라·입문　◆ 의뢰　▣ 상인　△ 온천　▥ 미궁　회색 방패: 경비병　● 슬라임　▲ 늑대　■ 멧돼지':m.cave?'◎ 내 위치　▥ 출입구　◆ 붉은 표식: 중간보스　주변 적만 표시':'◎ 내 위치　▤ 기록 조각　◆ 숫자: 발견한 룬　▣ 발판　▲ 늑대　◆ 붉은 표식: 보스';
@@ -4377,7 +4546,7 @@ function renderStatus(){
  }else{
   html='<div class="table-scroll"><table class="game-table"><thead><tr><th>몬스터</th><th>희귀도</th><th>Lv</th><th>HP</th><th>공격</th><th>기본 EXP</th><th>리젠</th></tr></thead><tbody>';
   for(const m of Object.values(MONSTERS).filter(m=>m.type!=='thug')){const ri=monsterRarityInfo(m.rarity),resp=(m.type==='boss'||m.boss)?'서울 3시간 슬롯':m.unique?'없음':Array.isArray(m.respawn)?`${Math.min(...m.respawn)}~${Math.max(...m.respawn)}초 난수`:m.respawn?fmt(m.respawn)+'초':'없음';html+=`<tr><td>${ri.mark?ri.mark+' ':''}${m.name}</td><td>${ri.name}</td><td>${m.level}</td><td>${fmt(m.hp)}</td><td>${(m.type==='boss'||m.boss)?[m.claw||m.attack,m.rush||m.attack,m.slam||m.attack].map(fmt).join(' / '):fmt(m.attack)}</td><td>${fmt(m.xp)}</td><td>${resp}</td></tr>`;}
-  html+='</tbody></table></div><p class="panel-note">필드 레벨 흐름: 길가/늪 Lv.1~3 → 동쪽 숲 Lv.5~7 → 부서진 능선 Lv.13→14→15→17→19→21. 아브람 종유석 미궁은 별도 구간 Lv.22→24→26 / 붉은 철갑 거인 Lv.28입니다.<br>안개 망령은 처치마다 100~120초 사이에서 리젠 시간이 새로 정해집니다. 제보당의 붉은 괴수와 붉은 철갑 거인은 서울 시각 0·3·6·9·12·15·18·21시에 다시 나타납니다.</p><p class="panel-note">경험치 감쇠는 <b>플레이어가 몬스터보다 높은 경우에만</b> 적용됩니다. +0~2레벨: 100% · +3~4: 50% · +5: 20% · +6 이상: 0 EXP. 자신보다 강한 몬스터를 처치한 경험치는 깎이지 않습니다.<br>숲의 미궁 최소 Lv.8 · 아브람 종유석 미궁 최소 Lv.22. 낮은 지역 반복 사냥으로는 레벨차 감쇠 때문에 무한 고속 성장이 어렵습니다.<br>모든 일반 몬스터는 플레이어에게서 지나치게 멀어지거나 활동 범위를 벗어나면 원래 자리로 귀환하며 <b>즉시 HP 완전 회복</b>합니다.<br>희귀도: 일반 &lt; 고급 ◇ &lt; 희귀 ◆ &lt; 정예 ✦ &lt; 중간보스 ✶. 희귀·정예·보스는 바닥 표식으로도 구분됩니다.<br>모든 몬스터는 몸이 닿아 있는 동안 공격속도 +25%. 피격 후 1초 동안 준비·대기·회복 쿨타임 진행 속도 -25%.</p>';
+  html+='</tbody></table></div><p class="panel-note">필드 레벨 흐름: 길가/늪 Lv.1~3 → 동쪽 숲 Lv.5~7 → 부서진 능선 Lv.13→14→15→17→19→21. 아브람 종유석 미궁은 별도 구간 Lv.22→24→26 / 붉은 철갑 거인 Lv.28입니다.<br>안개 망령은 처치마다 100~120초 사이에서 리젠 시간이 새로 정해집니다. 제보당의 붉은 괴수와 붉은 철갑 거인은 서울 시각 0·3·6·9·12·15·18·21시에 다시 나타납니다.</p><p class="panel-note">경험치 감쇠는 <b>플레이어가 몬스터보다 높은 경우에만</b> 적용됩니다. +0~2레벨: 100% · +3~4: 50% · +5~6: 20% · +7~8: 10% · +9~10: 5% · +11 이상: 0 EXP. 자신보다 강한 몬스터를 처치한 경험치는 깎이지 않습니다.<br>중간보스는 첫 처치 100%, 두 번째 처치부터 기본 보스 경험치의 50%를 지급하며 그 뒤 현재 레벨차 감쇠가 적용됩니다. 숲의 미궁 최소 Lv.8 · 아브람 종유석 미궁 최소 Lv.22. 낮은 지역 반복 사냥으로는 레벨차 감쇠 때문에 무한 고속 성장이 어렵습니다.<br>모든 일반 몬스터는 플레이어에게서 지나치게 멀어지거나 활동 범위를 벗어나면 원래 자리로 귀환하며 <b>즉시 HP 완전 회복</b>합니다.<br>희귀도: 일반 &lt; 고급 ◇ &lt; 희귀 ◆ &lt; 정예 ✦ &lt; 중간보스 ✶. 희귀·정예·보스는 바닥 표식으로도 구분됩니다.<br></p>';
   html+='<details><summary>부산물 획득 확률과 판매 가격</summary><div class="table-scroll"><table class="game-table"><thead><tr><th>몬스터</th><th>부산물</th><th>기본 → 현재 확률</th><th>판매</th></tr></thead><tbody>';
   for(const m of Object.values(MONSTERS))for(const [id,p,exact=false] of m.drops)html+=`<tr><td>${m.name}</td><td>${ITEMS[id].name}</td><td>${fmt(p*100)}% → ${fmt((exact?p:dropChance(p))*100)}%</td><td>${ITEMS[id].noSell?'판매 불가':moneyText(ITEMS[id].sell)}</td></tr>`;
   html+='</tbody></table></div></details>';
@@ -4441,7 +4610,7 @@ function renderProgressHUD(){
   texts.append(node);
  }
  {const hb=state.scene==='abramDungeon'?ironGiantBoss():boss(),respawnAt=state.scene==='abramDungeon'?state.ironGiantRespawnAt:state.bossRespawnAt;$('bossHP').textContent=hb?.hp>0?`Lv.${hb.level} · ${fmt(hb.hp)} / ${fmt(hb.maxHP)} HP`:(respawnAt?`다음 출현 ${seoulClockLabel(respawnAt)}`:'처치됨');}
- if(state.scene==='field'&&state.mode==='play'&&dist(player,activeBlacksmith())<25)placeLabel('blacksmith',activeBlacksmith().name+' · 제작 R',activeBlacksmith().x,3.2,activeBlacksmith().z,true);
+ if(state.scene==='field'&&state.mode==='play'&&dist(player,activeBlacksmith())<25)placeLabel('blacksmith',craftReady(hero.craft)&&craftSmith(hero.craft).id===activeBlacksmith().id?'! '+activeBlacksmith().name+' · 제작품 수령 R':activeBlacksmith().name+' · 제작 R',activeBlacksmith().x,3.2,activeBlacksmith().z,true);
  if(state.scene==='field'&&state.mode==='play'&&dist(player,activeMerchant())<25)placeLabel('merchant',activeMerchant().name+' · R',activeMerchant().x,3.2,activeMerchant().z,true);
 }
 
@@ -4519,7 +4688,7 @@ function renderHUD(){
  $('questTitle').textContent=title;const q=lines.map(l=>`<p>${l}</p>`).join('');if($('questLines').innerHTML!==q)$('questLines').innerHTML=q;
  const dungeonBoss=boss(),ridgeBoss=ironGiantBoss(),showRidgeBoss=isIronGiantEncounter(),showDungeonBoss=isBossEncounter(),b=showRidgeBoss?ridgeBoss:dungeonBoss,showBoss=showRidgeBoss||showDungeonBoss;
  $('boss').classList.toggle('hidden',!showBoss);$('nav').style.visibility=showBoss?'hidden':'';$('bossFill').style.width=clamp(b.hp/b.maxHP*100,0,100)+'%';const bossTrack=$('bossFill').parentElement;bossTrack.setAttribute('role','progressbar');bossTrack.setAttribute('aria-label',b.name);bossTrack.setAttribute('aria-valuemin','0');bossTrack.setAttribute('aria-valuemax',String(b.maxHP));bossTrack.setAttribute('aria-valuenow',String(Math.max(0,b.hp)));
- $('bossPhase').textContent=showRidgeBoss?(b.mode==='windup'?(b.attackKind==='rush'?'철갑 돌진 준비 · 옆으로 회피':'양손 내려찍기 · Space로 충격을 넘기기'):b.mode==='recover'?'공격 직후 · 지금이 반격 기회':'종유석 심층의 붉은 철갑 거인'):b.mode==='windup'?({'claw':'발톱 휘두르기 · F 대시로 벗어나기','rush':'돌진 준비 · 옆으로 피하기','slam':'지면 충격파 · Space로 뛰어넘기'}[b.attackKind]):b.phase===2?'광폭화 · 등 보석은 약점':'붉은 보석은 등에 있다';
+ $('bossPhase').textContent=showRidgeBoss?(b.mode==='windup'?(b.attackKind==='rush'?'철갑 돌진 준비 · 옆으로 회피':'양손 내려찍기 · Space로 충격을 넘기기'):b.mode==='recover'?'공격 직후 · 지금이 반격 기회':'종유석 심층의 붉은 철갑 거인'):b.mode==='wave'?'붉은 파동 · Space로 충격파를 넘기기':b.gimmickRushes>0?'2연속 돌진 · 옆으로 회피':b.gimmickSlams>0?'연속 균열 강타 · Space로 회피':b.mode==='windup'?({'claw':'발톱 휘두르기 · F 대시로 벗어나기','rush':'돌진 준비 · 옆으로 피하기','slam':'지면 충격파 · Space로 뛰어넘기'}[b.attackKind]):b.phase===2?(b.gimmickMask&16?'최후의 발악 · 공격 간격 단축':'2페이즈 · 광폭화 · 등 보석은 약점'):'붉은 보석은 등에 있다';
  const objective=getMapObjective();
  let nav='N ↑　　E →';
  if(Number.isFinite(objective.x)){
@@ -4829,13 +4998,16 @@ $('storageImport').addEventListener('click',()=>$('saveFile').click());
 $('storageRefresh').addEventListener('click',()=>withMenuBusy(async()=>{await refreshSlots();renderSaveCards();refreshStorageUI();}));
 $('saveFile').addEventListener('change',async e=>{await importSelectedSave(e.target.files?.[0]);e.target.value='';});
 document.addEventListener('keydown',e=>{
+ if(e.code==='ShiftLeft'||e.code==='ShiftRight')physicalShift.add(e.code);
+ const editableTarget=['INPUT','TEXTAREA','SELECT'].includes(e.target?.tagName)||e.target?.isContentEditable;
+ if(!editableTarget&&['play','transition'].includes(state.mode)&&['KeyW','KeyA','KeyS','KeyD'].includes(e.code))physicalMove.add(e.code);
  if(newJourneyDecision){
   if(e.code==='Escape'){e.preventDefault();finishNewJourney(false);}
   if(e.code==='Tab'){e.preventDefault();(document.activeElement===$('cancelNewJourney')?$('confirmNewJourney'):$('cancelNewJourney')).focus();}
   return;
  }
  if(state.mode==='audio'){if(e.code==='Escape'||e.code==='KeyB'){e.preventDefault();closeAudioPanel();}else if(e.code==='KeyM'&&!e.repeat){toggleSound();}return;}
- if(['INPUT','TEXTAREA','SELECT'].includes(e.target?.tagName)||e.target?.isContentEditable)return;
+ if(editableTarget)return;
  if(e.code==='KeyB'&&!e.repeat){e.preventDefault();openAudioPanel();return;}
  if(e.code==='KeyM'&&!e.repeat){toggleSound();return;}
  if(e.code==='F5'||e.code==='F9'){
@@ -4865,7 +5037,7 @@ document.addEventListener('keydown',e=>{
  if(state.mode==='forge'&&e.code==='KeyR'){togglePanel('forgePanel','forge');return;}
  if(e.code==='KeyH'){togglePanel('help','help');return;}
  if(e.code==='Tab'){togglePanel('mapOverlay','map');return;}
- if(e.code==='KeyJ'){togglePanel('journal','journal');return;}
+ if(e.code==='KeyJ'){if(dungeonJournalVisible())togglePanel('journal','journal');return;}
  if(e.code==='Escape'||e.code==='KeyP'){
   if(state.mode==='play')pause();else if(state.mode==='pause')start();else if(state.mode==='help')togglePanel('help','help');else if(state.mode==='map')togglePanel('mapOverlay','map');else if(state.mode==='journal')togglePanel('journal','journal');else if(state.mode==='status')openStatus();else if(state.mode==='shop')togglePanel('shopPanel','shop');else if(state.mode==='forge')togglePanel('forgePanel','forge');return;
  }
@@ -4875,14 +5047,14 @@ document.addEventListener('keydown',e=>{
  if(/^(?:Digit|Numpad)[1-4]$/.test(e.code))castSkill(Number(e.code.slice(-1))-1);
 
 });
-document.addEventListener('keyup',e=>{keys.delete(e.code);if(e.code==='KeyG'&&state.mode==='play')stopGuard();if((e.code==='ShiftLeft'||e.code==='ShiftRight')&&!shiftHeld())resetSprintInput();});canvas.addEventListener('contextmenu',e=>e.preventDefault());
+document.addEventListener('keyup',e=>{keys.delete(e.code);physicalMove.delete(e.code);if(e.code==='ShiftLeft'||e.code==='ShiftRight')physicalShift.delete(e.code);if(e.code==='KeyG'&&state.mode==='play')stopGuard();if((e.code==='ShiftLeft'||e.code==='ShiftRight')&&!shiftHeld())resetSprintInput();});canvas.addEventListener('contextmenu',e=>e.preventDefault());
 function readPointer(e){pointer.x=clamp(e.clientX,0,innerWidth);pointer.y=clamp(e.clientY,0,innerHeight);pointer.nx=pointer.x/innerWidth*2-1;pointer.ny=pointer.y/innerHeight*2-1;pointer.active=true;}
 canvas.addEventListener('mousedown',e=>{if(state.mode!=='play')return;e.preventDefault();canvas.focus({preventScroll:true});readPointer(e);if(e.button===0)attack('light');if(e.button===2)attack('heavy');if(e.button===1){e.preventDefault();lockId=lockId?null:nearestEnemy()?.id||null;}});
 canvas.addEventListener('auxclick',e=>{if(e.button===1)e.preventDefault();});
 canvas.addEventListener('mousemove',e=>{if(state.mode==='play')readPointer(e);});
 canvas.addEventListener('mouseleave',()=>{pointer.active=false;pointer.nx=pointer.ny=0;});
 canvas.addEventListener('wheel',e=>{if(state.mode!=='play')return;e.preventDefault();if(currentInterior())return;camera.zoom=clamp(camera.zoom+Math.sign(e.deltaY)*1.4,CONFIG.cameraMin,CONFIG.cameraMax);},{passive:false});
-window.addEventListener('blur',()=>{keys.clear();if(state.mode==='play')pause();});
+window.addEventListener('blur',()=>{keys.clear();physicalShift.clear();physicalMove.clear();if(state.mode==='play')pause();});
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&ACCOUNT.loaded){if(state.mode==='play')pause();clearScheduledSave();persistSave(0,packSave(),'자동 저장');}});
 window.addEventListener('beforeunload',e=>{
  if(ACCOUNT.loaded&&(ACCOUNT.pending||ACCOUNT.saving||state.mode==='play')){e.preventDefault();e.returnValue='';}
@@ -4969,7 +5141,9 @@ function balanceBoardDelivery(q,level=1){
 function generateBoard(now=TIME_SOURCE.now(),seedValue=null){
  const cycle=boardCycleWindow(now),rating=commissionPower(),lv=rating.level,progress=rating.progress,effective=rating.effective;
  let all=Object.entries(MONSTERS).filter(([id,m])=>m.type!=='boss'&&!m.boss&&m.board!==false&&m.type!=='thug'&&m.level<=lv+2&&(!RIDGE_ENEMY_TYPES.has(m.type)||abramGateOpen())&&(!['mazeWolf','elderWolf'].includes(id)||(state.quest==='unlocked'&&state.exploration.entered)));
- let pool=all.filter(([,m])=>m.level>=Math.max(1,lv-3));if(pool.length<2)pool=all.slice(-2);if(!pool.length)pool=[['roadSlime',MONSTERS.roadSlime]];
+ let pool=all.filter(([,m])=>m.level>=Math.max(1,lv-3));
+ // At the current content cap there may be no monsters within lv-3. Fall back to the strongest unlocked targets, never object insertion order.
+ if(pool.length<2)pool=[...all].sort((a,b)=>b[1].level-a[1].level).slice(0,Math.min(4,all.length));if(!pool.length)pool=[['roadSlime',MONSTERS.roadSlime]];
  pool.sort((a,b)=>b[1].level-a[1].level);
  const seed=seedValue===null?Math.floor(Math.random()*4294967296):seedValue>>>0,rng=boardRng(seed);
  const b={version:4,scheduleRevision:1,seed,startedAt:cycle.start,endsAt:cycle.end,level:lv,progress,rating,freeAwarded:false,quests:[]};
@@ -5141,28 +5315,43 @@ function talkThug(){
   {label:'대결 수락',run:()=>{if(dist(player,THUG_HOME)>5||state.town.thugDefeatedUntil>townNow())return;Object.assign(e,freshEnemy('thug',THUG_HOME.x,THUG_HOME.z,777,'field','townThug'));e.mode='chase';e.timer=.8;state.town.thugActive=true;state.town.thugReward=Math.min(70,18+hero.level*4);saveGame();toast('골목 대결 · 경비대가 개입하지 않는 곳이다.',3);}}
  ]);return true;
 }
+function resetThugBody(e){const fresh=freshEnemy('thug',THUG_HOME.x,THUG_HOME.z,777,'field','townThug');Object.assign(e,fresh,{mode:'idle',timer:.5,rewarded:false,nav:[],navAge:0});return e;}
 function defeatThug(e){
  if(!state.town.thugActive||e.rewarded)return;e.rewarded=true;state.town.thugActive=false;
  const gold=state.town.thugReward||Math.min(70,18+hero.level*4);changeGold(gold);state.town.thugDefeatedUntil=townNow()+BOARD_RULES.thugRewardCooldown;
- toast('불량배를 제압했다 · '+moneyText(gold),5);e.mode='dead';e.deadTime=0;saveGame();
+ toast('불량배를 제압했다 · '+moneyText(gold)+' · 다시 말을 걸 수는 있지만 재대결은 6시간 뒤',5);resetThugBody(e);saveGame();
 }
 function updateThug(e,dt){
  e.flash=Math.max(0,e.flash-dt);const slowed=Math.min(dt,Math.max(0,e.hitSlow||0));e.hitSlow=Math.max(0,(e.hitSlow||0)-dt);
- if(e.hp<=0){e.deadTime+=dt;if(state.town.thugDefeatedUntil<=townNow())Object.assign(e,freshEnemy('thug',THUG_HOME.x,THUG_HOME.z,777,'field','townThug'));return;}
- if(!state.town.thugActive)return;
- if(state.scene!=='field'||dist(player,THUG_HOME)>10||player.hp<=0){state.town.thugActive=false;Object.assign(e,freshEnemy('thug',THUG_HOME.x,THUG_HOME.z,777,'field','townThug'));saveGame();return;}
+ // Old saves may contain the former invisible/dead thug state. Restore the body immediately.
+ if(e.hp<=0){resetThugBody(e);return;}
+ if(!state.town.thugActive){if(dist(e,THUG_HOME)>.12)pursue(e,THUG_HOME,2.8,dt);return;}
+ if(state.scene!=='field'||dist(player,THUG_HOME)>10||dist(e,THUG_HOME)>11||player.hp<=0){state.town.thugActive=false;resetThugBody(e);saveGame();return;}
  const contact=monsterContact(e)?BALANCE.contactAttackSpeed:1;const waiting=['chase','windup','recover'].includes(e.mode);
- e.timer-=contact*(waiting?dt-slowed*(1-BALANCE.hitAttackSpeed):dt);e.yaw=dampAngle(e.yaw,angle(e,player),dt*6);
+ e.timer-=contact*(waiting?dt-slowed*(1-BALANCE.hitAttackSpeed):dt);const d=dist(e,player);e.yaw=dampAngle(e.yaw,angle(e,player),1-Math.exp(-8*dt));
+ if(e.mode==='idle'){e.mode='chase';e.timer=.25;}
  if(e.mode==='chase'){
-  if(dist(e,player)>1.9){const f=forward(e.yaw);moveBody(e,f.x*2.6*dt,f.z*2.6*dt,e.r);}
-  else if(e.timer<=0){e.mode='windup';e.timer=.7;e.hit=false;}return;
+  if(d>2.05||!lineOfSight(e,player)){pursue(e,player,2.85,dt);}
+  else if(e.timer<=0){e.mode='windup';e.timer=.62;e.hit=false;e.strafe=(e.id%2?1:-1)*(Math.random()<.35?-1:1);}return;
  }
- if(e.mode==='windup'&&e.timer<=0){e.mode='claw';e.timer=.20;return;}
+ if(e.mode==='windup'){
+  // Keep circling during the tell instead of freezing like a training dummy.
+  if(d>2.8||!lineOfSight(e,player)){e.mode='chase';e.timer=.1;return;}
+  const a=angle(e,player)+(e.strafe||1)*Math.PI/2,f=forward(a);moveBody(e,f.x*.85*dt,f.z*.85*dt,e.r*.82);
+  if(e.timer<=0){e.mode='claw';e.timer=.20;}return;
+ }
  if(e.mode==='claw'){
+  const f=forward(e.yaw);moveBody(e,f.x*1.9*dt,f.z*1.9*dt,e.r*.82);
   if(!e.hit&&dist(e,player)<2.35&&lineOfSight(e,player)){e.hit=true;damagePlayer(MONSTERS.townThug.attack,e);}
-  if(e.timer<=0){e.mode='recover';e.timer=.9;}return;
+  if(e.timer<=0){e.mode='recover';e.timer=.72;}return;
  }
- if(e.mode==='recover'&&e.timer<=0){e.mode='chase';e.timer=.2;}
+ if(e.mode==='recover'){
+  // Short sidestep/backstep makes the duel breathe while remaining punishable.
+  const away=norm(v3(e.x-player.x,0,e.z-player.z)),side=v3(-away.z,0,away.x),sign=e.strafe||1;
+  moveBody(e,(away.x*.45+side.x*.35*sign)*dt,(away.z*.45+side.z*.35*sign)*dt,e.r*.82);
+  if(e.timer<=0){e.mode='chase';e.timer=.16;}return;
+ }
+ e.mode='chase';e.timer=.1;
 }
 function townInteraction(){
  if(state.scene!=='field')return null;
@@ -5391,9 +5580,10 @@ function returnToForge(){
 
 function commitCraft(id){
  const g=craftRecipe(id);if(state.mode!=='forge'||dist(player,activeBlacksmith())>4||!inTownBuilding('forge')||!canCraft(id))return false;
- const fee=weaponCraftGold(g);if(!changeGold(-fee))return false;
+ const smith=activeBlacksmith(),forge=currentInterior(),supported=introCraftSupport(g),fee=supported?0:weaponCraftGold(g);if(!changeGold(-fee))return false;
  for(const [mat,n] of Object.entries(g.materials)){hero.inventory[mat]-=n;if(hero.inventory[mat]<=0)delete hero.inventory[mat];}
- const now=gameNow();hero.craft={gearId:id,startedAt:now,finishAt:now+g.craft*1000,goldPaid:fee,commission:id===RIO_QUEST_RULES.gearId&&currentInterior()?.id==='abram_forge'&&state.town.rioQuest?.stage==='active'?RIO_QUEST_RULES.id:null};saveGame();renderForge();toast(`${g.name} 제작 시작 · 창을 닫으면 시간이 흐릅니다`,4);return true;
+ if(supported)state.introQuest.craftSupportUsed=true;
+ const now=gameNow();hero.craft={gearId:id,startedAt:now,finishAt:now+g.craft*1000,goldPaid:fee,commission:id===RIO_QUEST_RULES.gearId&&forge?.id==='abram_forge'&&state.town.rioQuest?.stage==='active'?RIO_QUEST_RULES.id:null,smithId:smith.id,forgeId:forge?.id||inferCraftForgeId({gearId:id,smithId:smith.id}),readyNotified:false,introCommission:supported};saveGame();renderForge();SOUND.effect('hammer',smith);$('forgePanel').classList.add('hidden');openDialogue(smith.name,`<b>${escapeText(g.name)}</b> 제작을 시작했네.<br><br>다 완성되면 부를 테니 기다리게나.<small>제작은 한 번에 하나만 맡길 수 있다. 완성 알림이 뜨면 이 대장장이에게 R로 말 걸어 수령하자.</small>`);return true;
 }
 
 function navClear(scene,a,b,r){
@@ -5743,7 +5933,7 @@ function advanceRoomTransition(dt){
  if(q.t>=.20&&!q.changed){q.changed=true;commitRoomTransition(q.target);}
  if(q.t>=.48){
   doorTransition=null;$('roomFade').style.opacity='0';document.body.classList.remove('room-transition');
-  state.mode='play';lastNow=performance.now();simAccumulator=0;pauseInput();canvas.focus();saveGame();
+  state.mode='play';lastNow=performance.now();simAccumulator=0;pauseInput();resumePhysicalMovementKeys();canvas.focus();saveGame();
   // Entry already has a persistent room name and nearby NPC/R prompts; no duplicate toast.
   // Outside name is already persistent; no duplicate entry/exit toast.
  }
@@ -5814,7 +6004,7 @@ function roomInteraction(){
  if(b.kind==='shop'&&dist(player,m)<3.2&&npcConversationVisible(m))return {kind:'merchant',label:m.name+' · 거래 / 기술 배우기'};
  if(b.kind==='library'&&dist(player,l)<3.2&&npcConversationVisible(l))return {kind:'librarian',label:l.name+' · 세계관 이야기'};
  if(b.kind==='forge'&&dist(player,anvilPoint())<2.1)return {kind:'anvil',label:'모루 · 강화 / 복구 / 전승'};
- if(b.kind==='forge'&&dist(player,smith)<3.2&&npcConversationVisible(smith))return {kind:'blacksmith',label:smith.name+' · 제작 / 장비 판매'};
+ if(b.kind==='forge'&&dist(player,smith)<3.2&&npcConversationVisible(smith))return {kind:'blacksmith',label:craftReadyHere()?'! '+smith.name+' · 제작품 수령':smith.name+' · 제작 / 장비 판매'};
  if(b.kind==='sauna'&&dist(player,camp)<2.8)return {kind:'camp',label:b.name+' · HP / MP / 기력 회복'};
  const resident=roomPeople(b).find(p=>p.home&&dist(player,p)<3.2&&npcConversationVisible(p));
  if(resident)return {kind:b.town==='tern'?'ternPerson':b.town==='abram'?'abramPerson':'resident',resident,label:resident.name+'과 대화'};
@@ -5853,7 +6043,7 @@ function renderRoomHUD(){
   const e=roomExit(b);placeLabel('room-exit','▼ 마을로',e.x,.45,e.z);
   for(const p of roomPeople(b)){
    const id=b.kind==='shop'?'merchant':b.kind==='forge'?'blacksmith':p.id;
-   placeLabel(id,p.name+' · R',p.x,2.95,p.z,true);
+   placeLabel(id,b.kind==='forge'&&p.id===activeBlacksmith().id&&craftReadyHere()?'! 제작품 수령 · '+p.name+' · R':p.name+' · R',p.x,2.95,p.z,true);
   }
  }
 }
@@ -5911,10 +6101,16 @@ function tutorialSpendingUnlocked(){
  return state.quest!=='none'||state.cleared||state.introQuest.forgeRead===true||['rest','report','done'].includes(state.introQuest.stage);
 }
 function forgeAccessUnlocked(){return beginnerServicesUnlocked()&&tutorialSpendingUnlocked();}
+function grantIntroCraftMaterials(){
+ const q=state.introQuest,g=GEAR.apprenticeSword;if(q.craftMaterialsGranted)return 0;
+ const need=Math.max(0,(g.materials.slimeGel||0)-(hero.inventory.slimeGel||0));
+ if(need)hero.inventory.slimeGel=(hero.inventory.slimeGel||0)+need;
+ q.craftMaterialsGranted=true;saveGame();return need;
+}
 function showForgeLesson(){
  const q=state.introQuest;if(q.stage!=='forge')return false;
- guideDialogue(GUIDE_NPC.name,`<div class="lesson-kicker">다음 할 일 · 대장간</div><h3 class="lesson-title">이제 장비를 만들어 보자.</h3><div class="sera-task"><span>새벽마을</span><b>서쪽 브란의 대장간 · 제작 / 모루</b><span>다른 마을</span><b>마을마다 제작법이 달라. 아브람에는 더 높은 단계가 있어.</b></div><p class="sera-tip">무기를 만들 땐 <b>재료와 등급별 골드</b>가 필요해. 확인창에서 취소할 수 있어.<br>E → 장비에서 <b>장착</b>을 눌러야 효과가 적용돼.<br>다음은 <b>서쪽 아래 돌샘 온천</b>에서 R로 쉬고 와.</p>`,[
- {label:'대장간 이용 시작 · 온천으로',run:()=>{q.forgeRead=true;q.stage='rest';mapChoice='quest';saveGame();}},
+ guideDialogue(GUIDE_NPC.name,`<div class="lesson-kicker">다음 할 일 · 첫 장비 제작</div><h3 class="lesson-title">브란에게 수습 장검을 한 자루 맡겨 봐.</h3><div class="sera-task"><span>제작품</span><b>수습 장검 · 가장 낮은 단계의 제작 검</b><span>새벽마을</span><b>서쪽 브란의 대장간 → R → 무기 → 수습 장검</b></div><p class="sera-tip">처음 한 번은 내가 <b>부족한 점액 재료를 보충</b>하고 브란에게 <b>제작비 8 G를 실습 지원</b>해 둘게.<br>제작 시간이 끝나도 가방에 자동으로 들어오지 않아. <b>브란 머리 위 !</b>가 뜨면 다시 R로 말 걸어 직접 수령해.<br>수령한 뒤에는 서쪽 아래 돌샘 온천에서 쉬고 와.</p>`,[
+ {label:'수습 장검 제작 실습 시작',run:()=>{const added=grantIntroCraftMaterials();q.forgeRead=true;q.stage='craft';mapChoice='quest';saveGame();toast(`제작 실습 시작 · 브란에게 수습 장검을 맡기자${added?` · 점액 ${added}개 보충`:''}`,5);}},
  {label:'잠깐, 다시 읽을게',run:()=>{}}
  ]);return true;
 }
@@ -6232,7 +6428,7 @@ function rioCraftLesson(){
  if(state.mode!=='play'||!nearRioGuard()||state.town.rioQuest.stage!=='active')return false;
  const g=GEAR[RIO_QUEST_RULES.gearId];
  openDialogue(rioGuard().name+' · 대장간 실습',`<h3>하겐에게 ${escapeText(g.name)}을 맡겨 줘.</h3>
- <div class="rio-steps"><span>1. 제작</span><b>아브람 북서쪽 · 하겐의 강철 대장간 → R → 무기</b><span>2. 확인</span><b>${escapeText(g.name)} → 재료·${moneyText(weaponCraftGold(g))} 확인 → 제작 확정</b><span>3. 기다리기</span><b>창을 닫고 ${g.craft}초. 완성품은 E → 장비에 보관돼.</b><span>4. 납품</span><b>정상 +0 한 자루를 장착하지 말고 내게 가져와.</b></div>
+ <div class="rio-steps"><span>1. 제작</span><b>아브람 북서쪽 · 하겐의 강철 대장간 → R → 무기</b><span>2. 확인</span><b>${escapeText(g.name)} → 재료·${moneyText(weaponCraftGold(g))} 확인 → 제작 확정</b><span>3. 기다리기</span><b>창을 닫고 ${g.craft}초. 완료되면 하겐 머리 위 !</b><span>4. 수령·납품</span><b>하겐에게 R로 수령 → 정상 +0 한 자루를 장착하지 말고 내게 가져와.</b></div>
  <p class="rio-note">재료: ${recipeMaterialsText(g)}<br>나를 위한 임시 제작법만 하겐에게 빌려 뒀네. 의뢰를 받은 뒤 여기서 새로 만들어야 해.<br>완료하면 ${moneyText(RIO_QUEST_RULES.rewardGold)}를 지급할게. 잠근 검·강화한 검·파손품은 받지 않아.</p>`,[
   {label:'하겐에게 제작하러 가기',run:()=>{selectMapTarget('rioQuest');}},
   {label:'모루와 전승은 뭐지?',run:showRioWorkshopExtra},
@@ -6253,7 +6449,7 @@ function talkRioQuest(){
   syncGearInstances();const list=rioEligibleItems();
   const choices=list.slice(0,6).map(x=>({label:`${GEAR[x.gearId].name} +0 · ${x.uid} 납품 검토`,run:()=>requestRioDelivery(x.uid)}));
   choices.push({label:'제작 순서 다시 알려 줘',run:rioCraftLesson},{label:'나중에 다시 올게',run:()=>{}});
-  const note=list.length?'검을 가져왔군. <b>낼 검 한 자루</b>를 골라 줘. 확인하기 전에는 가져가지 않아.':hero.craft?.commission===RIO_QUEST_RULES.id?'하겐이 검을 만드는 중이군. 창을 닫으면 제작 시간이 흐른다네.':'하겐의 대장간에서 의뢰 수락 후 만든 <b>정상 +0 사냥꾼의 검</b>이 필요해. E에서 장착과 잠금을 해제한 뒤 가져와.';
+  const note=list.length?'검을 가져왔군. <b>낼 검 한 자루</b>를 골라 줘. 확인하기 전에는 가져가지 않아.':hero.craft?.commission===RIO_QUEST_RULES.id?(craftReady(hero.craft)?'검은 완성됐네. 하겐에게 다시 말 걸어 먼저 수령해 오게.':'하겐이 검을 만드는 중이군. 창을 닫으면 제작 시간이 흐른다네.'):'하겐의 대장간에서 의뢰 수락 후 만든 <b>정상 +0 사냥꾼의 검</b>이 필요해. E에서 장착과 잠금을 해제한 뒤 가져와.';
   openDialogue(rioGuard().name+' · 새 검의 부탁',`<p>${note}</p><p class="rio-note">하겐 → 무기 탭 → 사냥꾼의 검<br>완료 보상 ${moneyText(RIO_QUEST_RULES.rewardGold)} · 한 번만 지급<br>검을 팔거나 강화했어도 재료를 모아 새로 만들면 돼.</p>`,choices);
  }
  return true;
@@ -6280,12 +6476,12 @@ function rioQuestObjective(){
  if(state.scene==='dungeon')return {x:null,z:null,label:'아브람의 새 검 의뢰',short:'미궁 밖에서 진행',kind:'guard',note:'원래 미궁 출입 조건은 그대로입니다.'};
  if(q.stage!=='active'||rioEligibleItems().length)return {...rioGuard(),label:'파수병 리오 · 새 검의 부탁',short:q.stage==='active'?'리오에게 납품':'리오의 의뢰',kind:'guard',note:q.stage==='active'?'R · 정상 +0 검 1개 납품 / '+moneyText(RIO_QUEST_RULES.rewardGold):'아브람 일반 의뢰 · 시간 제한 없음'};
  const p=MAP_PLACES.find(p=>p.id==='abramForge');
- return {...p,label:'하겐 · 사냥꾼의 검 제작',short:'검 제작 실습',note:hero.craft?.commission===RIO_QUEST_RULES.id?'창을 닫고 제작 완료 대기':'무기 탭 → 사냥꾼의 검 / 정상 +0으로 리오에게 납품'};
+ return {...p,label:'하겐 · 사냥꾼의 검 제작',short:'검 제작 실습',note:hero.craft?.commission===RIO_QUEST_RULES.id?(craftReady(hero.craft)?'하겐에게 R · 제작품 수령':'창을 닫고 제작 완료 대기'):'무기 탭 → 사냥꾼의 검 / 정상 +0으로 리오에게 납품'};
 }
 function renderRioQuestHUD(){
  const node=$('rioQuestHUD');if(!node)return;
  const active=state.town.rioQuest?.stage==='active';node.classList.toggle('hidden',!active);
- if(active)$('rioQuestText').textContent=rioEligibleItems().length?'새 검의 부탁 · 리오에게 +0 검 납품':hero.craft?.commission===RIO_QUEST_RULES.id?'새 검의 부탁 · 사냥꾼의 검 제작 중':'새 검의 부탁 · 하겐에게 사냥꾼의 검 제작';
+ if(active)$('rioQuestText').textContent=rioEligibleItems().length?'새 검의 부탁 · 리오에게 +0 검 납품':hero.craft?.commission===RIO_QUEST_RULES.id?(craftReady(hero.craft)?'새 검의 부탁 · 하겐에게 완성품 수령':'새 검의 부탁 · 사냥꾼의 검 제작 중'):'새 검의 부탁 · 하겐에게 사냥꾼의 검 제작';
 }
 
 function initialBoarQuest(){return {stage:'none',kills:0,rewardClaimed:false};}
@@ -6443,22 +6639,22 @@ if(window.__MUSAEK_TEST__===true||new URLSearchParams(location.search).get('test
  inAbram,inTern,inBrokenRidge,inFogValley,townName,MONSTER_RARITY,monsterRarityInfo,monsterRarityKey,monsterDisplayName,ABRAM_CAVE,ABRAM_CAVE_ENTRANCE,DUNGEON_ACCESS,ABRAM_BOUNDS,ABRAM_GATE,ABRAM_NORTH_GATE,ABRAM_BUILDINGS,ABRAM_PEOPLE,ABRAM_SMITH,ABRAM_CAMP,ABRAM_MERCHANT,TERN_BOUNDS,TERN_GATE,TERN_BUILDINGS,TERN_PEOPLE,TERN_SMITH,TERN_CAMP,TERN_MERCHANT,TERN_LIBRARIAN,RIDGE_MAIN,RIDGE_MINE_PATH,RIDGE_PATH_SEGMENTS,RIDGE_MINE,RIDGE_FOG,IRON_GIANT_GATE,RIDGE_ENEMY_TYPES,ridgeRawHeight,fieldTerrainHeight,enemyBodyHeight,playerAttackCanReachY,ternUnlocked,talkTernPerson,activeBlacksmith,activeMerchant,activeCamp,abramGateOpen,talkAbramGuard,talkAbramPerson,roomAccessAllowed,repairAbramAccess,dynamicBlocks,
  transactionState:()=>({sale:gearSaleProposal,transfer:transferProposal,anvil:anvilProposal}),
  WORKSHOP_RULES,WEAPON_LEVELS,UPGRADE_MATERIALS,MISC_RECIPES,MAIN_HUNT_TARGET,craftRecipe,weaponLevelText,canWearInstance,effectiveGear,instanceName,enforceWeaponEligibility,gearSaleValue,enhancementChance,enhancementCost,repairCost,anvilPoint,openAnvil,renderAnvil,requestEnhancement,commitEnhancement,requestRepair,commitRepair,showTicketRequirement,confirmDungeonEntry,equippedSlotsHTML,TIME_SOURCE,openClockPanel,renderClockPanel,
- PATCH_REVISION,BOSS_SCHEDULE,nextSeoulBossSpawn,seoulClockLabel,respawnScheduledBoss,ironGiantBoss,respawnScheduledIronGiant,isBossEncounter,isIronGiantEncounter,refreshBossEncounter,rollRespawnDelay,COMBAT_BUFFER_SECONDS,queueCombatAction,restoreCombatBuffer,consumeCombatBuffer,beginnerServicesUnlocked,roomAccessAllowed,refreshIntroMilestones,recordIntroSlimeKill,recordIntroSale,recordIntroPurchase,introPurchaseSatisfied,introHUD,introJournalHTML,showTradeLesson,recordIntroRest,grantIntroHuntReward,syncGearInstances,gearRowsHTML,sellGear,canCraft,NAV_CONFIG,NAV_RUNTIME,NavMinHeap,navLayer,navCellValid,navCellEdge,navSearch,boardRewardValue,auditBoardEconomy,balanceBoardDelivery,updateTutorial,renderHUD,
+ PATCH_REVISION,DUNGEON_PUZZLE_REVISION,TRACK_MARKS,FLOOR_TRACK_ORDER,BOSS_SCHEDULE,dungeonBossStatus,resetLivingDungeonCombat,nextSeoulBossSpawn,seoulClockLabel,respawnScheduledBoss,ironGiantBoss,respawnScheduledIronGiant,isBossEncounter,isIronGiantEncounter,bossRoomSealed,refreshBossEncounter,WEREWOLF_GIMMICKS,werewolfMaskForRatio,triggerWerewolfGimmick,finishWerewolfRoar,rollRespawnDelay,COMBAT_BUFFER_SECONDS,queueCombatAction,restoreCombatBuffer,consumeCombatBuffer,beginnerServicesUnlocked,roomAccessAllowed,refreshIntroMilestones,recordIntroSlimeKill,recordIntroSale,recordIntroPurchase,introPurchaseSatisfied,introHUD,introJournalHTML,showTradeLesson,recordIntroRest,grantIntroHuntReward,grantIntroCraftMaterials,syncGearInstances,gearRowsHTML,sellGear,canCraft,NAV_CONFIG,NAV_RUNTIME,NavMinHeap,navLayer,navCellValid,navCellEdge,navSearch,boardRewardValue,auditBoardEconomy,balanceBoardDelivery,updateTutorial,renderHUD,
 
  TOWN_BOUNDS,townDepartureLocked,repairTutorialDeparture,introGuideCard,renderIntroGuideCard,rawMapObjective,entranceHinted,entranceMapVisible,mapPlacePresentation,FAST_TRAVEL_TOWNS,fastTravelUnlocked,fastTravelCurrentTown,fastTravelThreatNearby,fastTravelBlockedReason,fastTravelTo,fastTravelHTML,inDetailedField,insideWildernessBlock,WORLD_DETAIL_MARGIN,WORLD_BORDER_BACKDROP,WORLD_WILDERNESS_BLOCKS,uiLessonHTML,mapIcon,distanceToSegment,
- ROOM_DEFS,ROOM_BY_ID,currentInterior,playerSceneKey,nearestEnemy,updateRoomCamera,exteriorDoor,roomExit,nearExteriorDoor,requestRoomTransition,advanceRoomTransition,commitRoomTransition,cancelDoorTransition,updateRoomDoorMovement,roomInteraction,repairIndoorPosition,restoreInterior,doorMapPoint,roomMapModel,
- TOWN_BUILDINGS,TOWN_HOUSES,RESIDENTS,LIBRARIAN,BOARD,BOARD_RULES,THUG_HOME,PREVIOUS_MONSTER_HP,initialTown,boardCycleWindow,boardResetLabel,isPermanentStatReward,generateBoard,ensureBoard,chooseBoardReward,acceptBoardQuest,claimBoardQuest,recordBoardKill,boardActiveCount,questProgress,openBoard,renderBoard,updateBoardTimerUI,tickBoardClockPanel,talkLibrarian,talkResident,talkThug,thug,updateThug,inTownBuilding,restoreTown,townNow,renderTownHUD,
- RUMOR_NPC,DUNGEON_RULES,forestTrail,resetAbramDungeon,abramCaveCleared,abramDungeonPopulation,initialExploration,packExploration,restoreExploration,talkRumorNPC,discoverEntrance,entranceKnown,journalUnlocked,hasJournalPage,collectJournalPage,journalHTML,updateExploration,updateExplorationCompletion,updateRespawn,dungeonPopulation,renderRumorNPC,renderJournalPage,
+ ROOM_DEFS,ROOM_BY_ID,currentInterior,playerSceneKey,nearestEnemy,updateRoomCamera,exteriorDoor,roomExit,nearExteriorDoor,requestRoomTransition,advanceRoomTransition,commitRoomTransition,cancelDoorTransition,updateRoomDoorMovement,roomInteraction,repairIndoorPosition,restoreInterior,doorMapPoint,roomMapModel,resumePhysicalMovementKeys,
+ TOWN_BUILDINGS,TOWN_HOUSES,RESIDENTS,LIBRARIAN,BOARD,BOARD_RULES,THUG_HOME,PREVIOUS_MONSTER_HP,PRE_V0124_HP,initialTown,boardCycleWindow,boardResetLabel,isPermanentStatReward,generateBoard,ensureBoard,chooseBoardReward,acceptBoardQuest,claimBoardQuest,recordBoardKill,boardActiveCount,questProgress,openBoard,renderBoard,updateBoardTimerUI,tickBoardClockPanel,talkLibrarian,talkResident,talkThug,thug,resetThugBody,defeatThug,updateThug,inTownBuilding,restoreTown,townNow,renderTownHUD,
+ RUMOR_NPC,DUNGEON_RULES,forestTrail,resetAbramDungeon,abramCaveCleared,abramDungeonPopulation,initialExploration,packExploration,restoreExploration,talkRumorNPC,explorationHUD,discoverEntrance,entranceKnown,journalUnlocked,dungeonJournalVisible,closeDungeonJournalOnLeave,journalInventoryHTML,hasJournalPage,collectJournalPage,journalHTML,updateExploration,updateExplorationCompletion,updateRespawn,dungeonPopulation,renderRumorNPC,renderJournalPage,
  GUIDE_NPC,INTRO_RULES,INTRO_HUNT_STAGES,beginIntroStatTask,refreshIntroStatTask,introStatTaskReady,showIntroStatTask,initialIntroQuest,restoreIntroQuest,needsIntroGate,introTracked,talkGuide,talkNPC,showGuideLesson,resourceLessonHTML,uiLessonHTML,huntLessonHTML,restLessonHTML,acceptIntroQuest,prepareIntroSale,finishIntroQuest,renderGuideNPC,updateJournal,
  SOUND,createSoundSynth,openAudioPanel,closeAudioPanel,enemyRateLabel,
- GAME_CLOCK,gameNow,packClock,restoreClock,suspendClock,GEAR_SLOTS,WEAPON_PROFILES,GUARD_RULES,FRIGHTENED_SCOUT,weaponProfile,weaponProfileText,beginGuard,stopGuard,blockIncoming,actionCommitted,combatCommitted,updatePlayerAttack,resolveSkillStrike,buySkill,learnSkill,grantSpecialSkill,gearValue,craftAdvice,commitCraft,returnToForge,navClear,navRoute,pursue,updatePursuitMemory,updateRidgeEnemy,beginEnemyReturn,importantAirBlockAt,crowAirMove,commissionPower,boardUnlocked,archiveBoard,syncBoardReady,claimArchivedReward,validReward,talkFrightenedScout,openForge,hideDialog,togglePanel,pause,initialPlayer,initialHero,
- state,player,hero,keys,pointer,camera,CONFIG,BALANCE,MONSTERS,ITEMS,SKILLS,GEAR,WORLD,MAZE,VILLAGE,NPC,CAMP,MERCHANT,BLACKSMITH,ENTRANCE,GUARDS,scenes,
+ GAME_CLOCK,gameNow,packClock,restoreClock,suspendClock,GEAR_SLOTS,WEAPON_PROFILES,GUARD_RULES,FRIGHTENED_SCOUT,weaponProfile,weaponProfileText,beginGuard,stopGuard,blockIncoming,actionCommitted,combatCommitted,updatePlayerAttack,resolveSkillStrike,buySkill,learnSkill,grantSpecialSkill,gearValue,craftAdvice,validCraftSmithId,inferCraftSmithId,inferCraftForgeId,craftSmith,craftReady,craftReadyHere,introCraftSupport,craftCharge,finishCraftToInventory,claimCraft,openCraftClaimDialogue,commitCraft,returnToForge,navClear,navRoute,pursue,updatePursuitMemory,updateRidgeEnemy,beginEnemyReturn,importantAirBlockAt,crowAirMove,commissionPower,boardUnlocked,archiveBoard,syncBoardReady,claimArchivedReward,validReward,talkFrightenedScout,openForge,hideDialog,togglePanel,pause,initialPlayer,initialHero,
+ state,player,hero,keys,physicalShift,physicalMove,pointer,camera,CONFIG,BALANCE,MONSTERS,ITEMS,SKILLS,GEAR,WORLD,MAZE,VILLAGE,NPC,CAMP,MERCHANT,BLACKSMITH,ENTRANCE,GUARDS,scenes,
  rollPotionHeal,recoveryPotionCount,updateSprint,shiftHeld,resetSprintInput,recoverMana,restAtCamp,talkGuard,interactionTarget,GUIDE,MAP_PLACES,renderGuard,
  fmt,resourceSnapshot,renderResourceHUD,contactSpeedText,ENEMY_RECOVERY,renderProgressHUD,tickProgression,rollBasicPower,rollCritical,dealPlayerHit,combatTexts:()=>combatTexts,
  STAT_GROWTH,monsterContact,monsterAttackRate,updateEnemy,initialHero,manaRegen,xpBonus,getMapObjective,mapModel,drawMap,drawMiniMap,selectMapTarget,freshEnemy,
- maxHP,maxMP,physicalFactor,meleeRangeMultiplier,gearBonuses,gearEffectText,equipGear,unequipGear,startCraft,updateCrafting,renderForge,skillDamage,xpRequired,xpGapMultiplier,xpFor,addXP,allocateStat,manualStatTotal,fixedStatValue,requestStatRespec,commitStatRespec,equipSkill,unlockedSlots,rollSkillPower,dropChance,castSkill,learnCleave,openStatus,renderStatus,openShop,sellItem,sellAll,buyPotion,renderShop,packHero,
+ maxHP,maxMP,physicalFactor,meleeRangeMultiplier,gearBonuses,gearEffectText,equipGear,unequipGear,startCraft,updateCrafting,renderForge,skillDamage,xpRequired,xpGapMultiplier,repeatBossXP,bossXPMultiplier,xpFor,addXP,allocateStat,manualStatTotal,fixedStatValue,requestStatRespec,commitStatRespec,equipSkill,unlockedSlots,rollSkillPower,dropChance,castSkill,learnCleave,openStatus,renderStatus,openShop,sellItem,sellAll,buyPotion,renderShop,packHero,
  enemies:()=>enemies,boss,freeze(v=true){testFrozen=v;},step(seconds){for(let t=0;t<seconds;t+=1/90)updateGame(Math.min(1/90,seconds-t));render();},
- start,newGame,resetDungeon,enterAbramDungeon,exitAbramDungeon,attack,dodge,jump,heal,interact,chooseDialogue,hideDialog,enterDungeon,exitDungeon,damagePlayer,damageEnemy,respawn,
+ start,newGame,resetDungeon,updateDungeonProgress,enterAbramDungeon,exitAbramDungeon,attack,dodge,jump,heal,interact,chooseDialogue,hideDialog,enterDungeon,exitDungeon,damagePlayer,damageEnemy,respawn,
  ACCOUNT,LOCAL,ACCOUNT_RESET,requestNewAdventure,finishNewJourney,api,exportAccountBackup,restoreAccountBackup,importSelectedSave,manualSave,refreshSlots,loadSlot,openStoragePanel,closeStoragePanel,logoutAccount,useGuest,storageMessage,clearScheduledSave,saveGame,packSave,applySave,lineOfSight,blockedAt,moveBody,cellPos,mazeDistances,project,aimPoint,render,updateGame,drawFullMap,WORLD,rollPotionHeal,
  teleport(x,z){clearMotion();Object.assign(player,{x,z,y:0,vy:0,grounded:true});snapCamera();render();},
  snapshot(){return {scene:state.scene,mode:state.mode,quest:state.quest,kills:state.kills,cleared:state.cleared,gate:state.gate,floorOpen:state.floorOpen,rune:state.rune,hero:packHero(),player:{x:player.x,y:player.y,z:player.z,hp:player.hp,maxHP:maxHP(),stamina:player.stamina,grounded:player.grounded},camera:{distance:camera.distance,pitch:Math.atan2(eye.y-camera.focus.y,Math.hypot(eye.x-camera.focus.x,eye.z-camera.focus.z))*180/Math.PI}};}
