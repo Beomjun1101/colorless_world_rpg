@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; connect-src https: http://127.0.0.1:* http://localhost:*; object-src 'none'; base-uri 'none'; form-action 'none'"><meta name="viewport" content="width=device-width,initial-scale=1"><title>무색 0.12.6 오프라인 — 퍼즐·전투·이동 안정화</title>
+<html lang="ko"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; connect-src https: http://127.0.0.1:* http://localhost:*; object-src 'none'; base-uri 'none'; form-action 'none'"><meta name="viewport" content="width=device-width,initial-scale=1"><title>무색 0.12.11 오프라인 — 남쪽 숲·몬스터 모션·지도 개선</title>
 <style>
 :root{color-scheme:dark;--ink:#edeae1;--dim:#adb5b1;--line:#ffffff24;--red:#d8675a;--paper:#c7b790}*{box-sizing:border-box}body,html{margin:0;overflow:hidden;width:100%;height:100%;background:#222b2b;color:var(--ink);font:14px/1.65 "Noto Sans CJK KR","Malgun Gothic","Apple SD Gothic Neo",system-ui,sans-serif}button{font:inherit;cursor:pointer;border:1px solid #ffffff50;padding:11px 21px;background:#e4e1d7;color:#172224;border-radius:2px;transition:background .15s}button:hover{background:white}button.secondary{background:#1c272bcb;color:var(--ink);border-color:#ffffff30}button.secondary:hover{background:#354145}button.small{font-size:11px;padding:4px 9px}kbd{font:11px system-ui,sans-serif;border:1px solid #ffffff45;padding:2px 5px;border-radius:3px;white-space:nowrap;color:#f1ede2}.hidden{display:none!important}canvas#game{display:block;width:100vw;height:100vh;outline:none;cursor:crosshair}.vignette{position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,transparent 55%,#07121688)}#hud{position:fixed;inset:0;pointer-events:none;padding:26px 30px}.eyebrow{font-size:10px;letter-spacing:2.6px;color:#acb8b3}.location{font:600 27px/1.6 inherit;letter-spacing:3px;margin:3px 0;font-size:27px}.tag{font-size:11px;color:#b1bbb5}.quest{margin-top:25px;padding:12px 15px;border-left:2px solid var(--paper);max-width:260px;background:linear-gradient(90deg,#132123d9,#13212320)}.quest h3{font-size:13px;margin:0 0 7px;font-weight:600}.quest p{font-size:12px;margin:5px 0;color:#c6cfca}.quest .gold{color:#f1dfac}.right{position:absolute;top:27px;right:30px;text-align:right}#map{display:block;width:170px;height:170px;margin:10px 0 4px;border:1px solid #a8b3a13b;background:#132025b3}.mapHint{font-size:10px;letter-spacing:1px;color:#bcc7bf}#nav{position:absolute;top:25px;left:50%;transform:translateX(-50%);font-size:11px;color:#d1d3c8;letter-spacing:1px;text-align:center;white-space:nowrap}#nav b{display:block;font-size:13px;margin-top:3px;color:#e8debf}#boss{position:absolute;top:76px;left:50%;transform:translateX(-50%);width:390px;text-align:center}.boss-name{font-size:16px;letter-spacing:3px;margin-bottom:8px}.bar{height:6px;background:#091416d1;border:1px solid #ffffff1a}.bar i{display:block;background:#e1dfd4;height:100%;width:100%}#bossFill{background:var(--red)}#bossPhase{font-size:11px;margin-top:6px;color:#c5c9bd}.bottom{position:absolute;left:30px;bottom:28px;width:230px;padding:12px 14px;background:#152226b5}.health-label{display:flex;justify-content:space-between;font-size:11px;margin-bottom:7px}.stamina{height:3px;border:0;margin-top:7px}.stamina i{background:#c3af80}.supplies{font-size:11px;margin-top:8px;color:#c8cfc3}.controls{position:absolute;bottom:26px;right:30px;text-align:right;font-size:11px;line-height:2.3;color:#c6cfc4;background:linear-gradient(270deg,#142125c4,#14212500);padding:8px}.controls kbd{margin-left:7px}#tutorial{position:absolute;left:50%;bottom:143px;transform:translateX(-50%);width:390px;background:#142126ed;border:1px solid #b8b9a342;padding:14px 18px;pointer-events:auto;box-shadow:0 10px 30px #0002}#tutorial .step{color:var(--paper);letter-spacing:2px;font-size:10px}.tutorial-head{display:flex;justify-content:space-between;align-items:center}#tutorial h3{font-size:16px;margin:7px 0 3px}#tutorial p{font-size:12px;color:#c5cec7;margin:0}#guideBar{height:2px;margin-top:12px;background:#414b48}#guideBar i{display:block;height:100%;background:#ccbb8e;transition:width .2s}.prompt{position:absolute;left:50%;bottom:102px;transform:translateX(-50%);background:#152127ed;border:1px solid #b9bfac5c;padding:9px 18px;white-space:nowrap;font-size:12px}#toast{position:absolute;top:205px;left:50%;transform:translateX(-50%);max-width:570px;background:#142226e8;border:1px solid var(--line);padding:11px 21px;text-align:center;font-size:13px;opacity:0;transition:opacity .15s;pointer-events:none}#lock{position:fixed;display:none;width:25px;height:25px;border:1px solid #e6d8b5;transform:translate(-50%,-50%) rotate(45deg);pointer-events:none}#damage{position:fixed;inset:0;pointer-events:none;box-shadow:inset 0 0 140px #b331376a;opacity:0}#labels{position:fixed;inset:0;pointer-events:none}.world-label{position:absolute;transform:translate(-50%,-100%);font-size:11px;white-space:nowrap;text-shadow:0 2px 4px #000;background:#132025a8;padding:2px 7px;border-radius:2px;color:#e6e3d3}.world-label.npc{color:#eddcb4;border-bottom:1px solid #e0ce9855}.overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#081419ba;backdrop-filter:blur(3px);z-index:15}#overlay{justify-content:flex-start;background:linear-gradient(90deg,#0c191bf5,#0c191bbb 47%,#0c191b10);backdrop-filter:none}.titlepanel{margin-left:8vw;max-width:520px}.brand{font-family:serif;font-size:104px;line-height:1.2;letter-spacing:17px;font-weight:500;margin:17px 0}.subtitle{font-size:12px;letter-spacing:7px;color:#bfcbc3}.divider{width:42px;height:2px;background:var(--red);margin:28px 0}.intro{font-size:15px;line-height:2;color:#c7d0c7}.intro small{display:block;font-size:12px;color:#97a8a1;margin-top:16px}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:24px}.fine{font-size:11px;color:#93a59d;margin-top:18px}.overlay-foot{position:absolute;left:8vw;bottom:25px;font-size:10px;letter-spacing:2px;color:#96a79f}.modal{max-height:90vh;overflow:auto;background:#152326f5;border:1px solid #bbc2ab40;box-shadow:0 20px 80px #0005;width:min(800px,90vw);padding:25px 30px}.modal h2{font-size:23px;letter-spacing:2px;margin:0 0 15px}.modal p{color:#c7d0c7}.modal .topline{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}.help-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 26px;margin:20px 0}.help-item{border-bottom:1px solid var(--line);padding:9px 0;font-size:13px;display:flex;justify-content:space-between}.help-note{background:#0b171a77;padding:12px 16px;font-size:12px;color:#bdc7be}#dialog{background:#09141950;backdrop-filter:none;align-items:flex-end;padding-bottom:105px}#dialog .modal{width:min(700px,90vw);border-left:3px solid var(--paper);padding:21px 26px}#dialogTitle{font-size:17px;margin:0 0 13px;color:#ebdcaf}#dialogText{font-size:15px;line-height:1.9;color:#d9dfd3}#dialogText small{display:block;font-size:12px;color:#a4b3a9;margin-top:14px}.dialog-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.dialog-actions button{font-size:13px}.map-modal{width:min(900px,94vw);padding:20px 25px}#fullmap{display:block;width:100%;height:min(60vh,560px);background:#0c191d;border:1px solid var(--line)}.legend{font-size:11px;line-height:1.8;color:#b8c5ba;margin-top:10px}.journal-text{line-height:1.9;font-size:14px}.journal-text h3{font-size:15px;color:#e1d5b6;margin:20px 0 8px}#error{position:fixed;inset:0;background:#1c2a2e;z-index:100;padding:10vw;font-size:18px}.save-status{font-size:10px;color:#9eaea4;margin-top:5px}@media(max-width:1050px){#hud{padding:18px}.right{right:18px;top:18px}#map{width:130px;height:130px}.quest{max-width:220px;padding:8px 10px}.location{font-size:22px}#tutorial{width:330px;bottom:160px}.controls{right:18px;max-width:480px;font-size:10px}.bottom{left:18px;width:200px}#boss{top:78px;width:300px}#nav{top:20px}.titlepanel{margin-left:7vw}.brand{font-size:86px}}@media(max-height:650px){#tutorial{bottom:127px;padding:9px 14px}#toast{top:148px}#dialog{padding-bottom:50px}.titlepanel .divider{margin:16px 0}.brand{font-size:70px}.intro{font-size:13px}.quest{margin-top:12px}.modal{max-height:94vh}}
 
 /* v0.4: compact edge-anchored tutorial and readable RPG HUD. */
 #hud{padding:22px 26px}.eyebrow{font-size:9px}.location{font-size:22px}.quest{margin-top:14px;max-width:222px;padding:9px 12px}.quest p{font-size:11px}.right{top:22px;right:26px}#map{width:128px;height:128px}.right .save-status{font-size:9px;max-width:165px}.right .tag{font-size:9px}.controls{bottom:12px;right:22px;font-size:10px;padding:0;background:none}#tutorial{left:26px;top:250px;bottom:auto;transform:none;width:224px;max-height:118px;padding:9px 11px;box-shadow:none;background:#10191cc9;border-color:#8990812b;border-left:2px solid #8f8468}#tutorial .step{font-size:9px;letter-spacing:1px}#tutorial h3{font-size:12px;margin:5px 0 2px}#tutorial p{font-size:10px;line-height:1.7}#tutorial .small{font-size:9px;padding:1px 5px}#guideBar{margin-top:6px}.bottom{left:26px;bottom:20px;width:224px;background:#111a1ece;padding:12px 13px}.bottom .bar{height:5px}.bottom .bar.stamina{height:3px}.resource-text{display:flex;justify-content:space-between;font-size:9px;color:#a9b7b5;margin-top:3px}.mana{margin-top:7px;height:3px!important}.mana i{background:#869ea6}.xp{height:2px!important;margin-top:8px}.xp i{background:#a99870}.supplies{font-size:11px;margin-top:7px}.supplies kbd{margin-right:6px}.health-label{font-size:10px}#nav{top:18px;font-size:9px}#nav b{font-size:11px}#boss{top:65px;width:min(520px,47vw);padding:9px 20px;background:linear-gradient(90deg,transparent,#1a131ae3,transparent)}.boss-overline{font-size:8px;letter-spacing:3px;color:#b77d71}.boss-name{font-size:20px;letter-spacing:3px;margin:4px 0 9px}#bossHP{font-size:10px;color:#c9afa4;margin-top:4px}#bossPhase{font-size:11px;margin-top:3px}#boss .bar{height:7px}#bossFill{background:linear-gradient(90deg,#733935,#b56955)}#toast{top:170px;max-width:520px;font-size:11px;padding:7px 14px}#hotbar{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);display:flex;gap:8px;pointer-events:none}.skill-slot{position:relative;width:66px;height:72px;background:#13191ee8;border:1px solid #aaa08b75;display:flex;align-items:center;flex-direction:column;overflow:hidden}.skill-slot kbd{position:absolute;top:3px;left:4px;border:0;padding:0;font-size:10px;z-index:2}.skill-icon{display:block;font-family:serif;font-size:34px;line-height:38px;position:relative;color:#d9e1df;z-index:2}.skill-icon.crimson{color:#c97566}.skill-name{font-size:10px;z-index:2;position:relative}.skill-cd{font-size:9px;color:#959f9e;z-index:2;position:relative}.skill-slot.locked{opacity:.43;border-color:#627073}.skill-slot.no-mana{border-color:#735556}.cooldown-shade{position:absolute;bottom:0;left:0;right:0;background:#92959b50;height:0;pointer-events:none}.hotbar-caption{position:absolute;top:78px;white-space:nowrap;text-align:center;width:100%;font-size:9px;color:#92a09d}.prompt{bottom:119px;font-size:11px;padding:6px 12px}.world-label{font-size:10px;padding:1px 5px}.vignette{background:radial-gradient(ellipse at center,transparent 43%,#040c136e)}
-#combatTexts{position:fixed;inset:0;pointer-events:none;z-index:6}.combat-text{position:absolute;transform:translate(-50%,-50%);font-size:12px;font-weight:600;line-height:1;letter-spacing:.15px;color:#f0e9d9;font-variant-numeric:tabular-nums;text-shadow:0 1px 2px #000,0 0 3px #000;white-space:nowrap}.combat-text.critical{color:#e4b885;font-weight:700;font-size:12px}.combat-text.hurt{font-size:11px}.skill-cd{font-variant-numeric:tabular-nums;font-size:8px}.combat-text.hurt{color:#d78e80}.combat-text.xp{color:#c4b17d;font-size:11px}.combat-text.muted{color:#a2a5a0;font-size:10px}.status-modal{width:min(850px,93vw);max-height:88vh;padding:24px 28px}.status-modal h2,.shop-modal h2{font-size:23px;margin:2px 0 6px}#statusLevel{font-size:12px;color:#b2c0b7}#statusPoints{font-size:13px;color:#d7c390;border-top:1px solid #ffffff20;padding:10px 0}#statusTabs{display:flex;border-bottom:1px solid #ffffff20;margin-bottom:18px;gap:4px}#statusTabs button{background:none;color:#b0bab3;border:0;border-bottom:2px solid transparent;padding:9px 17px;font-size:12px}#statusTabs button.selected{color:#ece3cb;border-color:#b6a077}.stat-layout{display:grid;grid-template-columns:1.2fr 1fr;gap:30px}.stat-row{display:grid;grid-template-columns:1fr 36px 33px;align-items:center;gap:10px;border-bottom:1px solid #ffffff14;padding:12px 0}.stat-row b{font-size:14px}.stat-row small{display:block;color:#92a19a;font-size:11px}.stat-row strong{text-align:center;font-size:20px;font-weight:500}.stat-add{font-size:18px;padding:0;height:30px;background:#a39573;border-color:#b9aa8880}.derived{background:#0b161962;padding:17px 20px}.derived p{display:flex;justify-content:space-between;font-size:12px;margin:6px 0}.derived small{color:#8fa096;font-size:10px;line-height:1.9;display:block;margin-top:14px}.panel-note,.panel-foot{font-size:11px;color:#9cab9f;line-height:1.9}.panel-foot{border-top:1px solid #ffffff14;padding-top:12px;margin-top:18px;font-size:10px}.equipped-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}.equipped{background:#0b171a80;border:1px solid #ffffff20;padding:12px;min-height:100px;display:flex;flex-direction:column;gap:8px}.equipped kbd{width:20px;text-align:center;font-size:10px;padding:1px 0}.equipped b{font-size:12px}.equipped small{font-size:10px;color:#89968f}select{font:12px inherit;background:#203032;color:#e6e2d4;border:1px solid #ffffff35;padding:5px 7px;max-width:100%}.skill-description{display:flex;gap:20px;padding:15px 0;border-top:1px solid #ffffff20}.skill-description h3{margin:0;font-size:14px}.skill-description h3 small{font-size:10px;margin-left:10px;color:#a89874}.skill-description p{margin:4px 0;font-size:11px}.skill-description.unlearned{opacity:.48}.sigil{font-size:40px;color:#d3dcd7;min-width:45px;text-align:center}.sigil.cleave{color:#c27a69}.empty-inventory{padding:30px;text-align:center;color:#adb5a8;border:1px dashed #ffffff20;margin:16px 0}.empty-inventory small{display:block;font-size:11px;color:#7f9389;margin-top:6px}.game-table{border-collapse:collapse;width:100%;font-size:12px}.game-table td,.game-table th{padding:10px 12px;text-align:left;border-bottom:1px solid #ffffff13}.game-table th{color:#bbaa88;background:#0b171a66;font-weight:500;font-size:11px}.game-table small{font-size:9px;display:block;color:#8c9b8f}.game-table td:not(:first-child){white-space:nowrap}.table-scroll{overflow-x:auto;max-height:350px;overflow-y:auto}button:disabled{cursor:default;opacity:.3}.shop-modal{width:min(760px,92vw)}#shopGold{color:#d6c28d;text-align:right;margin:12px 0;font-size:16px}.merchant-quote{color:#b7bcae;font-style:italic;font-size:12px}.status-modal details{font-size:12px}.status-modal summary{cursor:pointer;padding:10px 0;color:#caba98}
+#combatTexts{position:fixed;inset:0;pointer-events:none;z-index:6}.combat-text{position:absolute;transform:translate(-50%,-50%);font-size:12px;font-weight:600;line-height:1;letter-spacing:.15px;color:#f0e9d9;font-variant-numeric:tabular-nums;text-shadow:0 1px 2px #000,0 0 3px #000;white-space:nowrap}.combat-text.critical{color:#e4b885;font-weight:700;font-size:12px}.combat-text.hurt{font-size:11px}.skill-cd{font-variant-numeric:tabular-nums;font-size:8px}.combat-text.hurt{color:#d78e80}.combat-text.xp{color:#c4b17d;font-size:11px}.combat-text.gold{color:#e0c574;font-size:11px}.combat-text.muted{color:#a2a5a0;font-size:10px}.status-modal{width:min(850px,93vw);max-height:88vh;padding:24px 28px}.status-modal h2,.shop-modal h2{font-size:23px;margin:2px 0 6px}#statusLevel{font-size:12px;color:#b2c0b7}#statusPoints{font-size:13px;color:#d7c390;border-top:1px solid #ffffff20;padding:10px 0}#statusTabs{display:flex;border-bottom:1px solid #ffffff20;margin-bottom:18px;gap:4px}#statusTabs button{background:none;color:#b0bab3;border:0;border-bottom:2px solid transparent;padding:9px 17px;font-size:12px}#statusTabs button.selected{color:#ece3cb;border-color:#b6a077}.stat-layout{display:grid;grid-template-columns:1.2fr 1fr;gap:30px}.stat-row{display:grid;grid-template-columns:1fr 36px 33px;align-items:center;gap:10px;border-bottom:1px solid #ffffff14;padding:12px 0}.stat-row b{font-size:14px}.stat-row small{display:block;color:#92a19a;font-size:11px}.stat-row strong{text-align:center;font-size:20px;font-weight:500}.stat-add{font-size:18px;padding:0;height:30px;background:#a39573;border-color:#b9aa8880}.derived{background:#0b161962;padding:17px 20px}.derived p{display:flex;justify-content:space-between;font-size:12px;margin:6px 0}.derived small{color:#8fa096;font-size:10px;line-height:1.9;display:block;margin-top:14px}.panel-note,.panel-foot{font-size:11px;color:#9cab9f;line-height:1.9}.panel-foot{border-top:1px solid #ffffff14;padding-top:12px;margin-top:18px;font-size:10px}.equipped-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}.equipped{background:#0b171a80;border:1px solid #ffffff20;padding:12px;min-height:100px;display:flex;flex-direction:column;gap:8px}.equipped kbd{width:20px;text-align:center;font-size:10px;padding:1px 0}.equipped b{font-size:12px}.equipped small{font-size:10px;color:#89968f}select{font:12px inherit;background:#203032;color:#e6e2d4;border:1px solid #ffffff35;padding:5px 7px;max-width:100%}.skill-description{display:flex;gap:20px;padding:15px 0;border-top:1px solid #ffffff20}.skill-description h3{margin:0;font-size:14px}.skill-description h3 small{font-size:10px;margin-left:10px;color:#a89874}.skill-description p{margin:4px 0;font-size:11px}.skill-description.unlearned{opacity:.48}.sigil{font-size:40px;color:#d3dcd7;min-width:45px;text-align:center}.sigil.cleave{color:#c27a69}.empty-inventory{padding:30px;text-align:center;color:#adb5a8;border:1px dashed #ffffff20;margin:16px 0}.empty-inventory small{display:block;font-size:11px;color:#7f9389;margin-top:6px}.game-table{border-collapse:collapse;width:100%;font-size:12px}.game-table td,.game-table th{padding:10px 12px;text-align:left;border-bottom:1px solid #ffffff13}.game-table th{color:#bbaa88;background:#0b171a66;font-weight:500;font-size:11px}.game-table small{font-size:9px;display:block;color:#8c9b8f}.game-table td:not(:first-child){white-space:nowrap}.table-scroll{overflow-x:auto;max-height:350px;overflow-y:auto}button:disabled{cursor:default;opacity:.3}.shop-modal{width:min(760px,92vw)}#shopGold{color:#d6c28d;text-align:right;margin:12px 0;font-size:16px}.merchant-quote{color:#b7bcae;font-style:italic;font-size:12px}.status-modal details{font-size:12px}.status-modal summary{cursor:pointer;padding:10px 0;color:#caba98}
 @media(max-width:1050px){#tutorial{left:18px;top:235px;width:206px}.bottom{left:18px;width:202px}#boss{width:43vw}.boss-name{font-size:16px}#hotbar{bottom:26px}.skill-slot{width:55px;height:65px}.skill-icon{font-size:28px;line-height:33px}.hotbar-caption{font-size:8px;top:69px}.quest{max-width:206px}#toast{max-width:410px;top:167px}.controls{font-size:9px;right:18px}.stat-layout{gap:14px}.status-modal{padding:18px}.right #map{width:110px;height:110px}}
 @media(max-height:650px){#tutorial{top:212px;bottom:auto;max-height:106px;width:202px}#tutorial h3{font-size:11px}#tutorial p{font-size:9px}.quest{margin-top:9px}.quest p{font-size:10px;margin:3px 0}.bottom{bottom:13px;padding:8px 11px}#hotbar{bottom:22px}.controls{bottom:8px}#toast{top:149px}.status-modal{max-height:94vh}.stat-row{padding:8px 0}.right #map{width:95px;height:95px}.right .save-status{display:none}#boss{top:55px}.boss-name{font-size:16px}.boss-overline{font-size:7px}#bossPhase{font-size:10px}#nav{top:10px}}
 
@@ -250,16 +250,19 @@ button:focus-visible,select:focus-visible{outline:2px solid #e0bf82;outline-offs
 
 /* 0.10.10 — map town travel and a cheap outer-world backdrop. */
 .map-travel{border:1px solid #ffffff20;background:#0d181c;padding:10px;margin:0 0 11px}.map-travel-head{margin-bottom:7px}.map-travel-head b{display:block;font-size:12px;color:#e2d5b1}.map-travel-head small,.map-travel-reason{display:block;font-size:9px;line-height:1.55;color:#91a49a}.map-travel-button{display:flex;justify-content:space-between;align-items:center;gap:8px;width:100%;padding:7px 9px;margin-top:5px;background:#1a2a2dc9;color:#e4dfcf;border-color:#ffffff25;text-align:left}.map-travel-button:hover{background:#33413f}.map-travel-button span{font-size:11px;font-weight:600}.map-travel-button small{font-size:9px;color:#a7b5ab}.map-travel-button:disabled{opacity:.45}.map-travel-reason{margin-top:7px;color:#d3b592}
+
+/* v0.12.11 — full-map zoom controls. */
+.map-top-actions{display:flex;gap:5px;align-items:center;flex-wrap:wrap;justify-content:flex-end}.map-top-actions #mapZoomOut,.map-top-actions #mapZoomIn{min-width:34px;font-size:15px;padding:4px 9px}.map-top-actions #mapZoomReset{min-width:54px;padding:5px 8px;font-variant-numeric:tabular-nums}#fullmap{cursor:zoom-in}
 </style></head><body class="main-menu">
 <canvas id="game" tabindex="0" aria-label="무색 3D 게임"></canvas><div class="vignette"></div><div id="labels"></div>
 <div id="hud"><div class="eyebrow">CHAPTER 01 / A RUMOR IN THE WOODS</div><div class="location" id="regionName">새벽마을</div><div class="tag" id="regionTag">안전 구역 · 사냥꾼의 첫걸음</div>
 <div class="quest"><h3 id="questTitle">첫 번째 발걸음</h3><div id="questLines"></div><div id="boarQuestHUD" class="hidden"><span id="boarQuestText"></span><button id="boarQuestTrack" class="small secondary">추적</button></div><div id="rioQuestHUD" class="hidden"><span id="rioQuestText"></span><button id="rioQuestTrack" class="small secondary">제작 의뢰 추적</button></div></div>
-<div class="right"><div class="eyebrow">MUSAEK / OFFLINE 0.12.6</div><canvas id="map" width="240" height="240" aria-label="주변 지도"></canvas><div class="mapHint">N ↑　E →　<kbd>Tab</kbd> 전체 지도</div><div class="tag" id="cameraInfo">60° 내려다보기</div><div class="save-status" id="saveStatus"></div></div>
+<div class="right"><div class="eyebrow">MUSAEK / OFFLINE 0.12.11</div><canvas id="map" width="240" height="240" aria-label="주변 지도"></canvas><div class="mapHint">N ↑　E →　<kbd>Tab</kbd> 전체 지도</div><div class="tag" id="cameraInfo">60° 내려다보기</div><div class="save-status" id="saveStatus"></div></div>
 <button id="statAlert" class="hidden" type="button" aria-label="미분배 능력치">!</button><div id="nav"></div><div id="boss" class="hidden"><div class="boss-overline">MID BOSS / THE CRIMSON BEAST</div><div class="boss-name">제보당의 붉은 괴수</div><div class="bar"><i id="bossFill"></i></div><div id="bossHP"></div><div id="bossPhase"></div></div>
 <div class="bottom">
 <div class="health-label"><span><span id="heroLevel">Lv.1</span> · 사냥꾼</span><span id="healthText">HP 100 / 100</span></div>
 <div class="bar resource-gauge health" id="healthGauge" role="progressbar" aria-label="체력 HP" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><i id="healthFill"></i></div>
-<div class="resource-text resource-heading mana-heading"><span id="manaText">마나 MP 50 / 50</span><span class="resource-use">공격·스킬·달리기</span></div>
+<div class="resource-text resource-heading mana-heading"><span id="manaText">마나 MP 50 / 50</span><span class="resource-use">일반·강공격·스킬·달리기</span></div>
 <div class="mana bar resource-gauge" id="manaGauge" role="progressbar" aria-label="마나 MP" aria-valuemin="0" aria-valuemax="50" aria-valuenow="50"><i id="manaFill"></i></div>
 <div class="resource-text resource-heading stamina-heading"><span id="staminaText">기력 100 / 100</span><span class="resource-use">일반·강공격·대시</span></div>
 <div class="bar stamina resource-gauge" id="staminaGauge" role="progressbar" aria-label="기력" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><i id="staminaFill"></i></div>
@@ -269,7 +272,7 @@ button:focus-visible,select:focus-visible{outline:2px solid #e0bf82;outline-offs
 <div id="hotbar" aria-label="장착 스킬 4칸"><div class="skill-slot" id="skill0"><div class="cooldown-shade"></div><kbd>1</kbd><span class="skill-icon">╱</span><span class="skill-name">베기</span><span class="skill-cd"></span></div><div class="skill-slot" id="skill1"><div class="cooldown-shade"></div><kbd>2</kbd><span class="skill-icon">▧</span><span class="skill-name">잠김</span><span class="skill-cd"></span></div><div class="skill-slot" id="skill2"><div class="cooldown-shade"></div><kbd>3</kbd><span class="skill-icon">▧</span><span class="skill-name">잠김</span><span class="skill-cd"></span></div><div class="skill-slot" id="skill3"><div class="cooldown-shade"></div><kbd>4</kbd><span class="skill-icon">▧</span><span class="skill-name">잠김</span><span class="skill-cd"></span></div><div class="hotbar-caption">1 – 4 · 스킬　/　F · 대시　/　Space · 점프</div></div>
 <div id="tutorial"><div class="tutorial-head"><span class="step" id="guideStep">조작 01 / 07</span><button id="skipGuide" class="secondary small">접기</button></div><h3 id="guideTitle"></h3><p id="guideText"></p><div id="guideBar"><i></i></div></div>
 <div id="commissionHUD" class="hidden"></div><div id="prompt" class="prompt hidden"></div><div id="toast" role="status"></div></div><div id="lock"></div><div id="damage"></div>
-<div id="overlay" class="overlay"><section class="menu-identity"><div class="menu-kicker" id="overline">A WORLD WITHOUT COLOR</div><h1 class="brand" id="title">무색</h1><div class="subtitle" id="subtitle">THE STOLEN COLORS</div><div class="menu-story"><strong>세상이 잊어도,<br>당신의 여정은 남는다.</strong>잿빛 늪과 오래된 숲.<br>아직 꺼지지 않은 마을의 불빛.<br>멈춰 둔 모험으로 돌아오세요.</div><div class="menu-chapter">CHAPTER 01　/　제보당의 붉은 괴수<br><div class="menu-divider"></div>OFFLINE FILE EDITION　—　PROTOTYPE 0.12.6</div><button id="sound" class="secondary menu-sound">소리 설정 · 클릭해서 켜기</button><button id="openClock" class="secondary menu-sound">시계 설정 · 로컬 / 서버</button></section><section class="menu-shell"><div id="connectionBadge" class="menu-status"><i class="status-light"></i><span>로컬 저장 확인 중</span></div><div id="menuContent"></div><div id="menuMessage" class="menu-message" role="status" aria-live="polite"></div></section></div>
+<div id="overlay" class="overlay"><section class="menu-identity"><div class="menu-kicker" id="overline">A WORLD WITHOUT COLOR</div><h1 class="brand" id="title">무색</h1><div class="subtitle" id="subtitle">THE STOLEN COLORS</div><div class="menu-story"><strong>세상이 잊어도,<br>당신의 여정은 남는다.</strong>잿빛 늪과 오래된 숲.<br>아직 꺼지지 않은 마을의 불빛.<br>멈춰 둔 모험으로 돌아오세요.</div><div class="menu-chapter">CHAPTER 01　/　제보당의 붉은 괴수<br><div class="menu-divider"></div>OFFLINE FILE EDITION　—　PROTOTYPE 0.12.11</div><button id="sound" class="secondary menu-sound">소리 설정 · 클릭해서 켜기</button><button id="openClock" class="secondary menu-sound">시계 설정 · 로컬 / 서버</button></section><section class="menu-shell"><div id="connectionBadge" class="menu-status"><i class="status-light"></i><span>로컬 저장 확인 중</span></div><div id="menuContent"></div><div id="menuMessage" class="menu-message" role="status" aria-live="polite"></div></section></div>
 <input id="accountBackupFile" type="file" accept=".json,.musaek,application/json" class="hidden">
 <div id="storagePanel" class="overlay hidden"><section class="modal storage-modal"><div class="topline"><div><div class="eyebrow">THE HUNTER'S ARCHIVE</div><h2 id="storageTitle">여정의 기록</h2></div><button id="closeStorage" class="secondary small">Esc · 닫기</button></div><p class="storage-topnote" id="storageHint"></p><div id="saveCards" class="save-cards"></div><div class="storage-tools"><button id="storageExport" class="secondary">현재 진행 파일로 내보내기</button><button id="storageImport" class="secondary">기존 저장 파일 가져오기</button><button id="storageAccountExport" class="secondary">계정 전체 백업</button><button id="storageRefresh" class="secondary">목록 새로고침</button></div><div id="storageMessage" class="storage-note" role="status" aria-live="polite"></div></section></div>
 
@@ -278,16 +281,16 @@ button:focus-visible,select:focus-visible{outline:2px solid #e0bf82;outline-offs
 </div>
 
 <div id="dialog" class="overlay hidden"><section class="modal"><h2 id="dialogTitle"></h2><div id="dialogText"></div><div id="dialogActions" class="dialog-actions"></div></section></div>
-<div id="help" class="overlay hidden"><section class="modal"><div class="topline"><h2>사냥꾼의 조작 안내</h2><button id="closeHelp" class="secondary small">H · 닫기</button></div><div class="help-resource"><b>마나 MP ≠ 기력</b><p>마나: 공격·스킬·달리기의 연료. 기력: 일반·강공격·대시의 여력.<br>일반·강공격은 두 자원을 함께 쓰고, 스킬은 마나만, F 대시는 기력만 씁니다.<br>Q 하급 회복약은 HP만 회복합니다. 자세한 설명은 이 도움말 아래의 생존 수첩에서 다시 읽으세요.</p></div><div class="help-grid"><div class="help-item"><span>제작한 방패로 1회 방어</span><kbd>G 누르기</kbd></div>
+<div id="help" class="overlay hidden"><section class="modal"><div class="topline"><h2>사냥꾼의 조작 안내</h2><button id="closeHelp" class="secondary small">H · 닫기</button></div><div class="help-resource"><b>마나 MP ≠ 기력</b><p>마나: 일반·강공격·스킬·달리기의 연료. 기력: 일반·강공격·대시의 여력.<br>일반·강공격은 두 자원을 함께 쓰고, 스킬은 마나만, F 대시는 기력만 씁니다.<br>Q 하급 회복약은 HP만 회복합니다. 자세한 설명은 이 도움말 아래의 생존 수첩에서 다시 읽으세요.</p></div><div class="help-grid"><div class="help-item"><span>제작한 방패로 1회 방어</span><kbd>G 누르기</kbd></div>
 <div class="help-item"><span>이동</span><kbd>W A S D</kbd></div><div class="help-item"><span>상호작용 · 대화</span><kbd>R</kbd></div><div class="help-item"><span>점프</span><kbd>Space</kbd></div><div class="help-item"><span>달리기 · MP 초당 0.1</span><kbd>Shift</kbd></div><div class="help-item"><span>대시 · 공격 중 사용 가능</span><kbd>F</kbd></div><div class="help-item"><span>약공격 · 3연타</span><kbd>좌클릭</kbd></div><div class="help-item"><span>강공격</span><kbd>우클릭</kbd></div><div class="help-item"><span>가까운 적 조준 고정</span><kbd>마우스 가운데</kbd></div><div class="help-item"><span>시야 이동</span><kbd>마우스 이동</kbd></div><div class="help-item"><span>카메라 거리</span><kbd>휠</kbd></div><div class="help-item"><span>하급 회복약 · HP +30 (고정) / 8초</span><kbd>Q</kbd></div><div class="help-item"><span>탐험 지도 · 모험 기록(숲의 미궁 내부)</span><kbd>Tab / J</kbd></div><div class="help-item"><span>메뉴 · 저장 · 불러오기</span><kbd>Esc / P</kbd></div><div class="help-item"><span>소리 설정 / 음소거</span><kbd>B / M</kbd></div></div><div class="help-item"><span>상태 · 능력치 · 스킬 장착</span><kbd>E</kbd></div><div class="help-item"><span>스킬 (누르고 있으면 재사용)</span><kbd>1 / 2 / 3 / 4</kbd></div><div class="help-note">베기: MP 3.5 / 재사용 1초. 일반 공격 MP 0.5, 강공격 MP 1.0. 기력 소모는 아래 현재 무기 기준을 확인하세요. 피해 숫자는 실제 감소한 HP입니다.<br>F5: 슬롯 1에 빠른 저장 · F9: 불러오기 목록. 로컬 계정은 이 브라우저에 저장됩니다. 파일 이동 전에 계정 백업을 보관하세요. 달리는 동안 MP 자연 회복은 멈춥니다. MP가 바닥나면 걷기로 전환되며, 회복 후 Shift를 떼었다가 다시 누르세요. 카메라는 60도 각도를 유지합니다. 마을은 안전 구역입니다. 먼저 길잡이 세라에게 마나·기력과 상태창을 배우고 미분배 포인트를 모두 사용한 뒤, 슬라임 5마리·판매·회복약 구매·수습 장검 제작·휴식의 입문 의뢰를 완료하세요. 마을 서쪽 대장간에서는 무기·방어구·아티팩트·미궁 입장권을 제작하고, 모루에서 무기를 강화·복구·전승할 수 있습니다. 이후 로안의 슬라임 25마리 메인 의뢰를 받고 완료 보고하면 미궁 입장 자격을 얻습니다. 외부에서 미궁에 들어갈 때마다 입장권 1개를 사용합니다.</div><div id="actualStaminaHelp" class="help-note"></div><div id="survivalNotes"></div><div class="actions"><button id="showGuide" class="secondary">단계별 가이드 다시 보기</button></div></section></div>
-<div id="mapOverlay" class="overlay hidden"><section class="modal map-modal"><div class="topline"><div><div class="eyebrow">FIELD NOTES / EXPLORATION</div><h2 id="mapTitle">색을 잃은 대지</h2></div><div class="map-top-actions"><button id="townMapToggle" class="secondary small">마을 확대</button> <button id="mapExtent" class="secondary small hidden">미궁 전체 범위</button> <button id="closeMap" class="secondary small">Tab · 닫기</button></div></div>
+<div id="mapOverlay" class="overlay hidden"><section class="modal map-modal"><div class="topline"><div><div class="eyebrow">FIELD NOTES / EXPLORATION</div><h2 id="mapTitle">색을 잃은 대지</h2></div><div class="map-top-actions"><button id="mapZoomOut" class="secondary small" aria-label="지도 축소">−</button> <button id="mapZoomReset" class="secondary small"><span id="mapZoomValue">100%</span></button> <button id="mapZoomIn" class="secondary small" aria-label="지도 확대">＋</button> <button id="townMapToggle" class="secondary small">마을 확대</button> <button id="mapExtent" class="secondary small hidden">미궁 전체 범위</button> <button id="closeMap" class="secondary small">Tab · 닫기</button></div></div>
 <div class="map-layout"><div class="map-sheet"><canvas id="fullmap" width="1000" height="660" aria-label="탐험 지도"></canvas><div class="legend" id="mapLegend"></div></div><aside class="map-sidebar"><div class="map-objective"><div class="eyebrow">목적지</div><strong id="mapObjective"></strong><p id="mapObjectiveNote"></p><small id="mapDistance"></small><button id="mapResetTarget" class="secondary small">의뢰 목적지로</button></div><div id="mapTravel" class="map-travel hidden"></div><div id="mapPlaces"></div><div class="map-note" id="mapHintText"></div></aside></div></section></div>
 <div id="journal" class="overlay hidden"><section class="modal"><div class="topline"><h2>모험 기록</h2><button id="closeJournal" class="secondary small">J · 닫기</button></div><div id="journalText" class="journal-text"></div></section></div>
 
 <div id="combatTexts" aria-hidden="true"></div>
 <div id="statusPanel" class="overlay hidden"><section class="modal status-modal"><div class="topline"><div><div class="eyebrow">THE HUNTER / 아직 남아 있는 것들</div><h2>사냥꾼의 상태</h2><span id="statusLevel"></span></div><button id="closeStatus" class="secondary small">E · 닫기</button></div><div id="statusPoints"></div><p id="statTaskHint" class="panel-note hidden" role="status"></p><nav id="statusTabs"><button data-tab="stats" class="selected">능력치</button><button data-tab="skills">스킬 장착</button><button data-tab="gear">장비 장착</button><button data-tab="loot">전리품</button><button data-tab="codex">사냥 도감</button></nav><div id="statusBody"></div><div class="panel-foot">창이 열리면 세계와 남은 공격 동작이 정지합니다. 닫으면 그 시점부터 이어집니다. 공격·방어 중 장비 교체 불가.</div></section></div>
 <div id="shopPanel" class="overlay hidden"><section class="modal shop-modal"><div class="topline"><div><div class="eyebrow">DAWN VILLAGE / TRADER</div><h2>상인 모르</h2></div><button id="closeShop" class="secondary small">R · 닫기</button></div><p class="merchant-quote">“밖에서는 빛도 목숨도 값싸지. 여기선, 가져온 것에 값을 치르겠네.”</p><div id="shopLesson" class="lesson-shop hidden"></div><div id="shopGold"></div><div id="shopBody"></div><div class="actions"><button id="sellAllLoot" class="secondary">부산물 전부 판매</button><button id="buyPotion">하급 회복약 구매 · 18 G</button></div><p class="panel-note">판매한 부산물은 되돌릴 수 없습니다. 붉은 보석 파편과 미궁 입장권은 판매 불가입니다. 부산물 전부 판매는 코어도 자동으로 제외합니다.<br>온천 휴식은 무료이며 종류에 관계없이 회복약이 하나도 없을 때만 하급 회복약 1개를 지원합니다. 회복약이 하나라도 있으면 자원만 회복하며 보유량을 줄이지 않습니다.</p></section></div>
-<div id="forgePanel" class="overlay hidden"><section class="modal forge-modal"><div class="topline"><div><div class="eyebrow">DAWN VILLAGE / BLACKSMITH</div><h2>대장간 · 대장장이 브란</h2></div><button id="closeForge" class="secondary small">R · 닫기</button></div><p class="merchant-quote">“좋은 쇠는 불에서 버티고, 좋은 사냥꾼은 기다릴 줄 알지.”</p><div id="forgeGold"></div><div id="forgeJob"></div><nav class="forge-tabs" id="forgeTabs"><button data-forge-tab="weapon" class="selected">무기</button><button data-forge-tab="armor">방어구</button><button data-forge-tab="artifact">아티팩트</button><button data-forge-tab="misc">기타</button><button data-forge-tab="owned">장비 판매</button></nav><div id="forgeBody"></div><p class="smith-note">무기는 등급별 제작비가 필요합니다. 골드·재료는 제작 확정 시 한 번 소모되고, 완성 시간은 현실 시간 기준으로 흐릅니다. 고등급 장비일수록 오래 걸립니다. 장착 중이거나 잠근 장비는 판매할 수 없습니다. 장착 변경은 E 상태창에서 할 수 있습니다.</p></section></div>
+<div id="forgePanel" class="overlay hidden"><section class="modal forge-modal"><div class="topline"><div><div class="eyebrow">DAWN VILLAGE / BLACKSMITH</div><h2>대장간 · 대장장이 브란</h2></div><button id="closeForge" class="secondary small">R · 닫기</button></div><p class="merchant-quote">“좋은 쇠는 불에서 버티고, 좋은 사냥꾼은 기다릴 줄 알지.”</p><div id="forgeGold"></div><div id="forgeJob"></div><nav class="forge-tabs" id="forgeTabs"><button data-forge-tab="weapon" class="selected">무기</button><button data-forge-tab="armor">방어구</button><button data-forge-tab="artifact">아티팩트</button><button data-forge-tab="misc">기타</button><button data-forge-tab="owned">장비 판매</button></nav><div id="forgeBody"></div><p class="smith-note">무기는 등급별 제작비가 필요합니다. 골드·재료는 제작 확정 시 한 번 소모되고, 제작 시간은 플레이 중에 흐르고 메뉴·대화에서는 잠시 멈춥니다. 파일을 종료한 동안의 경과 시간은 다음 실행 때 반영됩니다. 고등급 장비일수록 오래 걸립니다. 장착 중이거나 잠근 장비는 판매할 수 없습니다. 장착 변경은 E 상태창에서 할 수 있습니다.</p></section></div>
 <div id="anvilPanel" class="overlay hidden" role="dialog" aria-modal="true" aria-labelledby="anvilTitle"><section class="modal anvil-modal"><div class="topline"><div><div class="eyebrow">ANVIL / TEMPER · REPAIR · TRANSFER</div><h2 id="anvilTitle">모루 · 불과 균열</h2></div><button id="closeAnvil" class="secondary small">R / Esc · 닫기</button></div><div id="anvilGold"></div><nav id="anvilTabs" class="forge-tabs"><button data-anvil-tab="enhance" class="selected">강화</button><button data-anvil-tab="repair">복구</button><button data-anvil-tab="transfer">전승</button></nav><div id="anvilResult" role="status"></div><div id="anvilBody"></div><p class="smith-note">낡은 장검은 예비 무기로 유지합니다. 강화는 제작 무기만 가능합니다. 무기의 레벨 제한은 강화해도 바뀌지 않습니다.</p></section></div>
 <div id="clockPanel" class="overlay hidden" role="dialog" aria-modal="true" aria-labelledby="clockTitle"><section class="modal clock-modal"><div class="topline"><h2 id="clockTitle">시계 설정</h2><button id="closeClock" class="secondary small">Esc · 닫기</button></div><h3 id="clockState"></h3><p id="clockReadout"></p><label for="clockURL">서버 시계 URL <input id="clockURL" type="url" autocomplete="off" spellcheck="false" placeholder="배포한 HTTPS /api/time 주소"></label><div class="actions"><button id="clockSync">서버에 연결 / 동기화</button><button id="clockLocal" class="secondary">로컬 시계로 돌아가기</button></div><p id="clockError" role="status"></p><div class="help-note">기본은 내 기기 시계입니다. 공개 시간 서버는 연결되어 있지 않습니다.<br>연결하면 보스의 서울 정시 출현에 서버 시각을 사용합니다. 성공한 연결 주소는 이 브라우저에 기억합니다.<br>설정한 서버에는 시간 조회 요청만 보내며 계정·비밀번호·세이브는 보내지 않습니다.<br>서버가 끊기면 마지막 시각을 최대 30분간 추정하며 이후 로컬 시계로 돌아갑니다. 절전 복귀 시 다시 동기화합니다.<br>오프라인 파일이나 세이브 조작을 막는 보안 기능은 아닙니다. 제작·게시판의 일시정지 규칙은 유지합니다.</div></section></div>
 
@@ -306,15 +309,15 @@ button:focus-visible,select:focus-visible{outline:2px solid #e0bf82;outline-offs
 <script>
 'use strict';
 (()=>{
-/* MUSAEK 0.12.6 — puzzle integrity, repeat-boss reset, transition input continuity, and balance polish.
+/* MUSAEK 0.12.11 — distributed goblin settlements, distinct attack motion, slime-queen redesign and map zoom.
  * All probabilities below are independent Bernoulli rolls, at Luck 5.
  * Skill power is not HP damage: strength and magic can modify it.
  */
 
-const PATCH_REVISION=31;
+const PATCH_REVISION=36;
 const DUNGEON_PUZZLE_REVISION=2;
 const RESPEC_GRANT_REVISION=1;
-const WORLD_LAYOUT_VERSION=2;
+const WORLD_LAYOUT_VERSION=3;
 const ABRAM_RELOCATION=Object.freeze({dx:-188,dz:-250});
 const BOAR_QUEST_RULES=Object.freeze({target:15,gold:45,guardId:'guard_darin'});
 const MAIN_HUNT_TARGET=25;
@@ -324,6 +327,7 @@ const NAV_CONFIG=Object.freeze({cell:1.5,sector:8,maxSectorNodes:128,maxNodes:22
 const NAV_RUNTIME={layers:new Map(),requests:0,calls:0,expanded:0,sectorExpanded:0,cacheHits:0,failures:0};
 const PRE_PATCH_HP=Object.freeze({townThug:90,roadSlime:15,swampSlime:20,forestWolf:68,forestBoar:104,mazeWolf:114,elderWolf:186,werewolf:2400});
 const PRE_V0124_HP=Object.freeze({werewolf:2500});
+const PRE_V0129_HP=Object.freeze({werewolf:2400});
 // Optional UTC authority. No network request unless the player configures a URL.
 // A server sample improves clock consistency; it does NOT make an editable offline
 // client/save authoritative or prevent cheating. Paused crafting/board clocks stay separate.
@@ -364,7 +368,7 @@ function openClockPanel(){
  if(!['title','pause','play'].includes(state.mode))return false;
  clockReturn=state.mode;pauseInput();state.mode='clock';$('clockPanel').classList.remove('hidden');renderClockPanel();return true;
 }
-function closeClockPanel(){if(state.mode!=='clock')return;$('clockPanel').classList.add('hidden');state.mode=clockReturn;pauseInput();if(state.mode==='play')canvas.focus();}
+function closeClockPanel(){if(state.mode!=='clock')return;$('clockPanel').classList.add('hidden');state.mode=clockReturn;resumePlayInput();}
 function renderClockPanel(fillURL=true){
  const s=TIME_SOURCE.status();if(!$('clockState'))return;
  $('clockState').textContent=s.synced?(s.estimated?'서버 연결 끊김 · 마지막 시각으로 추정 중':'서버 시계 연결됨'):'로컬 시계 사용 중 · 서버 연결 없음';
@@ -385,7 +389,7 @@ const WEAPON_PROFILES=Object.freeze({
 let shopTab='loot',dialogueReturn='play';
 
 const BALANCE=Object.freeze({
- version:8,balanceRevision:19,statGrowthRevision:2,progressionRevision:1,contactAttackSpeed:1.25,hitAttackSpeed:.75,hitSlowDuration:1,maxLevel:50,initialStat:5,initialPoints:5,pointsPerLevel:1,
+ version:8,balanceRevision:22,statGrowthRevision:2,progressionRevision:1,contactAttackSpeed:1.25,hitAttackSpeed:.75,hitSlowDuration:1,maxLevel:50,initialStat:5,initialPoints:5,pointsPerLevel:1,
  slotLevels:[1,5,10,15],xpGapZero:11,playerScale:.84*1.2,bossScale:1.5,
  basicMinPower:3,basicMaxPower:3,heavyPower:8,basicMana:.5,heavyMana:1.0,
  criticalChance:.025,criticalMinMultiplier:1.5,criticalMaxMultiplier:2.5,potionName:'하급 회복약',potionHealMin:30,potionHealMax:30,potionCooldown:8,potionPrice:18,
@@ -415,6 +419,8 @@ const ITEMS=Object.freeze({
  statResetTicket:{name:'무료 능력치 재분배권',sell:0,rarity:'특수 지급품 · 판매 불가',category:'special',noSell:true},
  dungeonTicket:{name:'미궁 입장권',sell:0,rarity:'입장 소모품 · 판매 불가',category:'entryTicket',noSell:true},
  slimeGel:{name:'빛바랜 점액',sell:1.1,rarity:'흔함'},slimeCore:{name:'탁한 슬라임 핵',sell:7.7,rarity:'희귀'},
+ queenGel:{name:'응축된 여왕 점액',sell:19.8,rarity:'미니 중간보스 · 고급'},slimeQueenCore:{name:'슬라임 퀸의 코어',sell:132,rarity:'미니 중간보스 코어 · 10%'},
+ goblinScrap:{name:'고블린의 녹슨 장식',sell:3.3,rarity:'남쪽 숲 · 흔함'},goblinCharm:{name:'고블린 주술 부적',sell:18.7,rarity:'남쪽 숲 · 희귀'},goblinShamanCore:{name:'고블린 주술사의 코어',sell:143,rarity:'미니 중간보스 코어 · 10%'},
  wolfFur:{name:'잿빛 늑대 털',sell:3.3,rarity:'흔함'},wolfFang:{name:'날카로운 송곳니',sell:15.4,rarity:'희귀'},
  boarHide:{name:'거친 멧돼지 가죽',sell:6.6,rarity:'흔함'},boarTusk:{name:'검게 물든 엄니',sell:28.6,rarity:'희귀'},
  darkFur:{name:'미궁의 검은 모피',sell:9.9,rarity:'고급'},moonClaw:{name:'달빛 잃은 발톱',sell:31.9,rarity:'희귀'},
@@ -433,24 +439,28 @@ const ITEMS=Object.freeze({
  giantPlate:{name:'붉은 철갑 거인의 철판',sell:55,rarity:'중간보스 재료 · 35%'},ironGiantCore:{name:'붉은 철갑 거인의 코어',sell:616,rarity:'중간보스 코어 · 10%'}
 });
 const MONSTERS=Object.freeze({
- townThug:{name:"골목의 불량배",type:"thug",rarity:'common',level:3,hp:95,xp:0,attack:12,respawn:0,scale:1,drops:[]},
- roadSlime:{name:'길가 슬라임',type:'slime',rarity:'common',level:1,hp:20,xp:10,attack:8,respawn:35,scale:1,drops:[['slimeGel',.45],['slimeCore',.06],['roadSlimeRareCore',.01,true]]},
- swampSlime:{name:'잿빛 늪 슬라임',type:'slime',rarity:'common',level:3,hp:25,xp:14,attack:11,respawn:40,scale:1,drops:[['slimeGel',.60],['slimeCore',.12],['swampSlimeRareCore',.01,true]]},
- forestWolf:{name:'동쪽 숲 늑대',type:'wolf',rarity:'common',level:5,hp:72,xp:60,attack:21,respawn:60,scale:1.05,drops:[['wolfFur',.60],['wolfFang',.20],['forestWolfCore',.01,true]]},
- forestBoar:{name:'잿빛 엄니 멧돼지',type:'boar',rarity:'uncommon',level:7,hp:110,xp:100,attack:29,respawn:80,scale:1,drops:[['boarHide',.55],['boarTusk',.12],['forestBoarCore',.01,true]]},
- mazeWolf:{name:'미궁 늑대',type:'wolf',rarity:'common',level:8,hp:120,xp:115,attack:27,respawn:60,scale:1.12,drops:[['darkFur',.65],['moonClaw',.18],['mazeWolfCore',.01,true]]},
- elderWolf:{name:'미궁의 고참 늑대',type:'wolf',rarity:'rare',level:10,hp:195,xp:190,attack:35,respawn:60,scale:1.3,drops:[['darkFur',.80],['moonClaw',.30],['elderFang',.08],['elderWolfCore',.01,true]]},
- werewolf:{name:'제보당의 붉은 괴수',type:'boss',rarity:'boss',level:12,hp:2400,xp:1200,attack:36,claw:36,rush:48,slam:56,enrage:1.3,respawn:10800,scale:1.5,drops:[['redGem',1],['beastFang',.35],['werewolfCore',.10,true]]},
- greyGoat:{name:'회백 산양',type:'goat',rarity:'common',level:13,hp:165,xp:220,attack:35,respawn:75,scale:1.02,drops:[['greyHorn',.58],['greyGoatCore',.01,true]]},
- ashCat:{name:'잿가루 살쾡이',type:'cat',rarity:'common',level:14,hp:140,xp:250,attack:38,respawn:70,scale:.95,drops:[['ashClaw',.52],['ashCatCore',.01,true]]},
- cliffCrow:{name:'큰부리 까마귀',type:'crow',rarity:'uncommon',level:15,hp:38,xp:200,attack:33,respawn:55,scale:.92,drops:[['crowFeather',.68],['cliffCrowCore',.01,true]]},
- blackBeetle:{name:'검은 갑각충',type:'beetle',rarity:'uncommon',level:17,hp:235,xp:340,attack:41,respawn:85,scale:1.02,drops:[['blackShell',.58],['blackBeetleCore',.01,true]]},
- stoneGolem:{name:'석분 골렘',type:'golem',rarity:'rare',level:19,hp:355,xp:480,attack:50,slam:61,respawn:105,scale:1.18,drops:[['stoneHeart',.52],['stoneGolemCore',.01,true]]},
- mistWraith:{name:'안개 망령',type:'wraith',rarity:'elite',level:21,hp:265,xp:620,attack:47,respawn:[100,120],scale:1.08,drops:[['mistThread',.48],['mistWraithCore',.01,true]]},
- caveBeetle:{name:'종유동굴 갑각충',type:'beetle',rarity:'uncommon',board:false,level:22,hp:285,xp:650,attack:45,respawn:90,scale:1.07,drops:[['blackShell',.65],['blackBeetleCore',.01,true]]},
- caveGolem:{name:'석순 골렘',type:'golem',rarity:'rare',board:false,level:24,hp:420,xp:820,attack:55,slam:67,respawn:110,scale:1.23,drops:[['stoneHeart',.58],['stoneGolemCore',.01,true]]},
- caveWraith:{name:'동굴 안개 망령',type:'wraith',rarity:'elite',board:false,level:26,hp:315,xp:980,attack:53,respawn:120,scale:1.13,drops:[['mistThread',.55],['mistWraithCore',.01,true]]},
- ironGiant:{name:'붉은 철갑 거인',type:'giant',rarity:'boss',boss:true,unique:true,board:false,level:28,hp:4300,xp:4200,attack:60,rush:70,slam:82,respawn:10800,scale:1.62,drops:[['redGem',1],['giantPlate',.35],['ironGiantCore',.10,true]]}
+ townThug:{name:"골목의 불량배",type:"thug",rarity:'common',level:3,hp:95,xp:0,gold:0,attack:12,respawn:0,scale:1,drops:[]},
+ roadSlime:{name:'길가 슬라임',type:'slime',rarity:'common',level:1,hp:20,xp:10,gold:.2,attack:8,respawn:35,scale:1,drops:[['slimeGel',.45],['slimeCore',.06],['roadSlimeRareCore',.01,true]]},
+ swampSlime:{name:'잿빛 늪 슬라임',type:'slime',rarity:'common',level:3,hp:25,xp:14,gold:.3,attack:11,respawn:40,scale:1,drops:[['slimeGel',.60],['slimeCore',.12],['swampSlimeRareCore',.01,true]]},
+ slimeQueen:{name:'슬라임 퀸',type:'slimeQueen',rarity:'boss',board:false,level:6,hp:320,xp:220,gold:2.4,attack:18,slam:27,respawn:240,scale:1.24,drops:[['slimeGel',1],['slimeCore',.45],['queenGel',.55],['slimeQueenCore',.10,true]]},
+ goblin:{name:'남쪽 숲 고블린',type:'goblin',rarity:'common',level:5,hp:48,xp:36,gold:.4,attack:15,respawn:55,scale:.96,drops:[['goblinScrap',.55],['goblinCharm',.06]]},
+ goblinChief:{name:'고블린 족장',type:'goblin',rarity:'rare',level:7,hp:132,xp:120,gold:1.0,attack:24,respawn:110,scale:1.18,drops:[['goblinScrap',.80],['goblinCharm',.22]]},
+ goblinShaman:{name:'고블린 주술사',type:'goblinShaman',rarity:'boss',board:false,level:10,hp:390,xp:330,gold:3.2,attack:21,slam:31,respawn:300,scale:1.10,drops:[['goblinScrap',1],['goblinCharm',.55],['goblinShamanCore',.10,true]]},
+ forestWolf:{name:'동쪽 숲 늑대',type:'wolf',rarity:'common',level:5,hp:72,xp:60,gold:.6,attack:21,respawn:60,scale:1.05,drops:[['wolfFur',.60],['wolfFang',.20],['forestWolfCore',.01,true]]},
+ forestBoar:{name:'잿빛 엄니 멧돼지',type:'boar',rarity:'uncommon',level:7,hp:110,xp:100,gold:.9,attack:29,respawn:80,scale:1,drops:[['boarHide',.55],['boarTusk',.12],['forestBoarCore',.01,true]]},
+ mazeWolf:{name:'미궁 늑대',type:'wolf',rarity:'common',level:8,hp:120,xp:115,gold:1.1,attack:27,respawn:60,scale:1.12,drops:[['darkFur',.65],['moonClaw',.18],['mazeWolfCore',.01,true]]},
+ elderWolf:{name:'미궁의 고참 늑대',type:'wolf',rarity:'rare',level:10,hp:195,xp:190,gold:1.7,attack:35,respawn:60,scale:1.3,drops:[['darkFur',.80],['moonClaw',.30],['elderFang',.08],['elderWolfCore',.01,true]]},
+ werewolf:{name:'제보당의 붉은 괴수',type:'boss',rarity:'boss',level:12,hp:2100,xp:1200,gold:18,attack:36,claw:36,rush:48,slam:56,enrage:1.3,respawn:10800,scale:1.5,drops:[['redGem',1],['beastFang',.35],['werewolfCore',.10,true]]},
+ greyGoat:{name:'회백 산양',type:'goat',rarity:'common',level:13,hp:165,xp:220,gold:1.5,attack:35,respawn:75,scale:1.02,drops:[['greyHorn',.58],['greyGoatCore',.01,true]]},
+ ashCat:{name:'잿가루 살쾡이',type:'cat',rarity:'common',level:14,hp:140,xp:250,gold:1.6,attack:38,respawn:70,scale:.95,drops:[['ashClaw',.52],['ashCatCore',.01,true]]},
+ cliffCrow:{name:'큰부리 까마귀',type:'crow',rarity:'uncommon',level:15,hp:38,xp:200,gold:1.4,attack:33,respawn:55,scale:.92,drops:[['crowFeather',.68],['cliffCrowCore',.01,true]]},
+ blackBeetle:{name:'검은 갑각충',type:'beetle',rarity:'uncommon',level:17,hp:235,xp:340,gold:2.1,attack:41,respawn:85,scale:1.02,drops:[['blackShell',.58],['blackBeetleCore',.01,true]]},
+ stoneGolem:{name:'석분 골렘',type:'golem',rarity:'rare',level:19,hp:355,xp:480,gold:2.8,attack:50,slam:61,respawn:105,scale:1.18,drops:[['stoneHeart',.52],['stoneGolemCore',.01,true]]},
+ mistWraith:{name:'안개 망령',type:'wraith',rarity:'elite',level:21,hp:265,xp:620,gold:3.5,attack:47,respawn:[100,120],scale:1.08,drops:[['mistThread',.48],['mistWraithCore',.01,true]]},
+ caveBeetle:{name:'종유동굴 갑각충',type:'beetle',rarity:'uncommon',board:false,level:22,hp:285,xp:650,gold:3.2,attack:45,respawn:90,scale:1.07,drops:[['blackShell',.65],['blackBeetleCore',.01,true]]},
+ caveGolem:{name:'석순 골렘',type:'golem',rarity:'rare',board:false,level:24,hp:420,xp:820,gold:4,attack:55,slam:67,respawn:110,scale:1.23,drops:[['stoneHeart',.58],['stoneGolemCore',.01,true]]},
+ caveWraith:{name:'동굴 안개 망령',type:'wraith',rarity:'elite',board:false,level:26,hp:315,xp:980,gold:5,attack:53,respawn:120,scale:1.13,drops:[['mistThread',.55],['mistWraithCore',.01,true]]},
+ ironGiant:{name:'붉은 철갑 거인',type:'giant',rarity:'boss',boss:true,unique:true,board:false,level:28,hp:4300,xp:4200,gold:30,attack:60,rush:70,slam:82,respawn:10800,scale:1.62,drops:[['redGem',1],['giantPlate',.35],['ironGiantCore',.10,true]]}
 });
 const MONSTER_RARITY=Object.freeze({
  common:Object.freeze({name:'일반',mark:''}),uncommon:Object.freeze({name:'고급',mark:'◇'}),rare:Object.freeze({name:'희귀',mark:'◆'}),elite:Object.freeze({name:'정예',mark:'✦'}),boss:Object.freeze({name:'중간보스',mark:'✶'})
@@ -467,7 +477,7 @@ const GEAR=Object.freeze({
  ternShellShield:{id:'ternShellShield',name:'테른 갑각 방패',slot:'shield',forge:'tern',grade:'테른 · 갑각',sell:490,craft:220,materials:{blackShell:12,greyHorn:5},bossBlock:.82,description:'큰 갑각을 겹쳐 만든 방패. 일반 공격 1회 완전 방어, 보스 피해 82% 경감.'},
  ternWindCharm:{id:'ternWindCharm',name:'능선 바람 부적',slot:'artifact',forge:'tern',grade:'테른 · 바람',sell:690,craft:240,materials:{crowFeather:14,ashClaw:4,cliffCrowCore:1},attackPct:.10,maxMpPct:.08,rangePct:.04,description:'큰부리 까마귀의 코어를 깃에 묶었다. 공격 +10%, 최대 MP +8%, 사거리 +4%.'},
  ternMistCharm:{id:'ternMistCharm',name:'안개의 매듭',slot:'artifact',forge:'tern',grade:'테른 · 안개',sell:910,craft:300,materials:{mistThread:6,mistWraithCore:1,stoneHeart:2},attackPct:.11,damageReduction:.05,manaRegenPct:.12,description:'안개 망령의 잔사를 묶은 부적. 공격 +11%, 받는 피해 −5%, MP 회복 +12%.'},
- abramScoutDagger:{id:'abramScoutDagger',name:'아브람 정찰단검',slot:'weapon',forge:'abram',grade:'아브람 · 정찰대',sell:180,craft:90,materials:{wolfFang:8,darkFur:10,moonClaw:3},attackPct:.16,rangePct:0,crit:.01,visual:{kind:'dagger',length:.96,width:.15,tone:'armor'},description:'아브람 제작 전용. 공격 +16%, 치명타 +1%p. 빠른 단일 대상 단검.'},
+ abramScoutDagger:{id:'abramScoutDagger',name:'아브람 정찰단검',slot:'weapon',forge:'abram',grade:'아브람 · 정찰대',sell:180,craft:90,materials:{wolfFang:8,darkFur:10,moonClaw:3},attackPct:.16,rangePct:0,crit:.01,attackSpeedPct:.15,visual:{kind:'dagger',length:.96,width:.15,tone:'armor'},description:'아브람 제작 전용. 공격 +16%, 치명타 +1%p, 공격 동작 시간 -15%. 빠른 단일 대상 단검.'},
  abramOathSword:{id:'abramOathSword',name:'아브람 서약검',slot:'weapon',forge:'abram',grade:'아브람 · 서약',sell:950,craft:360,materials:{redGem:1,beastFang:1,elderFang:3,moonClaw:8},attackPct:.32,rangePct:.16,crit:.015,visual:{kind:'moon',length:1.55,width:.15,tone:'armor'},description:'아브람 제작 전용. 공격 +32%, 사거리 +16%, 치명타 +1.5%p. 늑대 특효는 없음.'},
  abramWardGreatsword:{id:'abramWardGreatsword',name:'아브람 파수대검',slot:'weapon',forge:'abram',grade:'아브람 · 파수대',sell:650,craft:240,materials:{darkFur:18,elderFang:3,boarTusk:4,moonClaw:6},attackPct:.31,rangePct:.16,crit:.01,visual:{kind:'great',length:1.72,width:.27,tone:'armor'},description:'아브람 제작 전용. 공격 +31%, 사거리 +16%, 치명타 +1%p. 최대 7대상 피해 분산.'},
  abramIronChest:{id:'abramIronChest',name:'아브람 철벽 갑옷',slot:'armor',forge:'abram',grade:'아브람 · 철벽',sell:540,craft:210,materials:{darkFur:18,boarHide:12,moonClaw:5},damageReduction:.18,maxHpFlat:25,description:'아브람 제작 전용. 받는 피해 −18%, 최대 HP +25. 코어나 보스 재료 없이 제작하는 흉갑.'},
@@ -479,7 +489,7 @@ const GEAR=Object.freeze({
  hideShield:{id:'hideShield',name:'강화 가죽 방패',slot:'shield',grade:'중급 방패',sell:65,craft:60,materials:{boarHide:8,wolfFang:4},bossBlock:.75,description:'단단한 가죽판을 댄 방패. 공격 1회 방어, 보스 피해 75% 경감.'},
 
  starterSword:{id:'starterSword',name:'낡은 장검',slot:'weapon',grade:'기본',sell:0,craft:0,materials:{},attackPct:0,rangePct:0,crit:0,visual:{kind:'sword',length:1.15,width:.12,tone:'white'},description:'새벽마을에서 지급된 기본 장검.'},
- slimeKnife:{id:'slimeKnife',name:'점액 단검',slot:'weapon',grade:'하급',sell:36,craft:20,materials:{slimeGel:12,slimeCore:2},attackPct:0.07,rangePct:-.05,crit:.005,visual:{kind:'dagger',length:.78,width:.15,tone:'light'},description:'짧지만 가벼운 칼. 공격력 +7%, 사거리 -5%, 치명타 +0.5%p.'},
+ slimeKnife:{id:'slimeKnife',name:'점액 단검',slot:'weapon',grade:'하급',sell:36,craft:20,materials:{slimeGel:12,slimeCore:2},attackPct:0.07,rangePct:-.05,crit:.005,attackSpeedPct:.10,visual:{kind:'dagger',length:.78,width:.15,tone:'light'},description:'짧지만 가벼운 칼. 공격력 +7%, 사거리 -5%, 치명타 +0.5%p, 공격 동작 시간 -10%.'},
  fangLongsword:{id:'fangLongsword',name:'이빨 장검',slot:'weapon',grade:'중급',sell:128,craft:45,materials:{wolfFang:8,boarTusk:1,wolfFur:4},attackPct:0.16,rangePct:.10,crit:0,visual:{kind:'fang',length:1.32,width:.11,tone:'white'},description:'날카로운 송곳니를 엮은 장검. 공격력 +16%, 사거리 +10%.'},
  tuskGreatsword:{id:'tuskGreatsword',name:'엄니 대검',slot:'weapon',grade:'중상급',sell:192,craft:75,materials:{boarHide:10,boarTusk:3,wolfFang:4},attackPct:0.18,rangePct:.08,crit:0,visual:{kind:'great',length:1.45,width:.22,tone:'armor'},description:'무겁고 넓은 검신. 공격력 +18%, 사거리 +8%.'},
  moonBlade:{id:'moonBlade',name:'달그림자 검',slot:'weapon',grade:'고급',sell:336,craft:120,materials:{darkFur:10,moonClaw:5,elderFang:1},attackPct:0.22,rangePct:.12,crit:.0075,visual:{kind:'moon',length:1.44,width:.13,tone:'dark'},description:'미궁의 발톱을 갈아 만든 검. 공격력 +22%, 사거리 +12%, 치명타 +0.75%p.'},
@@ -506,10 +516,10 @@ const WEAPON_ECONOMY=Object.freeze({
  ternRidgeSword:{gold:270,tier:6},ternStoneGreatsword:{gold:320,tier:6},ternGiantBreaker:{gold:420,tier:7}
 });
 const GEAR_SERVICE_GOLD=Object.freeze({
- patchedChest:4,paddedChest:12,woodenShield:4,hideShield:18,
+ patchedChest:3,paddedChest:9,woodenShield:4,hideShield:18,
  slimeBrooch:35,swampPulse:55,wolfTalisman:20,boarCharm:25,mazeClawCharm:55,elderFangCharm:160,crimsonHeart:360,
- leatherChest:18,ashenWolfChest:45,mazeBlackChest:75,elderChest:130,crimsonChest:260,abramIronChest:160,
- ternShellChest:250,ternShellShield:220,ternWindCharm:240,ternMistCharm:300
+ leatherChest:14,ashenWolfChest:36,mazeBlackChest:60,elderChest:104,crimsonChest:208,abramIronChest:128,
+ ternShellChest:200,ternShellShield:220,ternWindCharm:240,ternMistCharm:300
 });
 const RIO_QUEST_RULES=Object.freeze({id:'rio_sword_1',guardId:'abram_patrol',gearId:'hunterSword',rewardGold:90});
 function weaponCraftGold(g){
@@ -839,19 +849,19 @@ function fmt(value){
  const n=Number(value);
  return Number.isFinite(n)?NUMBER_DISPLAY.format(Math.abs(n)<.05?0:n):'—';
 }
-function moneyText(value){
- const ticks=Math.round(goldAmount(Number(value))*10),gold=Math.floor(ticks/10),silver=ticks%10;
- if(gold&&silver)return `${gold} G ${silver} S`;
- if(gold)return `${gold} G`;
- return `${silver} S`;
-}
-function currencyRuleText(){return '1 G = 10 S · G는 골드, S는 실버';}
+function moneyText(value){return `${fmt(goldAmount(Number(value)))} G`;}
+function currencyRuleText(){return '골드 · 0.1 G 단위까지 표시';}
 // Precise mechanics with legible labels: 1.25x is shown as +25%, not rounded to 1.3x.
 function contactSpeedText(){return '접촉 공속 +'+fmt((BALANCE.contactAttackSpeed-1)*100)+'%';}
 function xpRequired(level){return Math.ceil(BALANCE.xpBase*Math.pow(level,BALANCE.xpExponent));}
 function xpGapMultiplier(playerLevel,monsterLevel){const d=playerLevel-monsterLevel;if(d<=2)return 1;if(d<=4)return .5;if(d<=6)return .2;if(d<=8)return .1;if(d<=10)return .05;return 0;}
 function repeatBossXP(e){if(!e||!(e.type==='boss'||e.boss||e.rarity==='boss'))return false;if(e.archetype==='ironGiant')return !!state.town?.abramCaveCleared;return e.type==='boss'||e.archetype==='werewolf'?!!state.cleared:false;}
 function bossXPMultiplier(e){return repeatBossXP(e)?.5:1;}
+const MONSTER_GOLD_LEVEL_GAP=5;
+function killGoldFor(e){
+ if(!e||e.type==='thug'||Math.abs(hero.level-e.level)>MONSTER_GOLD_LEVEL_GAP)return 0;
+ const value=MONSTERS[e.archetype]?.gold??0;return goldAmount(value);
+}
 function rollSkillPower(skill,rng=Math.random){
  if(skill!=='cleave')return SKILLS[skill]?.power||5;
  const r=rng(),v=rng();return r<.8?6+1.5*v:r<.9?5+v:7.5+2.5*v;
@@ -882,7 +892,7 @@ const CONFIG=Object.freeze({
  health:100,healMin:BALANCE.potionHealMin,healMax:BALANCE.potionHealMax,heavyDamage:BALANCE.heavyPower,wolfHP:MONSTERS.mazeWolf.hp,bossHP:MONSTERS.werewolf.hp
 });
 // Field dimensions and village spawn; dungeon uses a separate collision scene.
-const WORLD=Object.freeze({minX:-168,maxX:254,minZ:-720,maxZ:150,spawnX:-72,spawnZ:55});
+const WORLD=Object.freeze({minX:-168,maxX:254,minZ:-720,maxZ:326,spawnX:-72,spawnZ:55});
 const LEGACY_FIELD_MIN_Z=-288; // keep v0.10.x forest/tree random layout stable
 // Keep the hard clamp well behind normal routes. Empty rectangular corners are
 // turned into cheap, visibly blocked mountain mass instead of detailed dead land.
@@ -934,6 +944,25 @@ function part(g,parent,pos,scale,c,rot=[0,0,0],unlit=0,chroma=0,flash=0){draw(g,
 // Scene construction. Units are metres; north is -Z, east is +X.
 // Estate layout; +Z is south. Every service door opens to a walkable approach.
 const TOWN_BOUNDS=Object.freeze({minX:-126,maxX:-40,minZ:7,maxZ:103});
+const SOUTH_GATE=Object.freeze({side:'south',x:-91,z:TOWN_BOUNDS.maxZ});
+const SOUTH_FOREST=Object.freeze({minX:-158,maxX:24,minZ:106,maxZ:306});
+// v0.12.11: goblins no longer live in one oversized camp. Three independent settlements
+// are scattered through the south forest and connected by narrow branch trails.
+const GOBLIN_CAMPS=Object.freeze([
+ Object.freeze({id:'north',name:'고블린 앞초소',x:-112,z:160,r:14,approach:Object.freeze({x:-101,z:153})}),
+ Object.freeze({id:'west',name:'고블린 사냥부락',x:-121,z:231,r:18,approach:Object.freeze({x:-105,z:220})}),
+ Object.freeze({id:'ritual',name:'고블린 주술부락',x:-38,z:271,r:23,approach:Object.freeze({x:-50,z:251})})
+]);
+const GOBLIN_CAMP=GOBLIN_CAMPS[2]; // legacy alias for older tests/save tooling
+const GOBLIN_CAMP_APPROACH=GOBLIN_CAMP.approach;
+const SOUTH_TRAIL=Object.freeze([[-91,103],[-93,128],[-84,153],[-70,180],[-58,207],[-50,231],[-50,251]].map(p=>Object.freeze(p)));
+const SOUTH_CAMP_TRAILS=Object.freeze([
+ Object.freeze([[-84,153],[-101,153],[-112,160]].map(p=>Object.freeze(p))),
+ Object.freeze([[-70,180],[-91,201],[-105,220],[-121,231]].map(p=>Object.freeze(p))),
+ Object.freeze([[-50,231],[-50,251],[-38,271]].map(p=>Object.freeze(p)))
+]);
+const SLIME_QUEEN_CLEARING=Object.freeze({x:220,z:55,r:13});
+const SWAMP_SLIME_POPULATION=27;
 const TOWN_BUILDINGS=Object.freeze([
  {id:'shop',name:'모르의 잡화점',x:-55,z:35,w:13,d:12,kind:'shop'},
  {id:'library',name:'새벽 기록관',x:-78,z:20,w:18,d:14,kind:'library'},
@@ -1015,7 +1044,7 @@ const ROOM_DEFS=Object.freeze([
  ...TOWN_HOUSES.map(h=>({...h,kind:'home',name:({baker:'마르타의 집',weaver:'렌의 집',gatherer:'나리의 집',carpenter:'오웬의 집',empty_house:'비어 있는 집',storehouse:'영지 창고',manor:'영주의 저택'})[h.id]}))
 ].map(b=>Object.freeze({...b,rw:Math.max(b.w,b.id==='forge'?13:12),rd:Math.max(b.d,12)})));
 const ROOM_BY_ID=new Map(ROOM_DEFS.map(b=>[b.id,b]));
-let doorTransition=null;
+let doorTransition=null,deathTransition=null;
 const THUG_HOME=Object.freeze({x:-118,z:35});
 const BOARD_RULES=Object.freeze({periodMs:6*60*60*1000,offsetMs:9*60*60*1000,fixedHours:[0,6,12,18],count:3,maxActive:2,thugRewardCooldown:6*60*60*1000,
  rewards:{potion:.10,gold:.54,freePoint:.02,fixedStat:.04,experience:.10,materials:.20}});
@@ -1046,13 +1075,30 @@ const GUARDS=Object.freeze([
 ]);
 const GLYPHS=['달','별','해'];
 const ABRAM_CAVE=Object.freeze({entry:Object.freeze({x:0,z:42}),boss:Object.freeze({x:0,z:-78}),bounds:Object.freeze({minX:-56,maxX:56,minZ:-94,maxZ:50})});
-const DUNGEON_ACCESS=Object.freeze({forest:Object.freeze({id:'forest',name:'숲의 미궁',minLevel:8,recommended:'Lv.10~12'}),abram:Object.freeze({id:'abram',name:'아브람 종유석 미궁',minLevel:22,recommended:'Lv.24~28'})});
+const DUNGEON_ACCESS=Object.freeze({forest:Object.freeze({id:'forest',name:'숲의 미궁',minLevel:10,recommended:'Lv.10~12'}),abram:Object.freeze({id:'abram',name:'아브람 종유석 미궁',minLevel:22,recommended:'Lv.24~28'})});
 const scenes={field:{objects:[],colliders:[],rects:[],batches:[],bounds:WORLD,grid:new Map()},dungeon:{objects:[],colliders:[],rects:[],batches:[],bounds:{minX:-51,maxX:61,minZ:-95,maxZ:51},grid:new Map()},abramDungeon:{objects:[],colliders:[],rects:[],batches:[],bounds:ABRAM_CAVE.bounds,grid:new Map()}};
 let building=scenes.field,seed=71521;
 function rand(){seed=(seed*1664525+1013904223)>>>0;return seed/4294967296;}
 function prop(g,x,y,z,sx,sy,sz,c,rx=0,ry=0,rz=0){building.objects.push({g,m:trs(x,y,z,sx,sy,sz,rx,ry,rz),c,x,z,big:Math.max(sx,sz)>30||g.count>10000});}
 function rect(x,z,hx,hz,h=4){building.rects.push({x,z,hx,hz,h});}
 function circle(x,z,r,h=10){building.colliders.push({x,z,r,h});}
+// Scene baking has not built the spatial grid yet while scenery is generated.
+// Use the raw build lists so newly placed southern trees cannot overlap an earlier collider.
+function buildingBlockedAt(x,z,r=.3){
+ for(const o of [...building.colliders,...building.rects]){
+  if(o.r?Math.hypot(x-o.x,z-o.z)<o.r+r:Math.abs(x-o.x)<o.hx+r&&Math.abs(z-o.z)<o.hz+r)return true;
+ }
+ return false;
+}
+function findBuildFreePoint(x,z,r,key=0,accept=null){
+ const ok=(px,pz)=>(!accept||accept(px,pz))&&!buildingBlockedAt(px,pz,r);
+ if(ok(x,z))return {x,z};
+ for(let ring=1;ring<=4;ring++)for(let j=0;j<12;j++){
+  const a=((j+(key%12)*.37)/12)*TAU,d=.8*ring,px=x+Math.cos(a)*d,pz=z+Math.sin(a)*d;
+  if(ok(px,pz))return {x:px,z:pz};
+ }
+ return null;
+}
 function tree(x,z,s=1){
  const h=(4.2+rand()*2)*s;
  prop(cylinder,x,.015,z,2.6*s,.024,2.2*s,C.shadow);
@@ -1061,6 +1107,22 @@ function tree(x,z,s=1){
  for(let i=0;i<3;i++){const rotation=rand()*6;prop(broad?rock:cone,x+(broad?Math.sin(i*2)*s*.52:0),h*(.48+i*.18),z+(broad?Math.cos(i*2)*s*.45:0),(3-i*.65)*s,broad?h*.30:h*.6,(3-i*.65)*s,[.27+i*.025,.30+i*.025,.28+i*.025],0,rotation);}
  if(broad)prop(cylinder,x+s*.25,h*.43,z,.18*s,h*.43,.18*s,C.wood,0,0,.5);
  circle(x,z,.44*s,12);
+}
+// v0.12.9 south forest: split pale trunks and low, flattened crowns.  This deliberately
+// does not call tree(), so the southern biome never looks like copied northern conifers.
+function southTree(x,z,s=1){
+ const h=(3.7+rand()*2.0)*s,lean=(rand()-.5)*.40,split=rand()>.48,wood=[.50,.49,.45],leaf=[.23,.27,.24];
+ prop(cylinder,x,.014,z,2.25*s,.022,2.0*s,C.shadow);
+ prop(cylinder,x,h*.34,z,.34*s,h*.70,.34*s,wood,0,0,lean);
+ if(split)prop(cylinder,x+(rand()-.5)*.45*s,h*.57,z+(rand()-.5)*.35*s,.20*s,h*.43,.20*s,wood,(rand()-.5)*.3,0,-lean*.9);
+ for(let i=0;i<3;i++){
+  const a=i*2.1+rand()*.55,dx=Math.cos(a)*(1.05+i*.18)*s,dz=Math.sin(a)*(1.0+i*.15)*s;
+  prop(rock,x+dx,h*(.72+i*.045),z+dz,(2.35-i*.22)*s,.62*s,(1.95-i*.12)*s,[leaf[0]+i*.018,leaf[1]+i*.016,leaf[2]+i*.015],0,a*.35,0);
+  prop(cylinder,x+dx*.58,h*.62,z+dz*.58,.12*s,1.9*s,.12*s,wood,Math.sin(a)*.55,0,-Math.cos(a)*.55);
+ }
+ // Exposed roots are a visual signature of the damp southern ground.
+ for(let i=0;i<3;i++){const a=rand()*TAU;prop(cube,x+Math.cos(a)*.7*s,.11,z+Math.sin(a)*.7*s,1.45*s,.13,.16*s,C.wood,0,-a,0);}
+ circle(x,z,.43*s,12);
 }
 function path(ax,az,bx,bz,width=4,y=.024,color=[.49,.49,.46]){
  const dx=bx-ax,dz=bz-az,l=Math.hypot(dx,dz),nx=-dz/l*width*.5,nz=dx/l*width*.5;
@@ -1085,10 +1147,12 @@ function inBrokenRidge(x=player.x,z=player.z){return z<-238&&z>-575&&x>45&&x<176
 function inFogValley(x=player.x,z=player.z){return Math.hypot(x-RIDGE_FOG.x,z-RIDGE_FOG.z)<RIDGE_FOG.r;}
 function inTern(x=player.x,z=player.z){return x>TERN_BOUNDS.minX&&x<TERN_BOUNDS.maxX&&z>TERN_BOUNDS.minZ&&z<TERN_BOUNDS.maxZ;}
 function inSwamp(x,z){return ((x-142)/64)**2+((z-55)/43)**2<1;}
+function inSouthForest(x,z){return x>SOUTH_FOREST.minX&&x<SOUTH_FOREST.maxX&&z>SOUTH_FOREST.minZ&&z<SOUTH_FOREST.maxZ;}
+function inGoblinCamp(x,z){return GOBLIN_CAMPS.some(c=>Math.hypot(x-c.x,z-c.z)<c.r);}
 function inVillage(x,z){return x>TOWN_BOUNDS.minX&&x<TOWN_BOUNDS.maxX&&z>TOWN_BOUNDS.minZ&&z<TOWN_BOUNDS.maxZ||inAbram(x,z)||inTern(x,z);}
 function protectedField(x,z){
  const nearBox=b=>x>b.minX-5&&x<b.maxX+5&&z>b.minZ-5&&z<b.maxZ+5;
- return nearBox(TOWN_BOUNDS)||nearBox(ABRAM_BOUNDS)||nearBox(TERN_BOUNDS)||inBrokenRidge(x,z)||Math.abs(z-55)<6||
+ return nearBox(TOWN_BOUNDS)||nearBox(ABRAM_BOUNDS)||nearBox(TERN_BOUNDS)||inBrokenRidge(x,z)||inSouthForest(x,z)||Math.abs(z-55)<6||
   Math.hypot(x-ENTRANCE.x,z-ENTRANCE.z)<12||dist({x,z},FRIGHTENED_SCOUT)<3||
   forestTrail.slice(1).some((p,i)=>distanceToSegment(x,z,...forestTrail[i],...p)<5.0);
 }
@@ -1111,6 +1175,61 @@ function buildWorldBoundaryBackdrop(){
  const ridge=(x,z,axisSeed)=>{const k=Math.abs(Math.floor(x*3+z*5+axisSeed))%5,h=15+k*2.2,w=15+k*1.6;prop(cone,x,h*.48,z,w,h,w,k%2?C.dark:[.24,.27,.27]);};
  for(let x=WORLD.minX+8;x<=WORLD.maxX-8;x+=step){ridge(x,WORLD.minZ-offset,1);ridge(x,WORLD.maxZ+offset,2);}
  for(let z=WORLD.minZ+10;z<=WORLD.maxZ-10;z+=step){ridge(WORLD.minX-offset,z,3);ridge(WORLD.maxX+offset,z,4);}
+}
+function southTrailReserved(x,z,margin=5.1){
+ const trails=[SOUTH_TRAIL,...SOUTH_CAMP_TRAILS];
+ return trails.some(t=>t.slice(1).some((q,j)=>distanceToSegment(x,z,...t[j],...q)<margin));
+}
+function nearGoblinCamp(x,z,extra=0){return GOBLIN_CAMPS.some(c=>Math.hypot(x-c.x,z-c.z)<c.r+extra);}
+function buildGoblinCamp(c,index){
+ const gateAngle=Math.atan2(c.approach.z-c.z,c.approach.x-c.x),posts=index===0?12:index===1?16:20;
+ // Each settlement has its own clearing and incomplete palisade. The opening faces its branch trail.
+ prop(cylinder,c.x,.012,c.z,c.r*2.03,.035,c.r*(index===0?1.45:1.60),index===2?[.37,.36,.31]:[.39,.38,.33]);
+ for(let i=0;i<posts;i++){
+  const a=i/posts*TAU,diff=Math.abs(Math.atan2(Math.sin(a-gateAngle),Math.cos(a-gateAngle)));if(diff<.42)continue;
+  const x=c.x+Math.cos(a)*c.r,z=c.z+Math.sin(a)*c.r*(index===0?.72:.80);
+  prop(cylinder,x,1.05,z,.30,2.1,.30,C.wood,0,0,(i%3-1)*.055);circle(x,z,.255,4.0);prop(cone,x,2.28,z,.36,.60,.36,C.dark);
+ }
+ const tents=index===0?[[-2,3,.15]]:index===1?[[-7,-3,.18],[7,5,-.22]]:[[-8,-5,.18],[9,-4,-.22],[-7,9,.30]];
+ for(const [dx,dz,r] of tents){const x=c.x+dx,z=c.z+dz;prop(cone,x,1.18,z,4.2,2.35,3.6,[.35,.34,.30],0,r,0);prop(cube,x,.37,z,3.6,.14,3.0,C.wood,0,r,0);circle(x,z,1.20,2.25);}
+ if(index===0){ // lookout poles and a small supply rack
+  for(const dx of [-6,6]){prop(cylinder,c.x+dx,1.35,c.z+5,.20,2.7,.20,C.wood);prop(cube,c.x+dx,2.65,c.z+5,1.7,.14,.18,C.stone);}
+ }else if(index===1){ // hunting camp: drying racks and crates
+  for(const dx of [-5,5]){prop(cylinder,c.x+dx,.85,c.z+9,.18,1.7,.18,C.wood);prop(cube,c.x+dx,1.55,c.z+9,.16,.12,4.8,C.wood);}
+  for(const [dx,dz] of [[-10,4],[11,2]]){prop(cube,c.x+dx,.55,c.z+dz,1.9,1.1,1.6,C.wood);rect(c.x+dx,c.z+dz,.95,.8,1.6);}
+ }else{ // ritual settlement: central totem and ash ring for the shaman
+  prop(cylinder,c.x,1.62,c.z,.27,3.25,.27,C.wood);circle(c.x,c.z,.28,4);
+  for(const y of [1.1,2.0,2.78])prop(rock,c.x,y,c.z-.15,.56,.34,.36,y===2.0?C.light:C.stone,0,y,0);
+  prop(cylinder,c.x+2.0,.04,c.z+2.2,3.8,.07,3.8,C.dark);
+  for(let i=0;i<8;i++){const a=i*TAU/8;prop(rock,c.x+2+Math.cos(a)*1.45,.18,c.z+2.2+Math.sin(a)*1.45,.45,.3,.45,C.stone);}
+ }
+}
+function buildSouthForest(){
+ // A damp broadleaf forest with exposed roots, broken stone and several goblin settlements.
+ prop(cube,(SOUTH_FOREST.minX+SOUTH_FOREST.maxX)/2,-.015,(SOUTH_FOREST.minZ+SOUTH_FOREST.maxZ)/2,SOUTH_FOREST.maxX-SOUTH_FOREST.minX,.05,SOUTH_FOREST.maxZ-SOUTH_FOREST.minZ,[.32,.35,.32]);
+ for(let i=1;i<SOUTH_TRAIL.length;i++)path(...SOUTH_TRAIL[i-1],...SOUTH_TRAIL[i],4.6,.045,[.43,.42,.37]);
+ for(const t of SOUTH_CAMP_TRAILS)for(let i=1;i<t.length;i++)path(...t[i-1],...t[i],3.4,.044,[.40,.39,.34]);
+ // Pale root mats and flat stone shelves replace the northern cone-tree language.
+ for(let i=0;i<34;i++){
+  const x=SOUTH_FOREST.minX+10+rand()*(SOUTH_FOREST.maxX-SOUTH_FOREST.minX-20),z=SOUTH_FOREST.minZ+8+rand()*(SOUTH_FOREST.maxZ-SOUTH_FOREST.minZ-16);
+  if(southTrailReserved(x,z,6.0)||nearGoblinCamp(x,z,7))continue;
+  prop(rock,x,.18,z,2.2+rand()*2.6,.34+rand()*.24,1.8+rand()*2.2,[.39,.40,.37],0,rand()*TAU,0);
+ }
+ const southTreeReserved=(x,z)=>southTrailReserved(x,z,5.1)||nearGoblinCamp(x,z,6);
+ for(let i=0;i<235;i++){
+  const x=SOUTH_FOREST.minX+5+rand()*(SOUTH_FOREST.maxX-SOUTH_FOREST.minX-10),z=SOUTH_FOREST.minZ+4+rand()*(SOUTH_FOREST.maxZ-SOUTH_FOREST.minZ-8);
+  if(southTreeReserved(x,z))continue;
+  const scale=.72+rand()*.62,p=findBuildFreePoint(x,z,.43*scale+.04,i,(px,pz)=>inSouthForest(px,pz)&&!southTreeReserved(px,pz));
+  if(!p)continue;southTree(p.x,p.z,scale);
+ }
+ // Slender dead snags and shelf mushrooms make silhouettes unlike the northern forest.
+ for(let i=0;i<46;i++){
+  const x=SOUTH_FOREST.minX+8+rand()*(SOUTH_FOREST.maxX-SOUTH_FOREST.minX-16),z=SOUTH_FOREST.minZ+7+rand()*(SOUTH_FOREST.maxZ-SOUTH_FOREST.minZ-14);
+  if(nearGoblinCamp(x,z,3)||southTrailReserved(x,z,4.4))continue;
+  if(i%3===0){prop(cylinder,x,1.3,z,.28,2.6,.28,[.48,.47,.43],0,0,(rand()-.5)*.25);circle(x,z,.25,4);}
+  else{prop(cylinder,x,.13,z,.52,.24,.52,C.light);prop(cylinder,x,.30,z,.10,.34,.10,C.wood);}
+ }
+ GOBLIN_CAMPS.forEach(buildGoblinCamp);
 }
 function house(x,z,w=7,d=6,rotation=0){
  prop(cube,x,1.8,z,w,3.6,d,[.51,.51,.48]);
@@ -1176,9 +1295,10 @@ function interiorBuilding(b){
 }
 function buildTown(){
  for(const b of ROOM_DEFS)buildExterior(b);
- // Streets and permanent fences leave exactly one ground-level exit.
+ // Streets and permanent fences keep the tutorial east gate and add a southern hunting gate.
  for(const p of DAWN_STREETS)path(...p,.07,[.43,.43,.39]);
- buildTownFence(TOWN_BOUNDS,{side:'east',x:TOWN_BOUNDS.maxX,z:55},3.8,false);
+ path(-91,100.3,SOUTH_GATE.x,SOUTH_GATE.z,3,.07,[.43,.43,.39]);
+ buildTownFence(TOWN_BOUNDS,[{side:'east',x:TOWN_BOUNDS.maxX,z:55},SOUTH_GATE],3.8,false);
  // Board in the plaza, parchment sheets, carved crest; old bonfire removed.
  for(const side of [-1,1]){prop(cube,BOARD.x+side*1.6,1.1,BOARD.z,.20,2.2,.20,C.wood);circle(BOARD.x+side*1.6,BOARD.z,.16,3);}
  prop(cube,BOARD.x,1.7,BOARD.z,3.6,1.7,.24,C.wood);rect(BOARD.x,BOARD.z,1.8,.14,3);
@@ -1203,6 +1323,7 @@ function buildField(){
  for(let i=1;i<forestTrail.length;i++)path(...forestTrail[i-1],...forestTrail[i],4.4,.04);
  decorateTradeRoad();
  buildTown();
+ buildSouthForest();
  buildLowPolyWildernessBlocks();
  for(const x of [-97,-49])for(let z=44;z<=64;z+=10){prop(cylinder,x,1.3,z,.16,2.6,.16,C.dark);prop(cube,x,2.65,z,.5,.65,.5,C.light);}
  // Goods are now sold inside the east-side shop.
@@ -1226,6 +1347,8 @@ function buildField(){
   const x=90+rand()*113,z=14+rand()*83;if(!inSwamp(x,z)||Math.abs(z-55)<5)continue;
   prop(cone,x,.42,z,.14,.85,.14,[.46,.48,.43],0,rand(),.12);
  }
+ prop(cylinder,SLIME_QUEEN_CLEARING.x,.008,SLIME_QUEEN_CLEARING.z,SLIME_QUEEN_CLEARING.r*2,.035,SLIME_QUEEN_CLEARING.r*1.5,[.27,.31,.30]);
+ for(let i=0;i<10;i++){const a=i*TAU/10,r=SLIME_QUEEN_CLEARING.r*(.68+rand()*.18);prop(rock,SLIME_QUEEN_CLEARING.x+Math.cos(a)*r,.14,SLIME_QUEEN_CLEARING.z+Math.sin(a)*r,.75,.28,.62,C.stone,0,a,0);}
  // Detailed scenery is kept away from the inaccessible outer clamp. The outer ring
  // is a much cheaper low-poly ridge, so extending the field does not multiply geometry.
  for(let i=0;i<1550;i++){
@@ -1539,14 +1662,15 @@ function rewardEnemy(e){
  e.rewarded=true;hero.kills++;recordBoardKill(e);recordBoarQuestKill(e);
  const firstSlime=e.type==='slime'&&!hero.firstSlimeRewarded;
  if(firstSlime)hero.firstSlimeRewarded=true;
- const xp=xpFor(e),drops=[];addXP(xp);
+ const xp=xpFor(e),gold=killGoldFor(e),drops=[];addXP(xp);if(gold>0)changeGold(gold);
  for(const [id,p,exact=false] of e.drops){const chance=exact?p:dropChance(p);if(firstSlime&&id==='slimeGel'||Math.random()<chance){hero.inventory[id]=(hero.inventory[id]||0)+1;drops.push(ITEMS[id].name);}}
- lastReward=`${e.name} · ${xp>0?'경험치 +'+xp:'경험치 0 (레벨 차이 '+Math.abs(hero.level-e.level)+')'}${repeatBossXP(e)?' · 재토벌 EXP 50%':''}${drops.length?' · '+drops.join(', '):''}`;
+ lastReward=`${e.name} · ${xp>0?'경험치 +'+xp:'경험치 0 (레벨 차이 '+Math.abs(hero.level-e.level)+')'}${repeatBossXP(e)?' · 재토벌 EXP 50%':''}${gold>0?' · '+moneyText(gold):''}${drops.length?' · '+drops.join(', '):''}`;
  floatText(e.x,e.z,xp>0?'EXP +'+xp:'EXP 0',xp>0?'xp':'muted',2.2);
- if(drops.length)toast(lastReward,2.5);
+ if(gold>0){floatText(e.x+.35,e.z,moneyText(gold),'gold',2.15,{height:1.15});SOUND.effect('coin',e);}
+ if(drops.length||gold>0)toast(lastReward,2.5);
  saveGame();
 }
-// Currency is stored in 0.1 G units. The UI names each tenth as 1 S (1 G = 10 S).
+// Currency is stored in 0.1 G units and displayed directly as decimal G.
 // This is display-only and does not revalue any existing balance or sale price.
 function goldAmount(value){
  return Number.isFinite(value)?Math.max(0,Math.round(value*10)/10):0;
@@ -1700,7 +1824,7 @@ function gearRowsHTML(selling=false){
 function gearEffectText(g){
  const a=[];
  if((g.enhanceMultiplier||1)>1)a.push('강화 위력 '+fmt(g.enhanceMultiplier*100)+'% (+0 대비)');
- if(g.attackPct)a.push('공격력 +'+fmt(g.attackPct*100)+'%');if(g.rangePct)a.push('사거리 '+(g.rangePct>0?'+':'')+fmt(g.rangePct*100)+'%');if(g.crit)a.push('치명타 +'+fmt(g.crit*100)+'%p');
+ if(g.attackPct)a.push('공격력 +'+fmt(g.attackPct*100)+'%');if(g.rangePct)a.push('사거리 '+(g.rangePct>0?'+':'')+fmt(g.rangePct*100)+'%');if(g.crit)a.push('치명타 +'+fmt(g.crit*100)+'%p');if(g.attackSpeedPct)a.push('공격 동작 -'+fmt(g.attackSpeedPct*100)+'%');
  if(g.damageReduction)a.push('받는 피해 -'+fmt(g.damageReduction*100)+'%');if(g.maxHpFlat)a.push('최대 HP +'+fmt(g.maxHpFlat));if(g.maxHpPct)a.push('최대 HP +'+fmt(g.maxHpPct*100)+'%');if(g.maxMpPct)a.push('최대 MP +'+fmt(g.maxMpPct*100)+'%');if(g.manaRegenPct)a.push('MP 회복 +'+fmt(g.manaRegenPct*100)+'%');
  if(g.wolfBonus)a.push('늑대 계열 피해 +'+fmt(g.wolfBonus*100)+'% (늑대인간 포함)');
  if(g.slot==='shield')a.push(`G 방어 · 일반 공격 1회 완전 방어 / 보스 ${fmt((g.bossBlock||.5)*100)}% 경감`);
@@ -1790,13 +1914,19 @@ function sellGear(id,instanceId=null){
 }
 function craftRemaining(){return hero.craft?Math.max(0,(hero.craft.finishAt-gameNow())/1000):0;}
 let forgeTab='weapon';
-function openForge(){if(!forgeAccessUnlocked())return false;if(state.mode!=='play'||state.scene!=='field'||dist(player,activeBlacksmith())>4||!inTownBuilding('forge'))return false;updateCrafting();if(craftReadyHere())return openCraftClaimDialogue();togglePanel('forgePanel','forge');renderForge();return true;}
+function openForge(){
+ if(!forgeAccessUnlocked())return false;if(state.mode!=='play'||state.scene!=='field'||dist(player,activeBlacksmith())>4||!inTownBuilding('forge'))return false;
+ updateCrafting();if(craftReadyHere())return openCraftClaimDialogue();
+ if(hero.craft){const smith=craftSmith(hero.craft),same=smith.id===activeBlacksmith().id&&currentInterior()?.id===(hero.craft.forgeId||inferCraftForgeId(hero.craft));const left=Math.max(1,Math.ceil(craftRemaining()));
+  openDialogue(activeBlacksmith().name,same?`아직 <b>${escapeText(craftRecipe(hero.craft.gearId)?.name||'장비')}</b> 제작 중이네. 조금 있다 다시 오게.<small>남은 시간 약 ${left}초 · 다 만들면 내가 부르겠네.</small>`:`지금 다른 대장장이에게 맡긴 제작이 있군. 한 번에 한 물건만 맡길 수 있네.<small>${escapeText(smith.name)}에게 맡긴 제작이 끝나면 먼저 수령하게.</small>`);return true;}
+ togglePanel('forgePanel','forge');renderForge();return true;
+}
 function renderForge(){
  if(!$('forgePanel'))return;updateCrafting();$('forgePanel').querySelector('h2').textContent=activeBlacksmith().name+' · '+townName();
  $('forgeGold').textContent=`보유 ${moneyText(hero.gold)} · ${currencyRuleText()}`;
  for(const b of $('forgeTabs').children)b.classList.toggle('selected',b.dataset.forgeTab===forgeTab);
  const job=$('forgeJob');
- if(hero.craft){const g=craftRecipe(hero.craft.gearId),ready=craftReady(hero.craft),smith=craftSmith(hero.craft);job.className='forge-job '+(ready?'ready':'');job.innerHTML=ready?`<span class="forge-scene-tag">제작 완료 · 수령 대기</span><br><strong>${escapeText(g?.name||'장비')}</strong><br><small>${escapeText(smith.name)}에게 R로 말 걸어 직접 수령하세요.</small>`:`<span class="forge-scene-tag">제작 중</span><br><strong>${escapeText(g?.name||'장비')}</strong> · 남은 시간 <b>${fmt(craftRemaining())}초</b><br><small>완료 후 ${escapeText(smith.name)}에게 다시 말 걸어 수령 · 파일을 종료한 시간도 반영</small>`;}
+ if(hero.craft){const g=craftRecipe(hero.craft.gearId),ready=craftReady(hero.craft),smith=craftSmith(hero.craft);job.className='forge-job '+(ready?'ready':'');job.innerHTML=ready?`<span class="forge-scene-tag">제작 완료 · 수령 대기</span><br><strong>${escapeText(g?.name||'장비')}</strong><br><small>${escapeText(smith.name)}에게 R로 말 걸어 직접 수령하세요.</small>`:`<span class="forge-scene-tag">제작 중</span><br><strong>${escapeText(g?.name||'장비')}</strong> · 남은 시간 <b>${fmt(craftRemaining())}초</b><br><small>플레이 중 시간이 흐름 · 메뉴/대화 중 일시정지 · 파일을 종료한 시간은 다음 실행 때 반영</small>`;}
  else{job.className='forge-job';job.innerHTML='<span class="forge-scene-tag">'+escapeText(activeBlacksmith().name)+'의 제작대</span><br><small>제작은 한 번에 하나 · 무기 강화/복구/전승은 방 안의 모루에 R</small>';}
  let out='';
  if(forgeTab==='owned')out=equippedSlotsHTML()+'<div class="forge-sale-note"><b>사용하지 않는 장비 판매</b><br>현재 장착 중인 장비와 잠근 장비는 판매할 수 없습니다. <b>보스가 떨어뜨린 재료를 사용한 장비도 판매 불가</b>입니다. 장착 변경은 <b>E → 장비 장착</b>에서 하세요.</div>'+gearRowsHTML(true);
@@ -1830,9 +1960,10 @@ let enemies=[],particles=[],eye=v3(),vp=ident(),lockId=null,toastLast='',lastNow
 let audio=null,soundOn=true,testFrozen=false,dialogueChoices=[],helpReturn='play',hasSave=false,saveOK=true;
 const SAVE_KEY='musaek-v04-world01'; // Legacy import only; no v0.5 account writes here.
 const RIDGE_ENEMY_TYPES=new Set(['goat','cat','crow','beetle','golem','wraith','giant']);
+const SOUTH_ENEMY_TYPES=new Set(['goblin','goblinShaman','slimeQueen']);
 function rollRespawnDelay(spec,rng=Math.random){const raw=spec?.respawn;if(Array.isArray(raw)){const lo=Math.floor(Math.min(...raw)),hi=Math.floor(Math.max(...raw));return Math.floor(lo+clamp(rng(),0,1-Number.EPSILON)*(hi-lo+1));}return Number(raw)||0;}
-function enemyRadius(type,scale=1){return type==='boss'?1.68:type==='wolf'?.64*scale:type==='boar'?.83:type==='goat'?.78*scale:type==='cat'?.63*scale:type==='crow'?.52*scale:type==='beetle'?.82*scale:type==='golem'?1.18*scale:type==='wraith'?.72*scale:type==='giant'?1.62*scale:.57;}
-function enemyBodyHeight(e){return e.type==='boss'?4.5*e.scale:e.type==='slime'?1.15:e.type==='boar'?1.65*e.scale:e.type==='goat'?1.72*e.scale:e.type==='cat'?1.35*e.scale:e.type==='crow'?1.05*e.scale:e.type==='beetle'?1.12*e.scale:e.type==='golem'?2.65*e.scale:e.type==='wraith'?1.95*e.scale:e.type==='giant'?3.35*e.scale:1.6*e.scale;}
+function enemyRadius(type,scale=1){return type==='boss'?1.68:type==='wolf'?.64*scale:type==='boar'?.83:type==='goblin'?.58*scale:type==='goblinShaman'?.68*scale:type==='slimeQueen'?1.08*scale:type==='goat'?.78*scale:type==='cat'?.63*scale:type==='crow'?.52*scale:type==='beetle'?.82*scale:type==='golem'?1.18*scale:type==='wraith'?.72*scale:type==='giant'?1.62*scale:.57;}
+function enemyBodyHeight(e){return e.type==='boss'?4.5*e.scale:e.type==='slime'?1.15:e.type==='slimeQueen'?1.55*e.scale:e.type==='boar'?1.65*e.scale:e.type==='goblin'?1.65*e.scale:e.type==='goblinShaman'?1.95*e.scale:e.type==='goat'?1.72*e.scale:e.type==='cat'?1.35*e.scale:e.type==='crow'?1.05*e.scale:e.type==='beetle'?1.12*e.scale:e.type==='golem'?2.65*e.scale:e.type==='wraith'?1.95*e.scale:e.type==='giant'?3.35*e.scale:1.6*e.scale;}
 function freshEnemy(type,x,z,id,scene,archetype=null){
  const key=archetype||(type==='boss'?'werewolf':type==='boar'?'forestBoar':type==='slime'?(x<85?'roadSlime':'swampSlime'):scene==='field'?'forestWolf':id%6===0?'elderWolf':'mazeWolf');
  const spec=MONSTERS[key],ground=scene==='field'?(ridgeRawHeight(x,z)??0):0;
@@ -1841,14 +1972,27 @@ function freshEnemy(type,x,z,id,scene,archetype=null){
  hp:spec.hp,maxHP:spec.hp,r:enemyRadius(spec.type,spec.scale),scale:spec.scale,
  contact:false,attackSpeed:1,hitSlow:0,rewarded:false,mode:'idle',timer:.3,flash:0,attackDir:v3(),hit:false,deadTime:0,respawnDelay:rollRespawnDelay(spec),respawnCue:0,phase:1,gait:0,moveBlend:0,armPose:0,cycle:0,attackKind:'claw',windupTime:.8,gimmickMask:0,gimmickCode:0,gimmickRushes:0,gimmickSlams:0};
 }
+function separatedFieldSpawnPoint(x,z,r,key=0,accept=null){
+ const clear=(px,pz)=>(!accept||accept(px,pz))&&!blockedAt('field',px,pz,.8)&&!enemies.some(e=>e.scene==='field'&&dist(e,{x:px,z:pz})<e.r+r+.12);
+ if(clear(x,z))return {x,z};
+ // No extra RNG calls: older spawn IDs keep their deterministic homes except the colliding body itself.
+ for(let ring=1;ring<=4;ring++)for(let j=0;j<12;j++){
+  const a=((j+(key%12)*.41)/12)*TAU,d=.75*ring,px=x+Math.cos(a)*d,pz=z+Math.sin(a)*d;
+  if(clear(px,pz))return {x:px,z:pz};
+ }
+ return {x,z};
+}
 function makeEnemies(){
  seed=42712; // Stable spawn homes across fresh start and save restore.
  enemies=[];let id=1;
  for(const x of [-28,-17,-5,9,22,35,49,64,78]){const z=55+(id%2?4.4:-4.4);enemies.push(freshEnemy('slime',x,z,id++,'field'));}
- for(let i=0;i<51;i++){
+ for(let i=0;i<SWAMP_SLIME_POPULATION;i++){
   let x,z;for(let tries=0;tries<100;tries++){x=94+rand()*104;z=22+rand()*64;if(!blockedAt('field',x,z,.8))break;}
-  enemies.push(freshEnemy('slime',x,z,id++,'field'));
+  const spot=separatedFieldSpawnPoint(x,z,enemyRadius('slime',1),id,inSwamp);
+  enemies.push(freshEnemy('slime',spot.x,spot.z,id++,'field'));
  }
+ // The Lv.3 cluster is two-thirds of v0.12.10's 41 bodies (27 after integer rounding). The road-end queen is separate.
+ enemies.push(freshEnemy('slimeQueen',SLIME_QUEEN_CLEARING.x,SLIME_QUEEN_CLEARING.z,600,'field','slimeQueen'));
  // Forest wildlife is separate from the introductory east road and the safe village.
  // Deterministic sites are rejected when too close to scenery; never place enemies in trunks.
  for(let i=0;i<32;i++){
@@ -1876,6 +2020,13 @@ function makeEnemies(){
    enemies.push(freshEnemy(fringeId%4===0?'boar':'wolf',x,z,fringeId++,'field'));placed=true;
   }
  }
+ // v0.12.11: three settlements share the same total population; spawn IDs stay 610..623 for save compatibility.
+ const goblinSpawns=[
+  ['goblin',-117,156],['goblin',-107,160],['goblin',-113,168],
+  ['goblin',-131,227],['goblin',-121,219],['goblin',-111,230],['goblin',-127,241],['goblinChief',-116,240],
+  ['goblin',-50,264],['goblin',-28,264],['goblin',-49,281],['goblin',-27,280],['goblinChief',-39,289],['goblinShaman',-38,271]
+ ];
+ goblinSpawns.forEach(([key,x,z],i)=>{const r=enemyRadius(MONSTERS[key].type,MONSTERS[key].scale),spot=separatedFieldSpawnPoint(x,z,r,610+i,(px,pz)=>inSouthForest(px,pz)&&inGoblinCamp(px,pz));enemies.push(freshEnemy(MONSTERS[key].type,spot.x,spot.z,610+i,'field',key));});
  // v0.12.0: field progression rises northward; later zones no longer mix lower-level spawns.
  const ridgeSpawns=[
   ['greyGoat',107,-273],['greyGoat',101,-286],['greyGoat',91,-299],['greyGoat',85,-313],
@@ -1997,7 +2148,7 @@ function damagePlayer(amount,source){
  floatText(player.x,player.z,'−'+fmt(dealt),'hurt',.8,{height:player.y+2.15*CONFIG.playerScale,value:dealt});player.inv=.7;state.shake=.27;player.attack=null;player.queue=null;
  SOUND.effect('hurt');burst(player.x,player.y+1,player.z,C.white,8,2);
  if(source){const n=norm(v3(player.x-source.x,0,player.z-source.z));player.vx+=n.x*4;player.vz+=n.z*4;}
- if(player.hp<=0){state.dead=true;state.mode='dead';saveGame();showOverlay('dead');}return true;
+ if(player.hp<=0){beginDeathSequence();}return true;
 }
 function dealPlayerHit(e,amount,rng=Math.random,context=null){
  if(!e||e.hp<=0||!canHitEnemy(e)||e.scene!==state.scene||e.type==='boss'&&!state.floorOpen||!Number.isFinite(amount)||amount<=0)return null;
@@ -2012,7 +2163,7 @@ function damageEnemy(e,amount,hitInfo=null){
  if(e.type==='beetle'&&!['recover','stagger'].includes(e.mode))amount*=.32;
  if(e.type==='boss')state.bossEngaged=true;
  const before=e.hp;e.hp=Math.max(0,e.hp-amount);const dealt=before-e.hp;
- floatText(e.x,e.z,fmt(dealt)+(hitInfo?.critical?'!':''),'hit',.75,{height:enemyTextHeight(e),targetId:e.id,value:dealt,critical:!!hitInfo?.critical,multiplier:hitInfo?.multiplier??1});e.flash=.13;SOUND.effect(e.type==='slime'?'hitSlime':'hit',e);if(hitInfo?.critical)SOUND.effect('critical',e);burst(e.x,1,e.z,C.white,7,2.8);
+ floatText(e.x,e.z,fmt(dealt)+(hitInfo?.critical?'!':''),'hit',.75,{height:enemyTextHeight(e),targetId:e.id,value:dealt,critical:!!hitInfo?.critical,multiplier:hitInfo?.multiplier??1});e.flash=.13;SOUND.effect(e.type==='slime'||e.type==='slimeQueen'?'hitSlime':'hit',e);if(hitInfo?.critical)SOUND.effect('critical',e);burst(e.x,1,e.z,C.white,7,2.8);
  // A hit never replaces the AI state or remaining attack timer. Refresh only this debuff.
  if(e.hp>0){e.hitSlow=BALANCE.hitSlowDuration;e.aiQuiet=0;}
  if(e.hp<=0){
@@ -2086,15 +2237,25 @@ function exitAbramDungeon(){
  if(state.scene!=='abramDungeon')return false;if(!abramCaveCleared()){toast('종유석 봉인이 닫혀 있다. 붉은 철갑 거인을 처치해야 나갈 수 있다.',4);return false;}
  state.scene='field';clearMotion();Object.assign(player,{x:ABRAM_CAVE_ENTRANCE.x,z:ABRAM_CAVE_ENTRANCE.z+6,y:ABRAM_CAVE_ENTRANCE.y,vy:0,grounded:true,inv:1});snapCamera();saveGame();toast('부서진 능선으로 돌아왔다. 종유석 미궁은 해방됐다.',4);return true;
 }
-function respawn(){
- cancelDoorTransition();state.interior=null;
+function respawn(options={}){
+ if(!options.preserveFade)cancelDoorTransition();state.interior=null;
  const deathScene=state.scene,kept={heals:player.heals,healCD:player.healCD,guardCD:player.guardCD};
  state.town.thugActive=false;state.bossEngaged=false;state.dead=false;state.runActive=false;
  if(deathScene==='dungeon'){if(!state.cleared)resetDungeon();else resetLivingDungeonCombat('dungeon');}
  if(deathScene==='abramDungeon'){if(!abramCaveCleared())resetAbramDungeon();else resetLivingDungeonCombat('abramDungeon');}
  closeDungeonJournalOnLeave();state.scene='field';Object.assign(player,initialPlayer(),kept);player.hp=maxHP();hero.mp=maxMP();player.stamina=maxStamina();hero.cooldowns.fill(0);
- skillEffects=[];combatTexts=[];clearMotion();state.mode='play';hideDialog();snapCamera();saveGame();
- toast('새벽마을에서 깨어났다. 보유 물품·골드·장비·의뢰는 유지된다. 약은 추가 지급되지 않는다.',5);
+ skillEffects=[];combatTexts=[];clearMotion();state.mode=options.keepMode?'death':'play';hideDialog();snapCamera();saveGame();
+ if(!options.silent)toast('새벽마을에서 깨어났다. 보유 물품·골드·장비·의뢰는 유지된다. 약은 추가 지급되지 않는다.',5);
+}
+function beginDeathSequence(){
+ if(deathTransition)return false;state.dead=true;state.mode='death';saveGame();pauseInput();player.vx=player.vz=0;player.attack=null;player.queue=null;
+ deathTransition={t:0,spawned:false};document.body.classList.add('room-transition');$('roomFadeName').textContent='';$('roomFade').style.opacity='0';return true;
+}
+function advanceDeathTransition(dt){
+ const q=deathTransition;if(!q)return;q.t+=Math.max(0,Math.min(.1,dt));
+ const alpha=q.t<=.72?q.t/.72:q.t<1.12?1:1-(q.t-1.12)/.78;$('roomFade').style.opacity=String(clamp(alpha,0,1));
+ if(q.t>=.72&&!q.spawned){q.spawned=true;respawn({preserveFade:true,silent:true,keepMode:true});$('roomFadeName').textContent='새벽마을';}
+ if(q.t>=1.90){deathTransition=null;$('roomFade').style.opacity='0';$('roomFadeName').textContent='';document.body.classList.remove('room-transition');state.mode='play';pauseInput();canvas.focus();lastNow=performance.now();simAccumulator=0;toast('새벽마을에서 눈을 떴다. 보유 물품·골드·장비·의뢰는 유지된다.',4);saveGame();}
 }
 function openDialogue(title,text,choices=[{label:'알겠어',run:()=>hideDialog()}]){
  $('dialog').classList.remove('transfer-dialog');
@@ -2109,7 +2270,7 @@ function hideDialog(){
  if(state.mode==='forge')$('forgePanel').classList.remove('hidden');
  if(state.mode==='anvil')$('anvilPanel').classList.remove('hidden');
  if(state.mode==='board')$('boardPanel').classList.remove('hidden');
- pauseInput();if(state.mode==='play')canvas.focus();
+ resumePlayInput();
 }
 function talkNPC(){
  state.guideFlags.talk=true;
@@ -2134,7 +2295,7 @@ function restAtCamp(){
  if(needsSupply)player.heals=BALANCE.restPotionMinimum;
  const lessonFinished=recordIntroRest();
  const supply=needsSupply?'하급 회복약 1개 지원':'회복약 보유 중 · 추가 보급 없음';
- saveGame();toast('온천 휴식 · HP/MP/기력 회복 · '+supply+(lessonFinished?' · 세라에게 완료 보고':''),lessonFinished?5:3);tone(420,.3,'sine',.02,700);return true;
+ saveGame();toast('온천 휴식 · HP/MP/기력 회복 · '+supply+(lessonFinished?' · 세라에게 완료 보고':''),lessonFinished?5:3);SOUND.effect('hotspring',activeCamp());return true;
 }
 function talkGuard(id){
  if(id===BOAR_QUEST_RULES.guardId)return talkBoarGuard();
@@ -2214,7 +2375,7 @@ function interact(){
   else if(!state.exploration.accepted&&!state.cleared)openDialogue('붉은 빛이 새어 나오는 틈','교역로에서 벗어난 숲 안쪽에서 낯선 유적을 발견했다.<br><br>동쪽 숲 안쪽 길에 있는 <b>길손 이안</b>이 무언가 알고 있을지도 모른다.<small>이안에게 R로 소문을 들으면 메인 퀘스트 「미궁 탐사」를 얻는다.</small>');
   else if((hero.inventory.dungeonTicket||0)<1)showTicketRequirement();
    else if(state.cleared)confirmDungeonEntry();
-  else openDialogue('숲의 미궁 · 첫 번째 도전','<b>입장권 1개를 사용한다. 들어가면 입구가 봉인된다.</b><br>보스를 처치하거나, 쓰러져 마을에서 깨어나기 전까지 나올 수 없다.<br><br>내부에는 거대한 미로, 두 단계의 퍼즐, 늑대 무리와 <b>등에 붉은 보석이 박힌 늑대인간</b>이 기다린다.<small>제보당의 붉은 괴수: Lv.12 / HP 2,400. 최소 입장 Lv.8 · 권장 Lv.10~12. 레벨 조건을 충족한 뒤 E에서 능력치를 분배하고 하급 회복약을 준비하자. 일시정지 및 내부 저장 가능.</small>',[{label:'입장권 1개 사용 · 미궁에 들어간다',run:enterDungeon},{label:'아직 들어가지 않는다',run:()=>{}}]);break;
+  else openDialogue('숲의 미궁 · 첫 번째 도전','<b>입장권 1개를 사용한다. 들어가면 입구가 봉인된다.</b><br>보스를 처치하거나, 쓰러져 마을에서 깨어나기 전까지 나올 수 없다.<br><br>내부에는 거대한 미로, 두 단계의 퍼즐, 늑대 무리와 <b>등에 붉은 보석이 박힌 늑대인간</b>이 기다린다.<small>제보당의 붉은 괴수: Lv.12 / HP 2,100. 최소 입장 Lv.10 · 권장 Lv.10~12. 레벨 조건을 충족한 뒤 E에서 능력치를 분배하고 하급 회복약을 준비하자. 일시정지 및 내부 저장 가능.</small>',[{label:'입장권 1개 사용 · 미궁에 들어간다',run:enterDungeon},{label:'아직 들어가지 않는다',run:()=>{}}]);break;
  case 'exit':if(state.cleared)exitDungeon();else openDialogue('봉인된 입구','문은 안쪽에서 열리지 않는다.<br><br><b>늑대인간을 쓰러뜨려야 미궁이 해방된다.</b><small>찢어진 기록 2장을 모으면 J키 모험 기록이 열린다. 비문은 현장에서 R로 읽을 수 있다.</small>');break;
  case 'clue':openDialogue('해와 달과 별의 비문','<b>첫째, 하루를 비추던 빛이 저문다.<br>둘째, 밤의 둥근 눈이 떠오른다.<br>셋째, 작은 빛들이 하늘에 남는다.</b><br><br>세 룬 기둥의 문양을 맞춘 뒤, 북동쪽 끝의 문에서 R키로 확인하라.<small>기둥은 R키를 누를 때마다 달 → 별 → 해 순서로 회전한다.</small>');break;
  case 'rune':if(state.gate){toast('이미 룬 봉인이 해제되었다.',2);break;}state.rune[t.rune.id]=(state.rune[t.rune.id]+1)%3;tone(330+state.rune[t.rune.id]*140,.16,'sine',.02);toast(`${t.rune.id+1}번 기둥 · ${GLYPHS[state.rune[t.rune.id]]}`,2);saveGame();break;
@@ -2254,7 +2415,7 @@ function updateWorld(dt){
  state.saveTimer+=dt;state.mapTimer+=dt;
  if(state.saveTimer>20){state.saveTimer=0;saveGame();}
  if(state.mapTimer>.25){state.mapTimer=0;if(state.scene==='dungeon'){const {c,r}=mazeCell(player.x,player.z);for(let dz=-3;dz<=3;dz++)for(let dx=-3;dx<=3;dx++){const nc=c+dx,nr=r+dz;if(nc>=0&&nc<25&&nr>=0&&nr<25)state.visited[nr*25+nc]=true;}}}
- const region=state.scene==='dungeon'?(player.z<-64?'제보당의 붉은 괴수 · 봉인실':player.z<-50?'변이 흔적의 전실':'숲의 미궁'):state.scene==='abramDungeon'?(player.z<-60?'붉은 철갑 거인 · 종유석 심층':'아브람 종유석 미궁'):inTern()?'테른':inFogValley()?'안개 골짜기':inBrokenRidge()?'부서진 능선':inAbram()?'아브람':inVillage(player.x,player.z)?'새벽마을':inSwamp(player.x,player.z)?'잿빛 늪':Math.abs(player.z-55)<8?'동쪽 길':'회색 숲';
+ const region=state.scene==='dungeon'?(player.z<-64?'제보당의 붉은 괴수 · 봉인실':player.z<-50?'변이 흔적의 전실':'숲의 미궁'):state.scene==='abramDungeon'?(player.z<-60?'붉은 철갑 거인 · 종유석 심층':'아브람 종유석 미궁'):inTern()?'테른':inFogValley()?'안개 골짜기':inBrokenRidge()?'부서진 능선':inAbram()?'아브람':inVillage(player.x,player.z)?'새벽마을':inGoblinCamp(player.x,player.z)?'고블린 부락':inSouthForest(player.x,player.z)?'남쪽 숲':inSwamp(player.x,player.z)?'잿빛 늪':Math.abs(player.z-55)<8?'동쪽 길':'회색 숲';
  if(region!==state.region){state.region=region;$('regionName').textContent=region;$('regionTag').textContent=['새벽마을','아브람','테른'].includes(region)?'안전 구역 · 마을':state.scene==='dungeon'?(state.cleared?'해방됨 · 자유 출입':'봉인됨 · 보스 처치 전 귀환 불가'):state.scene==='abramDungeon'?(abramCaveCleared()?'해방됨 · 자유 출입':'봉인됨 · 붉은 철갑 거인 처치 전 귀환 불가'):'색을 잃은 대지';}
 }
 // Body contact, not merely aggro or the attack's hit range. Recomputed every tick;
@@ -2295,6 +2456,14 @@ function importantAirBlockAt(x,z,r=.45){
  return zones.some(b=>Math.abs(x-b.x)<b.hx+r&&Math.abs(z-b.z)<b.hz+r);
 }
 function crowAirMove(e,nx,nz){if(importantAirBlockAt(nx,nz,e.r*.55))return false;e.x=nx;e.z=nz;return true;}
+function monsterAttackSound(e,kind=e?.attackKind){
+ const key=e?.archetype||e?.type;
+ if(key==='werewolf'||e?.type==='boss')return kind==='rush'?'werewolfRush':kind==='slam'?'werewolfSlam':'werewolfClaw';
+ if(e?.type==='slime'||e?.type==='slimeQueen')return 'slimeAttack';if(e?.type==='goblin')return 'thugAttack';if(e?.type==='goblinShaman')return 'wraithAttack';if(e?.type==='wolf')return 'wolfAttack';if(e?.type==='boar')return 'boarAttack';if(e?.type==='thug')return 'thugAttack';
+ if(e?.type==='goat')return 'goatAttack';if(e?.type==='cat')return 'catAttack';if(e?.type==='crow')return 'crowAttack';if(e?.type==='beetle')return 'beetleAttack';
+ if(e?.type==='golem')return 'golemAttack';if(e?.type==='wraith')return 'wraithAttack';if(e?.type==='giant')return 'giantAttack';return 'claw';
+}
+function playMonsterAttackSound(e,kind=e?.attackKind){return SOUND.effect(monsterAttackSound(e,kind),e);}
 function updateRidgeEnemy(e,dt){
  e.contact=monsterContact(e);const contactRate=e.contact?BALANCE.contactAttackSpeed:1,slowed=Math.min(dt,Math.max(0,e.hitSlow||0));
  e.hitSlow=Math.max(0,(e.hitSlow||0)-dt);e.attackSpeed=contactRate*((['chase','windup','recover'].includes(e.mode)&&e.hitSlow>0)?BALANCE.hitAttackSpeed:1);e.flash=Math.max(0,e.flash-dt);
@@ -2316,7 +2485,7 @@ function updateRidgeEnemy(e,dt){
    {const nx=damp(e.x,tx,2.2,dt),nz=damp(e.z,tz,2.2,dt);crowAirMove(e,nx,nz);}e.y=damp(e.y,homeG+3.1*e.scale+Math.sin(state.time*2+e.id)*.28,3,dt);e.yaw=dampAngle(e.yaw,Math.atan2(tx-e.x,-(tz-e.z)),dt*4);
    if(movingFast&&d<17&&sight){e.mode='windup';e.attackKind='lunge';e.windupTime=.62;e.timer=e.windupTime;e.attackDir=to;e.yaw=angle(e,player);e.hit=false;}return;
   }
-  if(e.mode==='windup'){e.y=damp(e.y,g+2.55,4,dt);if(e.timer<=0){e.mode='lunge';e.timer=.52;e.attackDir=norm(v3(player.x-e.x,0,player.z-e.z));e.hit=false;}return;}
+  if(e.mode==='windup'){e.y=damp(e.y,g+2.55,4,dt);if(e.timer<=0){e.mode='lunge';e.timer=.52;e.attackDir=norm(v3(player.x-e.x,0,player.z-e.z));e.hit=false;playMonsterAttackSound(e,'lunge');}return;}
   if(e.mode==='lunge'){
    const nx=e.x+e.attackDir.x*11.5*dt,nz=e.z+e.attackDir.z*11.5*dt;if(!crowAirMove(e,nx,nz)){e.mode='recover';e.timer=.8;return;}const tg=ridgeGround(e.x,e.z,g);e.y=damp(e.y,tg+.62,9,dt);ridgeDamageRange(e,1.45,spec.attack);
    if(e.timer<=0){e.mode='recover';e.timer=1.0;}return;
@@ -2358,7 +2527,7 @@ function updateRidgeEnemy(e,dt){
   }
  }
  if(e.mode==='windup'){
-  if(e.timer<=0){e.mode=e.attackKind;e.timer=e.attackKind==='slam'?.26:e.type==='goat'?.70:e.type==='cat'?.31:e.type==='beetle'?.40:e.type==='wraith'?.42:e.type==='giant'?.66:.35;e.hit=false;}return;
+  if(e.timer<=0){e.mode=e.attackKind;e.timer=e.attackKind==='slam'?.26:e.type==='goat'?.70:e.type==='cat'?.31:e.type==='beetle'?.40:e.type==='wraith'?.42:e.type==='giant'?.66:.35;e.hit=false;playMonsterAttackSound(e,e.attackKind);}return;
  }
  if(e.mode==='lunge'||e.mode==='rush'){
   const speed=e.type==='goat'?10.5:e.type==='cat'?12.4:e.type==='beetle'?5.4:e.type==='wraith'?8.0:e.type==='giant'?9.5:7;
@@ -2401,10 +2570,59 @@ function finishWerewolfRoar(e){
  if(code===5){e.mode='chase';e.timer=.04;return true;}
  return false;
 }
+function updateSouthEnemy(e,dt){
+ e.contact=monsterContact(e);const contactRate=e.contact?BALANCE.contactAttackSpeed:1,slowed=Math.min(dt,Math.max(0,e.hitSlow||0));
+ e.hitSlow=Math.max(0,(e.hitSlow||0)-dt);e.flash=Math.max(0,e.flash-dt);
+ if(e.hp<=0){updateRespawn(e,dt);return;}
+ if(e.scene!==state.scene)return;
+ if(updatePursuitMemory(e,dt))return;
+ const d=dist(e,player);if(d>50)return;
+ const waiting=['chase','windup','recover'].includes(e.mode),clock=waiting?contactRate*(dt-slowed*(1-BALANCE.hitAttackSpeed)):dt;e.timer-=clock;
+ const spec=MONSTERS[e.archetype],sight=lineOfSight(e,player),to=norm(v3(player.x-e.x,0,player.z-e.z));
+ e.attackSpeed=contactRate*(waiting&&e.hitSlow>0?BALANCE.hitAttackSpeed:1);
+ if(e.mode==='idle'){
+  const aggro=e.type==='goblinShaman'?14:e.type==='slimeQueen'?11:e.archetype==='goblinChief'?11:9;
+  if(d<aggro&&sight){e.mode='chase';e.timer=.22;return;}
+  const a=state.time*.22+e.id,tx=e.home.x+Math.sin(a)*.50,tz=e.home.z+Math.cos(a*.83)*.50;moveBody(e,(tx-e.x)*dt*.48,(tz-e.z)*dt*.48,e.r);return;
+ }
+ if(e.mode==='stagger'){if(e.timer<=0){e.mode='recover';e.timer=.65;}return;}
+ if(e.mode==='chase'){
+  e.yaw=dampAngle(e.yaw,angle(e,player),1-Math.exp(-8*dt));
+  if(e.type==='goblinShaman'){
+   if(e.timer<=0&&d<9.5&&sight){e.mode='windup';e.attackKind='slam';e.windupTime=1.05;e.timer=e.windupTime;e.hit=false;return;}
+   if(d<4.4&&sight)moveBody(e,-to.x*2.2*dt,-to.z*2.2*dt,e.r*.82);else if(d>6.8)pursue(e,player,2.55,dt);return;
+  }
+  if(e.type==='slimeQueen'){
+   if(e.timer<=0&&d<6.2&&sight){e.attackKind=(e.cycle++%3===2)?'slam':'hop';e.mode='windup';e.windupTime=e.attackKind==='slam'?.92:.62;e.timer=e.windupTime;e.hit=false;e.attackDir=to;return;}
+   if(d>2.7)pursue(e,player,2.15,dt);return;
+  }
+  const chief=e.archetype==='goblinChief',range=chief?2.35:2.0;
+  if(e.timer<=0&&d<range+1.0&&sight){e.mode='windup';e.attackKind='lunge';e.windupTime=chief?.52:.64;e.timer=e.windupTime;e.attackDir=to;e.hit=false;return;}
+  if(d>range)pursue(e,player,chief?3.65:3.25,dt);return;
+ }
+ if(e.mode==='windup'){
+  if(e.timer<=0){e.mode=e.attackKind;e.timer=e.attackKind==='slam'?.28:e.attackKind==='hop'?.46:.30;e.hit=false;if(e.attackKind!=='slam')e.attackDir=norm(v3(player.x-e.x,0,player.z-e.z));playMonsterAttackSound(e,e.attackKind);}return;
+ }
+ if(e.mode==='lunge'||e.mode==='hop'){
+  const queen=e.type==='slimeQueen',speed=queen?6.4:(e.archetype==='goblinChief'?8.4:7.3);moveBody(e,e.attackDir.x*speed*dt,e.attackDir.z*speed*dt,e.r*.84);
+  if(queen)e.y=Math.sin(clamp((.46-e.timer)/.46,0,1)*Math.PI)*.72;
+  const range=queen?2.15:e.archetype==='goblinChief'?1.9:1.6;
+  if(!e.hit&&dist(e,player)<range&&player.y<(queen?1.1:1.8)&&lineOfSight(e,player)){e.hit=true;damagePlayer(spec.attack,e);}
+  if(e.timer<=0){e.y=0;e.mode='recover';e.timer=queen?1.0:e.archetype==='goblinChief'?.82:.68;}return;
+ }
+ if(e.mode==='slam'){
+  const shaman=e.type==='goblinShaman',range=shaman?5.6:4.4,amount=spec.slam||spec.attack;
+  if(!e.hit&&d<range&&player.y<.85&&sight){e.hit=true;damagePlayer(amount,e);}
+  if(e.timer<=0){e.mode='recover';e.timer=shaman?1.25:1.18;}return;
+ }
+ if(e.mode==='recover'&&e.timer<=0){e.mode='chase';e.timer=e.type==='goblinShaman'?.58:.30;}
+}
+
 function updateEnemy(e,dt){
  if(currentInterior()&&e.scene==='field'){if(e.hp<=0)updateRespawn(e,dt);return;}
  if(e.type==='thug'){updateThug(e,dt);return;}
  if(RIDGE_ENEMY_TYPES.has(e.type)){updateRidgeEnemy(e,dt);return;}
+ if(SOUTH_ENEMY_TYPES.has(e.type)){updateSouthEnemy(e,dt);return;}
  e.contact=monsterContact(e);
  const contactRate=e.contact?BALANCE.contactAttackSpeed:1;
  const slowedTime=Math.min(dt,Math.max(0,e.hitSlow||0));
@@ -2427,7 +2645,7 @@ function updateEnemy(e,dt){
  if(e.mode==='roar'){if(e.timer<=0&&!finishWerewolfRoar(e))e.mode='chase';return;}
  if(e.mode==='wave'){
   // Expanding floor shockwave. Jumping above the wave avoids it.
-  if(!e.hit&&e.timer<=.34){e.hit=true;SOUND.effect('slam',e);if(d<8.4&&player.y<.82&&lineOfSight(e,player))damagePlayer(spec.slam*.58,e);}
+  if(!e.hit&&e.timer<=.34){e.hit=true;SOUND.effect('werewolfSlam',e);if(d<8.4&&player.y<.82&&lineOfSight(e,player))damagePlayer(spec.slam*.58,e);}
   if(e.timer<=0){e.mode='recover';e.timer=lastStand?.42:.68;}return;
  }
  if(e.mode==='idle'){
@@ -2449,7 +2667,7 @@ function updateEnemy(e,dt){
   }return;
  }
  if(e.mode==='windup'){
-  if(e.timer<=0){e.mode=e.attackKind;e.timer=e.mode==='rush'?.70:e.mode==='slam'?.32:e.mode==='claw'?.30:e.mode==='hop'?.4:.27;e.hit=false;if(isBoss)SOUND.effect(e.attackKind,e);}
+  if(e.timer<=0){e.mode=e.attackKind;e.timer=e.mode==='rush'?.70:e.mode==='slam'?.32:e.mode==='claw'?.30:e.mode==='hop'?.4:.27;e.hit=false;playMonsterAttackSound(e,e.attackKind);}
   return;
  }
  if(['lunge','hop','rush'].includes(e.mode)){
@@ -2661,6 +2879,22 @@ function applySave(data){
   const wb=boss(),savedBoss=wb&&records.get(wb.id);
   if(wb&&savedBoss?.hp>0){wb.hp=clamp(savedBoss.hp/PRE_V0124_HP.werewolf*wb.maxHP,0,wb.maxHP);wb.gimmickMask=werewolfMaskForRatio(wb.hp/Math.max(1,wb.maxHP));wb.gimmickCode=0;wb.gimmickRushes=0;wb.gimmickSlams=0;wb.phase=wb.hp<=wb.maxHP*.5?2:1;}
  }
+ // v0.12.9 lowers the werewolf from 2400 to 2100. v0.12.4+ saves preserve HP ratio.
+ const loadedBalanceRevision=Number(data.balanceRevision)||0;
+ if(loadedBalanceRevision>=18&&loadedBalanceRevision<21){
+  const records=new Map(data.enemies.map(x=>[x.id,x])),wb=boss(),savedBoss=wb&&records.get(wb.id);
+  if(wb&&savedBoss?.hp>0){wb.hp=clamp(savedBoss.hp/PRE_V0129_HP.werewolf*wb.maxHP,0,wb.maxHP);wb.gimmickMask=werewolfMaskForRatio(wb.hp/Math.max(1,wb.maxHP));wb.gimmickCode=0;wb.gimmickRushes=0;wb.gimmickSlams=0;wb.phase=wb.hp<=wb.maxHP*.5?2:1;}
+ }
+ // v0.12.11 scatters the v0.12.10 single goblin camp into three settlements.
+ // Stable enemy ids keep HP/death state, but living goblins from older saves must
+ // move to their new homes so they never spend minutes walking across the forest.
+ if(loadedBalanceRevision<22){
+  for(const e of enemies){
+   if(!['goblin','goblinChief','goblinShaman'].includes(e.archetype))continue;
+   e.x=e.home.x;e.z=e.home.z;e.y=e.home.y;
+   if(e.hp>0){e.mode='idle';e.timer=.3;e.hit=false;e.aiQuiet=0;e.attackDir=v3();}
+  }
+ }
  resetSprintInput();keys.clear();pointer.active=false;pointer.nx=pointer.ny=0;player.queue=restoreCombatBuffer(data.player.queuedAction);lockId=null;
  player.guardCD=n(data.player.guardCD,0,0,600);player.guardActive=!!data.player.guardActive&&!!equippedGear('shield')&&player.guardCD===0;
  if(currentInterior()&&!roomAccessAllowed(state.interior)){
@@ -2678,7 +2912,7 @@ function storageMessage(){
  return (ACCOUNT.guest?'이 브라우저 저장':'로컬 계정 저장')+(ACCOUNT.lastSaved?' · '+new Date(ACCOUNT.lastSaved).toLocaleTimeString('ko-KR'):' · 아직 저장되지 않음');
 }
 function summaryOf(data){
- const x=data.player.x,z=data.player.z,room=data.scene==='field'?ROOM_BY_ID.get(data.interior):null,region=room?room.name:data.scene==='dungeon'?(z<-63?'괴수의 봉인실':'숲의 미궁'):inTern(x,z)?'테른':inFogValley(x,z)?'안개 골짜기':inBrokenRidge(x,z)?'부서진 능선':inAbram(x,z)?'아브람':inVillage(x,z)?'새벽마을':inSwamp(x,z)?'잿빛 늪':Math.abs(z-55)<8?'동쪽 길':'회색 숲';
+ const x=data.player.x,z=data.player.z,room=data.scene==='field'?ROOM_BY_ID.get(data.interior):null,region=room?room.name:data.scene==='dungeon'?(z<-63?'괴수의 봉인실':'숲의 미궁'):inTern(x,z)?'테른':inFogValley(x,z)?'안개 골짜기':inBrokenRidge(x,z)?'부서진 능선':inAbram(x,z)?'아브람':inVillage(x,z)?'새벽마을':inGoblinCamp(x,z)?'고블린 부락':inSouthForest(x,z)?'남쪽 숲':inSwamp(x,z)?'잿빛 늪':Math.abs(z-55)<8?'동쪽 길':'회색 숲';
  return {level:data.hero?.level||1,gold:data.hero?.gold||0,region,quest:data.quest,kills:data.kills,cleared:data.cleared,dead:data.dead,playTime:data.playTime||0,version:data.version};
 }
 function clearScheduledSave(){clearTimeout(ACCOUNT.autoTimer);ACCOUNT.autoTimer=null;}
@@ -2976,7 +3210,7 @@ const MUSIC_THEMES=Object.freeze({
  village:{title:'아직 꺼지지 않은 불빛',bpm:56,chords:[[45,52,57,60],[41,48,53,57],[48,55,60,64],[43,50,55,59]],melody:[69,-1,72,71,64,-1,67,-1,69,-1,64,62,60,-1,64,-1]},
  field:{title:'색 잃은 길',bpm:60,chords:[[45,52,55,59],[41,48,52,57],[43,50,53,57],[40,47,52,55]],melody:[64,-1,67,-1,62,60,-1,59,64,-1,62,-1,57,-1,-1,60]},
  dungeon:{title:'돌 아래의 속삭임',bpm:50,chords:[[38,45,50,53],[39,46,51,54],[41,48,50,57],[38,45,48,53]],melody:[62,-1,-1,65,61,-1,57,-1,62,-1,-1,60,57,-1,53,-1]},
- boss:{title:'붉은 등뼈의 맥박',bpm:86,chords:[[38,45,50,53],[38,45,48,53],[39,46,51,54],[41,48,50,57]],melody:[62,65,69,65,60,65,69,65,63,66,70,66,62,65,69,60]}
+ boss:{title:'봉인의 심장박동',bpm:100,chords:[[38,45,50,53],[37,44,49,52],[39,46,51,54],[36,43,48,51]],melody:[62,65,69,70,65,62,69,73,63,66,70,75,62,68,71,77]}
 });
 function createSoundSynth(ctx,destination=ctx.destination){
  const master=ctx.createGain(),music=ctx.createGain(),effects=ctx.createGain();
@@ -3037,9 +3271,11 @@ function createSoundSynth(ctx,destination=ctx.destination){
   if(beat%4===0)osc(g,midi(chord[0]-12),time,d*3.7,.075,'sine',midi(chord[0]-12),.10);
   if(beat%2===0){const n=theme.melody[(beat/2)%theme.melody.length];if(n>=0){bell(g,n,time,d*2.5,key==='boss'?.095:.105,-.18);bell(g,n,time+d*.65,d*1.8,.023,.35);}}
   if(key==='boss'){
-   if(beat%2===0)osc(g,83,time,.23,.20,'sine',38,.008);
-   if(beat%4===2)hiss(g,time,.18,.13,820,-.1);
-   if(beat%2===1)bell(g,chord[1]+12,time,d*.7,.05,.2);
+   if(beat%2===0)osc(g,78,time,.28,.23,'sine',34,.006);
+   if(beat%2===1)osc(g,116,time,.12,.07,'square',82,.004);
+   if(beat%4===2)hiss(g,time,.22,.17,900,-.15);
+   if(beat%4===0)hiss(g,time+.10,.10,.09,2400,.18);
+   if(beat%2===1)bell(g,chord[1]+12,time,d*.62,.055,.2);
   }else if(key==='dungeon'&&beat%8===4)hiss(g,time,1.6,.030,520,.3);
  }
  const fx=group('sfx');const lastFx=new Map();
@@ -3067,6 +3303,22 @@ function createSoundSynth(ctx,destination=ctx.destination){
    case 'slam':o(110,.60,.28,'sine',29);n(.48,.37,300);break;
    case 'hammer':for(const off of [0,.16,.32]){n(.075,.22,1250,off);o(185,.095,.12,'triangle',115,off);o(1320,.07,.045,'sine',720,off+.01);}break;
    case 'craftReady':bell(fx,79,t,.38,.085*k,pan);bell(fx,86,t+.12,.48,.075*k,pan);o(980,.10,.035,'triangle',620,.02);break;
+   case 'slimeAttack':o(240,.16,.15,'sine',62);n(.15,.16,520);break;
+   case 'wolfAttack':n(.18,.25,1700);o(125,.24,.12,'sawtooth',72);break;
+   case 'boarAttack':o(92,.28,.17,'sawtooth',48);n(.16,.18,430);break;
+   case 'thugAttack':n(.16,.22,1300);o(310,.09,.08,'triangle',155,.025);break;
+   case 'goatAttack':o(170,.10,.11,'triangle',115);o(460,.06,.04,'square',300,.07);break;
+   case 'catAttack':n(.22,.28,2400);o(420,.16,.07,'sawtooth',180);break;
+   case 'crowAttack':o(980,.10,.07,'square',540);o(760,.12,.06,'square',390,.08);n(.16,.11,3000);break;
+   case 'beetleAttack':for(const off of [0,.06,.12])o(720,.045,.035,'square',470,off);o(150,.17,.08,'triangle',85,.02);break;
+   case 'golemAttack':n(.26,.25,310);o(82,.34,.20,'sine',32);break;
+   case 'wraithAttack':n(.42,.22,1800);o(610,.36,.05,'sine',170);break;
+   case 'giantAttack':n(.28,.24,420);o(74,.42,.24,'triangle',31);o(920,.08,.05,'square',510,.04);break;
+   case 'werewolfClaw':o(105,.28,.14,'sawtooth',48);n(.27,.35,1900,.02);break;
+   case 'werewolfRush':o(73,.46,.19,'sawtooth',36);n(.45,.32,610);break;
+   case 'werewolfSlam':o(68,.58,.27,'sine',27);n(.50,.40,270);break;
+   case 'coin':bell(fx,84,t,.18,.055*k,pan);bell(fx,91,t+.055,.24,.045*k,pan);o(1460,.08,.025,'triangle',980,.015);break;
+   case 'hotspring':n(.70,.055,620);o(185,.30,.025,'sine',130,.04);bell(fx,69,t+.12,.80,.045*k,pan);bell(fx,76,t+.38,.72,.035*k,pan);break;
    case 'ui':bell(fx,74,t,.12,.035*k,0);break;
    case 'test':[69,72,76].forEach((x,i)=>bell(fx,x,t+i*.2,.6,.15*k,0));n(.11,.20,1500,.75);break;
    default:bell(fx,69,t,.3,.07*k,pan);
@@ -3168,8 +3420,8 @@ function openAudioPanel(){
 }
 function closeAudioPanel(){
  if(state.mode!=='audio')return;$('audioPanel').classList.add('hidden');state.mode=audioPanelReturn;
- pauseInput();lastNow=performance.now();simAccumulator=0;
- if(state.mode==='play')canvas.focus();else $('sound').focus();
+ resumePlayInput();lastNow=performance.now();simAccumulator=0;
+ if(state.mode!=='play')$('sound').focus();
 }
 function installAudioControls(){
  const gesture=e=>{if(e.type==='keydown'&&(e.repeat||e.code==='KeyM'||['INPUT','TEXTAREA','SELECT'].includes(e.target?.tagName)))return;if(soundOn)initAudio();};
@@ -3303,13 +3555,21 @@ function renderIntroGuideCard(){
 }
 function renderTownDepartureBarrier(){
  if(!townDepartureLocked()||state.scene!=='field'||currentInterior())return;
- const x=TOWN_BOUNDS.maxX+.03,z=55;
- if(Math.hypot(player.x-x,player.z-z)>45)return;
- // Temporary wooden road barrier; the swept town boundary also closes all
-// other escape routes, so jumping a low visual rail cannot skip the tutorial.
- for(const dz of [-4.1,4.1])draw(cylinder,trs(x,.73,z+dz,.25,1.46,.25),C.wood);
- for(const y of [.45,.95])draw(cube,trs(x,y,z,.16,.16,8.2),C.wood);
- draw(cube,trs(x-.10,1.18,z,.09,.54,1.20),C.stone);
+ // Both permanent exits show a temporary physical-looking rail while the swept
+ // tutorial bounds are active. This prevents an apparently open south gate from
+ // feeling like an invisible-wall bug before Sera's first lesson is complete.
+ const ex=TOWN_BOUNDS.maxX+.03,ez=55;
+ if(Math.hypot(player.x-ex,player.z-ez)<45){
+  for(const dz of [-4.1,4.1])draw(cylinder,trs(ex,.73,ez+dz,.25,1.46,.25),C.wood);
+  for(const y of [.45,.95])draw(cube,trs(ex,y,ez,.16,.16,8.2),C.wood);
+  draw(cube,trs(ex-.10,1.18,ez,.09,.54,1.20),C.stone);
+ }
+ const sx=SOUTH_GATE.x,sz=TOWN_BOUNDS.maxZ+.03;
+ if(Math.hypot(player.x-sx,player.z-sz)<45){
+  for(const dx of [-4.1,4.1])draw(cylinder,trs(sx+dx,.73,sz,.25,1.46,.25),C.wood);
+  for(const y of [.45,.95])draw(cube,trs(sx,y,sz,8.2,.16,.16),C.wood);
+  draw(cube,trs(sx,1.18,sz-.10,1.20,.54,.09),C.stone);
+ }
 }
 
 function introTracked(){return (needsIntroGate()||!['none','done'].includes(state.introQuest.stage))&&state.scene==='field';}
@@ -3328,7 +3588,7 @@ function resourceLessonHTML(){
  <h3 class="lesson-title">왼쪽 아래, 세 막대가 보여?</h3>
  <div class="sera-resources">
   <div class="sera-resource hp"><b>체력 <span>HP</span></b><p>0이 되면 쓰러져. <kbd>Q</kbd>로 회복해.</p></div>
-  <div class="sera-resource mp"><b>마나 <span>MP</span></b><p>공격·스킬·달리기에 사용해.</p></div>
+  <div class="sera-resource mp"><b>마나 <span>MP</span></b><p>일반·강공격·스킬·달리기에 사용해.</p></div>
   <div class="sera-resource vigor"><b>기력</b><p>일반·강공격과 <kbd>F</kbd> 대시에 사용해.</p></div>
  </div>
  <p class="sera-tip">일반 공격은 <b>마나와 기력을 함께</b> 써.<br>부족할 땐 잠깐 걷거나 멈춰 봐.</p>
@@ -3347,7 +3607,7 @@ function uiLessonHTML(){return `
  </div>
  <p class="sera-tip">대화를 마친 뒤 눌러 봐. <b>같은 키로 닫을 수 있어.</b><br>창이 열린 동안 게임은 멈춰.</p>
  <details class="sera-details"><summary>다른 화면과 메뉴</summary>
- <p>왼쪽 위는 현재 의뢰, 아래 중앙은 스킬과 남은 쿨타임이야. EXP는 경험치, G는 골드, S는 실버야. <b>1 G = 10 S</b>.<br>지도 오른쪽에서 목적지를 선택하고, 마을 확대·전체 지역으로 범위를 바꿔. 자동 이동은 아니야.</p>
+ <p>왼쪽 위는 현재 의뢰, 아래 중앙은 스킬과 남은 쿨타임이야. EXP는 경험치, G는 골드야. 금액은 <b>0.1 G</b> 단위까지 표시돼.<br>지도 오른쪽에서 목적지를 선택하고, 마을 확대·전체 지역으로 범위를 바꿔. 자동 이동은 아니야.</p>
  <p>E에서 스킬·장비·전리품·사냥 도감도 볼 수 있어.<br>Esc는 저장 메뉴, B는 소리 설정, K는 게시판 의뢰야. J 모험 기록은 숲의 미궁 안에서만 보이고, 찢어진 기록 2장을 모으면 복원돼.</p></details>`;}
 function huntLessonHTML(){return `
  <div class="lesson-kicker">첫걸음 4 / 4 · 첫 사냥</div>
@@ -3490,13 +3750,18 @@ function hasJournalPage(id){return state.exploration.pages.includes(id);}
 function journalUnlocked(){return MAZE.pages.length===2&&MAZE.pages.every(p=>hasJournalPage(p.id));}
 function dungeonJournalVisible(){return state.scene==='dungeon';}
 function closeDungeonJournalOnLeave(){
- if(state.mode==='journal'){ $('journal').classList.add('hidden');state.mode='play';helpReturn='play';pauseInput(); }
+ if(state.mode==='journal'){ $('journal').classList.add('hidden');state.mode='play';helpReturn='play';resumePlayInput(); }
  return true;
 }
 function entranceKnown(){return state.exploration.discovered;}
 function entranceHinted(){return state.exploration.accepted&&state.quest==='unlocked'&&!entranceKnown();}
 function entranceMapVisible(){return entranceKnown()||entranceHinted();}
 function mapPlacePresentation(p){
+ if(p.id==='slimeQueen'){
+  const q=enemies.find(e=>e.archetype==='slimeQueen');
+  if(q?.hp>0)return {...p,x:q.x,z:q.z,label:'슬라임 퀸 · 현재 위치',short:`슬라임 퀸 · Lv.${q.level}`,note:'현재 위치 실시간 추적 · 미니 중간보스 · 처치 후 약 4분 뒤 웅덩이에서 재출현'};
+  return {...p,x:SLIME_QUEEN_CLEARING.x,z:SLIME_QUEEN_CLEARING.z,note:'현재 처치됨 · 약 4분 뒤 이 웅덩이에서 재출현'};
+ }
  if(p.id==='abramCave'){
   const g=ironGiantBoss();
   if(!abramCaveCleared())return {...p,note:`최소 Lv.${DUNGEON_ACCESS.abram.minLevel} · 권장 ${DUNGEON_ACCESS.abram.recommended} · 붉은 철갑 거인 Lv.${MONSTERS.ironGiant.level} 처치 시 테른 해금`};
@@ -3631,7 +3896,7 @@ function repairLoadedFieldPositions(){
   b.x=b.home?.x??WORLD.spawnX;b.z=b.home?.z??WORLD.spawnZ;
  };
  if(state.scene==='field'&&!currentInterior())safe(player,CONFIG.playerRadius);
- for(const e of enemies)if(e.scene==='field'){if(e.type!=='thug'&&inVillage(e.x,e.z)){e.x=e.home.x;e.z=e.home.z;}safe(e,e.r);}
+ for(const e of enemies)if(e.scene==='field'){if(e.type!=='thug'&&inVillage(e.x,e.z)){e.x=e.home.x;e.z=e.home.z;}if(inSouthForest(e.x,e.z)&&!SOUTH_ENEMY_TYPES.has(e.type)){e.x=e.home.x;e.z=e.home.z;}safe(e,e.r);}
 }
 function renderRumorNPC(){
  const g=RUMOR_NPC,yaw=dist(g,player)<8?angle(g,player):g.yaw;
@@ -3921,13 +4186,68 @@ function renderSlime(e){
  for(const side of [-1,1]){part(cube,root,[side*.23,.56,-.65],[.105,.17,.06],C.dark);part(cube,root,[side*.22,.61,-.685],[.035,.055,.014],C.white);}
  part(cube,root,[0,.35,-.64],[.19,.055,.065],C.dark);
 }
+function renderSlimeQueen(e){
+ const dying=e.hp<=0,s=(dying?Math.max(.02,1-e.deadTime*1.15):1)*e.scale,t=state.time*3.0+e.id,pulse=Math.sin(t)*.035;
+ const wind=e.mode==='windup'?clamp(1-e.timer/Math.max(.01,e.windupTime),0,1):0,active=e.mode==='hop'?clamp(1-e.timer/.46,0,1):e.mode==='slam'?clamp(1-e.timer/.28,0,1):0;
+ const slam=e.attackKind==='slam'||e.mode==='slam',bodyPitch=slam?(wind*-.18+active*.34):(wind*-.08+Math.sin(active*Math.PI)*.10);
+ const root=trs(e.x,e.y,e.z,s*(1-pulse*.25),s*(1+pulse),s*(1-pulse*.25),bodyPitch,-e.yaw,dying?e.deadTime*.35:0),flash=e.flash>0?.65:0;
+ draw(cylinder,trs(e.x,.024,e.z,2.75*s,.02,2.45*s),C.shadow,1);
+ // Slime lower body: broad, soft and legless.
+ part(rock,root,[0,.43,.15],[1.18,.47,1.04],[.55,.60,.56],[0,0,0],0,0,flash);
+ part(rock,root,[0,.86,.02],[.70,.58,.62],[.60,.64,.60],[0,0,0],0,0,flash);
+ // Humanoid upper half emerging from the slime mass.
+ part(rock,root,[0,1.42,.02],[.52,.66,.38],C.stone,[0,0,0],0,0,flash);
+ part(rock,root,[0,2.10,-.08],[.39,.42,.36],C.light,[0,0,0],0,0,flash);
+ part(cube,root,[-.14,2.13,-.43],[.075,.065,.045],C.dark);part(cube,root,[.14,2.13,-.43],[.075,.065,.045],C.dark);part(cube,root,[0,1.94,-.45],[.18,.045,.05],C.dark);
+ for(const side of [-1,1]){
+  const sweep=slam?(e.mode==='windup'?-1.25+wind*.30:e.mode==='slam'?.95:0):(e.mode==='windup'?-side*.72*wind:e.mode==='hop'?side*(1.15-2.1*active):0);
+  const arm=mul(root,trs(side*.57,1.58,-.02,1,1,1,sweep,0,side*.20));part(rock,arm,[0,-.34,0],[.18,.62,.18],[.56,.61,.57]);part(rock,arm,[0,-.76,-.08],[.22,.23,.24],C.light);
+ }
+ // Uneven crown keeps the queen identity while the face/body read as half-human.
+ for(const [dx,h,rz] of [[-.30,2.54,-.18],[0,2.72,0],[.30,2.51,.18]])part(cone,root,[dx,h,-.02],[.18,.46,.18],C.stone,[0,0,rz]);
+}
+function renderGoblin(e){
+ const dying=e.hp<=0,s=(dying?Math.max(.03,1-e.deadTime*.9):1)*e.scale,chief=e.archetype==='goblinChief',walk=Math.sin(e.gait)*.28*e.moveBlend;
+ const wind=e.mode==='windup'?clamp(1-e.timer/Math.max(.01,e.windupTime),0,1):0,strike=e.mode==='lunge'?clamp(1-e.timer/.30,0,1):0;
+ const bodyTwist=chief?(e.mode==='windup'?.12*wind:e.mode==='lunge'?-.20*Math.sin(strike*Math.PI):0):(e.mode==='windup'?.30*wind:e.mode==='lunge'?-.55*Math.sin(strike*Math.PI):0);
+ const root=trs(e.x,.02,e.z,s,s,s,0,-e.yaw+bodyTwist,dying?e.deadTime*.7:0),flash=e.flash>0?.7:0;
+ draw(cylinder,trs(e.x,.022,e.z,1.35*s,.018,1.15*s),C.shadow,1);
+ part(cube,root,[0,.94,0],[chief?.57:.48,.72,.38],chief?C.armor:C.dark,[chief&&e.mode==='windup'?-.10*wind:0,0,0],0,0,flash);
+ part(rock,root,[0,1.63,-.05],[chief?.42:.36,.38,.34],C.stone,[0,0,0],0,0,flash);
+ for(const side of [-1,1]){part(cone,root,[side*.42,1.70,-.04],[.33,.20,.20],C.stone,[0,0,side*1.15]);const hip=mul(root,trs(side*.20,.56,0,1,1,1,walk*side,0,0));part(cube,hip,[0,-.23,0],[.20,.46,.22],C.dark);}
+ part(cube,root,[-.13,1.67,-.34],[.07,.055,.04],C.light);part(cube,root,[.13,1.67,-.34],[.07,.055,.04],C.light);
+ if(chief){
+  // Chief: a heavy overhead two-handed chop, deliberately unlike the slime hop.
+  const chop=e.mode==='windup'?-1.35+wind*.25:e.mode==='lunge'?-1.10+2.35*strike:-.30;
+  for(const side of [-1,1]){const arm=mul(root,trs(side*.43,1.18,0,1,1,1,chop,0,side*.08));part(cube,arm,[0,-.27,0],[.17,.58,.18],C.wood);}
+  part(cube,root,[0,1.10,-.18],[.14,1.55,.18],C.wood,[chop,0,0]);part(rock,root,[0,1.88,-.20],[.48,.25,.20],C.armor,[chop,0,0]);
+  part(cone,root,[-.30,2.06,-.02],[.18,.58,.18],C.light,[0,0,-.28]);part(cone,root,[.30,2.06,-.02],[.18,.58,.18],C.light,[0,0,.28]);
+ }else{
+  // Ordinary goblin: one-handed diagonal slash with a balancing off-hand.
+  const slash=e.mode==='windup'?-1.10+.20*wind:e.mode==='lunge'?-0.9+2.0*strike:-.22;
+  const arm=mul(root,trs(.48,1.05,0,1,1,1,slash,0,-.18));part(cube,arm,[0,-.27,0],[.16,.55,.17],C.wood);part(cube,arm,[0,-.72,-.05],[.10,.85,.16],C.armor,[.12,0,0]);
+  const off=mul(root,trs(-.45,1.07,.03,1,1,1,-slash*.35,0,.15));part(cube,off,[0,-.25,0],[.14,.50,.15],C.wood);
+ }
+}
+function renderGoblinShaman(e){
+ const dying=e.hp<=0,s=(dying?Math.max(.03,1-e.deadTime*.75):1)*e.scale,wind=e.mode==='windup'?clamp(1-e.timer/Math.max(.01,e.windupTime),0,1):0,cast=e.mode==='slam'?clamp(1-e.timer/.28,0,1):0;
+ const staffPose=e.mode==='windup'?-1.0+.42*wind:e.mode==='slam'?-.58+1.25*cast:-.12,root=trs(e.x,.02,e.z,s,s,s,0,-e.yaw,dying?e.deadTime*.55:0),flash=e.flash>0?.65:0;
+ draw(cylinder,trs(e.x,.022,e.z,1.55*s,.018,1.35*s),C.shadow,1);
+ part(cone,root,[0,.88,.05],[.82,1.52,.65],C.dark,[0,0,0],0,0,flash);part(rock,root,[0,1.72,-.04],[.39,.43,.35],C.stone);
+ for(const side of [-1,1])part(cone,root,[side*.43,1.79,-.03],[.34,.22,.21],C.stone,[0,0,side*1.10]);
+ // Staff rises during channeling and is driven into the ground when the spell releases.
+ const staffRoot=mul(root,trs(.60,1.42,.02,1,1,1,staffPose,0,-.08));part(cylinder,staffRoot,[0,0,0],[.10,2.70,.10],C.wood);part(rock,staffRoot,[0,1.43,0],[.32,.38,.28],C.light,[0,state.time*.45,0],1);
+ const free=mul(root,trs(-.52,1.28,-.03,1,1,1,e.mode==='windup'?-1.1*wind:e.mode==='slam'?.45:0,0,.18));part(cube,free,[0,-.30,0],[.16,.62,.17],C.stone);
+ part(cube,root,[-.14,1.77,-.36],[.07,.055,.04],C.light);part(cube,root,[.14,1.77,-.36],[.07,.055,.04],C.light);
+ if(e.mode==='windup'||e.mode==='slam')for(let i=0;i<5;i++){const a=i*TAU/5+state.time*(e.mode==='slam'?1.8:.8);draw(gem,trs(e.x+Math.cos(a)*(1.1-.35*cast),e.y+.35+.45*wind,e.z+Math.sin(a)*(1.1-.35*cast),.10,.16,.10,0,a,0),C.light,1);}
+}
 function renderWolf(e){
- const dying=e.hp<=0,scale=(dying?Math.max(.02,1-e.deadTime*.85):1)*e.scale,walk=Math.sin(e.gait)*.34*e.moveBlend;
- const root=trs(e.x,.025*Math.cos(e.gait*2)*e.moveBlend,e.z,scale,scale,scale,0,-e.yaw,dying?e.deadTime*.8:0),flash=e.flash>0?.75:0;
+ const dying=e.hp<=0,scale=(dying?Math.max(.02,1-e.deadTime*.85):1)*e.scale,walk=Math.sin(e.gait)*.34*e.moveBlend,wind=e.mode==='windup'?clamp(1-e.timer/Math.max(.01,e.windupTime),0,1):0,bite=e.mode==='lunge'?Math.sin(clamp(1-e.timer/.27,0,1)*Math.PI):0;
+ const root=trs(e.x,.025*Math.cos(e.gait*2)*e.moveBlend,e.z,scale,scale,scale,-.18*wind+.14*bite,-e.yaw,dying?e.deadTime*.8:0),flash=e.flash>0?.75:0;
  draw(cylinder,trs(e.x,.022,e.z,1.7*scale,.02,2.3*scale),C.shadow,1);
  part(rock,root,[0,.83,.10],[.57,.40,.89],C.dark,[0,0,0],0,0,flash);
  part(rock,root,[0,1.06,-.73],[.39,.38,.43],C.stone,[0,0,0],0,0,flash);
- part(cube,root,[0,.96,-1.13],[.31,.23,.46],C.dark);
+ part(cube,root,[0,.96-.10*bite,-1.13-.18*bite],[.31,.23+.08*bite,.46],C.dark);
  for(const side of [-1,1]){
   part(cone,root,[side*.22,1.48,-.72],[.24,.43,.25],C.dark);
   // Ordinary wolf eyes are plain small cubes; no crystals on its body.
@@ -3970,13 +4290,13 @@ function renderWerewolf(e){
  if(e.mode==='roar')ring(e.x,e.z,3+Math.sin(state.time*6)*.5,C.red);
 }
 function renderGoat(e){
- const s=(e.hp<=0?Math.max(.04,1-e.deadTime*.75):1)*e.scale,root=trs(e.x,e.y,e.z,s,s,s,0,-e.yaw,0),flash=e.flash>0?.7:0,step=Math.sin(e.gait)*.28*e.moveBlend;
+ const s=(e.hp<=0?Math.max(.04,1-e.deadTime*.75):1)*e.scale,charge=e.mode==='windup'?clamp(1-e.timer/Math.max(.01,e.windupTime),0,1):e.mode==='lunge'?.9:0,root=trs(e.x,e.y,e.z,s,s,s,.22*charge,-e.yaw,0),flash=e.flash>0?.7:0,step=Math.sin(e.gait)*.28*e.moveBlend;
  draw(cylinder,trs(e.x,e.y+.025,e.z,1.75*s,.018,2.0*s),C.shadow,1);part(rock,root,[0,.88,.10],[.65,.52,.88],C.stone,[0,0,0],0,0,flash);part(rock,root,[0,1.12,-.68],[.42,.44,.48],C.light);
  for(const side of [-1,1]){part(cone,root,[side*.28,1.58,-.63],[.16,.72,.16],C.armor,[.25,0,side*.3]);for(const z of [-.40,.55])part(cube,root,[side*.39,.38,z],[.18,.72,.20],C.dark,[step*(z<0?1:-1)*side,0,0]);}
  part(cone,root,[0,.95,.98],[.16,.68,.16],C.dark,[1.25,0,0]);
 }
 function renderCat(e){
- const s=(e.hp<=0?Math.max(.04,1-e.deadTime*.9):1)*e.scale,root=trs(e.x,e.y,e.z,s,s,s,0,-e.yaw,0),flash=e.flash>0?.7:0,step=Math.sin(e.gait)*.38*e.moveBlend;
+ const s=(e.hp<=0?Math.max(.04,1-e.deadTime*.9):1)*e.scale,pounce=e.mode==='windup'?clamp(1-e.timer/Math.max(.01,e.windupTime),0,1):e.mode==='lunge'?Math.sin(clamp(1-e.timer/.31,0,1)*Math.PI):0,root=trs(e.x,e.y-.10*pounce,e.z,s*(1+.08*pounce),s*(1-.10*pounce),s, -.28*pounce,-e.yaw,0),flash=e.flash>0?.7:0,step=Math.sin(e.gait)*.38*e.moveBlend;
  draw(cylinder,trs(e.x,e.y+.022,e.z,1.55*s,.018,2.15*s),C.shadow,1);part(rock,root,[0,.65,.12],[.47,.38,.92],C.dark,[0,0,0],0,0,flash);part(rock,root,[0,.87,-.78],[.34,.34,.38],C.stone);
  for(const side of [-1,1]){part(cone,root,[side*.22,1.28,-.72],[.16,.40,.15],C.dark);part(cube,root,[side*.22,.95,-1.04],[.07,.05,.05],C.light,[0,0,0],1);for(const z of [-.52,.52])part(cube,root,[side*.30,.30,z],[.14,.57,.16],C.stone,[step*(z<0?1:-1)*side,0,0]);}
  part(cone,root,[0,.68,1.18],[.13,1.25,.13],C.dark,[1.18,0,.25*Math.sin(state.time*2+e.id)]);
@@ -3993,14 +4313,14 @@ function renderBeetle(e){
  for(const side of [-1,1])for(const z of [-.48,0,.48])part(cube,root,[side*.72,.22,z],[.58,.10,.12],C.stone,[0,0,side*.25]);
 }
 function renderGolem(e){
- const s=(e.hp<=0?Math.max(.04,1-e.deadTime*.55):1)*e.scale,root=trs(e.x,e.y,e.z,s,s,s,0,-e.yaw,0),flash=e.flash>0?.65:0;
+ const s=(e.hp<=0?Math.max(.04,1-e.deadTime*.55):1)*e.scale,wind=e.mode==='windup'?clamp(1-e.timer/Math.max(.01,e.windupTime),0,1):0,hit=e.mode==='slam'?clamp(1-e.timer/.26,0,1):0,armPose=e.mode==='windup'?-1.05*wind:e.mode==='slam'?-1.05+1.85*hit:0,root=trs(e.x,e.y,e.z,s,s,s,.10*hit,-e.yaw,0),flash=e.flash>0?.65:0;
  draw(cylinder,trs(e.x,e.y+.02,e.z,2.35*s,.018,2.0*s),C.shadow,1);part(rock,root,[0,1.20,.05],[.82,.78,.64],C.stone,[0,0,0],0,0,flash);part(rock,root,[0,2.05,-.08],[.50,.50,.46],C.dark);
- for(const side of [-1,1]){part(rock,root,[side*.82,1.28,0],[.38,.78,.38],C.dark,[0,0,side*.12]);part(rock,root,[side*.42,.42,.05],[.40,.80,.42],C.stone);}part(cube,root,[0,2.10,-.48],[.34,.09,.08],C.light,[0,0,0],1);
+ for(const side of [-1,1]){const arm=mul(root,trs(side*.82,1.45,0,1,1,1,armPose,0,side*.12));part(rock,arm,[0,-.18,0],[.38,.78,.38],C.dark);part(rock,root,[side*.42,.42,.05],[.40,.80,.42],C.stone);}part(cube,root,[0,2.10,-.48],[.34,.09,.08],C.light,[0,0,0],1);
 }
 function renderWraith(e){
- const s=(e.hp<=0?Math.max(.04,1-e.deadTime*.85):1)*e.scale,root=trs(e.x,e.y,e.z,s,s,s,0,-e.yaw,0),flash=e.flash>0?.75:0,ground=ridgeGround(e.x,e.z,0);
+ const s=(e.hp<=0?Math.max(.04,1-e.deadTime*.85):1)*e.scale,wind=e.mode==='windup'?clamp(1-e.timer/Math.max(.01,e.windupTime),0,1):0,lunge=e.mode==='lunge'?Math.sin(clamp(1-e.timer/.42,0,1)*Math.PI):0,root=trs(e.x,e.y,e.z,s,s,s,-.12*lunge,-e.yaw,0),flash=e.flash>0?.75:0,ground=ridgeGround(e.x,e.z,0);
  draw(cylinder,trs(e.x,ground+.018,e.z,1.45*s,.012,1.25*s),C.shadow,1);part(cone,root,[0,.64,0],[.78,1.55,.70],C.light,[0,0,0],0,0,flash);part(rock,root,[0,1.43,-.08],[.34,.38,.31],C.stone);part(cube,root,[-.14,1.47,-.36],[.07,.05,.04],C.dark);part(cube,root,[.14,1.47,-.36],[.07,.05,.04],C.dark);
- for(const side of [-1,1])part(cube,root,[side*.58,.88,0],[.16,.88,.18],C.stone,[Math.sin(state.time*2+side)*.2,0,side*.15]);
+ for(const side of [-1,1])part(cube,root,[side*(.58-.18*lunge),.88,-.34*lunge],[.16,.88,.18],C.stone,[-.55*lunge+Math.sin(state.time*2+side)*.2,0,side*(.15+.55*wind)]);
 }
 function renderIronGiant(e){
  const s=(e.hp<=0?Math.max(.04,1-e.deadTime*.45):1)*e.scale,root=trs(e.x,e.y,e.z,s,s,s,0,-e.yaw,0),flash=e.flash>0?.65:0,pose=e.mode==='windup'?(e.attackKind==='slam'?-1.0:.45):e.mode==='slam'?.9:0;
@@ -4013,16 +4333,16 @@ function renderEnemy(e){
  if(e.scene===state.scene&&e.hp<=0&&e.respawnCue>0&&dist(e.home,player)<50)renderRespawnWarning(e);
  if(e.scene!==state.scene||dist(e,player)>55||e.hp<=0&&e.deadTime>1.65)return;
  if(e.hp>0&&['rare','elite','boss'].includes(e.rarity)){const gy=e.scene==='field'?(ridgeRawHeight(e.x,e.z)??0):0;ring(e.x,e.z,e.r+(.28+(e.rarity==='elite'?.18:e.rarity==='boss'?.28:0)),e.rarity==='boss'?C.red:C.light,.72,.035,gy);}
- if(e.type==='slime')renderSlime(e);else if(e.type==='wolf')renderWolf(e);else if(e.type==='boar')renderBoar(e);else if(e.type==='boss')renderWerewolf(e);else if(e.type==='goat')renderGoat(e);else if(e.type==='cat')renderCat(e);else if(e.type==='crow')renderCrow(e);else if(e.type==='beetle')renderBeetle(e);else if(e.type==='golem')renderGolem(e);else if(e.type==='wraith')renderWraith(e);else if(e.type==='giant')renderIronGiant(e);
+ if(e.type==='slime')renderSlime(e);else if(e.type==='slimeQueen')renderSlimeQueen(e);else if(e.type==='goblin')renderGoblin(e);else if(e.type==='goblinShaman')renderGoblinShaman(e);else if(e.type==='wolf')renderWolf(e);else if(e.type==='boar')renderBoar(e);else if(e.type==='boss')renderWerewolf(e);else if(e.type==='goat')renderGoat(e);else if(e.type==='cat')renderCat(e);else if(e.type==='crow')renderCrow(e);else if(e.type==='beetle')renderBeetle(e);else if(e.type==='golem')renderGolem(e);else if(e.type==='wraith')renderWraith(e);else if(e.type==='giant')renderIronGiant(e);
  if(e.hp>0){
   if(e.mode==='windup'){
-   const p=clamp(1-e.timer/e.windupTime,.05,1),r=e.type==='boss'?(e.attackKind==='slam'?e.phase===2?7.4:6.2:5.4):e.type==='giant'?(e.attackKind==='slam'?5.7:3.2):e.type==='golem'?3.8:e.type==='goat'?2.0:1.65;
+   const p=clamp(1-e.timer/e.windupTime,.05,1),r=e.type==='boss'?(e.attackKind==='slam'?e.phase===2?7.4:6.2:5.4):e.type==='goblinShaman'?5.6:e.type==='slimeQueen'?(e.attackKind==='slam'?4.4:2.2):e.type==='goblin'?(e.archetype==='goblinChief'?2.35:2.0):e.type==='giant'?(e.attackKind==='slam'?5.7:3.2):e.type==='golem'?3.8:e.type==='goat'?2.0:1.65;
    const ground=e.scene==='field'?(ridgeRawHeight(e.x,e.z)??0):0;ring(e.x,e.z,r,e.type==='boss'?C.red:C.white,p,.09,ground);
    if(e.type==='boss'&&e.attackKind==='rush')for(let i=1;i<=6;i++)draw(cube,trs(e.x+e.attackDir.x*i*1.4,.045,e.z+e.attackDir.z*i*1.4,.12,.03,.8,0,-e.yaw,0),C.red,1,1);
    if(e.type==='giant'&&e.attackKind==='rush')for(let i=1;i<=5;i++){const x=e.x+e.attackDir.x*i*1.55,z=e.z+e.attackDir.z*i*1.55,y=ridgeRawHeight(x,z);if(y!=null)draw(cube,trs(x,y+.045,z,.12,.03,.8,0,-e.yaw,0),C.light,1);}
   }
-  if(e.mode==='slam')ring(e.x,e.z,e.type==='boss'?(e.phase===2?7.4:6.2):e.type==='giant'?5.7:3.8,e.type==='boss'?C.red:C.white,1,.09,e.scene==='field'?(ridgeRawHeight(e.x,e.z)??0):0);
-  if(e.hp<e.maxHP&&e.type!=='boss'&&!e.boss){
+  if(e.mode==='slam')ring(e.x,e.z,e.type==='boss'?(e.phase===2?7.4:6.2):e.type==='goblinShaman'?5.6:e.type==='slimeQueen'?4.4:e.type==='giant'?5.7:3.8,e.type==='boss'?C.red:C.white,1,.09,e.scene==='field'?(ridgeRawHeight(e.x,e.z)??0):0);
+  if(e.hp<e.maxHP&&e.type!=='boss'&&(!e.boss||SOUTH_ENEMY_TYPES.has(e.type))){
    const h=enemyTextHeight(e);draw(cube,trs(e.x,h,e.z,1.35,.075,.075),C.dark,1);
    draw(cube,trs(e.x-(1-e.hp/e.maxHP)*.675,h+.005,e.z,1.35*e.hp/e.maxHP,.085,.08),C.white,1);
   }
@@ -4098,8 +4418,8 @@ function renderMerchant(person=activeMerchant()){
  part(cylinder,root,[-.65,1.1,0],[.07,2.2,.07],C.stone);
 }
 function renderBoar(e){
- const s=e.hp<=0?Math.max(.03,1-e.deadTime*.7):1,gait=Math.sin(e.gait)*.26*e.moveBlend;
- const root=trs(e.x,.03*Math.cos(e.gait*2)*e.moveBlend,e.z,s,s,s,0,-e.yaw,0);
+ const s=e.hp<=0?Math.max(.03,1-e.deadTime*.7):1,gait=Math.sin(e.gait)*.26*e.moveBlend,charge=e.mode==='windup'?clamp(1-e.timer/Math.max(.01,e.windupTime),0,1):e.mode==='lunge'?.95:0;
+ const root=trs(e.x,.03*Math.cos(e.gait*2)*e.moveBlend,e.z,s,s,s,.26*charge,-e.yaw,0);
  draw(cylinder,trs(e.x,.02,e.z,2.1*s,.02,2.5*s),C.shadow,1);
  part(rock,root,[0,.91,.12],[.81,.65,1.05],[.25,.27,.26],[0,0,0],0,0,e.flash>0?.7:0);
  part(rock,root,[0,.83,-.91],[.57,.55,.53],C.stone);
@@ -4142,8 +4462,8 @@ function renderSkillEffects(){
  * All positions remain north-up, with CSS-sized canvases (no aspect stretching).
  * The maze's unknown cells and undiscovered rune positions stay hidden.
  */
-const MAP_PALETTE=Object.freeze({bg:'#10191e',grid:'#29373c',forest:'#202f2c',village:'#464a3b',water:'#2b454c',shore:'#607c7e',road:'#d2c5a7',trail:'#92a18b',wall:'#1c292c',floor:'#67736b',edge:'#a0aaa0',ink:'#ece6d6',dim:'#9caca9',quest:'#e0bd76',slime:'#a7c3ab',wolf:'#d79083',boar:'#c4a789',boss:'#f06e65'});
-let mapChoice='quest',mapOverview=false,mapTownFocus=false;
+const MAP_PALETTE=Object.freeze({bg:'#10191e',grid:'#29373c',forest:'#202f2c',southForest:'#29322c',goblin:'#c5b58b',village:'#464a3b',water:'#2b454c',shore:'#607c7e',road:'#d2c5a7',trail:'#92a18b',wall:'#1c292c',floor:'#67736b',edge:'#a0aaa0',ink:'#ece6d6',dim:'#9caca9',quest:'#e0bd76',slime:'#a7c3ab',wolf:'#d79083',boar:'#c4a789',boss:'#f06e65'});
+let mapChoice='quest',mapOverview=false,mapTownFocus=false,mapZoom=1;
 const MAP_PLACES=[
  {id:'rioQuest',x:ABRAM_PEOPLE[1].x,z:ABRAM_PEOPLE[1].z,label:'파수병 리오 · 새 검의 부탁',short:'리오 · 제작 의뢰',kind:'guard',note:'아브람 일반 의뢰 · 사냥꾼의 검 제작 / 시간 제한 없음'},
  {id:'boarQuest',x:-46,z:59,label:'경비병 다린 · 부러진 검',short:'다린 · 멧돼지 의뢰',kind:'guard',note:'일반 의뢰 · 멧돼지 15마리 / 6시간 만료 없음'},
@@ -4170,7 +4490,12 @@ const MAP_PLACES=[
  {id:'merchant',x:MERCHANT.x,z:MERCHANT.z,label:'상인 모르',short:'상인 모르',kind:'merchant',note:'부산물 판매 · 하급 회복약 구매'},
  {id:'blacksmith',x:BLACKSMITH.x,z:BLACKSMITH.z,label:BLACKSMITH.name,short:'대장간',kind:'merchant',note:'무기·아티팩트·흉갑 제작 / 장비 판매'},
  {id:'camp',x:CAMP.x,z:CAMP.z,label:'돌샘 온천',short:'온천',kind:'camp',note:'HP·MP·기력 회복 / 회복약이 전혀 없으면 하급 1개'},
- {id:'swamp',x:142,z:55,label:'잿빛 늪',short:'잿빛 늪',kind:'swamp',note:'동쪽 길 끝 · 슬라임 사냥'},
+ {id:'swamp',x:142,z:55,label:'잿빛 늪',short:'잿빛 늪',kind:'swamp',note:'Lv.3 슬라임 군집 · 동쪽 길 끝에 슬라임 퀸'},
+ {id:'slimeQueen',x:SLIME_QUEEN_CLEARING.x,z:SLIME_QUEEN_CLEARING.z,label:'슬라임 퀸의 웅덩이',short:'슬라임 퀸 · Lv.6',kind:'slimeQueen',note:'동쪽 길 끝 · 미니 중간보스 · 약 4분 뒤 재출현'},
+ {id:'southForest',x:-72,z:178,label:'남쪽 숲',short:'남쪽 숲 · Lv.5~10',kind:'goblin',note:'갈라진 활엽수와 노출 뿌리 · 여러 고블린 부락이 흩어진 활동 구역'},
+ {id:'goblinCampNorth',x:GOBLIN_CAMPS[0].approach.x,z:GOBLIN_CAMPS[0].approach.z,label:GOBLIN_CAMPS[0].name,short:'앞초소 · Lv.5',kind:'goblin',note:'남쪽 숲 초입의 작은 경계 부락 · 일반 고블린 중심'},
+ {id:'goblinCampWest',x:GOBLIN_CAMPS[1].approach.x,z:GOBLIN_CAMPS[1].approach.z,label:GOBLIN_CAMPS[1].name,short:'사냥부락 · Lv.5~7',kind:'goblin',note:'서쪽 갈림길의 사냥 부락 · 고블린 족장 출현'},
+ {id:'goblinCamp',x:GOBLIN_CAMPS[2].approach.x,z:GOBLIN_CAMPS[2].approach.z,label:GOBLIN_CAMPS[2].name,short:'주술부락 · Lv.5~10',kind:'goblinShaman',note:'남쪽 숲 깊은 부락 · 고블린 주술사 Lv.10 미니 중간보스'},
  {id:'entrance',x:ENTRANCE.x,z:ENTRANCE.z,label:'숲의 미궁',short:'미궁 입구',kind:'portal',note:'직접 발견한 입구 · 길 밖의 유적'},
  {id:'guide',x:GUIDE_NPC.x,z:GUIDE_NPC.z,label:GUIDE_NPC.name,short:'세라 · 입문',kind:'guide',note:'자원·상태창 안내 · 포인트 분배 후 슬라임 5마리'},
  {id:'rumor',x:RUMOR_NPC.x,z:RUMOR_NPC.z,label:RUMOR_NPC.name,short:'이안 · 소문',kind:'rumor',note:'동쪽 숲 내부의 길 · 붉은 빛의 소문 / 미궁 탐사'},
@@ -4272,7 +4597,7 @@ function mapModel(full=false){
   for(const p of MAP_PLACES)if(mapPlaceVisible(p))markers.push({...doorMapPoint(mapPlacePresentation(p)),type:'place'});
   // A world map is a readable sketch, not a live list of 100 dots. Nearby
   // hostiles remain visible with separate shapes; distant zones get labels.
-  for(const e of enemies)if(e.scene==='field'&&e.type!=='thug'&&e.hp>0&&dist(player,e)<48)markers.push({x:e.x,z:e.z,kind:e.type,type:'enemy',id:e.id});
+  for(const e of enemies)if(e.scene==='field'&&e.type!=='thug'&&e.archetype!=='slimeQueen'&&e.hp>0&&dist(player,e)<48)markers.push({x:e.x,z:e.z,kind:e.type,type:'enemy',id:e.id});
  }else if(state.scene==='dungeon'){
   for(let r=0;r<25;r++)for(let c=0;c<25;c++)if(state.cleared||state.visited[r*25+c])cells.push({r,c,...cellPos(c,r),wall:!!MAZE.grid[r][c]});
   for(const p of MAZE.pages)if(state.exploration.seenPages.includes(p.id)&&!hasJournalPage(p.id))markers.push({x:p.x,z:p.z,id:p.id,kind:'page',type:'place',short:'찢어진 기록 '+p.number});
@@ -4292,7 +4617,7 @@ function mapModel(full=false){
 }
 function mapIcon(c,x,y,kind,size=5,number=null){
  const P=MAP_PALETTE;c.save();c.translate(x,y);c.lineWidth=1.4;c.strokeStyle='#10191e';
- c.fillStyle=kind==='slime'?P.slime:kind==='wolf'?P.wolf:kind==='boar'?P.boar:kind==='boss'?P.boss:kind==='merchant'?P.quest:kind==='camp'?P.ink:kind==='guard'?P.dim:P.quest;
+ c.fillStyle=kind==='slime'||kind==='slimeQueen'?P.slime:kind==='goblin'||kind==='goblinShaman'?P.goblin:kind==='wolf'?P.wolf:kind==='boar'?P.boar:kind==='boss'?P.boss:kind==='merchant'?P.quest:kind==='camp'?P.ink:kind==='guard'?P.dim:P.quest;
  if(kind==='unknown'||kind==='rumor'){
   const r=kind==='unknown'?Math.max(7,size+1.5):Math.max(6,size+1);
   c.fillStyle=P.bg;c.strokeStyle=kind==='unknown'?P.quest:P.ink;c.lineWidth=1.7;
@@ -4304,7 +4629,7 @@ function mapIcon(c,x,y,kind,size=5,number=null){
  c.beginPath();
  if(kind==='guide'||kind==='page'){c.rect(-size-1,-size,size*2+2,size*2);}
  else if(kind==='guard'){c.moveTo(-size,-size);c.lineTo(size,-size);c.lineTo(size,size*.15);c.lineTo(0,size+1);c.lineTo(-size,size*.15);c.closePath();}
- else if(kind==='slime'||kind==='swamp')c.arc(0,0,size,0,TAU);
+ else if(kind==='slime'||kind==='slimeQueen'||kind==='swamp')c.arc(0,0,size,0,TAU);
  else if(kind==='wolf'||kind==='camp'){c.moveTo(0,-size-1);c.lineTo(size,size);c.lineTo(-size,size);c.closePath();}
  else if(kind==='boar'||kind==='merchant'||kind==='plate')c.rect(-size,-size,size*2,size*2);
  else if(kind==='portal'||kind==='gate'){c.rect(-size,-size,size*2,size*2);}
@@ -4325,6 +4650,13 @@ function fitMapCanvas(id,full=false){
  const c=el.getContext('2d');c.setTransform(ratio,0,0,ratio,0,0);return {c,w,h};
 }
 function drawMiniMap(){const v=fitMapCanvas('map');if(v)drawMap(v.c,v.w,v.h,false);}
+function zoomMapBounds(base,zoom,cx,cz){
+ zoom=clamp(Number(zoom)||1,1,3);if(zoom<=1)return base;
+ const fullW=base.x2-base.x1,fullH=base.z2-base.z1,w=fullW/zoom,h=fullH/zoom;
+ const x1=clamp(cx-w/2,base.x1,base.x2-w),z1=clamp(cz-h/2,base.z1,base.z2-h);
+ return {x1,x2:x1+w,z1,z2:z1+h};
+}
+function setMapZoom(value){mapZoom=clamp(Math.round((Number(value)||1)*4)/4,1,3);drawFullMap();return mapZoom;}
 function drawMap(c,w,h,full=false){
  if(currentInterior())return drawRoomMap(c,w,h,full);
  const P=MAP_PALETTE,m=mapModel(full);c.clearRect(0,0,w,h);c.fillStyle=P.bg;c.fillRect(0,0,w,h);
@@ -4343,6 +4675,10 @@ function drawMap(c,w,h,full=false){
   if(z2-z1<36){const mid=(z1+z2)/2;z1=mid-18;z2=mid+18;}
   b={x1,x2,z1,z2};
  }
+ if(full&&mapZoom>1){
+  const focus=mapChoice!=='quest'?m.objective:null,cx=Number.isFinite(focus?.x)?focus.x:player.x,cz=Number.isFinite(focus?.z)?focus.z:player.z;
+  b=zoomMapBounds(b,mapZoom,cx,cz);
+ }
  const scale=Math.min((w-2*margin)/(b.x2-b.x1),(h-top-bottom)/(b.z2-b.z1)),ox=(w-(b.x2-b.x1)*scale)/2,oy=top+(h-top-bottom-(b.z2-b.z1)*scale)/2;
  const sx=x=>ox+(x-b.x1)*scale,sz=z=>oy+(z-b.z1)*scale;
  const visible=(x,y,p=10)=>x>p&&x<w-p&&y>top+p/2&&y<h-bottom-p/2;
@@ -4353,6 +4689,8 @@ function drawMap(c,w,h,full=false){
   rect(WORLD.minX,WORLD.minZ,WORLD.maxX-WORLD.minX,WORLD.maxZ-WORLD.minZ,P.forest);
   for(const b of WORLD_WILDERNESS_BLOCKS)rect(b.x-b.hx,b.z-b.hz,b.hx*2,b.hz*2,P.wall);
   c.strokeStyle=P.grid;c.lineWidth=.65;for(let x=Math.ceil(b.x1/40)*40;x<b.x2;x+=40){c.beginPath();c.moveTo(sx(x),top);c.lineTo(sx(x),h-bottom);c.stroke();}for(let z=Math.ceil(b.z1/40)*40;z<b.z2;z+=40){c.beginPath();c.moveTo(0,sz(z));c.lineTo(w,sz(z));c.stroke();}
+  c.fillStyle=P.southForest;c.fillRect(sx(SOUTH_FOREST.minX),sz(SOUTH_FOREST.minZ),(SOUTH_FOREST.maxX-SOUTH_FOREST.minX)*scale,(SOUTH_FOREST.maxZ-SOUTH_FOREST.minZ)*scale);
+  line(SOUTH_TRAIL,P.trail,full?3.4:2.6);for(const t of SOUTH_CAMP_TRAILS)line(t,P.trail,full?2.4:1.9);c.strokeStyle=P.goblin;c.lineWidth=1.2;c.setLineDash([4,4]);for(const camp of GOBLIN_CAMPS){c.beginPath();c.ellipse(sx(camp.x),sz(camp.z),camp.r*scale,camp.r*.80*scale,0,0,TAU);c.stroke();}c.setLineDash([]);
   c.fillStyle=P.water;c.strokeStyle=P.shore;c.lineWidth=1.5;c.beginPath();c.ellipse(sx(142),sz(55),64*scale,43*scale,0,0,TAU);c.fill();c.setLineDash([3,4]);c.stroke();c.setLineDash([]);
   for(let i=0;i<7;i++){const x=111+(i%3)*23,z=32+Math.floor(i/3)*18;line([[x,z],[x+6,z],[x+9,z-1]],'#5e7a7a',.8);}
   if(state.exploration.accepted&&!entranceMapVisible()){
@@ -4412,7 +4750,9 @@ function drawMap(c,w,h,full=false){
  if(full){
   if(m.field){
    label(sx(-72),sz(9),'새벽마을 · 안전 구역',P.quest,[[0,0]]);
-   label(sx(142),sz(-1),'잿빛 늪 · 슬라임',P.slime,[[0,0]]);
+   label(sx(142),sz(-1),'잿빛 늪 · 슬라임 / 퀸',P.slime,[[0,0]]);
+   label(sx(-82),sz(137),'남쪽 숲 · 고블린 Lv.5~10',P.goblin,[[0,0],[0,-18]]);
+   for(const camp of GOBLIN_CAMPS)label(sx(camp.x),sz(camp.z),camp.name,P.goblin,[[0,0],[0,20],[44,0],[-44,0]]);
    label(sx(108),sz(-70),'동쪽 숲 · 늑대 / 멧돼지',P.dim,[[0,0]]);
    label(sx(-40),sz(-66),'회색 숲',P.dim,[[0,0]]);
    label(sx((ABRAM_BOUNDS.minX+ABRAM_BOUNDS.maxX)/2),sz(ABRAM_BOUNDS.minZ+8),'아브람 · 북부 교역로',P.quest,[[0,0],[0,-15]]);
@@ -4422,7 +4762,7 @@ function drawMap(c,w,h,full=false){
    if(mapTownFocus&&inAbram())for(const b of ABRAM_BUILDINGS.filter(b=>b.kind==='home'))label(sx(b.x),sz(b.z),b.name,P.dim,[[0,0],[0,18]]);
    if(mapTownFocus&&inTern())for(const b of TERN_BUILDINGS.filter(b=>b.kind==='home'))label(sx(b.x),sz(b.z),b.name,P.dim,[[0,0],[0,18]]);
    if(state.exploration.accepted&&!entranceMapVisible())label(sx(14),sz(-126),'붉은 빛의 소문 · 탐색 범위',P.dim,[[0,0],[0,-20]]);
-   for(const id of ['rioQuest','boarQuest','abramGate','abramNorth','abramGuide','abramForge','abramShop','abramBath','abramLibrary','ridgeMine','ridgeBridge','fogValley','abramCave','ternGate','ternGuide','ternForge','ternShop','ternBath','ternLibrary','guide','board','library','blacksmith','roan','merchant','camp','entrance','rumor']){const p=markers.find(v=>v.id===id);if(!p)continue;const offsets=id==='guide'?[[-65,-34],[64,-36],[0,-42]]:id==='roan'?[[-66,-8],[-60,-25],[0,-18]]:id==='merchant'?[[57,15],[60,30],[0,18]]:id==='camp'?[[-63,15],[-60,30]]:[[0,-20],[0,20]];label(sx(p.x),sz(p.z),p.short,P.ink,offsets);}
+   for(const id of ['rioQuest','boarQuest','abramGate','abramNorth','abramGuide','abramForge','abramShop','abramBath','abramLibrary','ridgeMine','ridgeBridge','fogValley','abramCave','ternGate','ternGuide','ternForge','ternShop','ternBath','ternLibrary','guide','board','library','blacksmith','roan','merchant','camp','southForest','goblinCampNorth','goblinCampWest','goblinCamp','slimeQueen','entrance','rumor']){const p=markers.find(v=>v.id===id);if(!p)continue;const offsets=id==='guide'?[[-65,-34],[64,-36],[0,-42]]:id==='roan'?[[-66,-8],[-60,-25],[0,-18]]:id==='merchant'?[[57,15],[60,30],[0,18]]:id==='camp'?[[-63,15],[-60,30]]:[[0,-20],[0,20]];label(sx(p.x),sz(p.z),p.short,P.ink,offsets);}
   }else{
    for(const p of markers)if(p.type==='place'&&p.short)label(sx(p.x),sz(p.z),p.short,p.kind==='boss'?P.boss:P.ink);
    if(!state.cleared)label(sx(-6),sz(0),'미발견 구역은 표시되지 않음',P.dim,[[0,0],[0,24],[0,-24]]);
@@ -4452,11 +4792,12 @@ function drawFullMap(){
  if($('mapOverlay').classList.contains('hidden'))return;
  const v=fitMapCanvas('fullmap',true);if(v)drawMap(v.c,v.w,v.h,true);
  const m=mapModel(true),o=m.objective,focusTown=mapChoice.startsWith('tern')||inTern()?'테른':mapChoice.startsWith('abram')||inAbram()?'아브람':'새벽마을';$('mapTitle').textContent=m.field?(mapTownFocus?(focusTown+' 안내도'):'색을 잃은 대지'):m.cave?'아브람 종유석 미궁':'숲의 미궁';$('townMapToggle').classList.toggle('hidden',!m.field);$('townMapToggle').textContent=mapTownFocus?'전체 지역':'마을 확대';
+ for(const id of ['mapZoomOut','mapZoomReset','mapZoomIn'])$(id).classList.remove('hidden');
  $('mapObjective').textContent=o.label;$('mapObjectiveNote').textContent=o.note;
  $('mapTravel').classList.toggle('hidden',!m.field||!!currentInterior());$('mapTravel').innerHTML=m.field&&!currentInterior()?fastTravelHTML():'';
  $('mapDistance').textContent=Number.isFinite(o.x)?`직선 거리 ${fmt(dist(player,o))}m`:'아직 찾지 못한 길을 탐험하세요';
  $('mapResetTarget').disabled=mapChoice==='quest'||!m.field;
- $('mapExtent').classList.toggle('hidden',m.field||m.cave);$('mapExtent').textContent=mapOverview?'탐험 영역 보기':'미궁 전체 범위';
+ $('mapExtent').classList.toggle('hidden',m.field||m.cave);$('mapExtent').textContent=mapOverview?'탐험 영역 보기':'미궁 전체 범위';$('mapZoomValue').textContent=Math.round(mapZoom*100)+'%';$('mapZoomOut').disabled=mapZoom<=1;$('mapZoomIn').disabled=mapZoom>=3;
  let cards='';
  if(m.field){
   for(const raw of [...MAP_PLACES.filter(p=>p.id==='guide'),...MAP_PLACES.filter(p=>p.id!=='guide')].filter(mapPlaceVisible)){const p=mapPlacePresentation(raw);
@@ -4472,9 +4813,9 @@ function drawFullMap(){
   cards+=`<div class="map-stage"><b>룬 봉인 ${state.gate?'해제':'잠김'} / 변이 흔적 ${state.floorOpen?'완료':'대기'}</b><small>흔적 퍼즐은 기록 2장 복원 후 J와 전실 비문을 함께 확인</small></div>`;
  }
  if($('mapPlaces').innerHTML!==cards)$('mapPlaces').innerHTML=cards;
- const legend=m.field?'◎ 내 위치　? 미확인 유적　… 이안·소문　▤ 세라·입문　◆ 의뢰　▣ 상인　△ 온천　▥ 미궁　회색 방패: 경비병　● 슬라임　▲ 늑대　■ 멧돼지':m.cave?'◎ 내 위치　▥ 출입구　◆ 붉은 표식: 중간보스　주변 적만 표시':'◎ 내 위치　▤ 기록 조각　◆ 숫자: 발견한 룬　▣ 발판　▲ 늑대　◆ 붉은 표식: 보스';
+ const legend=m.field?'◎ 내 위치　? 미확인 유적　… 이안·소문　▤ 세라·입문　◆ 의뢰　▣ 상인　△ 온천　▥ 미궁　회색 방패: 경비병　● 슬라임　◇ 고블린　▲ 늑대　■ 멧돼지':m.cave?'◎ 내 위치　▥ 출입구　◆ 붉은 표식: 중간보스　주변 적만 표시':'◎ 내 위치　▤ 기록 조각　◆ 숫자: 발견한 룬　▣ 발판　▲ 늑대　◆ 붉은 표식: 보스';
  $('mapLegend').textContent=legend;
- $('mapHintText').textContent=m.field?'목적지를 고르면 미니맵 화살표가 바뀝니다. 빠른 이동은 마을 안에서 다른 해금 마을로만 사용할 수 있습니다.':m.cave?'종유석과 석순 사이의 통로를 표시합니다. 지도를 열면 전투가 일시정지됩니다.':'미발견 미로·룬·기록 조각은 공개하지 않습니다. 지도를 열면 전투가 일시정지됩니다.';
+ $('mapHintText').textContent=m.field?'목적지를 고르면 미니맵 화살표가 바뀝니다. +/− 또는 지도 위 마우스 휠로 확대·축소할 수 있습니다. 빠른 이동은 마을 안에서 다른 해금 마을로만 사용할 수 있습니다.':m.cave?'종유석과 석순 사이의 통로를 표시합니다. +/− 또는 마우스 휠로 확대·축소할 수 있습니다.':'미발견 미로·룬·기록 조각은 공개하지 않습니다. +/− 또는 마우스 휠로 확대·축소할 수 있습니다.';
 }
 
 
@@ -4544,9 +4885,9 @@ function renderStatus(){
  }else if(statusTab==='loot'){
   html=`<p class="panel-note">부산물은 처치 시 자동으로 가방에 들어옵니다. 새벽마을의 <b>상인 모르</b> 근처에서 R키로 거래하세요.</p>${inventoryTable(false)}${journalInventoryHTML()}<p class="panel-note">하급 회복약 ${player.heals}개 · Q 사용 · HP +30 (고정) · 재사용 8초<br>대장간의 아티팩트·무기·갑옷 제작에 사용됩니다. 부산물마다 독립적으로 드롭되므로 한 몬스터가 여러 물건을 줄 수 있습니다.</p>`;
  }else{
-  html='<div class="table-scroll"><table class="game-table"><thead><tr><th>몬스터</th><th>희귀도</th><th>Lv</th><th>HP</th><th>공격</th><th>기본 EXP</th><th>리젠</th></tr></thead><tbody>';
-  for(const m of Object.values(MONSTERS).filter(m=>m.type!=='thug')){const ri=monsterRarityInfo(m.rarity),resp=(m.type==='boss'||m.boss)?'서울 3시간 슬롯':m.unique?'없음':Array.isArray(m.respawn)?`${Math.min(...m.respawn)}~${Math.max(...m.respawn)}초 난수`:m.respawn?fmt(m.respawn)+'초':'없음';html+=`<tr><td>${ri.mark?ri.mark+' ':''}${m.name}</td><td>${ri.name}</td><td>${m.level}</td><td>${fmt(m.hp)}</td><td>${(m.type==='boss'||m.boss)?[m.claw||m.attack,m.rush||m.attack,m.slam||m.attack].map(fmt).join(' / '):fmt(m.attack)}</td><td>${fmt(m.xp)}</td><td>${resp}</td></tr>`;}
-  html+='</tbody></table></div><p class="panel-note">필드 레벨 흐름: 길가/늪 Lv.1~3 → 동쪽 숲 Lv.5~7 → 부서진 능선 Lv.13→14→15→17→19→21. 아브람 종유석 미궁은 별도 구간 Lv.22→24→26 / 붉은 철갑 거인 Lv.28입니다.<br>안개 망령은 처치마다 100~120초 사이에서 리젠 시간이 새로 정해집니다. 제보당의 붉은 괴수와 붉은 철갑 거인은 서울 시각 0·3·6·9·12·15·18·21시에 다시 나타납니다.</p><p class="panel-note">경험치 감쇠는 <b>플레이어가 몬스터보다 높은 경우에만</b> 적용됩니다. +0~2레벨: 100% · +3~4: 50% · +5~6: 20% · +7~8: 10% · +9~10: 5% · +11 이상: 0 EXP. 자신보다 강한 몬스터를 처치한 경험치는 깎이지 않습니다.<br>중간보스는 첫 처치 100%, 두 번째 처치부터 기본 보스 경험치의 50%를 지급하며 그 뒤 현재 레벨차 감쇠가 적용됩니다. 숲의 미궁 최소 Lv.8 · 아브람 종유석 미궁 최소 Lv.22. 낮은 지역 반복 사냥으로는 레벨차 감쇠 때문에 무한 고속 성장이 어렵습니다.<br>모든 일반 몬스터는 플레이어에게서 지나치게 멀어지거나 활동 범위를 벗어나면 원래 자리로 귀환하며 <b>즉시 HP 완전 회복</b>합니다.<br>희귀도: 일반 &lt; 고급 ◇ &lt; 희귀 ◆ &lt; 정예 ✦ &lt; 중간보스 ✶. 희귀·정예·보스는 바닥 표식으로도 구분됩니다.<br></p>';
+  html='<div class="table-scroll"><table class="game-table"><thead><tr><th>몬스터</th><th>희귀도</th><th>Lv</th><th>HP</th><th>공격</th><th>기본 EXP</th><th>처치 골드</th><th>리젠</th></tr></thead><tbody>';
+  for(const m of Object.values(MONSTERS).filter(m=>m.type!=='thug')){const ri=monsterRarityInfo(m.rarity),scheduled=m.type==='boss'||m===MONSTERS.ironGiant,resp=scheduled?'서울 3시간 슬롯':m.unique?'없음':Array.isArray(m.respawn)?`${Math.min(...m.respawn)}~${Math.max(...m.respawn)}초 난수`:m.respawn?fmt(m.respawn)+'초':'없음',attackText=scheduled?[m.claw||m.attack,m.rush||m.attack,m.slam||m.attack].map(fmt).join(' / '):m.slam?fmt(m.attack)+' / 강공 '+fmt(m.slam):fmt(m.attack);html+=`<tr><td>${ri.mark?ri.mark+' ':''}${m.name}</td><td>${ri.name}</td><td>${m.level}</td><td>${fmt(m.hp)}</td><td>${attackText}</td><td>${fmt(m.xp)}</td><td>${m.gold?moneyText(m.gold)+' <small>레벨차 ≤ '+MONSTER_GOLD_LEVEL_GAP+'</small>':'—'}</td><td>${resp}</td></tr>`;}
+  html+='</tbody></table></div><p class="panel-note">필드 레벨 흐름: 길가/늪 Lv.1~3 → 남쪽 숲 고블린 Lv.4~8 / 동쪽 숲 Lv.5~7 → 부서진 능선 Lv.13→14→15→17→19→21. 아브람 종유석 미궁은 별도 구간 Lv.22→24→26 / 붉은 철갑 거인 Lv.28입니다.<br>안개 망령은 처치마다 100~120초 사이에서 리젠 시간이 새로 정해집니다. 제보당의 붉은 괴수와 붉은 철갑 거인은 서울 시각 0·3·6·9·12·15·18·21시에 다시 나타납니다.</p><p class="panel-note">경험치 감쇠는 <b>플레이어가 몬스터보다 높은 경우에만</b> 적용됩니다. +0~2레벨: 100% · +3~4: 50% · +5~6: 20% · +7~8: 10% · +9~10: 5% · +11 이상: 0 EXP. 자신보다 강한 몬스터를 처치한 경험치는 깎이지 않습니다.<br>중간보스는 첫 처치 100%, 두 번째 처치부터 기본 보스 경험치의 50%를 지급하며 그 뒤 현재 레벨차 감쇠가 적용됩니다. 숲의 미궁 최소 Lv.10 · 아브람 종유석 미궁 최소 Lv.22. 낮은 지역 반복 사냥으로는 레벨차 감쇠 때문에 무한 고속 성장이 어렵습니다.<br>모든 일반 몬스터는 플레이어에게서 지나치게 멀어지거나 활동 범위를 벗어나면 원래 자리로 귀환하며 <b>즉시 HP 완전 회복</b>합니다.<br>희귀도: 일반 &lt; 고급 ◇ &lt; 희귀 ◆ &lt; 정예 ✦ &lt; 중간보스 ✶. 희귀·정예·보스는 바닥 표식으로도 구분됩니다.<br></p>';
   html+='<details><summary>부산물 획득 확률과 판매 가격</summary><div class="table-scroll"><table class="game-table"><thead><tr><th>몬스터</th><th>부산물</th><th>기본 → 현재 확률</th><th>판매</th></tr></thead><tbody>';
   for(const m of Object.values(MONSTERS))for(const [id,p,exact=false] of m.drops)html+=`<tr><td>${m.name}</td><td>${ITEMS[id].name}</td><td>${fmt(p*100)}% → ${fmt((exact?p:dropChance(p))*100)}%</td><td>${ITEMS[id].noSell?'판매 불가':moneyText(ITEMS[id].sell)}</td></tr>`;
   html+='</tbody></table></div></details>';
@@ -4600,7 +4941,7 @@ function renderProgressHUD(){
   el.querySelector('.cooldown-shade').style.height=skill?Math.min(100,cd/skill.cooldown*100)+'%':'0%';
  }
  // Numeric HP labels are restricted to nearby visible enemies, not the entire world.
- if(state.mode==='play')for(const e of enemies){if(e.hp>0&&e.scene===state.scene&&e.type!=='boss'&&e.type!=='thug'&&dist(e,player)<15&&lineOfSight(player,e))placeLabel('enemy-'+e.id,`${monsterRarityInfo(e.rarity).mark?monsterRarityInfo(e.rarity).mark+' ':''}Lv.${e.level} ${e.name} · ${monsterRarityInfo(e.rarity).name}  ${fmt(e.hp)}/${fmt(e.maxHP)}${enemyRateLabel(e)?' · '+enemyRateLabel(e):''}`,e.x,enemyTextHeight(e),e.z);}
+ if(state.mode==='play'){const playerName=ACCOUNT.user?.username||(ACCOUNT.guest?'GUEST':'사냥꾼');placeLabel('player-name',playerName,player.x,player.y+2.55*CONFIG.playerScale,player.z);for(const e of enemies){if(e.hp>0&&e.scene===state.scene&&e.type!=='boss'&&e.type!=='thug'&&dist(e,player)<15&&lineOfSight(player,e))placeLabel('enemy-'+e.id,`${monsterRarityInfo(e.rarity).mark?monsterRarityInfo(e.rarity).mark+' ':''}Lv.${e.level} ${e.name} · ${monsterRarityInfo(e.rarity).name}  ${fmt(e.hp)}/${fmt(e.maxHP)}`,e.x,enemyTextHeight(e),e.z);}}
  const texts=$('combatTexts');texts.replaceChildren();
  if(state.mode==='play')for(const t of combatTexts){
   const p=project(t.x,t.height,t.z);if(!p)continue;
@@ -4640,16 +4981,16 @@ function start(){
  if(!ACCOUNT.loaded){renderMainMenu('title');return;}
  if(state.dead||state.mode==='dead')respawn();
  state.mode='play';$('overlay').classList.add('hidden');document.body.classList.remove('main-menu');
- pauseInput();pointer.active=false;pointer.nx=pointer.ny=0;canvas.focus();initAudio();lastNow=performance.now();simAccumulator=0;
+ resumePlayInput();initAudio();lastNow=performance.now();simAccumulator=0;
 }
 function pause(){if(state.mode!=='play')return;state.mode='pause';saveGame();showOverlay('pause');}
 function togglePanel(id,mode){
  if(state.mode===mode&&mode==='status'&&guideStatusPreview){
-  guideStatusPreview=false;$('statusPanel').classList.add('hidden');state.mode='play';pauseInput();
+  guideStatusPreview=false;$('statusPanel').classList.add('hidden');state.mode='play';resumePlayInput();
   if(state.introQuest.stage==='stats')showIntroStatTask();else showGuideLesson(2,state.introQuest.stage!=='none'||state.quest!=='none'||state.cleared);
   return;
  }
- if(state.mode===mode){$(id).classList.add('hidden');state.mode=helpReturn;pauseInput();if(state.mode==='play')canvas.focus();return;}
+ if(state.mode===mode){$(id).classList.add('hidden');state.mode=helpReturn;resumePlayInput();return;}
  if(!['play','pause','title'].includes(state.mode))return;
  helpReturn=state.mode;state.mode=mode;pauseInput();$(id).classList.remove('hidden');if(mode==='journal')updateJournal();if(mode==='help')updateHelpNumbers();if(mode==='help')$('survivalNotes').innerHTML=introJournalHTML();if(mode==='map')drawFullMap();
 }
@@ -4896,8 +5237,8 @@ async function openStoragePanel(mode='load'){
  try{await refreshSlots();renderSaveCards();refreshStorageUI();}catch(err){$('storageMessage').textContent=err.message;$('storageMessage').classList.add('bad');}
 }
 function closeStoragePanel(){
- $('storagePanel').classList.add('hidden');if(state.mode==='storage')state.mode=storageReturn;keys.clear();pointer.active=false;
- if(state.mode==='play'){canvas.focus();document.body.classList.remove('main-menu');}
+ $('storagePanel').classList.add('hidden');if(state.mode==='storage')state.mode=storageReturn;resumePlayInput();
+ if(state.mode==='play'){document.body.classList.remove('main-menu');}
  else if(['pause','title','dead'].includes(state.mode))renderMainMenu(state.mode);
 }
 function renderSaveCards(){
@@ -4966,6 +5307,8 @@ async function restoreAccountBackup(file){
 $('confirmNewJourney').addEventListener('click',()=>finishNewJourney(true));
 $('cancelNewJourney').addEventListener('click',()=>finishNewJourney(false));
 $('mapExtent').addEventListener('click',()=>{mapOverview=!mapOverview;drawFullMap();});
+$('mapZoomOut').addEventListener('click',()=>setMapZoom(mapZoom-.25));$('mapZoomIn').addEventListener('click',()=>setMapZoom(mapZoom+.25));$('mapZoomReset').addEventListener('click',()=>setMapZoom(1));
+$('fullmap').addEventListener('wheel',e=>{if(state.mode!=='map')return;e.preventDefault();setMapZoom(mapZoom+(e.deltaY<0?.25:-.25));},{passive:false});
 $('mapPlaces').addEventListener('click',e=>{const b=e.target.closest('[data-map-target]');if(b&&!b.disabled)selectMapTarget(b.dataset.mapTarget);});
 $('mapTravel').addEventListener('click',e=>{const b=e.target.closest('[data-fast-travel]');if(b&&!b.disabled)fastTravelTo(b.dataset.fastTravel);});
 $('mapResetTarget').addEventListener('click',()=>selectMapTarget('quest'));
@@ -5338,7 +5681,7 @@ function updateThug(e,dt){
   // Keep circling during the tell instead of freezing like a training dummy.
   if(d>2.8||!lineOfSight(e,player)){e.mode='chase';e.timer=.1;return;}
   const a=angle(e,player)+(e.strafe||1)*Math.PI/2,f=forward(a);moveBody(e,f.x*.85*dt,f.z*.85*dt,e.r*.82);
-  if(e.timer<=0){e.mode='claw';e.timer=.20;}return;
+  if(e.timer<=0){e.mode='claw';e.timer=.20;playMonsterAttackSound(e,'claw');}return;
  }
  if(e.mode==='claw'){
   const f=forward(e.yaw);moveBody(e,f.x*1.9*dt,f.z*1.9*dt,e.r*.82);
@@ -5439,6 +5782,10 @@ function restoreClock(raw){
 }
 
 function pauseInput(){keys.clear();pointer.active=false;pointer.nx=pointer.ny=0;simAccumulator=0;}
+function resumePlayInput(){
+ pauseInput();
+ if(state.mode==='play'){resumePhysicalMovementKeys();canvas.focus();}
+}
 
 function queueCombatAction(kind,slot=null){
  const a=player.attack;if(state.mode!=='play'||player.hp<=0||!a||player.queue||a.duration-a.t>COMBAT_BUFFER_SECONDS+1e-9||player.guardActive)return false;
@@ -5479,8 +5826,8 @@ function weaponClass(id=hero.gear?.weapon){
 }
 
 function weaponProfile(kind='light',id=hero.gear?.weapon){
- const c=weaponClass(id),p=WEAPON_PROFILES[c],a=p[kind==='heavy'?'heavy':'light'];
- return {...a,classId:c,name:p.name,kind:kind==='heavy'?'heavy':'light'};
+ const c=weaponClass(id),p=WEAPON_PROFILES[c],a=p[kind==='heavy'?'heavy':'light'],speed=clamp(GEAR[id]?.attackSpeedPct||0,0,.40),scale=1-speed;
+ return {...a,duration:a.duration*scale,active:a.active.map(v=>v*scale),classId:c,name:p.name,kind:kind==='heavy'?'heavy':'light',attackSpeedPct:speed};
 }
 
 function weaponProfileText(id){
@@ -5566,7 +5913,7 @@ function slotLocked(slot){return combatCommitted()||slot==='shield'&&player.guar
 function gearValue(g){
  if(!g)return 0;
  const attackValue=(g.enhanceMultiplier||1)>1?(1+(g.attackPct||0))*g.enhanceMultiplier-1:(g.attackPct||0);
- return attackValue*100+(g.rangePct||0)*30+(g.crit||0)*120+(g.damageReduction||0)*130+(g.maxHpFlat||0)*.6+(g.maxHpPct||0)*65+(g.maxMpPct||0)*40+(g.manaRegenPct||0)*35+(g.wolfBonus||0)*12+(g.bossBlock||0)*25;
+ return attackValue*100+(g.rangePct||0)*30+(g.crit||0)*120+(g.attackSpeedPct||0)*55+(g.damageReduction||0)*130+(g.maxHpFlat||0)*.6+(g.maxHpPct||0)*65+(g.maxMpPct||0)*40+(g.manaRegenPct||0)*35+(g.wolfBonus||0)*12+(g.bossBlock||0)*25;
 }
 
 function craftAdvice(g){
@@ -5721,7 +6068,7 @@ function updatePursuitMemory(e,dt){
 
 function talkFrightenedScout(){
  if(state.scene!=='field'||dist(player,FRIGHTENED_SCOUT)>3.2)return false;
- openDialogue(FRIGHTENED_SCOUT.name,'열심히 질주해서 겨우겨우 살 수 있었어.... 다신 안 들어갈래...<small>정찰병은 떨리는 손으로 숲 안쪽을 가리킨다.</small>');return true;
+ openDialogue(FRIGHTENED_SCOUT.name,'열심히 질주해서 겨우겨우 살 수 있었어.... 다신 안 들어갈래...<br><br><b>보스전에 들어가기 전엔 저장하는 게 좋아… 꽤 어렵거든…</b><small>정찰병은 떨리는 손으로 숲 안쪽을 가리킨다.</small>');return true;
 }
 
 function commissionPower(){
@@ -6030,7 +6377,7 @@ function renderRoomActors(){
 function roomLabelAllowed(id){
  const b=currentInterior(),owner=({anvil:'forge',merchant:'shop',blacksmith:'forge',camp:'sauna',librarian:'library',baker:'baker',weaver:'weaver',gatherer:'gatherer',carpenter:'carpenter',abram_librarian:'abram_library',abram_herbalist:'abram_herb_house',abram_mason:'abram_mason_house'})[id];
  if(owner)return !!b&&(owner===b.id||owner===b.kind);
- if(b)return id==='room-exit'||id==='room-inspect';
+ if(b)return id==='room-exit'||id==='room-inspect'||id==='player-name';
  return id!=='room-exit'&&id!=='room-inspect';
 }
 function renderRoomHUD(){
@@ -6087,7 +6434,7 @@ function drawRoomMap(c,w,h,full=false){
 function drawRoomFullMap(){
  if($('mapOverlay').classList.contains('hidden'))return;
  const b=currentInterior(),v=fitMapCanvas('fullmap',true);if(v)drawRoomMap(v.c,v.w,v.h,true);
- $('mapTitle').textContent=b.name+' · 실내';$('townMapToggle').classList.add('hidden');$('mapExtent').classList.add('hidden');
+ $('mapTitle').textContent=b.name+' · 실내';$('townMapToggle').classList.add('hidden');$('mapExtent').classList.add('hidden');for(const id of ['mapZoomOut','mapZoomReset','mapZoomIn'])$(id).classList.add('hidden');
  const o=getMapObjective();$('mapObjective').textContent=o.label;$('mapObjectiveNote').textContent=o.note;
  $('mapDistance').textContent=Number.isFinite(o.x)?'거리 '+fmt(dist(player,o))+'m':'';
  $('mapResetTarget').disabled=mapChoice==='quest';
@@ -6147,16 +6494,16 @@ function toggleGearLock(uid){
 }
 function bindGearLockButtons(root){for(const b of root.querySelectorAll('[data-lock-gear]'))b.onclick=()=>toggleGearLock(b.dataset.lockGear);}
 function completeGearSale(uid){
- if(state.mode!=='forge'||!inTownBuilding('forge')||!forgeAccessUnlocked())return false;
+ if(!['forge','dialogue'].includes(state.mode)||!inTownBuilding('forge')||!forgeAccessUnlocked())return false;
  const x=instanceById(uid);if(!x||uid==='starter'||x.locked||usesBossMaterial(GEAR[x.gearId])||Object.values(hero.equippedInstances).includes(uid))return false;
- const value=gearSaleValue(x),id=x.gearId;hero.gearInstances=hero.gearInstances.filter(v=>v.uid!==uid);
+ const value=gearSaleValue(x),id=x.gearId;if(value<=0)return false;hero.gearInstances=hero.gearInstances.filter(v=>v.uid!==uid);
  hero.equipment[id]=Math.max(0,(hero.equipment[id]||0)-1);if(!hero.equipment[id])delete hero.equipment[id];
- changeGold(value);saveGame();renderForge();return true;
+ changeGold(value);saveGame();toast(`${GEAR[id]?.name||'장비'} 판매 · +${moneyText(value)}`,3);if(state.mode==='forge')renderForge();return true;
 }
 function commitGearSale(token){
  const p=gearSaleProposal;if(!p||p.token!==token||!['dialogue','forge'].includes(state.mode))return false;gearSaleProposal=null;
- const x=instanceById(p.uid);if(!x||x.locked||x.enhancement!==p.enhancement||x.broken!==p.broken||gearSaleValue(x)!==p.price||Object.values(hero.equippedInstances).includes(x.uid)){returnToForge();return false;}
- returnToForge();return completeGearSale(p.uid);
+ const x=instanceById(p.uid);if(!x||x.locked||x.enhancement!==p.enhancement||x.broken!==p.broken||Math.abs(gearSaleValue(x)-p.price)>.001||Object.values(hero.equippedInstances).includes(x.uid)){returnToForge();return false;}
+ const ok=completeGearSale(p.uid);returnToForge();return ok;
 }
 function rollEnhancementFailure(rng=Math.random){
  const [a,b,c]=WORKSHOP_RULES.failureWeights,r=clamp(rng(),0,1-Number.EPSILON)*(a+b+c);
@@ -6397,11 +6744,15 @@ function decorateBuilding(b){
  */
 function poseEase(v){const t=clamp(v,0,1);return t*t*t*(t*(t*6-15)+10);}
 function migrateWorldLayout(raw){
- if((raw.worldLayoutVersion||0)>=WORLD_LAYOUT_VERSION)return raw;
- const d=deepCopy(raw),p=d.player,oldAbram=d.scene==='field'&&
-  (String(d.interior||'').startsWith('abram_')||(p.x>=226&&p.z>=-12&&p.z<=125));
- if(oldAbram){p.x+=ABRAM_RELOCATION.dx;p.z+=ABRAM_RELOCATION.dz;}
- // Existing wild enemies retain IDs. Safe-area overlaps are repaired after restoration.
+ const version=Number(raw.worldLayoutVersion)||0;if(version>=WORLD_LAYOUT_VERSION)return raw;
+ const d=deepCopy(raw),p=d.player;
+ // The Abram relocation happened only at layout v2. A v2 save inside an Abram
+ // interior must NOT be shifted a second time merely because v3 adds the south forest.
+ if(version<2){
+  const oldAbram=d.scene==='field'&&(String(d.interior||'').startsWith('abram_')||(p.x>=226&&p.z>=-12&&p.z<=125));
+  if(oldAbram){p.x+=ABRAM_RELOCATION.dx;p.z+=ABRAM_RELOCATION.dz;}
+ }
+ // v3 extends only the southern field. Existing positions remain valid.
  d.worldLayoutVersion=WORLD_LAYOUT_VERSION;return d;
 }
 // Personal quest: an explicit, post-acceptance order at Hagen's smithy.
@@ -6428,7 +6779,7 @@ function rioCraftLesson(){
  if(state.mode!=='play'||!nearRioGuard()||state.town.rioQuest.stage!=='active')return false;
  const g=GEAR[RIO_QUEST_RULES.gearId];
  openDialogue(rioGuard().name+' · 대장간 실습',`<h3>하겐에게 ${escapeText(g.name)}을 맡겨 줘.</h3>
- <div class="rio-steps"><span>1. 제작</span><b>아브람 북서쪽 · 하겐의 강철 대장간 → R → 무기</b><span>2. 확인</span><b>${escapeText(g.name)} → 재료·${moneyText(weaponCraftGold(g))} 확인 → 제작 확정</b><span>3. 기다리기</span><b>창을 닫고 ${g.craft}초. 완료되면 하겐 머리 위 !</b><span>4. 수령·납품</span><b>하겐에게 R로 수령 → 정상 +0 한 자루를 장착하지 말고 내게 가져와.</b></div>
+ <div class="rio-steps"><span>1. 제작</span><b>아브람 북서쪽 · 하겐의 강철 대장간 → R → 무기</b><span>2. 확인</span><b>${escapeText(g.name)} → 재료·${moneyText(weaponCraftGold(g))} 확인 → 제작 확정</b><span>3. 기다리기</span><b>메뉴·대화를 닫고 플레이 중 ${g.craft}초. 파일 종료 시간은 다음 실행 때 반영.</b><span>4. 수령·납품</span><b>하겐에게 R로 수령 → 정상 +0 한 자루를 장착하지 말고 내게 가져와.</b></div>
  <p class="rio-note">재료: ${recipeMaterialsText(g)}<br>나를 위한 임시 제작법만 하겐에게 빌려 뒀네. 의뢰를 받은 뒤 여기서 새로 만들어야 해.<br>완료하면 ${moneyText(RIO_QUEST_RULES.rewardGold)}를 지급할게. 잠근 검·강화한 검·파손품은 받지 않아.</p>`,[
   {label:'하겐에게 제작하러 가기',run:()=>{selectMapTarget('rioQuest');}},
   {label:'모루와 전승은 뭐지?',run:showRioWorkshopExtra},
@@ -6449,7 +6800,7 @@ function talkRioQuest(){
   syncGearInstances();const list=rioEligibleItems();
   const choices=list.slice(0,6).map(x=>({label:`${GEAR[x.gearId].name} +0 · ${x.uid} 납품 검토`,run:()=>requestRioDelivery(x.uid)}));
   choices.push({label:'제작 순서 다시 알려 줘',run:rioCraftLesson},{label:'나중에 다시 올게',run:()=>{}});
-  const note=list.length?'검을 가져왔군. <b>낼 검 한 자루</b>를 골라 줘. 확인하기 전에는 가져가지 않아.':hero.craft?.commission===RIO_QUEST_RULES.id?(craftReady(hero.craft)?'검은 완성됐네. 하겐에게 다시 말 걸어 먼저 수령해 오게.':'하겐이 검을 만드는 중이군. 창을 닫으면 제작 시간이 흐른다네.'):'하겐의 대장간에서 의뢰 수락 후 만든 <b>정상 +0 사냥꾼의 검</b>이 필요해. E에서 장착과 잠금을 해제한 뒤 가져와.';
+  const note=list.length?'검을 가져왔군. <b>낼 검 한 자루</b>를 골라 줘. 확인하기 전에는 가져가지 않아.':hero.craft?.commission===RIO_QUEST_RULES.id?(craftReady(hero.craft)?'검은 완성됐네. 하겐에게 다시 말 걸어 먼저 수령해 오게.':'하겐이 검을 만드는 중이군. 메뉴와 대화를 닫고 플레이하면 제작 시간이 흐른다네.'):'하겐의 대장간에서 의뢰 수락 후 만든 <b>정상 +0 사냥꾼의 검</b>이 필요해. E에서 장착과 잠금을 해제한 뒤 가져와.';
   openDialogue(rioGuard().name+' · 새 검의 부탁',`<p>${note}</p><p class="rio-note">하겐 → 무기 탭 → 사냥꾼의 검<br>완료 보상 ${moneyText(RIO_QUEST_RULES.rewardGold)} · 한 번만 지급<br>검을 팔거나 강화했어도 재료를 모아 새로 만들면 돼.</p>`,choices);
  }
  return true;
@@ -6592,7 +6943,7 @@ function buildTownFence(b,gates,height=3.8,strong=false){
  }
 }
 function drawMapFences(line,P,full){
- const towns=[[TOWN_BOUNDS,{side:'east',x:TOWN_BOUNDS.maxX,z:55}],[ABRAM_BOUNDS,[{side:'west',x:ABRAM_GATE.x,z:ABRAM_GATE.z},ABRAM_NORTH_GATE]]];
+ const towns=[[TOWN_BOUNDS,[{side:'east',x:TOWN_BOUNDS.maxX,z:55},SOUTH_GATE]],[ABRAM_BOUNDS,[{side:'west',x:ABRAM_GATE.x,z:ABRAM_GATE.z},ABRAM_NORTH_GATE]]];
  if(ternUnlocked())towns.push([TERN_BOUNDS,TERN_GATE]);
  for(const [b,gates]of towns){
   for(const o of fenceSegments(b,gates))line(o.hz>o.hx?[[o.x,o.z-o.hz],[o.x,o.z+o.hz]]:[[o.x-o.hx,o.z],[o.x+o.hx,o.z]],'#bbc0b1',full?2:2.3);
@@ -6619,6 +6970,7 @@ window.addEventListener('focus',()=>{if(TIME_SOURCE.status().endpoint)TIME_SOURC
 function frame(now){
  const dt=clamp((now-lastNow)/1000,0,.1);lastNow=now;
  if(doorTransition&&!testFrozen)advanceRoomTransition(dt);
+ if(deathTransition&&!testFrozen)advanceDeathTransition(dt);
  if(!testFrozen&&state.mode==='play'){updateCrafting();simAccumulator+=dt;while(simAccumulator>=1/90){updateGame(1/90);simAccumulator-=1/90;}}
  else simAccumulator=0;
  if(state.mode==='clock'&&Math.floor(now/1000)!==Math.floor((now-dt*1000)/1000))renderClockPanel(false);
@@ -6631,30 +6983,30 @@ if(window.__MUSAEK_TEST__===true||new URLSearchParams(location.search).get('test
  WEAPON_ECONOMY,GEAR_SERVICE_GOLD,RIO_QUEST_RULES,weaponCraftGold,craftCostHTML,craftRecipeAvailableHere,initialRioQuest,restoreRioQuest,rioGuard,nearRioGuard,rioEligibleItems,acceptRioQuest,talkRioQuest,rioCraftLesson,requestRioDelivery,commitRioDelivery,rioQuestObjective,renderRioQuestHUD,
  rioTransaction:()=>rioDeliveryProposal,
 
- captureAttackContext,restoreAttackContext,attackContext,goldAmount,changeGold,moneyText,currencyRuleText,ECONOMY_REVISION,repairOutstandingContracts,canHitEnemy,
+ captureAttackContext,restoreAttackContext,attackContext,goldAmount,changeGold,moneyText,currencyRuleText,killGoldFor,MONSTER_GOLD_LEVEL_GAP,ECONOMY_REVISION,repairOutstandingContracts,canHitEnemy,
  WORLD_LAYOUT_VERSION,ABRAM_RELOCATION,BOAR_QUEST_RULES,DAWN_STREETS,ABRAM_STREETS,initialBoarQuest,restoreBoarQuest,talkBoarGuard,acceptBoarQuest,recordBoarQuestKill,finishBoarQuest,boarQuestObjective,libraryStories,restoreLoreRead,migrateWorldLayout,renderBoarQuestHUD,poseEase,
  grantBoardReward,roomPeople,roomSpawn,renderRoomHUD,npcConversationVisible,maxStamina,renderStatAlert,staminaHelpHTML,updateHelpNumbers,stateLessonHTML,previewGuideStatus,showForgeLesson,tutorialSpendingUnlocked,forgeAccessUnlocked,recipeAvailableHere,recordIntroPurchase,recordIntroSale,
  enhancementLevel,enhancementMultiplier,WEAPON_AWAKENINGS,weaponAwakening,bossSources,BOSS_MATERIAL_IDS,usesBossMaterial,sameBossLineageAllowed,transferPairAllowed,nextTransferId,weaponLineageText,awakeningText,weaponProgressionHTML,enhancementPreviewHTML,weaponLevelCapWarning,transferEffectPreviewHTML,
  toggleGearLock,completeGearSale,commitGearSale,rollEnhancementFailure,TRANSFER_NEXT,transferDonors,validTransferSource,requestTransfer,commitTransfer,transferPanelHTML,recipeLiquidationValue,minimumGearInvestment,gearSaleValue,greatswordShare,skillInputFailure,
- inAbram,inTern,inBrokenRidge,inFogValley,townName,MONSTER_RARITY,monsterRarityInfo,monsterRarityKey,monsterDisplayName,ABRAM_CAVE,ABRAM_CAVE_ENTRANCE,DUNGEON_ACCESS,ABRAM_BOUNDS,ABRAM_GATE,ABRAM_NORTH_GATE,ABRAM_BUILDINGS,ABRAM_PEOPLE,ABRAM_SMITH,ABRAM_CAMP,ABRAM_MERCHANT,TERN_BOUNDS,TERN_GATE,TERN_BUILDINGS,TERN_PEOPLE,TERN_SMITH,TERN_CAMP,TERN_MERCHANT,TERN_LIBRARIAN,RIDGE_MAIN,RIDGE_MINE_PATH,RIDGE_PATH_SEGMENTS,RIDGE_MINE,RIDGE_FOG,IRON_GIANT_GATE,RIDGE_ENEMY_TYPES,ridgeRawHeight,fieldTerrainHeight,enemyBodyHeight,playerAttackCanReachY,ternUnlocked,talkTernPerson,activeBlacksmith,activeMerchant,activeCamp,abramGateOpen,talkAbramGuard,talkAbramPerson,roomAccessAllowed,repairAbramAccess,dynamicBlocks,
+ inAbram,inTern,inBrokenRidge,inFogValley,inSouthForest,inGoblinCamp,SOUTH_FOREST,GOBLIN_CAMP,GOBLIN_CAMP_APPROACH,SOUTH_GATE,SOUTH_TRAIL,SLIME_QUEEN_CLEARING,SWAMP_SLIME_POPULATION,SOUTH_ENEMY_TYPES,townName,MONSTER_RARITY,monsterRarityInfo,monsterRarityKey,monsterDisplayName,ABRAM_CAVE,ABRAM_CAVE_ENTRANCE,DUNGEON_ACCESS,ABRAM_BOUNDS,ABRAM_GATE,ABRAM_NORTH_GATE,ABRAM_BUILDINGS,ABRAM_PEOPLE,ABRAM_SMITH,ABRAM_CAMP,ABRAM_MERCHANT,TERN_BOUNDS,TERN_GATE,TERN_BUILDINGS,TERN_PEOPLE,TERN_SMITH,TERN_CAMP,TERN_MERCHANT,TERN_LIBRARIAN,RIDGE_MAIN,RIDGE_MINE_PATH,RIDGE_PATH_SEGMENTS,RIDGE_MINE,RIDGE_FOG,IRON_GIANT_GATE,RIDGE_ENEMY_TYPES,ridgeRawHeight,fieldTerrainHeight,enemyBodyHeight,playerAttackCanReachY,ternUnlocked,talkTernPerson,activeBlacksmith,activeMerchant,activeCamp,abramGateOpen,talkAbramGuard,talkAbramPerson,roomAccessAllowed,repairAbramAccess,dynamicBlocks,
  transactionState:()=>({sale:gearSaleProposal,transfer:transferProposal,anvil:anvilProposal}),
  WORKSHOP_RULES,WEAPON_LEVELS,UPGRADE_MATERIALS,MISC_RECIPES,MAIN_HUNT_TARGET,craftRecipe,weaponLevelText,canWearInstance,effectiveGear,instanceName,enforceWeaponEligibility,gearSaleValue,enhancementChance,enhancementCost,repairCost,anvilPoint,openAnvil,renderAnvil,requestEnhancement,commitEnhancement,requestRepair,commitRepair,showTicketRequirement,confirmDungeonEntry,equippedSlotsHTML,TIME_SOURCE,openClockPanel,renderClockPanel,
- PATCH_REVISION,DUNGEON_PUZZLE_REVISION,TRACK_MARKS,FLOOR_TRACK_ORDER,BOSS_SCHEDULE,dungeonBossStatus,resetLivingDungeonCombat,nextSeoulBossSpawn,seoulClockLabel,respawnScheduledBoss,ironGiantBoss,respawnScheduledIronGiant,isBossEncounter,isIronGiantEncounter,bossRoomSealed,refreshBossEncounter,WEREWOLF_GIMMICKS,werewolfMaskForRatio,triggerWerewolfGimmick,finishWerewolfRoar,rollRespawnDelay,COMBAT_BUFFER_SECONDS,queueCombatAction,restoreCombatBuffer,consumeCombatBuffer,beginnerServicesUnlocked,roomAccessAllowed,refreshIntroMilestones,recordIntroSlimeKill,recordIntroSale,recordIntroPurchase,introPurchaseSatisfied,introHUD,introJournalHTML,showTradeLesson,recordIntroRest,grantIntroHuntReward,grantIntroCraftMaterials,syncGearInstances,gearRowsHTML,sellGear,canCraft,NAV_CONFIG,NAV_RUNTIME,NavMinHeap,navLayer,navCellValid,navCellEdge,navSearch,boardRewardValue,auditBoardEconomy,balanceBoardDelivery,updateTutorial,renderHUD,
+ PATCH_REVISION,DUNGEON_PUZZLE_REVISION,GOBLIN_CAMPS,SOUTH_CAMP_TRAILS,SWAMP_SLIME_POPULATION,setMapZoom,zoomMapBounds,TRACK_MARKS,FLOOR_TRACK_ORDER,BOSS_SCHEDULE,dungeonBossStatus,resetLivingDungeonCombat,nextSeoulBossSpawn,seoulClockLabel,respawnScheduledBoss,ironGiantBoss,respawnScheduledIronGiant,isBossEncounter,isIronGiantEncounter,bossRoomSealed,refreshBossEncounter,WEREWOLF_GIMMICKS,werewolfMaskForRatio,triggerWerewolfGimmick,finishWerewolfRoar,rollRespawnDelay,COMBAT_BUFFER_SECONDS,queueCombatAction,restoreCombatBuffer,consumeCombatBuffer,beginnerServicesUnlocked,roomAccessAllowed,refreshIntroMilestones,recordIntroSlimeKill,recordIntroSale,recordIntroPurchase,introPurchaseSatisfied,introHUD,introJournalHTML,showTradeLesson,recordIntroRest,grantIntroHuntReward,grantIntroCraftMaterials,syncGearInstances,gearRowsHTML,sellGear,canCraft,NAV_CONFIG,NAV_RUNTIME,NavMinHeap,navLayer,navCellValid,navCellEdge,navSearch,boardRewardValue,auditBoardEconomy,balanceBoardDelivery,updateTutorial,renderHUD,
 
  TOWN_BOUNDS,townDepartureLocked,repairTutorialDeparture,introGuideCard,renderIntroGuideCard,rawMapObjective,entranceHinted,entranceMapVisible,mapPlacePresentation,FAST_TRAVEL_TOWNS,fastTravelUnlocked,fastTravelCurrentTown,fastTravelThreatNearby,fastTravelBlockedReason,fastTravelTo,fastTravelHTML,inDetailedField,insideWildernessBlock,WORLD_DETAIL_MARGIN,WORLD_BORDER_BACKDROP,WORLD_WILDERNESS_BLOCKS,uiLessonHTML,mapIcon,distanceToSegment,
- ROOM_DEFS,ROOM_BY_ID,currentInterior,playerSceneKey,nearestEnemy,updateRoomCamera,exteriorDoor,roomExit,nearExteriorDoor,requestRoomTransition,advanceRoomTransition,commitRoomTransition,cancelDoorTransition,updateRoomDoorMovement,roomInteraction,repairIndoorPosition,restoreInterior,doorMapPoint,roomMapModel,resumePhysicalMovementKeys,
- TOWN_BUILDINGS,TOWN_HOUSES,RESIDENTS,LIBRARIAN,BOARD,BOARD_RULES,THUG_HOME,PREVIOUS_MONSTER_HP,PRE_V0124_HP,initialTown,boardCycleWindow,boardResetLabel,isPermanentStatReward,generateBoard,ensureBoard,chooseBoardReward,acceptBoardQuest,claimBoardQuest,recordBoardKill,boardActiveCount,questProgress,openBoard,renderBoard,updateBoardTimerUI,tickBoardClockPanel,talkLibrarian,talkResident,talkThug,thug,resetThugBody,defeatThug,updateThug,inTownBuilding,restoreTown,townNow,renderTownHUD,
+ ROOM_DEFS,ROOM_BY_ID,currentInterior,playerSceneKey,nearestEnemy,updateRoomCamera,exteriorDoor,roomExit,nearExteriorDoor,requestRoomTransition,advanceRoomTransition,commitRoomTransition,cancelDoorTransition,updateRoomDoorMovement,roomInteraction,repairIndoorPosition,restoreInterior,doorMapPoint,roomMapModel,resumePhysicalMovementKeys,resumePlayInput,
+ TOWN_BUILDINGS,TOWN_HOUSES,RESIDENTS,LIBRARIAN,BOARD,BOARD_RULES,THUG_HOME,PREVIOUS_MONSTER_HP,PRE_V0124_HP,PRE_V0129_HP,initialTown,boardCycleWindow,boardResetLabel,isPermanentStatReward,generateBoard,ensureBoard,chooseBoardReward,acceptBoardQuest,claimBoardQuest,recordBoardKill,boardActiveCount,questProgress,openBoard,renderBoard,updateBoardTimerUI,tickBoardClockPanel,talkLibrarian,talkResident,talkThug,thug,resetThugBody,defeatThug,updateThug,inTownBuilding,restoreTown,townNow,renderTownHUD,
  RUMOR_NPC,DUNGEON_RULES,forestTrail,resetAbramDungeon,abramCaveCleared,abramDungeonPopulation,initialExploration,packExploration,restoreExploration,talkRumorNPC,explorationHUD,discoverEntrance,entranceKnown,journalUnlocked,dungeonJournalVisible,closeDungeonJournalOnLeave,journalInventoryHTML,hasJournalPage,collectJournalPage,journalHTML,updateExploration,updateExplorationCompletion,updateRespawn,dungeonPopulation,renderRumorNPC,renderJournalPage,
  GUIDE_NPC,INTRO_RULES,INTRO_HUNT_STAGES,beginIntroStatTask,refreshIntroStatTask,introStatTaskReady,showIntroStatTask,initialIntroQuest,restoreIntroQuest,needsIntroGate,introTracked,talkGuide,talkNPC,showGuideLesson,resourceLessonHTML,uiLessonHTML,huntLessonHTML,restLessonHTML,acceptIntroQuest,prepareIntroSale,finishIntroQuest,renderGuideNPC,updateJournal,
- SOUND,createSoundSynth,openAudioPanel,closeAudioPanel,enemyRateLabel,
- GAME_CLOCK,gameNow,packClock,restoreClock,suspendClock,GEAR_SLOTS,WEAPON_PROFILES,GUARD_RULES,FRIGHTENED_SCOUT,weaponProfile,weaponProfileText,beginGuard,stopGuard,blockIncoming,actionCommitted,combatCommitted,updatePlayerAttack,resolveSkillStrike,buySkill,learnSkill,grantSpecialSkill,gearValue,craftAdvice,validCraftSmithId,inferCraftSmithId,inferCraftForgeId,craftSmith,craftReady,craftReadyHere,introCraftSupport,craftCharge,finishCraftToInventory,claimCraft,openCraftClaimDialogue,commitCraft,returnToForge,navClear,navRoute,pursue,updatePursuitMemory,updateRidgeEnemy,beginEnemyReturn,importantAirBlockAt,crowAirMove,commissionPower,boardUnlocked,archiveBoard,syncBoardReady,claimArchivedReward,validReward,talkFrightenedScout,openForge,hideDialog,togglePanel,pause,initialPlayer,initialHero,
+ SOUND,MUSIC_THEMES,createSoundSynth,openAudioPanel,closeAudioPanel,enemyRateLabel,monsterAttackSound,playMonsterAttackSound,
+ GAME_CLOCK,gameNow,packClock,restoreClock,suspendClock,GEAR_SLOTS,WEAPON_PROFILES,GUARD_RULES,FRIGHTENED_SCOUT,weaponProfile,weaponProfileText,beginGuard,stopGuard,blockIncoming,actionCommitted,combatCommitted,updatePlayerAttack,resolveSkillStrike,buySkill,learnSkill,grantSpecialSkill,gearValue,craftAdvice,validCraftSmithId,inferCraftSmithId,inferCraftForgeId,craftSmith,craftReady,craftReadyHere,introCraftSupport,craftCharge,finishCraftToInventory,claimCraft,openCraftClaimDialogue,commitCraft,returnToForge,navClear,navRoute,pursue,updatePursuitMemory,updateRidgeEnemy,updateSouthEnemy,beginEnemyReturn,importantAirBlockAt,crowAirMove,commissionPower,boardUnlocked,archiveBoard,syncBoardReady,claimArchivedReward,validReward,talkFrightenedScout,openForge,hideDialog,togglePanel,pause,initialPlayer,initialHero,
  state,player,hero,keys,physicalShift,physicalMove,pointer,camera,CONFIG,BALANCE,MONSTERS,ITEMS,SKILLS,GEAR,WORLD,MAZE,VILLAGE,NPC,CAMP,MERCHANT,BLACKSMITH,ENTRANCE,GUARDS,scenes,
  rollPotionHeal,recoveryPotionCount,updateSprint,shiftHeld,resetSprintInput,recoverMana,restAtCamp,talkGuard,interactionTarget,GUIDE,MAP_PLACES,renderGuard,
  fmt,resourceSnapshot,renderResourceHUD,contactSpeedText,ENEMY_RECOVERY,renderProgressHUD,tickProgression,rollBasicPower,rollCritical,dealPlayerHit,combatTexts:()=>combatTexts,
  STAT_GROWTH,monsterContact,monsterAttackRate,updateEnemy,initialHero,manaRegen,xpBonus,getMapObjective,mapModel,drawMap,drawMiniMap,selectMapTarget,freshEnemy,
- maxHP,maxMP,physicalFactor,meleeRangeMultiplier,gearBonuses,gearEffectText,equipGear,unequipGear,startCraft,updateCrafting,renderForge,skillDamage,xpRequired,xpGapMultiplier,repeatBossXP,bossXPMultiplier,xpFor,addXP,allocateStat,manualStatTotal,fixedStatValue,requestStatRespec,commitStatRespec,equipSkill,unlockedSlots,rollSkillPower,dropChance,castSkill,learnCleave,openStatus,renderStatus,openShop,sellItem,sellAll,buyPotion,renderShop,packHero,
+ maxHP,maxMP,physicalFactor,meleeRangeMultiplier,gearBonuses,gearEffectText,equipGear,unequipGear,startCraft,updateCrafting,renderForge,skillDamage,xpRequired,xpGapMultiplier,repeatBossXP,bossXPMultiplier,xpFor,addXP,rewardEnemy,allocateStat,manualStatTotal,fixedStatValue,requestStatRespec,commitStatRespec,equipSkill,unlockedSlots,rollSkillPower,dropChance,castSkill,learnCleave,openStatus,renderStatus,openShop,sellItem,sellAll,buyPotion,renderShop,packHero,
  enemies:()=>enemies,boss,freeze(v=true){testFrozen=v;},step(seconds){for(let t=0;t<seconds;t+=1/90)updateGame(Math.min(1/90,seconds-t));render();},
- start,newGame,resetDungeon,updateDungeonProgress,enterAbramDungeon,exitAbramDungeon,attack,dodge,jump,heal,interact,chooseDialogue,hideDialog,enterDungeon,exitDungeon,damagePlayer,damageEnemy,respawn,
+ start,newGame,resetDungeon,updateDungeonProgress,enterAbramDungeon,exitAbramDungeon,attack,dodge,jump,heal,interact,chooseDialogue,hideDialog,enterDungeon,exitDungeon,damagePlayer,damageEnemy,respawn,beginDeathSequence,advanceDeathTransition,
  ACCOUNT,LOCAL,ACCOUNT_RESET,requestNewAdventure,finishNewJourney,api,exportAccountBackup,restoreAccountBackup,importSelectedSave,manualSave,refreshSlots,loadSlot,openStoragePanel,closeStoragePanel,logoutAccount,useGuest,storageMessage,clearScheduledSave,saveGame,packSave,applySave,lineOfSight,blockedAt,moveBody,cellPos,mazeDistances,project,aimPoint,render,updateGame,drawFullMap,WORLD,rollPotionHeal,
  teleport(x,z){clearMotion();Object.assign(player,{x,z,y:0,vy:0,grounded:true});snapCamera();render();},
  snapshot(){return {scene:state.scene,mode:state.mode,quest:state.quest,kills:state.kills,cleared:state.cleared,gate:state.gate,floorOpen:state.floorOpen,rune:state.rune,hero:packHero(),player:{x:player.x,y:player.y,z:player.z,hp:player.hp,maxHP:maxHP(),stamina:player.stamina,grounded:player.grounded},camera:{distance:camera.distance,pitch:Math.atan2(eye.y-camera.focus.y,Math.hypot(eye.x-camera.focus.x,eye.z-camera.focus.z))*180/Math.PI}};}
